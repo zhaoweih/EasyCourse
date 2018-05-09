@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.zhaoweihao.architechturesample"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+ext {
+    supportLibVersion = '27.1.1'
+    gsonVersion = '2.8.0'
+    datetimePickerVersion = '3.1.3'
+    glideVersion = '3.7.0'
+    archRoomVersion = '1.0.0-alpha3'
+    retrofitVersion = '2.2.0'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation "com.android.support:design:${supportLibVersion}"
+
+    // Room
+    compile "android.arch.persistence.room:runtime:${archRoomVersion}"
+    annotationProcessor "android.arch.persistence.room:compiler:${archRoomVersion}"
+
+    // Retrofit series
+    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+
+    // Glide
+    compile "com.github.bumptech.glide:glide:${glideVersion}"
+
+    // Material date time picker
+    compile ("com.wdullaer:materialdatetimepicker:${datetimePickerVersion}") {
+        exclude group: 'com.android.support'
+    }
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}

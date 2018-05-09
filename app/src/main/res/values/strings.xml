@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ArchitechtureSample</string>
+
+    <string name="zhihu_daily">Zhihu Daily</string>
+    <string name="guokr_handpick">Guokr Handpick</string>
+    <string name="douban_moment">Douban Moment</string>
+
+    <string name="timeline">Timeline</string>
+    <string name="favorites">Favorites</string>
+    <string name="info">Info</string>
+
+    <!-- timeline -->
+    <string name="fab_description">Select a specific date</string>
+    <string name="empty_content">Oops, nothing here…</string>
+    <!-- timeline end -->
+
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+</resources>
