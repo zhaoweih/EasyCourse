@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.data.ZhihuDailyNewsQuestion;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,13 +30,9 @@ public class ZhihuDailyFragment extends Fragment  implements ZhihuDailyContract.
     private View mEmptyView;
     private FloatingActionButton fab;
 
-//    private ZhihuDailyNewsAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
 
     private int mYear, mMonth, mDay;
-
-    private boolean mIsFirstLoad = true;
-    private int mListSize = 0;
 
     public ZhihuDailyFragment() {}
 
@@ -64,73 +59,15 @@ public class ZhihuDailyFragment extends Fragment  implements ZhihuDailyContract.
         initViews(view);
 
         mRefreshLayout.setOnRefreshListener(() -> {
-            Calendar c = Calendar.getInstance();
-            c.setTimeZone(TimeZone.getTimeZone("GMT+08"));
-            mPresenter.loadNews(true,true,c.getTimeInMillis());
+
         });
 
-//        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                if (dy > 0) {
-//                    fab.hide();
-//                    if (mLayoutManager.findLastCompletelyVisibleItemPosition() == mListSize - 1) {
-//                        loadMore();
-//                    }
-//                } else {
-//                    fab.show();
-//                }
-//            }
-//        });
 
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mPresenter.start();
-        Calendar c = Calendar.getInstance();
-        c.setTimeZone(TimeZone.getTimeZone("GMT+08"));
-        c.set(mYear, mMonth, mDay);
-        setLoadingIndicator(mIsFirstLoad);
-        if (mIsFirstLoad) {
-            mPresenter.loadNews(true, false, c.getTimeInMillis());
-            mIsFirstLoad = false;
-        } else {
-            mPresenter.loadNews(false, false, c.getTimeInMillis());
-        }
-    }
 
-    @Override
-    public boolean isActive() {
-        return isAdded() && isResumed();
-    }
 
-    @Override
-    public void setLoadingIndicator(boolean active) {
-        mRefreshLayout.post(() -> mRefreshLayout.setRefreshing(active));
-    }
-
-//    @Override
-//    public void showResult(@NonNull List<ZhihuDailyNewsQuestion> list) {
-//        if (mAdapter == null) {
-//            mAdapter = new ZhihuDailyNewsAdapter(list, getContext());
-//            mAdapter.setItemClickListener((v, i) -> {
-//
-//            });
-//            mRecyclerView.setAdapter(mAdapter);
-//        } else {
-//            mAdapter.updateData(list);
-//        }
-//    }
-
-//    private void loadMore() {
-//        Calendar c = Calendar.getInstance();
-//        c.set(mYear, mMonth, --mDay);
-//        mPresenter.loadNews(true, false, c.getTimeInMillis());
-//    }
 
     @Override
     public void setPresenter(ZhihuDailyContract.Presenter presenter) {

@@ -39,21 +39,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "com.android.support:design:${supportLibVersion}"
 
-    // Room
-    compile "android.arch.persistence.room:runtime:${archRoomVersion}"
-    annotationProcessor "android.arch.persistence.room:compiler:${archRoomVersion}"
-
-    // Retrofit series
-    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
-    compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-
     // Glide
     compile "com.github.bumptech.glide:glide:${glideVersion}"
 
-    // Material date time picker
-    compile ("com.wdullaer:materialdatetimepicker:${datetimePickerVersion}") {
-        exclude group: 'com.android.support'
-    }
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

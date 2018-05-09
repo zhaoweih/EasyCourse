@@ -13,8 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.data.source.remote.ZhihuDailyNewsRemoteDataSource;
-import com.zhaoweihao.architechturesample.data.source.repository.ZhihuDailyNewsRepository;
+
 
 public class TimelineFragment extends Fragment {
 
@@ -47,10 +46,6 @@ public class TimelineFragment extends Fragment {
 
         }
 
-        //初始化Presenter
-        new ZhihuDailyPresenter(mZhihuFragment, ZhihuDailyNewsRepository.getInstance(
-                ZhihuDailyNewsRemoteDataSource.getInstance(),
-                ZhihuDailyNewsLocalDataSource.getInstance(getContext())));
     }
 
     @Nullable
