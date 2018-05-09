@@ -1,18 +1,22 @@
 <resources>
     <string name="app_name">ArchitechtureSample</string>
 
-    <string name="zhihu_daily">Zhihu Daily</string>
-    <string name="guokr_handpick">Guokr Handpick</string>
-    <string name="douban_moment">Douban Moment</string>
+    <string name="zhihu_daily">日报页面</string>
+    <string name="guokr_handpick">果仁挑选</string>
+    <string name="douban_moment">豆瓣时刻</string>
 
-    <string name="timeline">Timeline</string>
-    <string name="favorites">Favorites</string>
-    <string name="info">Info</string>
+    <string name="timeline">时间线</string>
+    <string name="favorites">最爱</string>
+    <string name="info">信息</string>
 
     <!-- timeline -->
-    <string name="fab_description">Select a specific date</string>
-    <string name="empty_content">Oops, nothing here…</string>
+    <string name="fab_description">选择一个特别日期</string>
+    <string name="empty_content">噢，目前没有东西</string>
     <!-- timeline end -->
+
+    <!-- info -->
+    <string name="login">登录</string>
+    <!-- info end -->
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>
