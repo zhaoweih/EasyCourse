@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction()
                     .show(mFavoritesFragment)
                     .hide(mTimelineFragment)
+                    .hide(mFavoritesFragment)
                     .commit();
         }
     }
