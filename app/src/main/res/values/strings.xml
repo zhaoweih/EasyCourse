@@ -18,5 +18,23 @@
     <string name="login">登录</string>
     <!-- info end -->
 
+    <!-- login -->
+    <string name="login_text">登录</string>
+    <!-- login end -->
+
+    <!-- login -->
+    <string name="login_hint_text">请输入您的账户名</string>
+    <!-- login end -->
+
+    <!-- login -->
+    <string name="password_hint_text">请输入您的密码</string>
+    <!-- login end -->
+
+    <!-- login -->
+    <string name="register_text">马上注册</string>
+    <!-- login end -->
+
+
+
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>
