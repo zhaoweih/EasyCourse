@@ -1,5 +1,6 @@
 package com.zhaoweihao.architechturesample.ui;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -63,6 +64,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ibtn_hidepassword.setBackground(btnDrawable1);
                 }
                 break;
+            case R.id.btn_register:
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivity(intent);
         }
     }
 
