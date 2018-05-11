@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.UtilActivity">
+
+    <Button
+        android:id="@+id/btn_send_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送POST请求"
+        />
+
+    <Button
+        android:id="@+id/btn_send_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送GET请求"
+        />
+
+    <Button
+        android:id="@+id/btn_save_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存数据到数据库"
+        />
+    <Button
+        android:id="@+id/btn_read_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从数据库读取数据"
+        />
+
+    <Button
+        android:id="@+id/btn_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送请求并显示数据到界面"
+        />
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="将要显示数据的区域"
+        />
+</LinearLayout>
