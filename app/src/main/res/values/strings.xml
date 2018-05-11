@@ -23,12 +23,32 @@
     <!-- login end -->
 
     <!-- login -->
-    <string name="login_hint_text">请输入您的账户名</string>
+    <string name="login_hint_text">请输入账户名（仅限英文字母和数字）</string>
     <!-- login end -->
 
     <!-- login -->
-    <string name="password_hint_text">请输入您的密码</string>
+    <string name="password_hint_text">请输入密码（仅限英文字母和数字）</string>
     <!-- login end -->
+
+    <!-- register -->
+    <string name="password_confirm_hint_text">请确认密码（仅限英文字母和数字）</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_information_text">注册绑定</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_submit_text">提交</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tip1_text">输入账户/密码，完成注册（仅限英文字母和数字）</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tip2_text">选择教育信息</string>
+    <!-- register end -->
 
     <!-- login -->
     <string name="register_text">马上注册</string>

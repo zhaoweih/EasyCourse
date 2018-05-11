@@ -36,7 +36,9 @@
                 android:layout_height="50dp"
                 android:layout_toRightOf="@id/iv_usernamelogo"
                 android:background="#fff"
+                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
                 android:hint="@string/login_hint_text"
+                android:textSize="16dp"
                 android:textColorHint="#4000" />
             <ImageButton
                 android:id="@+id/ibtn_clearusername"
@@ -64,7 +66,9 @@
                 android:layout_height="50dp"
                 android:layout_toRightOf="@id/iv_passwordlogo"
                 android:background="#fff"
+                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
                 android:hint="@string/password_hint_text"
+                android:textSize="16dp"
                 android:inputType="textWebPassword"
 
                 android:textColorHint="#4000" />
