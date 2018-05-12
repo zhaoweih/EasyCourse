@@ -29,10 +29,9 @@ public class InfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info, container, false);
         initViews(view);
 
-        mButton.setOnClickListener( v -> {
-            Intent intent = new Intent(getActivity(),LoginActivity.class);
-            startActivity(intent);
-        });
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.info_container, new InfoPreferenceFragment())
+                .commit();
 
 
         return view;
