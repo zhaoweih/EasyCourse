@@ -69,6 +69,7 @@
                 android:hint="@string/login_hint_text"
                 android:textColor="#00a2e9"
                 android:textColorHint="#4000"
+                android:maxLength="10"
                 android:textSize="14dp" />
 
             <ImageButton
@@ -102,6 +103,7 @@
                 android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
                 android:hint="@string/password_hint_text"
                 android:inputType="textWebPassword"
+                android:maxLength="10"
                 android:textColor="#00a2e9"
                 android:textColorHint="#4000"
 
@@ -147,6 +149,7 @@
                 android:hint="@string/password_confirm_hint_text"
                 android:inputType="textWebPassword"
                 android:textColor="#00a2e9"
+                android:maxLength="10"
                 android:textColorHint="#4000"
 
                 android:textSize="14dp" />
@@ -204,7 +207,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="1dp"
                 android:background="#fff"
-                android:layout_below="@+id/iv_faculty"
+                android:layout_below="@+id/iv_position"
                 android:src="@drawable/registersyear" />
             <ImageView
                 android:id="@+id/iv_position"
@@ -212,7 +215,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="1dp"
                 android:background="#fff"
-                android:layout_below="@+id/iv_year"
+                android:layout_below="@+id/iv_faculty"
                 android:src="@drawable/registerposition" />
             <ImageView
                 android:id="@+id/iv_degree"
@@ -220,7 +223,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="1dp"
                 android:background="#fff"
-                android:layout_below="@+id/iv_position"
+                android:layout_below="@+id/iv_year"
                 android:src="@drawable/registerdegree" />
             <ImageView
                 android:id="@+id/iv_privacy"
@@ -230,9 +233,46 @@
                 android:layout_marginTop="-5dp"
                 android:src="@drawable/registerprivatcy"/>
             <TextView
+                android:id="@+id/tv_school"
                 android:layout_width="match_parent"
                 android:gravity="center"
-                android:text="@string/register_information_text"
+                android:text="@string/register_tv_school_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_faculty"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_school"
+                android:text="@string/register_tv_faculty_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_position"
+                android:text="@string/register_tv_year_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_position"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_faculty"
+                android:text="@string/register_tv_position_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_degree"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_year"
+                android:text="@string/register_tv_degree_text"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:layout_height="50dp" />
