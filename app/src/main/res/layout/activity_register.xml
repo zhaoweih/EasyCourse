@@ -6,4 +6,294 @@
     android:layout_height="match_parent"
     tools:context=".ui.RegisterActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ry_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="@string/register_information_text"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@id/tv_title"
+                android:background="#0000"
+                android:text="@string/register_submit_text"
+                android:textColor="#00a2e9"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_tip1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/register_tip1_text"
+                android:textSize="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ry_title">
+
+            <ImageView
+                android:id="@+id/iv_usernamelogo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/username1" />
+
+            <EditText
+                android:id="@+id/ed_username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/iv_usernamelogo"
+                android:background="#fff"
+                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
+                android:hint="@string/login_hint_text"
+                android:textColor="#00a2e9"
+                android:textColorHint="#4000"
+                android:maxLength="10"
+                android:textSize="14dp" />
+
+            <ImageButton
+                android:id="@+id/ibtn_clearusername"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/clear"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ry_username"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:id="@+id/iv_passwordlogo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/passwordlogo1" />
+
+            <EditText
+                android:id="@+id/ed_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/iv_passwordlogo"
+                android:background="#fff"
+                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
+                android:hint="@string/password_hint_text"
+                android:inputType="textWebPassword"
+                android:maxLength="10"
+                android:textColor="#00a2e9"
+                android:textColorHint="#4000"
+
+                android:textSize="14dp" />
+
+            <ImageButton
+                android:id="@+id/ibtn_clearpassword"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="-15dp"
+                android:layout_toLeftOf="@+id/ibtn_hidepassword"
+                android:background="@drawable/clear"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/ibtn_hidepassword"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/showpassword2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_passwordconfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ry_password"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:id="@+id/iv_passwordconfirmlogo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/passwordlogo1" />
+
+            <EditText
+                android:id="@+id/ed_passwordconfirm"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/iv_passwordconfirmlogo"
+                android:background="#fff"
+                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
+                android:hint="@string/password_confirm_hint_text"
+                android:inputType="textWebPassword"
+                android:textColor="#00a2e9"
+                android:maxLength="10"
+                android:textColorHint="#4000"
+
+                android:textSize="14dp" />
+
+            <ImageButton
+                android:id="@+id/ibtn_clearpasswordconfirm"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="-15dp"
+                android:layout_toLeftOf="@+id/ibtn_hidepasswordconfirm"
+                android:background="@drawable/clear"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/ibtn_hidepasswordconfirm"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/showpassword2" />
+
+            <TextView
+                android:id="@+id/tv_tip2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ibtn_clearpasswordconfirm"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/register_tip2_text"
+                android:textSize="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_selecteducatoininformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ry_passwordconfirm">
+            <ImageView
+                android:id="@+id/iv_school"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:src="@drawable/registerschool" />
+            <ImageView
+                android:id="@+id/iv_faculty"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:layout_below="@+id/iv_school"
+                android:src="@drawable/registerfaculty" />
+            <ImageView
+                android:id="@+id/iv_year"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:layout_below="@+id/iv_position"
+                android:src="@drawable/registersyear" />
+            <ImageView
+                android:id="@+id/iv_position"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:layout_below="@+id/iv_faculty"
+                android:src="@drawable/registerposition" />
+            <ImageView
+                android:id="@+id/iv_degree"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:layout_below="@+id/iv_year"
+                android:src="@drawable/registerdegree" />
+            <ImageView
+                android:id="@+id/iv_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/iv_degree"
+                android:layout_marginTop="-5dp"
+                android:src="@drawable/registerprivatcy"/>
+            <TextView
+                android:id="@+id/tv_school"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:text="@string/register_tv_school_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_faculty"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_school"
+                android:text="@string/register_tv_faculty_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_position"
+                android:text="@string/register_tv_year_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_position"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_faculty"
+                android:text="@string/register_tv_position_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_degree"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_below="@id/tv_year"
+                android:text="@string/register_tv_degree_text"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="50dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            >
+
+            <ImageView
+                android:id="@+id/iv_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:background="#fff"
+                android:src="@drawable/registerbottom" />
+        </RelativeLayout>
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

@@ -25,12 +25,60 @@
     <!-- login end -->
 
     <!-- login -->
-    <string name="login_hint_text">请输入您的账户名</string>
+    <string name="login_hint_text">账户名（由6-10位英文字母和数字组成）</string>
     <!-- login end -->
 
     <!-- login -->
-    <string name="password_hint_text">请输入您的密码</string>
+    <string name="password_hint_text">密码（由6-10位英文字母和数字组成）</string>
     <!-- login end -->
+
+    <!-- register -->
+    <string name="password_confirm_hint_text">请再次输入您的密码</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_information_text">注册绑定</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_submit_text">提交</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tip1_text">输入账户/密码，完成注册（仅限英文字母和数字）</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tip2_text">选择教育信息</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tv_school_text">韩山师范学院</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tv_faculty_text">教育学系</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tv_year_text">2015</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tv_position_text">学生</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_tv_degree_text">专科/本科</string>
+    <!-- register end -->
+
+    <!-- register_list_view -->
+    <string name="register_list_view_tv_search_hint_text">请输入学校拼音前两个缩写</string>
+    <!-- register_list_view  end -->
+
+    <!-- register_list_view -->
+    <string name="register_list_view_tv_tip_text">热门学校</string>
+    <!-- register_list_view  end -->
 
     <!-- login -->
     <string name="register_text">马上注册</string>

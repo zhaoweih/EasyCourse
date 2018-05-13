@@ -152,6 +152,7 @@ public class UtilActivity extends AppCompatActivity {
         readData.setOnClickListener(v -> {
             com.zhaoweihao.architechturesample.database.User user = DataSupport.findFirst(com.zhaoweihao.architechturesample.database.User.class);
             log(thisClass, user.getName());
+            log(thisClass, user.getDate());
         });
         //发送请求并显示数据到界面上
         showData.setOnClickListener(v -> {

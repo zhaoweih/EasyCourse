@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RegisterListView">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0f00">
+
+        <RelativeLayout
+            android:id="@+id/ry_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000">
+
+            <ImageView
+                android:id="@+id/iv_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#fff"
+                android:src="@drawable/registerlistviewtitle0"
+                />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/iv_title"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="15dp"
+                android:background="@drawable/round_border"
+                android:hint="@string/register_list_view_tv_search_hint_text" />
+            <TextView
+                android:id="@+id/tv_tip"
+                android:layout_below="@id/et_search"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="@string/register_list_view_tv_tip_text"
+                android:textColor="#CCCCCC"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/android:list"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/ry_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

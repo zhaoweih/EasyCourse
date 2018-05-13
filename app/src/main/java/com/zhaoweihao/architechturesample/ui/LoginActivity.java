@@ -11,6 +11,7 @@ import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import java.util.TimerTask;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton ibtn_hidepassword, ibtn_clearpassword,ibtn_clearusername;
+    Button btn_register;
     EditText ed_username, ed_password;
     Boolean passwordflag;
     Handler handler;
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
-        timer.schedule(timerTask,200,200);//延时1s，每隔500毫秒执行一次run方法
+        timer.schedule(timerTask,200,200);//延时200ms，每隔200毫秒执行一次run方法
     }
 
     @Override
@@ -65,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.btn_register:
-                Intent intent = new Intent(this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
         }
     }
@@ -78,11 +80,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ibtn_clearpassword = (ImageButton) findViewById(R.id.ibtn_clearpassword);
         ibtn_clearusername=(ImageButton)findViewById(R.id.ibtn_clearusername);
 
+        btn_register=(Button)findViewById(R.id.btn_register);
+
         passwordflag = true;
 
         ibtn_clearpassword.setOnClickListener(this);
         ibtn_hidepassword.setOnClickListener(this);
         ibtn_clearusername.setOnClickListener(this);
+        btn_register.setOnClickListener(this);
+
 
         handler= new Handler() {
             @Override
