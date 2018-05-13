@@ -24,6 +24,9 @@
         </activity>
         <activity android:name=".ui.RegisterActivity"></activity>
         <activity android:name=".ui.UtilActivity">
+
+        </activity>
+        <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
