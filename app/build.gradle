@@ -10,6 +10,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -33,6 +34,7 @@ ext {
     retrofitVersion = '2.2.0'
     okhttpVersion = '3.10.0'
     litepalVersion = '1.6.1'
+    turquoiseVersion = '6.3'
 }
 
 dependencies {
@@ -40,15 +42,19 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${supportLibVersion}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "com.android.support:design:${supportLibVersion}"
+    compile "com.android.support:preference-v14:${supportLibVersion}"
 
     // Glide
     compile "com.github.bumptech.glide:glide:${glideVersion}"
     // Gson
-    compile "com.google.code.gson:gson:${gsonVersion}"
+    compile 'com.google.code.gson:gson:2.8.0'
     // Okhttp
     implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     // Litepal
     compile "org.litepal.android:core:${litepalVersion}"
+    // Turquoise
+    compile 'com.github.shepherdviolet.turquoise:turquoise:9.1'
+    implementation 'com.android.support:multidex:1.0.3'
 
 
     testImplementation 'junit:junit:4.12'
