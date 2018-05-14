@@ -55,7 +55,7 @@ public class UtilActivity extends AppCompatActivity {
              * @name 真实姓名
              */
             User user = new User();
-            user.setUsername("zhaoweihao22");
+            user.setUsername("zhaoweihao221");
             user.setPassword("abssss");
             user.setStudentId("2015191054");
             user.setClassId("20151912");

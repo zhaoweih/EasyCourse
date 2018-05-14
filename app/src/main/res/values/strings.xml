@@ -72,6 +72,26 @@
     <string name="register_tv_degree_text">专科/本科</string>
     <!-- register end -->
 
+    <!-- register -->
+    <string name="register_et_name_text">请输入您的真实姓名</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_studentnum_text">请输入您的学号</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_teachernum_text">请输入您的教师编号</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_classnum_text">请输入您的班级号</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_sex_text">男</string>
+    <!-- register end -->
+
     <!-- register_list_view -->
     <string name="register_list_view_tv_search_hint_text">请输入学校拼音前两个缩写</string>
     <!-- register_list_view  end -->

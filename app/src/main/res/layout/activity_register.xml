@@ -181,102 +181,200 @@
                 android:textSize="10dp" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/ry_selecteducatoininformation"
+        <ScrollView
+            android:id="@+id/sv_selecteducatoininformation"
+            android:layout_below="@id/ry_passwordconfirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ry_passwordconfirm">
-            <ImageView
-                android:id="@+id/iv_school"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/ry_selecteducatoininformation"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="1dp"
-                android:background="#fff"
-                android:src="@drawable/registerschool" />
-            <ImageView
-                android:id="@+id/iv_faculty"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="1dp"
-                android:background="#fff"
-                android:layout_below="@+id/iv_school"
-                android:src="@drawable/registerfaculty" />
-            <ImageView
-                android:id="@+id/iv_year"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="1dp"
-                android:background="#fff"
-                android:layout_below="@+id/iv_position"
-                android:src="@drawable/registersyear" />
-            <ImageView
-                android:id="@+id/iv_position"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="1dp"
-                android:background="#fff"
-                android:layout_below="@+id/iv_faculty"
-                android:src="@drawable/registerposition" />
-            <ImageView
-                android:id="@+id/iv_degree"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="1dp"
-                android:background="#fff"
-                android:layout_below="@+id/iv_year"
-                android:src="@drawable/registerdegree" />
-            <ImageView
-                android:id="@+id/iv_privacy"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/iv_degree"
-                android:layout_marginTop="-5dp"
-                android:src="@drawable/registerprivatcy"/>
-            <TextView
-                android:id="@+id/tv_school"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:text="@string/register_tv_school_text"
-                android:textColor="#000"
-                android:textSize="18dp"
-                android:layout_height="50dp" />
-            <TextView
-                android:id="@+id/tv_faculty"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_below="@id/tv_school"
-                android:text="@string/register_tv_faculty_text"
-                android:textColor="#000"
-                android:textSize="18dp"
-                android:layout_height="50dp" />
-            <TextView
-                android:id="@+id/tv_year"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_below="@id/tv_position"
-                android:text="@string/register_tv_year_text"
-                android:textColor="#000"
-                android:textSize="18dp"
-                android:layout_height="50dp" />
-            <TextView
-                android:id="@+id/tv_position"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_below="@id/tv_faculty"
-                android:text="@string/register_tv_position_text"
-                android:textColor="#000"
-                android:textSize="18dp"
-                android:layout_height="50dp" />
-            <TextView
-                android:id="@+id/tv_degree"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_below="@id/tv_year"
-                android:text="@string/register_tv_degree_text"
-                android:textColor="#000"
-                android:textSize="18dp"
-                android:layout_height="50dp" />
-        </RelativeLayout>
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_name"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/iv_teachernum"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:src="@drawable/registername"
+                    android:layout_height="50dp" />
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="250dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:hint="@string/register_et_name_text"
+                    android:layout_below="@+id/iv_teachernum"
+                    android:background="#0000"
+                    android:layout_height="50dp" />
+                <ImageView
+                    android:id="@+id/iv_teachernum"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/iv_studentnum"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:visibility="gone"
+                    android:src="@drawable/registerteachernum"
+                    android:layout_height="50dp" />
+                <EditText
+                    android:id="@+id/et_teachernum"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="250dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:hint="@string/register_et_teachernum_text"
+                    android:visibility="gone"
+                    android:layout_below="@+id/iv_studentnum"
+                    android:background="#0000"
+                    android:layout_height="50dp" />
+                <ImageView
+                    android:id="@+id/iv_studentnum"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/iv_classnum"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:src="@drawable/registerstudentnum"
+                    android:layout_height="50dp" />
+                <EditText
+                    android:id="@+id/et_studentnum"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="250dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:hint="@string/register_et_studentnum_text"
+                    android:layout_below="@+id/iv_classnum"
+                    android:background="#0000"
+                    android:layout_height="50dp" />
+                <ImageView
+                    android:id="@+id/iv_classnum"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:layout_below="@+id/iv_sex"
+                    android:src="@drawable/registerclassnum"
+                    android:layout_height="50dp" />
+                <EditText
+                    android:id="@+id/et_classnum"
+                    android:gravity="center"
+                    android:layout_width="250dp"
+                    android:layout_centerHorizontal="true"
+                    android:hint="@string/register_et_classnum_text"
+                    android:layout_below="@+id/iv_sex"
+                    android:background="#0000"
+                    android:layout_height="50dp" />
+                <ImageView
+                    android:id="@+id/iv_school"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:src="@drawable/registerschool" />
+                <ImageView
+                    android:id="@+id/iv_faculty"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:layout_below="@+id/iv_school"
+                    android:src="@drawable/registerfaculty" />
+                <ImageView
+                    android:id="@+id/iv_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:layout_below="@+id/iv_name"
+                    android:src="@drawable/registersyear" />
+                <ImageView
+                    android:id="@+id/iv_position"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:layout_below="@+id/iv_faculty"
+                    android:src="@drawable/registerposition" />
+                <ImageView
+                    android:id="@+id/iv_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:layout_below="@+id/iv_position"
+                    android:src="@drawable/registersexblank" />
+
+                <ImageView
+                    android:id="@+id/iv_degree"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#fff"
+                    android:layout_below="@+id/iv_year"
+                    android:src="@drawable/registerdegree" />
+                <ImageView
+                    android:id="@+id/iv_privacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/iv_degree"
+                    android:layout_marginTop="-5dp"
+                    android:src="@drawable/registerprivatcy"/>
+                <TextView
+                    android:id="@+id/tv_school"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="@string/register_tv_school_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/tv_faculty"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_below="@id/tv_school"
+                    android:text="@string/register_tv_faculty_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/tv_year"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_below="@id/et_name"
+                    android:text="@string/register_tv_year_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/tv_position"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_below="@id/tv_faculty"
+                    android:text="@string/register_tv_position_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_below="@id/tv_position"
+                    android:text="@string/register_et_sex_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/tv_degree"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_below="@id/tv_year"
+                    android:text="@string/register_tv_degree_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_height="50dp" />
+            </RelativeLayout>
+        </ScrollView>
+
+
 
         <RelativeLayout
             android:id="@+id/ry_bottom"
