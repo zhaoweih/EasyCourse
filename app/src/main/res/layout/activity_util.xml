@@ -48,4 +48,10 @@
         android:layout_marginTop="20dp"
         android:text="将要显示数据的区域"
         />
+    <Button
+        android:id="@+id/btn_parse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解析payload"
+        />
 </LinearLayout>
