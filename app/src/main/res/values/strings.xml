@@ -103,6 +103,7 @@
 
     <!-- login -->
     <string name="register_text">马上注册</string>
+    <string name="returntohome_text">返回主页</string>
     <!-- login end -->
 
     <!-- userinformation -->

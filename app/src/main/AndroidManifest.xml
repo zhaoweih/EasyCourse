@@ -17,6 +17,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
@@ -24,11 +29,7 @@
         <activity android:name=".ui.UtilActivity" />
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

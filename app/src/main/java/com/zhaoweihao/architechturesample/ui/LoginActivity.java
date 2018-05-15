@@ -49,7 +49,7 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final Class thisClass = LoginActivity.class;
     ImageButton ibtn_hidepassword, ibtn_clearpassword,ibtn_clearusername;
-    Button btn_register,btn_login;
+    Button btn_register,btn_login,btn_returntohome;
     EditText ed_username, ed_password;
     Boolean passwordflag;
     Handler handler;
@@ -98,18 +98,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.btn_login:
-               /* if (ed_username.getText().toString().equals("") || ed_password.getText().toString().equals("")) {
+               if (ed_username.getText().toString().equals("") || ed_password.getText().toString().equals("")) {
                     Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
                 } else if(!(ed_username.getText().toString().equals("") || ed_password.getText().toString().equals(""))){
                 getUsers();
-                }*/
+                }
 
-                testlitepal();
+              /*  testlitepal();
                 Intent intent2 = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent2);
+                startActivity(intent2);*/
 
 
             break;
+            case R.id.btn_returntohome:
+                Intent intent0 = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent0);
+                break;
         }
     }
 
@@ -123,6 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btn_register=(Button)findViewById(R.id.btn_register);
         btn_login=(Button)findViewById(R.id.btn_login);
+        btn_returntohome=(Button)findViewById(R.id.btn_returntohome);
 
         passwordflag = true;
 
@@ -132,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ibtn_clearusername.setOnClickListener(this);
         btn_register.setOnClickListener(this);
         btn_login.setOnClickListener(this);
+        btn_returntohome.setOnClickListener(this);
 
 
         handler= new Handler() {
@@ -258,6 +264,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     User user = new Gson().fromJson(restResponse.getPayload().toString(), User.class);
 
                     try {
+                        //插入一个user数据之前,将上一个删掉，现在保持user在13个，（现在是随机刚好测试到13个,没有把前面的没用的删掉）
+                        // annotated by TanXinKui 18/5/15
+                        com.zhaoweihao.architechturesample.database.User user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
+                        user3.delete();
                         com.zhaoweihao.architechturesample.database.User user1 = new com.zhaoweihao.architechturesample.database.User();
                         user1.setUserId(1000);
                         user1.setUsername(user.getUsername());
@@ -266,6 +276,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         user1.setDepartment(user.getDepartment());
                         user1.setEducation(user.getEducation());
                         user1.setDate(user.getDate());
+                        user1.setTeacherId(user.getTeacherId());
                         user1.setSchool(user.getSchool());
                         user1.setSex(user.getSex());
                         user1.setName(user.getName());

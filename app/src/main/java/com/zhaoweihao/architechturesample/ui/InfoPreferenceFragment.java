@@ -48,9 +48,12 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
         addPreferencesFromResource(R.xml.info_preference);
 
         // 测试显示信息界面
-        User user3 = DataSupport.findLast(User.class);
-        List<User> allNews = DataSupport.findAll(User.class);
-        findPreference("info1").setTitle("  last  "+user3.getName()+" length:"+allNews.size());
+
+        findPreference("info1").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), UserInformation.class);
+            startActivity(intent);
+            return true;
+        });
         // 打开登录界面
         findPreference("login").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), LoginActivity.class);

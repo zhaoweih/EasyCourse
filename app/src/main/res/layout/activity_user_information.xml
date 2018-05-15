@@ -55,6 +55,8 @@
                     android:gravity="center"
                     android:text=""
                     android:hint="@string/userinformation_tv_name_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
                     android:layout_below="@+id/iv_userinformationteachernum"
                     android:background="#0000"
                     android:layout_height="50dp" />
@@ -73,6 +75,8 @@
                     android:gravity="center"
                     android:text=""
                     android:hint="@string/userinformation_tv_teachernum_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
                     android:layout_below="@+id/iv_userinformationstudentnum"
                     android:background="#0000"
                     android:layout_height="50dp" />
@@ -91,6 +95,8 @@
                     android:gravity="center"
                     android:text=""
                     android:hint="@string/userinformation_tv_studentnum_text"
+                    android:textColor="#000"
+                    android:textSize="18dp"
                     android:layout_below="@+id/iv_userinformationclassnum"
                     android:background="#0000"
                     android:layout_height="50dp" />
@@ -109,6 +115,8 @@
                     android:layout_centerHorizontal="true"
                     android:hint="@string/userinformation_tv_classnum_text"
                     android:layout_below="@+id/iv_userinformationsex"
+                    android:textColor="#000"
+                    android:textSize="18dp"
                     android:background="#0000"
                     android:layout_height="50dp" />
                 <ImageView
