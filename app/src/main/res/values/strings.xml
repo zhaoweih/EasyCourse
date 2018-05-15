@@ -18,6 +18,7 @@
     <string name="login">登录</string>
     <string name="settings">个人信息</string>
     <string name="seat_select">点名</string>
+    <string name="personal_Info">详细信息</string>
     <!-- info end -->
 
     <!-- login -->
@@ -104,6 +105,17 @@
     <string name="register_text">马上注册</string>
     <!-- login end -->
 
+    <!-- userinformation -->
+    <string name="userinformation_tv_name_text">您的真实姓名</string>
+    <string name="userinformation_tv_studentnum_text">您的学号</string>
+    <string name="userinformation_tv_teachernum_text">您的教师编号</string>
+    <string name="userinformation_tv_classnum_text">您的班级号</string>
+    <string name="userinformation_tip_text">个人详细信息</string>
+    <!-- register end -->
+
+
+    <!-- userinformation end -->
+
     <!-- selectionview -->
     <string name="seat_selection_prompt_available">可选</string>
     <string name="seat_selection_prompt_unavailable">不可选</string>
@@ -111,8 +123,6 @@
     <string name="seat_selection_bottom_bar_title">已选座位</string>
     <string name="seat_selection_bottom_bar_submit">确认座位</string>
     <!-- selectionview end -->
-
-
 
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

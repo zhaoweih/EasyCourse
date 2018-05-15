@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.data.Login;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.User;
 
@@ -27,7 +28,7 @@ public class UtilActivity extends AppCompatActivity {
 
     private static final Class thisClass = UtilActivity.class;
 
-    private Button sendPost,sendGet,saveData,readData,showData;
+    private Button sendPost,sendGet,saveData,readData,showData,parseData;
     private TextView showText;
 
     @Override
@@ -176,6 +177,41 @@ public class UtilActivity extends AppCompatActivity {
                 }
             });
         });
+
+        // 解析payload数据，以登录功能为例
+        parseData.setOnClickListener(v -> {
+            String suffix = "user/login";
+            // 组装login对象
+            Login login = new Login();
+            login.setUsername("zhaoweihao");
+            login.setPassword("abbccc");
+            //转换为json
+            String json = new Gson().toJson(login);
+            sendPostRequest(suffix, json, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    //网络错误处理
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String body = response.body().string();
+                    //解析json数据组装RestResponse对象
+                    RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                    if ( restResponse.getCode() == 500 ) {
+                        log(thisClass, "登录失败，请检查用户名和密码");
+                    }
+                    // code 200等于登录成功
+                    if ( restResponse.getCode() == 200 ) {
+                        //首先获取payload (Object) , toString()转换成json
+                        //接着用gson将json组装起来
+                        User user = new Gson().fromJson(restResponse.getPayload().toString(), User.class);
+
+                        log(thisClass, user.getName());
+                    }
+                }
+            });
+        });
     }
 
     private void initViews() {
@@ -185,5 +221,6 @@ public class UtilActivity extends AppCompatActivity {
         readData = findViewById(R.id.btn_read_data);
         showData = findViewById(R.id.btn_show);
         showText = findViewById(R.id.tv_show);
+        parseData = findViewById(R.id.btn_parse);
     }
 }
