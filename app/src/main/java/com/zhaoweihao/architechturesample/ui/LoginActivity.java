@@ -48,10 +48,10 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final Class thisClass = LoginActivity.class;
-    ImageButton ibtn_hidepassword, ibtn_clearpassword,ibtn_clearusername;
-    Button btn_register,btn_login,btn_returntohome;
-    EditText ed_username, ed_password;
-    Boolean passwordflag;
+    private ImageButton ibtn_hidepassword, ibtn_clearpassword,ibtn_clearusername;
+    private Button btn_register,btn_login,btn_returntohome;
+    private EditText ed_username, ed_password;
+    private Boolean passwordflag;
     Handler handler;
     Timer timer;
     TimerTask timerTask;
@@ -111,8 +111,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             break;
             case R.id.btn_returntohome:
-                Intent intent0 = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent0);
+                // 修改代码
+//                Intent intent0 = new Intent(LoginActivity.this,MainActivity.class);
+//                startActivity(intent0);
+                finish();
                 break;
         }
     }
