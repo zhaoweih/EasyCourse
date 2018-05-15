@@ -18,6 +18,7 @@
     <string name="login">登录</string>
     <string name="settings">个人信息</string>
     <string name="seat_select">点名</string>
+    <string name="personal_Info">详细信息</string>
     <!-- info end -->
 
     <!-- login -->
@@ -72,6 +73,26 @@
     <string name="register_tv_degree_text">专科/本科</string>
     <!-- register end -->
 
+    <!-- register -->
+    <string name="register_et_name_text">请输入您的真实姓名</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_studentnum_text">请输入您的学号</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_teachernum_text">请输入您的教师编号</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_classnum_text">请输入您的班级号</string>
+    <!-- register end -->
+
+    <!-- register -->
+    <string name="register_et_sex_text">男</string>
+    <!-- register end -->
+
     <!-- register_list_view -->
     <string name="register_list_view_tv_search_hint_text">请输入学校拼音前两个缩写</string>
     <!-- register_list_view  end -->
@@ -82,7 +103,19 @@
 
     <!-- login -->
     <string name="register_text">马上注册</string>
+    <string name="returntohome_text">返回主页</string>
     <!-- login end -->
+
+    <!-- userinformation -->
+    <string name="userinformation_tv_name_text">您的真实姓名</string>
+    <string name="userinformation_tv_studentnum_text">您的学号</string>
+    <string name="userinformation_tv_teachernum_text">您的教师编号</string>
+    <string name="userinformation_tv_classnum_text">您的班级号</string>
+    <string name="userinformation_tip_text">个人详细信息</string>
+    <!-- register end -->
+
+
+    <!-- userinformation end -->
 
     <!-- selectionview -->
     <string name="seat_selection_prompt_available">可选</string>
@@ -91,8 +124,6 @@
     <string name="seat_selection_bottom_bar_title">已选座位</string>
     <string name="seat_selection_bottom_bar_submit">确认座位</string>
     <!-- selectionview end -->
-
-
 
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

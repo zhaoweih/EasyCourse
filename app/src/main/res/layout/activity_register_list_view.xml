@@ -24,6 +24,15 @@
                 android:background="#fff"
                 android:src="@drawable/registerlistviewtitle0"
                 />
+            <TextView
+                android:id="@+id/tv_modetext"
+                android:gravity="center"
+                android:text="选择学校"
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
             <EditText
                 android:id="@+id/et_search"

@@ -10,32 +10,59 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.data.Login;
+import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.data.User;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import static com.zhaoweihao.architechturesample.util.HttpUtil.sendGetRequest;
+import static com.zhaoweihao.architechturesample.util.HttpUtil.sendPostRequest;
+import static com.zhaoweihao.architechturesample.util.Utils.log;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final Class thisClass = LoginActivity.class;
     ImageButton ibtn_hidepassword, ibtn_clearpassword,ibtn_clearusername;
-    Button btn_register;
+    Button btn_register,btn_login,btn_returntohome;
     EditText ed_username, ed_password;
     Boolean passwordflag;
     Handler handler;
     Timer timer;
     TimerTask timerTask;
+
+    String HHH="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+
         timer.schedule(timerTask,200,200);//延时200ms，每隔200毫秒执行一次run方法
     }
 
@@ -47,6 +74,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.ibtn_clearpassword:
                 ed_password.setText("");
+                break;
+            case R.id.btn_register:
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ibtn_hidepassword:
                 if (passwordflag) {
@@ -66,9 +97,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ibtn_hidepassword.setBackground(btnDrawable1);
                 }
                 break;
-            case R.id.btn_register:
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
+            case R.id.btn_login:
+               if (ed_username.getText().toString().equals("") || ed_password.getText().toString().equals("")) {
+                    Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
+                } else if(!(ed_username.getText().toString().equals("") || ed_password.getText().toString().equals(""))){
+                getUsers();
+                }
+
+              /*  testlitepal();
+                Intent intent2 = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent2);*/
+
+
+            break;
+            case R.id.btn_returntohome:
+                Intent intent0 = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent0);
+                break;
         }
     }
 
@@ -81,13 +126,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ibtn_clearusername=(ImageButton)findViewById(R.id.ibtn_clearusername);
 
         btn_register=(Button)findViewById(R.id.btn_register);
+        btn_login=(Button)findViewById(R.id.btn_login);
+        btn_returntohome=(Button)findViewById(R.id.btn_returntohome);
 
         passwordflag = true;
+
 
         ibtn_clearpassword.setOnClickListener(this);
         ibtn_hidepassword.setOnClickListener(this);
         ibtn_clearusername.setOnClickListener(this);
         btn_register.setOnClickListener(this);
+        btn_login.setOnClickListener(this);
+        btn_returntohome.setOnClickListener(this);
 
 
         handler= new Handler() {
@@ -132,6 +182,114 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 handler.sendMessage(message);
             }
         };
+    }
+
+
+    public  void testlitepal(){
+
+        try {
+            //插入一个user数据之前,将上一个删掉，现在保持user在13个，（现在是随机刚好测试到13个,没有把前面的没用的删掉）
+            // annotated by TanXinKui 18/5/15
+            com.zhaoweihao.architechturesample.database.User user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
+            user3.delete();
+            com.zhaoweihao.architechturesample.database.User user = new com.zhaoweihao.architechturesample.database.User();
+            user.setUserId(1000);
+            user.setUsername("zhaoweihao22");
+            user.setStudentId("2015191054");
+            user.setClassId("20151912");
+            user.setDepartment("教育系");
+            user.setEducation(1);
+            user.setDate("2015");
+            user.setSchool("韩山师范学院");
+            user.setSex(1);
+            user.setName("谭新奎测试13");
+            //保存到数据库
+            user.save();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log(thisClass, "保存成功");
+
+    }
+    public void getUsers(){
+
+        String suffix = "user/login";
+        // 组装login对象
+        Login login = new Login();
+        login.setUsername(ed_username.getText().toString());
+        login.setPassword(ed_password.getText().toString());
+        //转换为json
+        String json = new Gson().toJson(login);
+        sendPostRequest(suffix, json, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                //网络错误处理
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                //解析json数据组装RestResponse对象
+                RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                if ( restResponse.getCode() == 500 ) {
+                    log(thisClass, "登录失败，请检查用户名和密码");
+                    try {
+                        //切换主进程更新UI
+                        runOnUiThread(() -> {
+                            Toast.makeText(LoginActivity.this, "登陆失败"+restResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                            ed_username.setText("");
+                            ed_password.setText("");
+                        });
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                // code 200等于登录成功
+                if ( restResponse.getCode() == 200 ) {
+                    //首先获取payload (Object) , toString()转换成json
+                    //接着用gson将json组装起来
+                    //切换主进程更新UI
+                    try {
+                        runOnUiThread(() -> {
+                            Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    User user = new Gson().fromJson(restResponse.getPayload().toString(), User.class);
+
+                    try {
+                        //插入一个user数据之前,将上一个删掉，现在保持user在13个，（现在是随机刚好测试到13个,没有把前面的没用的删掉）
+                        // annotated by TanXinKui 18/5/15
+                        com.zhaoweihao.architechturesample.database.User user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
+                        user3.delete();
+                        com.zhaoweihao.architechturesample.database.User user1 = new com.zhaoweihao.architechturesample.database.User();
+                        user1.setUserId(1000);
+                        user1.setUsername(user.getUsername());
+                        user1.setStudentId(user.getStudentId());
+                        user1.setClassId(user.getClassId());
+                        user1.setDepartment(user.getDepartment());
+                        user1.setEducation(user.getEducation());
+                        user1.setDate(user.getDate());
+                        user1.setTeacherId(user.getTeacherId());
+                        user1.setSchool(user.getSchool());
+                        user1.setSex(user.getSex());
+                        user1.setName(user.getName());
+                        //保存到数据库
+                        user1.save();
+                        log(thisClass, "保存到数据库成功"+user1.getName());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
     }
 
 }

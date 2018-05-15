@@ -18,11 +18,18 @@ package com.zhaoweihao.architechturesample.ui;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import android.support.v7.preference.PreferenceFragmentCompat;
 
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.database.User;
+
+import org.litepal.crud.DataSupport;
+import org.litepal.tablemanager.Connector;
+
+import java.util.List;
 
 import sviolet.seatselectionview.demo.SeatSelectionActivity;
 
@@ -40,6 +47,13 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.info_preference);
 
+        // 测试显示信息界面
+
+        findPreference("info1").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), UserInformation.class);
+            startActivity(intent);
+            return true;
+        });
         // 打开登录界面
         findPreference("login").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), LoginActivity.class);

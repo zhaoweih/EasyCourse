@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,29 +46,31 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private static final Class thisClass = RegisterActivity.class;
-    ImageButton ibtn_hidepassword, ibtn_clearpassword, ibtn_clearusername, ibtn_clearpasswordconfirm,
+    private ImageButton ibtn_hidepassword, ibtn_clearpassword, ibtn_clearusername, ibtn_clearpasswordconfirm,
             ibtn_hidepasswordconfirm;
-    Button btn_submit;
-    EditText ed_username, ed_password, ed_passwordconfirm;
-    Boolean passwordflag, passwordconfirmflag;
-    Handler handler,handler1;
-    ImageView iv_bottom, iv_school, iv_faculty, iv_year, iv_position, iv_degree, iv_privacy;
-    TextView tv_school, tv_faculty, tv_year, tv_position, tv_degree;
+    private Button btn_submit;
+    private EditText ed_username, ed_password, ed_passwordconfirm, et_name, et_teachernum, et_classnum, et_studentnum;
+    private Boolean passwordflag, passwordconfirmflag, finishState, failState;
+    String failmsg;
+    Handler handler, myhandler;
+    ImageView iv_bottom, iv_school, iv_faculty, iv_year, iv_position, iv_degree, iv_privacy,iv_sex,iv_classnum,iv_studentnum,iv_name,iv_teachernum;
+    TextView tv_school, tv_faculty, tv_year, tv_position, tv_degree,tv_sex;
     Timer timer;
     TimerTask timerTask;
 
     Runnable updateThread;
 
-    final int REQUEST_ACTIVITY1=1,REQUEST_ACTIVITY2=2,REQUEST_ACTIVITY3=3;
-    int checknum,checknum1,checknum2;
-    String selectedUniversity,selectedFaculty,selectedYear;
+    final  int REQUEST_ACTIVITY1 = 1, REQUEST_ACTIVITY2 = 2, REQUEST_ACTIVITY3 = 3;
+     int checknum, checknum1, checknum2;
+    String selectedUniversity, selectedFaculty, selectedYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
-        Toast.makeText(this,"注意更改默认教育信息！", Toast.LENGTH_SHORT).show();
+        initRunnable();
+        Toast.makeText(this, "注意更改默认教育信息！", Toast.LENGTH_SHORT).show();
         timer.schedule(timerTask, 200, 200);//延时1s，每隔500毫秒执行一次run方法
     }
 
@@ -120,13 +123,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.btn_submit:
-                if(ed_username.getText().toString().equals("")||ed_password.getText().toString().equals("")||ed_passwordconfirm.getText().toString().equals("")){
-                    Toast.makeText(this,"请输入完整！", Toast.LENGTH_SHORT).show();
-                }else if(!ed_password.getText().toString().equals(ed_passwordconfirm.getText().toString())){
-                    Toast.makeText(this,"两次输入密码不一致", Toast.LENGTH_SHORT).show();
-                }else if(!(ed_username.getText().toString().equals("")||ed_password.getText().toString().equals("")||ed_passwordconfirm.getText().toString().equals(""))){
-
-                        submit();
+                if (ed_username.getText().toString().equals("") || ed_password.getText().toString().equals("") || ed_passwordconfirm.getText().toString().equals("")) {
+                    Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
+                } else if (!ed_password.getText().toString().equals(ed_passwordconfirm.getText().toString())) {
+                    Toast.makeText(this, "两次输入密码不一致", Toast.LENGTH_SHORT).show();
+                } else if (!(ed_username.getText().toString().equals("") || ed_password.getText().toString().equals("") || ed_passwordconfirm.getText().toString().equals(""))) {
+                    if (tv_position.getText().toString().equals("学生")) {
+                        if (et_studentnum.getText().toString().equals("") || et_classnum.getText().toString().equals("") || et_name.getText().toString().equals("")) {
+                            Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
+                        } else {
+                            submit();
+                            myhandler.post(updateThread);
+                        }
+                    } else if (tv_position.getText().toString().equals("老师")) {
+                        if (et_teachernum.getText().toString().equals("") || et_name.getText().toString().equals("")) {
+                            Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
+                        } else {
+                            submit();
+                            myhandler.post(updateThread);
+                        }
+                    }
                 }
                 break;
             case R.id.iv_bottom:
@@ -134,48 +150,80 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.iv_school:
-                Intent intent1 = new Intent(RegisterActivity.this, RegisterListView.class);
-                Bundle data1=new Bundle();
-                data1.putString("pic","first");
-                data1.putString("selectedUniversity",selectedUniversity);
-                data1.putInt("checknum",checknum);
-                intent1.putExtras(data1);
-                startActivityForResult(intent1,REQUEST_ACTIVITY1);
+                try {
+                    Intent intent1 = new Intent(RegisterActivity.this, RegisterListView.class);
+                    Bundle data1 = new Bundle();
+                    data1.putString("pic", "first");
+                    data1.putString("selectedUniversity", selectedUniversity);
+                    data1.putInt("checknum", checknum);
+                    intent1.putExtras(data1);
+                    startActivityForResult(intent1, REQUEST_ACTIVITY1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.iv_faculty:
-                Intent intent2 = new Intent(RegisterActivity.this, RegisterListView.class);
-                Bundle data2=new Bundle();
-                data2.putString("pic","second");
-                data2.putString("selectedFaculty",selectedFaculty);
-                data2.putInt("checknum1",checknum1);
-                intent2.putExtras(data2);
-                startActivityForResult(intent2,REQUEST_ACTIVITY2);
+                try {
+                    Intent intent2 = new Intent(RegisterActivity.this, RegisterListView.class);
+                    Bundle data2 = new Bundle();
+                    data2.putString("pic", "second");
+                    data2.putString("selectedFaculty", selectedFaculty);
+                    data2.putInt("checknum1", checknum1);
+                    intent2.putExtras(data2);
+                    startActivityForResult(intent2, REQUEST_ACTIVITY2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.iv_year:
-                Intent intent3 = new Intent(RegisterActivity.this, RegisterListView.class);
-                Bundle data=new Bundle();
-                data.putString("pic","third");
-                data.putString("selectedYear",selectedYear);
-                data.putInt("checknum2",checknum2);
-                intent3.putExtras(data);
-                startActivityForResult(intent3,REQUEST_ACTIVITY3);
+                try {
+                    Intent intent3 = new Intent(RegisterActivity.this, RegisterListView.class);
+                    Bundle data = new Bundle();
+                    data.putString("pic", "third");
+                    data.putString("selectedYear", selectedYear);
+                    data.putInt("checknum2", checknum2);
+                    intent3.putExtras(data);
+                    startActivityForResult(intent3, REQUEST_ACTIVITY3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.iv_position:
-                final String positions[]={"学生","老师","班主任"};
-                AlertDialog.Builder bd=new AlertDialog.Builder(RegisterActivity.this);
+                final String positions[] = {"学生", "老师"};
+                AlertDialog.Builder bd = new AlertDialog.Builder(RegisterActivity.this);
                 bd.setItems(positions, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(i==0){
+                        if (i == 0) {
                             iv_year.setVisibility(View.VISIBLE);
                             iv_degree.setVisibility(View.VISIBLE);
+                            iv_studentnum.setVisibility(View.VISIBLE);
+                            iv_classnum.setVisibility(View.VISIBLE);
+
                             tv_year.setVisibility(View.VISIBLE);
                             tv_degree.setVisibility(View.VISIBLE);
-                        }else{
+                            et_studentnum.setVisibility(View.VISIBLE);
+                            et_classnum.setVisibility(View.VISIBLE);
+
+                            iv_teachernum.setVisibility(View.GONE);
+                            et_teachernum.setVisibility(View.GONE);
+
+                        } else {
+
+                            iv_teachernum.setVisibility(View.VISIBLE);
+                            et_teachernum.setVisibility(View.VISIBLE);
+
                             iv_year.setVisibility(View.GONE);
                             iv_degree.setVisibility(View.GONE);
                             tv_year.setVisibility(View.GONE);
                             tv_degree.setVisibility(View.GONE);
+
+                            iv_classnum.setVisibility(View.GONE);
+                            et_classnum.setVisibility(View.GONE);
+
+                            iv_studentnum.setVisibility(View.GONE);
+                            et_studentnum.setVisibility(View.GONE);
+
                         }
                         tv_position.setText(positions[i]);
                     }
@@ -183,8 +231,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 bd.create().show();
                 break;
             case R.id.iv_degree:
-                final String degrees[]={"本科/专科","研究生"};
-                AlertDialog.Builder bd1=new AlertDialog.Builder(RegisterActivity.this);
+                final String degrees[] = {"本科/专科", "研究生"};
+                AlertDialog.Builder bd1 = new AlertDialog.Builder(RegisterActivity.this);
                 bd1.setItems(degrees, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -194,24 +242,40 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 bd1.create().show();
                 break;
             case R.id.iv_privacy:
-                Toast.makeText(this,"点击注册表示同意条款和隐私政策", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "点击注册表示同意条款和隐私政策", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_sex:
+                final String sex[] = {"男", "女"};
+                AlertDialog.Builder bd2 = new AlertDialog.Builder(RegisterActivity.this);
+                bd2.setItems(sex, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        tv_sex.setText(sex[i]);
+                    }
+                });
+                bd2.create().show();
                 break;
 
         }
     }
 
     public void initView() {
-        checknum=-1;
-        checknum1=-1;
-        checknum2=-1;
+        checknum = -1;
+        checknum1 = -1;
+        checknum2 = -1;
 
-        selectedUniversity="韩山师范学院";
-        selectedFaculty="教育学系";
-        selectedYear="2015";
+
+        selectedUniversity = "韩山师范学院";
+        selectedFaculty = "教育学系";
+        selectedYear = "2015";
 
         ed_username = (EditText) findViewById(R.id.ed_username);
         ed_password = (EditText) findViewById(R.id.ed_password);
         ed_passwordconfirm = (EditText) findViewById(R.id.ed_passwordconfirm);
+        et_name = (EditText) findViewById(R.id.et_name);
+        et_classnum = (EditText) findViewById(R.id.et_classnum);
+        et_teachernum = (EditText) findViewById(R.id.et_teachernum);
+        et_studentnum = (EditText) findViewById(R.id.et_studentnum);
 
         ibtn_hidepassword = (ImageButton) findViewById(R.id.ibtn_hidepassword);
         ibtn_clearpassword = (ImageButton) findViewById(R.id.ibtn_clearpassword);
@@ -229,15 +293,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         iv_degree = (ImageView) findViewById(R.id.iv_degree);
         iv_privacy = (ImageView) findViewById(R.id.iv_privacy);
         iv_bottom = (ImageView) findViewById(R.id.iv_bottom);
+        iv_sex = (ImageView) findViewById(R.id.iv_sex);
+        iv_classnum = (ImageView) findViewById(R.id.iv_classnum);
+        iv_studentnum = (ImageView) findViewById(R.id.iv_studentnum);
+        iv_name = (ImageView) findViewById(R.id.iv_name);
+        iv_teachernum=(ImageView) findViewById(R.id.iv_teachernum);
+
 
         tv_school = (TextView) findViewById(R.id.tv_school);
         tv_faculty = (TextView) findViewById(R.id.tv_faculty);
         tv_year = (TextView) findViewById(R.id.tv_year);
         tv_position = (TextView) findViewById(R.id.tv_position);
         tv_degree = (TextView) findViewById(R.id.tv_degree);
+        tv_sex=(TextView)findViewById(R.id.tv_sex);
 
         passwordflag = true;
         passwordconfirmflag = true;
+        finishState = false;
+        failState = false;
 
         ibtn_clearpassword.setOnClickListener(this);
         ibtn_hidepassword.setOnClickListener(this);
@@ -252,6 +325,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         iv_year.setOnClickListener(this);
         iv_degree.setOnClickListener(this);
         iv_privacy.setOnClickListener(this);
+        iv_sex.setOnClickListener(this);
 
 
         handler = new Handler() {
@@ -341,110 +415,164 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         handler.sendMessage(message);
     }
-    @Override
-    protected void onActivityResult(int requestCode,int resultCode, Intent data) {
-        if(requestCode==REQUEST_ACTIVITY1){
-            if(resultCode==RESULT_OK){
-                Bundle bundle=data.getExtras();
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode, data);
+        if (requestCode == REQUEST_ACTIVITY1) {
+            if (resultCode == RESULT_OK) {
+                Bundle bundle = data.getExtras();
                 tv_school.setText(bundle.getString("backInformation"));
-                selectedUniversity=bundle.getString("backInformation");
-                checknum=bundle.getInt("checknum",-1);
+                selectedUniversity = bundle.getString("backInformation");
+                checknum = bundle.getInt("checknum", -1);
             }
-        }else if(requestCode==REQUEST_ACTIVITY2){
-            if(resultCode==RESULT_OK){
-                Bundle bundle=data.getExtras();
+        } else if (requestCode == REQUEST_ACTIVITY2) {
+            if (resultCode == RESULT_OK) {
+                Bundle bundle = data.getExtras();
                 tv_faculty.setText(bundle.getString("backInformation"));
-                selectedFaculty=bundle.getString("backInformation");
-                checknum1=bundle.getInt("checknum1",-1);
+                selectedFaculty = bundle.getString("backInformation");
+                checknum1 = bundle.getInt("checknum1", -1);
             }
-        }else if(requestCode==REQUEST_ACTIVITY3){
-            if(resultCode==RESULT_OK){
-                Bundle bundle=data.getExtras();
+        } else if (requestCode == REQUEST_ACTIVITY3) {
+            if (resultCode == RESULT_OK) {
+                Bundle bundle = data.getExtras();
                 tv_year.setText(bundle.getString("backInformation"));
-                selectedYear=bundle.getString("backInformation");
-                checknum2=bundle.getInt("checknum2",-1);
+                selectedYear = bundle.getString("backInformation");
+                checknum2 = bundle.getInt("checknum2", -1);
             }
         }
     }
-    public void submit(){
-            //假设一些数据
-            //以注册功能为例
-            /**
-             * @id id int (不需要提交，数据库自动生成)
-             * @username 用户名
-             * @password 密码
-             * @studentId 学号
-             * @teacherId 教师编号
-             * @classId 班级编号
-             * @department 学院
-             * @education 学历 int
-             * @date 入学时间
-             * @school 学校
-             * @sex 性别 int
-             * @name 真实姓名
-             */
-            User user = new User();
-            user.setUsername(ed_username.getText().toString());
-            user.setPassword(ed_password.getText().toString());
-            if(tv_position.getText().toString().equals("学生")){
-                user.setStudentId("000000");
-                user.setDate(tv_year.getText().toString());
-            }else{
-                user.setTeacherId("000000");
-            }
+
+    public void submit() {
+        //假设一些数据
+        //以注册功能为例
+        /**
+         * @id id int (不需要提交，数据库自动生成)
+         * @username 用户名
+         * @password 密码
+         * @studentId 学号
+         * @teacherId 教师编号
+         * @classId 班级编号
+         * @department 学院
+         * @education 学历 int
+         * @date 入学时间
+         * @school 学校
+         * @sex 性别 int
+         * @name 真实姓名
+         */
+        User user = new User();
+        user.setUsername(ed_username.getText().toString());
+        user.setPassword(ed_password.getText().toString());
+
+        user.setDepartment(tv_faculty.getText().toString());
+        if (tv_degree.getText().toString().equals("专科/本科")) {
+            user.setEducation(1);
+        } else {
+            user.setEducation(2);
+        }
+        if (tv_position.getText().toString().equals("学生")) {
+            user.setStudentId(et_studentnum.getText().toString());
+            user.setDate(tv_year.getText().toString());
+            user.setClassId(et_classnum.getText().toString());
+        } else {
+            user.setTeacherId(et_teachernum.getText().toString());
+            user.setDate("000000");
             user.setClassId("000000");
-            user.setDepartment(tv_faculty.getText().toString());
-            if(tv_degree.getText().toString().equals("专科/本科")){
-                user.setEducation(1);
-            }else{
-                user.setEducation(2);
+        }
+        user.setSchool(tv_school.getText().toString());
+
+        switch (tv_sex.getText().toString()){
+            case "男":
+                user.setSex(0);
+                break;
+            case "女":
+                user.setSex(1);
+                break;
+        }
+
+        user.setName(et_name.getText().toString());
+
+        //转换成json数据，借助gson
+        String json = new Gson().toJson(user);
+        log(thisClass, json);
+
+        //发送post请求注册
+        String after = "user/register";
+
+        sendPostRequest(after, json, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                //发送请求失败，有可能是网络断了或者其他的
+                //Toast.makeText(RegisterActivity.this,"发送请求失败，请检查网络！", Toast.LENGTH_SHORT).show();
+                log(thisClass, "发送请求失败，请检查网络");
             }
-            user.setSchool(tv_school.getText().toString());
-            user.setSex(1);
-            user.setName("--");
 
-            //转换成json数据，借助gson
-            String json = new Gson().toJson(user);
-            log(thisClass,json);
-
-            //发送post请求注册
-            String after = "user/register";
-
-            sendPostRequest(after, json, new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    //发送请求失败，有可能是网络断了或者其他的
-                    Toast.makeText(RegisterActivity.this,"发送请求失败，请检查网络！", Toast.LENGTH_SHORT).show();
-                    log(thisClass, "发送请求失败，请检查网络");
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                //Gson解析数据 json -> 对象
+                try {
+                    RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                    log(thisClass, restResponse.getCode().toString());
+                    //状态码500表示失败，打印错误信息
+                    if (restResponse.getCode() == 500) {
+                        failState = true;
+                        failmsg = restResponse.getMsg();
+                        log(thisClass, restResponse.getMsg());
+                    }
+                    //200代表成功，打印成功信息
+                    if (restResponse.getCode() == 200) {
+                        log(thisClass, "已成功注册");
+                        finishState = true;
+                        // Toast.makeText(RegisterActivity.this,"注册成功！", Toast.LENGTH_SHORT).show();
+                        //执行注册成功后的操作
+                        //...
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    String body = response.body().string();
-                    //Gson解析数据 json -> 对象
-                    try {
-                        RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
-                        log(thisClass, restResponse.getCode().toString());
-                        //状态码500表示失败，打印错误信息
-                        if (restResponse.getCode() == 500) {
-                            log(thisClass, restResponse.getMsg());
-                        }
-                        //200代表成功，打印成功信息
-                        if (restResponse.getCode() == 200) {
-                            log(thisClass, "已成功注册");
-                            //执行注册成功后的操作
-                            //...
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                log(thisClass, body);
+            }
+        });
+
+
+    }
+
+    public void initRunnable() {
+        updateThread = new Runnable() {
+            @Override
+            public void run() {
+                Message msg = myhandler.obtainMessage();
+                msg.arg1 = 0;
+                if (finishState == true || failState == true) {
+                    if (finishState == true) {
+                        Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                        finishState = false;
+                        myhandler.removeCallbacks(updateThread);
+                    } else if (failState == true) {
+                        Toast.makeText(RegisterActivity.this, "注册错误：" + failmsg, Toast.LENGTH_SHORT).show();
+                        ed_username.setText("");
+                        failState = false;
+                        myhandler.removeCallbacks(updateThread);
                     }
 
-                    log(thisClass, body);
+                } else {
+                    myhandler.sendMessage(msg);
+                    Log.v("yzy", "I am finding !");
                 }
-            });
+                // myhandler.postDelayed(updateThread, 3000);
+            }
+        };
 
+        myhandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                //pb1.setText("" + msg.arg1);
+                myhandler.post(updateThread);
+            }
+        };
 
-        }
+    }
 
 
 }
