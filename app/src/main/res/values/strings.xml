@@ -107,6 +107,8 @@
     <!-- login end -->
 
     <!-- userinformation -->
+    <string name="userinformation_tv_name0_text">姓名</string>
+    <string name="userinformation_tv_teachernum0_text">教师编号</string>
     <string name="userinformation_tv_name_text">您的真实姓名</string>
     <string name="userinformation_tv_studentnum_text">您的学号</string>
     <string name="userinformation_tv_teachernum_text">您的教师编号</string>
