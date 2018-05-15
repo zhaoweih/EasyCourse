@@ -87,7 +87,7 @@ public class SeatSelectionActivity extends TAppCompatActivity {
     @Override
     protected void onInitViews(Bundle savedInstanceState) {
         // 网络请求座位数据
-        String suffix = "seat/get?id=4";
+        String suffix = "seat/get?id=3";
         sendGetRequest(suffix, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
