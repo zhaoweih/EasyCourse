@@ -80,8 +80,6 @@ public class RegisterListView extends ListActivity implements View.OnClickListen
         Resources resources = this.getResources();
         switch (bundle.getString("pic")) {
             case "first":
-               /* Drawable btnDrawable1 = resources.getDrawable(R.drawable.registerlistviewtitle);
-                iv_title.setBackground(btnDrawable1);*/
                 tv_modetext.setText("选择学校");
                 et_search.setVisibility(View.VISIBLE);
                 mode = 1;
@@ -90,8 +88,6 @@ public class RegisterListView extends ListActivity implements View.OnClickListen
                 showList(1);
                 break;
             case "second":
-              /*  Drawable btnDrawable2 = resources.getDrawable(R.drawable.registerlistviewtitle1);
-                iv_title.setBackground(btnDrawable2);*/
                 tv_modetext.setText("选择院系");
                 et_search.setVisibility(View.VISIBLE);
                 et_search.setHint("请输入您的院系拼音前两个缩写");
@@ -102,8 +98,6 @@ public class RegisterListView extends ListActivity implements View.OnClickListen
                 showList(2);
                 break;
             case "third":
-               /* Drawable btnDrawable3 = resources.getDrawable(R.drawable.registerlistviewtitle2);
-                iv_title.setBackground(btnDrawable3);*/
                 tv_modetext.setText("入学年份");
                 et_search.setVisibility(View.GONE);
                 tv_tip.setText("请选择您的入学年份");

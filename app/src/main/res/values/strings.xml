@@ -55,6 +55,7 @@
 
     <!-- register -->
     <string name="register_tv_school_text">韩山师范学院</string>
+    <string name="register_tv_school0_text">学校</string>
     <!-- register end -->
 
     <!-- register -->
@@ -91,6 +92,8 @@
 
     <!-- register -->
     <string name="register_et_sex_text">男</string>
+    <string name="register_tv_bottom0_text">已有账号，</string>
+    <string name="register_tv_bottom1_text">点击去登录</string>
     <!-- register end -->
 
     <!-- register_list_view -->
@@ -109,10 +112,19 @@
     <!-- userinformation -->
     <string name="userinformation_tv_name0_text">姓名</string>
     <string name="userinformation_tv_teachernum0_text">教师编号</string>
+    <string name="userinformation_tv_studentnum0_text">学号</string>
+    <string name="userinformation_tv_classnum0_text">班级编号</string>
+    <string name="userinformation_tv_year0_text">入学年份</string>
+    <string name="userinformation_tv_position0_text">职位</string>
+    <string name="userinformation_tv_sex0_text">性别</string>
+    <string name="userinformation_tv_degree0_text">学历</string>
     <string name="userinformation_tv_name_text">您的真实姓名</string>
     <string name="userinformation_tv_studentnum_text">您的学号</string>
     <string name="userinformation_tv_teachernum_text">您的教师编号</string>
+    <string name="userinformation_tv_school0_text">学校</string>
+    <string name="userinformation_tv_faculty0_text">院系</string>
     <string name="userinformation_tv_classnum_text">您的班级号</string>
+    <string name="userinformation_tv_myinformation_text">我的资料</string>
     <string name="userinformation_tip_text">个人详细信息</string>
     <!-- register end -->
 
