@@ -256,8 +256,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     try {
                         runOnUiThread(() -> {
                             Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(intent);
+                          /*  Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);*/
+                          finish();
                         });
                     } catch (Exception e) {
                         e.printStackTrace();

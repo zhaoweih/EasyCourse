@@ -53,7 +53,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private Boolean passwordflag, passwordconfirmflag, finishState, failState;
     String failmsg;
     Handler handler, myhandler;
-    ImageView iv_bottom, iv_school, iv_faculty, iv_year, iv_position, iv_degree, iv_privacy,iv_sex,iv_classnum,iv_studentnum,iv_name,iv_teachernum;
+    ImageView iv_shcool0,iv_faculty0,iv_postion0,iv_sex0,iv_year0,iv_degree0;
+    TextView tv_bottom1,tv_school0, tv_faculty0, tv_year0, tv_position0, tv_degree0, tv_sex0,tv_classnum0,tv_studentnum0,tv_name0,tv_teachernum0;
     TextView tv_school, tv_faculty, tv_year, tv_position, tv_degree,tv_sex;
     Timer timer;
     TimerTask timerTask;
@@ -145,13 +146,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     }
                 }
                 break;
-            case R.id.iv_bottom:
+            case R.id.tv_bottom1:
                 // 修改代码
 //                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 //                startActivity(intent);
                 finish();
                 break;
-            case R.id.iv_school:
+            case R.id.tv_school0:
                 try {
                     Intent intent1 = new Intent(RegisterActivity.this, RegisterListView.class);
                     Bundle data1 = new Bundle();
@@ -164,7 +165,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     e.printStackTrace();
                 }
                 break;
-            case R.id.iv_faculty:
+            case R.id.tv_faculty0:
                 try {
                     Intent intent2 = new Intent(RegisterActivity.this, RegisterListView.class);
                     Bundle data2 = new Bundle();
@@ -177,7 +178,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     e.printStackTrace();
                 }
                 break;
-            case R.id.iv_year:
+            case R.id.tv_year0:
                 try {
                     Intent intent3 = new Intent(RegisterActivity.this, RegisterListView.class);
                     Bundle data = new Bundle();
@@ -190,40 +191,47 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     e.printStackTrace();
                 }
                 break;
-            case R.id.iv_position:
+            case R.id.tv_position0:
                 final String positions[] = {"学生", "老师"};
                 AlertDialog.Builder bd = new AlertDialog.Builder(RegisterActivity.this);
                 bd.setItems(positions, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (i == 0) {
-                            iv_year.setVisibility(View.VISIBLE);
-                            iv_degree.setVisibility(View.VISIBLE);
-                            iv_studentnum.setVisibility(View.VISIBLE);
-                            iv_classnum.setVisibility(View.VISIBLE);
+                            tv_year0.setVisibility(View.VISIBLE);
+                            tv_degree0.setVisibility(View.VISIBLE);
+                            tv_studentnum0.setVisibility(View.VISIBLE);
+                            tv_classnum0.setVisibility(View.VISIBLE);
+
+                            iv_year0.setVisibility(View.VISIBLE);
+                            iv_degree0.setVisibility(View.VISIBLE);
 
                             tv_year.setVisibility(View.VISIBLE);
                             tv_degree.setVisibility(View.VISIBLE);
                             et_studentnum.setVisibility(View.VISIBLE);
                             et_classnum.setVisibility(View.VISIBLE);
 
-                            iv_teachernum.setVisibility(View.GONE);
+
+                            tv_teachernum0.setVisibility(View.GONE);
                             et_teachernum.setVisibility(View.GONE);
 
                         } else {
 
-                            iv_teachernum.setVisibility(View.VISIBLE);
+                            tv_teachernum0.setVisibility(View.VISIBLE);
                             et_teachernum.setVisibility(View.VISIBLE);
 
-                            iv_year.setVisibility(View.GONE);
-                            iv_degree.setVisibility(View.GONE);
+                            tv_year0.setVisibility(View.GONE);
+                            tv_degree0.setVisibility(View.GONE);
                             tv_year.setVisibility(View.GONE);
                             tv_degree.setVisibility(View.GONE);
 
-                            iv_classnum.setVisibility(View.GONE);
+                            iv_year0.setVisibility(View.GONE);
+                            iv_degree0.setVisibility(View.GONE);
+
+                            tv_classnum0.setVisibility(View.GONE);
                             et_classnum.setVisibility(View.GONE);
 
-                            iv_studentnum.setVisibility(View.GONE);
+                            tv_studentnum0.setVisibility(View.GONE);
                             et_studentnum.setVisibility(View.GONE);
 
                         }
@@ -232,7 +240,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 });
                 bd.create().show();
                 break;
-            case R.id.iv_degree:
+            case R.id.tv_degree0:
                 final String degrees[] = {"本科/专科", "研究生"};
                 AlertDialog.Builder bd1 = new AlertDialog.Builder(RegisterActivity.this);
                 bd1.setItems(degrees, new DialogInterface.OnClickListener() {
@@ -243,10 +251,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 });
                 bd1.create().show();
                 break;
-            case R.id.iv_privacy:
-                Toast.makeText(this, "点击注册表示同意条款和隐私政策", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.iv_sex:
+            case R.id.tv_sex0:
                 final String sex[] = {"男", "女"};
                 AlertDialog.Builder bd2 = new AlertDialog.Builder(RegisterActivity.this);
                 bd2.setItems(sex, new DialogInterface.OnClickListener() {
@@ -288,18 +293,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         btn_submit = (Button) findViewById(R.id.btn_submit);
 
 
-        iv_school = (ImageView) findViewById(R.id.iv_school);
-        iv_faculty = (ImageView) findViewById(R.id.iv_faculty);
-        iv_year = (ImageView) findViewById(R.id.iv_year);
-        iv_position = (ImageView) findViewById(R.id.iv_position);
-        iv_degree = (ImageView) findViewById(R.id.iv_degree);
-        iv_privacy = (ImageView) findViewById(R.id.iv_privacy);
-        iv_bottom = (ImageView) findViewById(R.id.iv_bottom);
-        iv_sex = (ImageView) findViewById(R.id.iv_sex);
-        iv_classnum = (ImageView) findViewById(R.id.iv_classnum);
-        iv_studentnum = (ImageView) findViewById(R.id.iv_studentnum);
-        iv_name = (ImageView) findViewById(R.id.iv_name);
-        iv_teachernum=(ImageView) findViewById(R.id.iv_teachernum);
+        tv_school0 = (TextView) findViewById(R.id.tv_school0);
+        tv_faculty0 = (TextView) findViewById(R.id.tv_faculty0);
+        tv_year0 = (TextView) findViewById(R.id.tv_year0);
+        tv_position0 = (TextView) findViewById(R.id.tv_position0);
+        tv_degree0 = (TextView) findViewById(R.id.tv_degree0);
+
+        tv_bottom1 = (TextView) findViewById(R.id.tv_bottom1);
+        iv_shcool0=(ImageView)findViewById(R.id.iv_school0);
+        iv_faculty0=(ImageView)findViewById(R.id.iv_faculty0);
+        iv_postion0=(ImageView)findViewById(R.id.iv_position0);
+        iv_sex0=(ImageView)findViewById(R.id.iv_sex0);
+        iv_year0=(ImageView)findViewById(R.id.iv_year0);
+        iv_degree0=(ImageView)findViewById(R.id.iv_degree0);
+
+
+        tv_sex0 = (TextView) findViewById(R.id.tv_sex0);
+        tv_classnum0 = (TextView) findViewById(R.id.tv_classnum0);
+        tv_studentnum0 = (TextView) findViewById(R.id.tv_studentnum0);
+        tv_name0 = (TextView) findViewById(R.id.tv_name0);
+        tv_teachernum0=(TextView) findViewById(R.id.tv_teachernum0);
 
 
         tv_school = (TextView) findViewById(R.id.tv_school);
@@ -320,14 +333,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         ibtn_clearpasswordconfirm.setOnClickListener(this);
         ibtn_hidepasswordconfirm.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
-        iv_bottom.setOnClickListener(this);
-        iv_school.setOnClickListener(this);
-        iv_faculty.setOnClickListener(this);
-        iv_position.setOnClickListener(this);
-        iv_year.setOnClickListener(this);
-        iv_degree.setOnClickListener(this);
-        iv_privacy.setOnClickListener(this);
-        iv_sex.setOnClickListener(this);
+        tv_bottom1.setOnClickListener(this);
+        tv_school0.setOnClickListener(this);
+        tv_faculty0.setOnClickListener(this);
+        tv_position0.setOnClickListener(this);
+        tv_year0.setOnClickListener(this);
+        tv_degree0.setOnClickListener(this);
+        tv_sex0.setOnClickListener(this);
 
 
         handler = new Handler() {

@@ -190,13 +190,18 @@
                 android:id="@+id/ry_selecteducatoininformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/iv_name"
+
+                <TextView
+                    android:id="@+id/tv_name0"
                     android:layout_width="match_parent"
-                    android:layout_below="@id/iv_teachernum"
+                    android:layout_below="@id/tv_teachernum0"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:src="@drawable/registername"
+                    android:gravity="center|left"
+                    android:textColor="#000"
+                    android:text="@string/userinformation_tv_name0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:layout_height="50dp" />
                 <EditText
                     android:id="@+id/et_name"
@@ -205,17 +210,21 @@
                     android:gravity="center"
                     android:text=""
                     android:hint="@string/register_et_name_text"
-                    android:layout_below="@+id/iv_teachernum"
+                    android:layout_below="@+id/tv_teachernum0"
                     android:background="#0000"
                     android:layout_height="50dp" />
-                <ImageView
-                    android:id="@+id/iv_teachernum"
+                <TextView
+                    android:id="@+id/tv_teachernum0"
                     android:layout_width="match_parent"
-                    android:layout_below="@id/iv_studentnum"
+                    android:layout_below="@id/tv_studentnum0"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
                     android:visibility="gone"
-                    android:src="@drawable/registerteachernum"
+                    android:gravity="center|left"
+                    android:textColor="#000"
+                    android:text="@string/userinformation_tv_teachernum0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:layout_height="50dp" />
                 <EditText
                     android:id="@+id/et_teachernum"
@@ -225,16 +234,20 @@
                     android:text=""
                     android:hint="@string/register_et_teachernum_text"
                     android:visibility="gone"
-                    android:layout_below="@+id/iv_studentnum"
+                    android:layout_below="@+id/tv_studentnum0"
                     android:background="#0000"
                     android:layout_height="50dp" />
-                <ImageView
-                    android:id="@+id/iv_studentnum"
+                <TextView
+                    android:id="@+id/tv_studentnum0"
                     android:layout_width="match_parent"
-                    android:layout_below="@id/iv_classnum"
+                    android:layout_below="@id/tv_classnum0"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:src="@drawable/registerstudentnum"
+                    android:gravity="center|left"
+                    android:textColor="#000"
+                    android:text="@string/userinformation_tv_studentnum0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:layout_height="50dp" />
                 <EditText
                     android:id="@+id/et_studentnum"
@@ -243,16 +256,20 @@
                     android:gravity="center"
                     android:text=""
                     android:hint="@string/register_et_studentnum_text"
-                    android:layout_below="@+id/iv_classnum"
+                    android:layout_below="@+id/tv_classnum0"
                     android:background="#0000"
                     android:layout_height="50dp" />
-                <ImageView
-                    android:id="@+id/iv_classnum"
+                <TextView
+                    android:id="@+id/tv_classnum0"
                     android:layout_width="match_parent"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:layout_below="@+id/iv_sex"
-                    android:src="@drawable/registerclassnum"
+                    android:gravity="center|left"
+                    android:textColor="#000"
+                    android:text="@string/userinformation_tv_classnum0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/tv_sex0"
                     android:layout_height="50dp" />
                 <EditText
                     android:id="@+id/et_classnum"
@@ -260,64 +277,87 @@
                     android:layout_width="250dp"
                     android:layout_centerHorizontal="true"
                     android:hint="@string/register_et_classnum_text"
-                    android:layout_below="@+id/iv_sex"
+                    android:layout_below="@+id/tv_sex0"
                     android:background="#0000"
                     android:layout_height="50dp" />
-                <ImageView
-                    android:id="@+id/iv_school"
+                <TextView
+                    android:id="@+id/tv_school0"
                     android:layout_width="match_parent"
+                    android:gravity="center|left"
+                    android:textColor="#000"
+                    android:text="@string/register_tv_school0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:src="@drawable/registerschool" />
-                <ImageView
-                    android:id="@+id/iv_faculty"
+                    />
+                <TextView
+                    android:id="@+id/tv_faculty0"
                     android:layout_width="match_parent"
+                    android:gravity="center|left"
+                    android:textColor="#000"
+                    android:text="@string/userinformation_tv_faculty0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:layout_below="@+id/iv_school"
-                    android:src="@drawable/registerfaculty" />
-                <ImageView
-                    android:id="@+id/iv_year"
+                    android:layout_below="@+id/tv_school0"
+                     />
+                <TextView
+                    android:id="@+id/tv_year0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="1dp"
+                    android:textColor="#000"
+                    android:gravity="center|left"
+                    android:text="@string/userinformation_tv_year0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:background="#fff"
-                    android:layout_below="@+id/iv_name"
-                    android:src="@drawable/registersyear" />
-                <ImageView
-                    android:id="@+id/iv_position"
+                    android:layout_below="@+id/tv_name0"
+                     />
+                <TextView
+                    android:id="@+id/tv_position0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="1dp"
+                    android:textColor="#000"
+                    android:gravity="center|left"
+                    android:text="@string/userinformation_tv_position0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:background="#fff"
-                    android:layout_below="@+id/iv_faculty"
-                    android:src="@drawable/registerposition" />
-                <ImageView
-                    android:id="@+id/iv_sex"
+                    android:layout_below="@+id/tv_faculty0"
+                    />
+                <TextView
+                    android:id="@+id/tv_sex0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textColor="#000"
+                    android:gravity="center|left"
+                    android:text="@string/userinformation_tv_sex0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:layout_below="@+id/iv_position"
-                    android:src="@drawable/registersexblank" />
+                    android:layout_below="@+id/tv_position0"
+                     />
 
-                <ImageView
-                    android:id="@+id/iv_degree"
+                <TextView
+                    android:id="@+id/tv_degree0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="1dp"
+                    android:textColor="#000"
+                    android:gravity="center|left"
+                    android:text="@string/userinformation_tv_degree0_text"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
                     android:background="#fff"
-                    android:layout_below="@+id/iv_year"
-                    android:src="@drawable/registerdegree" />
-                <ImageView
-                    android:id="@+id/iv_privacy"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_below="@id/iv_degree"
-                    android:layout_marginTop="-5dp"
-                    android:src="@drawable/registerprivatcy"/>
+                    android:layout_below="@+id/tv_year0"
+                     />
                 <TextView
                     android:id="@+id/tv_school"
                     android:layout_width="match_parent"
@@ -371,6 +411,53 @@
                     android:textColor="#000"
                     android:textSize="18dp"
                     android:layout_height="50dp" />
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/iv_school0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#0000"
+                    android:src="@drawable/registergo"/>
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/iv_faculty0"
+                    android:layout_below="@+id/iv_school0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#0000"
+                    android:src="@drawable/registergo"/>
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/iv_position0"
+                    android:layout_below="@+id/iv_faculty0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#0000"
+                    android:src="@drawable/registergo"/>
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/iv_sex0"
+                    android:layout_below="@+id/iv_position0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#0000"
+                    android:src="@drawable/registergo"/>
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/iv_year0"
+                    android:layout_below="@+id/tv_name0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#0000"
+                    android:src="@drawable/registergo"/>
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/iv_degree0"
+                    android:layout_below="@+id/tv_year0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#0000"
+                    android:src="@drawable/registergo"/>
             </RelativeLayout>
         </ScrollView>
 
@@ -379,19 +466,38 @@
         <RelativeLayout
             android:id="@+id/ry_bottom"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:background="#fff"
             android:layout_alignParentBottom="true"
             >
 
             <ImageView
                 android:id="@+id/iv_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toRightOf="@+id/tv_bottom1"
                 android:layout_centerVertical="true"
                 android:background="#fff"
                 android:src="@drawable/registerbottom" />
+            <TextView
+                android:id="@+id/tv_bottom0"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:text="@string/register_tv_bottom0_text"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_bottom1"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_bottom0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:textColor="#3f8ee7"
+                android:text="@string/register_tv_bottom1_text"
+                android:layout_height="40dp" />
         </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

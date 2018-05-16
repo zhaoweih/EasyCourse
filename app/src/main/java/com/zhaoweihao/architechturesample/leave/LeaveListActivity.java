@@ -106,8 +106,6 @@ public class LeaveListActivity extends AppCompatActivity {
                         ArrayList<Leave> leaveList = new Gson().fromJson(restResponse.getPayload().toString(), new TypeToken<List<Leave>>(){}.getType());
 
 
-
-
                         // 将List展示到界面上，可用ListView 或者 RecyclerView
                         // 这里以RecyclerView为例
 

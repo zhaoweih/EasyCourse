@@ -23,7 +23,7 @@ import com.zhaoweihao.architechturesample.database.User;
 import org.litepal.crud.DataSupport;
 
 public class UserInformation extends AppCompatActivity implements View.OnClickListener {
-    private ImageView  iv_year, iv_degree,iv_classnum,iv_studentnum,iv_teachernum;
+    private TextView  tv_year0, tv_degree0,tv_classnum0,tv_studentnum0,tv_teachernum0;
     private TextView tv_school, tv_faculty, tv_year, tv_position, tv_degree,tv_sex,tv_studentid,tv_teacherid,tv_name,tv_classnum;
     ImageView back;
     @Override
@@ -38,11 +38,11 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
         User user3 = DataSupport.findLast(User.class);
 
 
-        iv_year = (ImageView) findViewById(R.id.iv_userinformationyear);
-        iv_degree = (ImageView) findViewById(R.id.iv_userinformationdegree);
-        iv_classnum = (ImageView) findViewById(R.id.iv_userinformationclassnum);
-        iv_studentnum = (ImageView) findViewById(R.id.iv_userinformationstudentnum);
-        iv_teachernum=(ImageView) findViewById(R.id.iv_userinformationteachernum);
+        tv_year0 = (TextView) findViewById(R.id.tv_userinformationyear0);
+        tv_degree0 = (TextView) findViewById(R.id.tv_userinformationdegree0);
+        tv_classnum0 = (TextView) findViewById(R.id.tv_userinformationclassnum0);
+        tv_studentnum0 = (TextView) findViewById(R.id.tv_userinformationstudentnum0);
+        tv_teachernum0=(TextView) findViewById(R.id.tv_userinformationteachernum0);
 
         tv_school = (TextView) findViewById(R.id.tv_userinformationschool);
         tv_faculty = (TextView) findViewById(R.id.tv_userinformationfaculty);
@@ -62,16 +62,16 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
 
         if(user3.getDate().equals("000000")){
 
-            iv_teachernum.setVisibility(View.VISIBLE);
+            tv_teachernum0.setVisibility(View.VISIBLE);
             tv_teacherid.setVisibility(View.VISIBLE);
 
             tv_position.setText("老师");
             tv_teacherid.setText(user3.getTeacherId());
 
-            iv_studentnum.setVisibility(View.GONE);
-            iv_classnum.setVisibility(View.GONE);
-            iv_degree.setVisibility(View.GONE);
-            iv_year.setVisibility(View.GONE);
+            tv_studentnum0.setVisibility(View.GONE);
+            tv_classnum0.setVisibility(View.GONE);
+            tv_degree0.setVisibility(View.GONE);
+            tv_year0.setVisibility(View.GONE);
 
             tv_studentid.setVisibility(View.GONE);
             tv_classnum.setVisibility(View.GONE);
@@ -79,10 +79,10 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
             tv_year.setVisibility(View.GONE);
 
         }else{
-            iv_studentnum.setVisibility(View.VISIBLE);
-            iv_classnum.setVisibility(View.VISIBLE);
-            iv_degree.setVisibility(View.VISIBLE);
-            iv_year.setVisibility(View.VISIBLE);
+            tv_studentnum0.setVisibility(View.VISIBLE);
+            tv_classnum0.setVisibility(View.VISIBLE);
+            tv_degree0.setVisibility(View.VISIBLE);
+            tv_year0.setVisibility(View.VISIBLE);
 
             tv_studentid.setVisibility(View.VISIBLE);
             tv_classnum.setVisibility(View.VISIBLE);
@@ -98,7 +98,7 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
             }else{
                 tv_degree.setText("研究生");}
 
-            iv_teachernum.setVisibility(View.GONE);
+            tv_teachernum0.setVisibility(View.GONE);
             tv_teacherid.setVisibility(View.GONE);
 
 
