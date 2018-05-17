@@ -28,11 +28,13 @@
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.UtilActivity" />
         <activity android:name=".ui.RegisterListView" />
-        <activity android:name=".ui.UserInformation"></activity>
-        <activity android:name=".leave.LeaveListActivity">
-
+        <activity android:name=".ui.UserInformation" />
+        <activity android:name=".leave.LeaveListActivity" />
+        <activity android:name=".leave.LeaveSubmit">
 
         </activity>
+        <activity android:name=".leave.LeaveShow" />
+        <activity android:name=".leave.LeaveFinal"></activity>
     </application>
 
 </manifest>

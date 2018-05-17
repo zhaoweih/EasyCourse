@@ -21,7 +21,7 @@
             <TextView
                 android:id="@+id/tv_modetext"
                 android:gravity="center"
-                android:text="选择学校"
+                android:text=""
                 android:background="#fff"
                 android:layout_centerHorizontal="true"
                 android:textSize="20dp"
