@@ -232,8 +232,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String body = response.body().string();
+                log(thisClass, "保存到数据body"+body);
                 //解析json数据组装RestResponse对象
                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                // 修复登录密码不正确异常
+                if (restResponse == null) {
+                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, "请检查密码", Toast.LENGTH_SHORT).show());
+                    return;
+                }
                 if ( restResponse.getCode() == 500 ) {
                     log(thisClass, "登录失败，请检查用户名和密码");
                     try {
@@ -264,15 +270,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         e.printStackTrace();
                     }
 
-                    User user = new Gson().fromJson(restResponse.getPayload().toString(), User.class);
 
                     try {
-                        //插入一个user数据之前,将上一个删掉，现在保持user在13个，（现在是随机刚好测试到13个,没有把前面的没用的删掉）
-                        // annotated by TanXinKui 18/5/15
                         com.zhaoweihao.architechturesample.database.User user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
                         user3.delete();
+                        com.zhaoweihao.architechturesample.database.User user = new Gson().fromJson(restResponse.getPayload().toString(),com.zhaoweihao.architechturesample.database.User.class);
                         com.zhaoweihao.architechturesample.database.User user1 = new com.zhaoweihao.architechturesample.database.User();
-                        user1.setUserId(1000);
+                        user1.setUserId(user.getUserId());
                         user1.setUsername(user.getUsername());
                         user1.setStudentId(user.getStudentId());
                         user1.setClassId(user.getClassId());
@@ -285,7 +289,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         user1.setName(user.getName());
                         //保存到数据库
                         user1.save();
-                        log(thisClass, "保存到数据库成功"+user1.getName());
+                        List<com.zhaoweihao.architechturesample.database.User> allNews = DataSupport.findAll(com.zhaoweihao.architechturesample.database.User.class);
+                        log(thisClass, "保存到数据库成功"+user.getUserId()+"当前所有的user个数"+allNews.size());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
