@@ -235,6 +235,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 log(thisClass, "保存到数据body"+body);
                 //解析json数据组装RestResponse对象
                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                // 修复登录密码不正确异常
+                if (restResponse == null) {
+                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, "请检查密码", Toast.LENGTH_SHORT).show());
+                    return;
+                }
                 if ( restResponse.getCode() == 500 ) {
                     log(thisClass, "登录失败，请检查用户名和密码");
                     try {
