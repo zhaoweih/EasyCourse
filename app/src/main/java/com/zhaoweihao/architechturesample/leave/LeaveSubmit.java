@@ -235,7 +235,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         leave1.setStudentId(user3.getStudentId());
         leave1.setTeacherId(et_leave_teachernum0.getText().toString());
         leave1.setStatus(1);
-        leave1.setTecAdvise("");
+        leave1.setTecAdvise(null);
         leave1.setContent("我因" + et_leave_reason.getText().toString() + "无法按时上课，特此向您请假，请假时间是：" + tv_leave_date0.getText().toString() +
                 tv_leave_order0.getText().toString() + "课到" + tv_leave_date1.getText().toString() + tv_leave_order1.getText().toString() + "课。恳求您能批准！");
         //转换成json数据，借助gson

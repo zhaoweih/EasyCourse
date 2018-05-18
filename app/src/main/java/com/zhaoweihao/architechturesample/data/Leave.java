@@ -11,6 +11,10 @@ public class Leave {
      * content : 5月20日请假
      * status : 1
      * tecAdvise : 申请通过
+     * startDate:开始申请时间
+     * endDate:请假结束时间
+     * startNum:开始请假的节数
+     * endNum:节数请假的节数
      */
 
     private int id;

@@ -235,6 +235,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 log(thisClass, "保存到数据body"+body);
                 //解析json数据组装RestResponse对象
                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                
                 if ( restResponse.getCode() == 500 ) {
                     log(thisClass, "登录失败，请检查用户名和密码");
                     try {
