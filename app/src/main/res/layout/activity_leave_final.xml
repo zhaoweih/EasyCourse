@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".leave.LeaveFinal">
+    <RelativeLayout
+        android:id="@+id/ry_leavefinalmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <RelativeLayout
+            android:id="@+id/ry_leavefinaltitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/tv_leavefinalreturntohome"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/userinformationtitle" />
+
+            <TextView
+                android:id="@+id/tv_leavefinaltitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="@string/tv_leavefinaltitle_text"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/tv_leavefinalsubmit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="#0000"
+                android:visibility="invisible"
+                android:src="@drawable/userinformationtitle"
+                android:text="@string/leave_submit_text"
+                android:textColor="#00a2e9"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tv_leavefinaltop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ry_leavefinaltitle"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/tv_leave_final_title0"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#fff"
+                android:gravity="center|left"
+                android:text="@string/tv_leave_final_title0_text" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_title1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_leave_final_title0"
+                android:layout_marginLeft="25dp"
+                android:background="#fff"
+                android:gravity="center|left"
+                android:text="@string/tv_leave_final_title1_text" />
+
+            <TextView
+                android:id="@+id/tv_leave_content0"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_leave_final_title1"
+                android:layout_marginLeft="25dp"
+                android:background="#fff"
+                android:gravity="center|left"
+                android:text="@string/tv_leave_content0_text" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_content"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/tv_leave_content0"
+                android:gravity="center"
+                android:text="@string/tv_leave_final_content_text"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_leave_final_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center|left"
+                android:text="@string/tv_leave_final_title2" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_starttime"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_leave_final_content"
+                android:layout_toRightOf="@id/tv_leave_final_title2"
+                android:gravity="center"
+                android:text="@string/tv_leave_final_starttime"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_leave_final_starttime"
+                android:background="#fff"
+                android:gravity="center|left"
+                android:text="@string/tv_leave_final_title3"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_tittle4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_leave_final_starttime"
+                android:layout_toRightOf="@id/tv_leave_final_title3"
+                android:gravity="center"
+                android:text="@string/tv_leave_final_tittle4"
+                android:textColor="#000" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_leave_final_end0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_leavefinaltop">
+
+            <TextView
+                android:id="@+id/tv_leave_final_end1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:background="#fff"
+                android:gravity="center|left"
+                android:text="@string/tv_leave_final_end1" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_end2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/tv_leave_final_end1"
+                android:layout_marginLeft="50dp"
+                android:background="#0000"
+                android:gravity="center|left"
+                android:text="敬礼！"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_faculty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_leave_final_end2"
+                android:layout_marginRight="20dp"
+                android:gravity="right"
+                android:text="@string/tv_leave_final_faculty"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_classnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_leave_final_faculty"
+                android:layout_marginRight="20dp"
+                android:gravity="right"
+                android:text="@string/tv_leave_final_classnum"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_leave_final_classnum"
+                android:layout_marginRight="20dp"
+                android:gravity="right"
+                android:text="@string/tv_leave_final_name"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_leave_final_name"
+                android:layout_marginRight="20dp"
+                android:gravity="right"
+                android:text="@string/tv_leave_final_date"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tv_leave_final_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_leave_final_date"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"
+                android:text="@string/tv_leave_final_phone"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/tv_leave_final_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_leave_final_phone"
+                android:layout_marginRight="20dp"
+                android:textColor="#00a2e9"
+                android:text="@string/tv_leave_final_state"
+                 />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

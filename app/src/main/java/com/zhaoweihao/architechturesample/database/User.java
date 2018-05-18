@@ -8,7 +8,7 @@ public class User extends DataSupport {
      * 数据库
      */
 
-    private Integer userId;
+    private Integer id;
     private String username;
     private String studentId;
     private String teacherId;
@@ -21,11 +21,11 @@ public class User extends DataSupport {
     private String name;
 
     public Integer getUserId() {
-        return userId;
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {

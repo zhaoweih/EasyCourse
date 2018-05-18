@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".leave.LeaveSubmit">
+
+    <RelativeLayout
+        android:id="@+id/ry_leavemain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ry_leavetitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/tv_leavereturntohome"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/userinformationtitle" />
+
+            <TextView
+                android:id="@+id/tv_leavetitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="@string/leave_title_text"
+                android:textColor="#000"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/bt_leavesubmit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="#0000"
+                android:textSize="15dp"
+                android:textColor="#00a2e9"
+                android:text="@string/leave_submit_text"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/userinformationtitle" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_leavetop"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/ry_leavetitle"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_leave_name"
+                android:layout_width="match_parent"
+                android:text="@string/userinformation_tv_name0_text"
+                android:gravity="center|left"
+                android:textColor="#000"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_name0"
+                android:layout_width="match_parent"
+                android:text="@string/userinformation_tv_name_text"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_num"
+                android:layout_width="match_parent"
+                android:text="@string/userinformation_tv_studentnum0_text"
+                android:textColor="#000"
+                android:layout_below="@+id/tv_leave_name"
+                android:gravity="center|left"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_num0"
+                android:layout_width="match_parent"
+                android:text="@string/userinformation_tv_studentnum_text"
+                android:layout_below="@+id/tv_leave_name"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_coursenum"
+                android:layout_width="match_parent"
+                android:text="@string/leave_coursenum_text"
+                android:layout_below="@+id/tv_leave_num"
+                android:gravity="center|left"
+                android:textColor="#000"
+                android:visibility="gone"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_coursenum0"
+                android:layout_width="match_parent"
+                android:text="@string/leave_coursenum0_text"
+                android:layout_below="@+id/tv_leave_num"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textColor="#000"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_teachernum"
+                android:layout_width="match_parent"
+                android:text="@string/tv_leave_teachernum"
+                android:textColor="#000"
+                android:layout_below="@+id/tv_leave_coursenum"
+                android:gravity="center|left"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <EditText
+                android:id="@+id/et_leave_teachernum0"
+                android:layout_width="match_parent"
+                android:hint="@string/et_leave_teachernum0"
+                android:layout_below="@+id/tv_leave_coursenum"
+                android:gravity="center"
+                android:textColor="#000"
+                android:background="#0000"
+                android:inputType="phone"
+                android:textSize="15dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_leave_content"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_below="@id/ry_leavetop"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_leave_phone"
+                android:layout_width="match_parent"
+                android:text="@string/leave_contactphone_text"
+                android:textColor="#000"
+                android:gravity="center|left"
+                android:visibility="gone"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <EditText
+                android:id="@+id/et_leave_phone0"
+                android:layout_width="match_parent"
+                android:hint="@string/leave_contactphone0_text"
+                android:gravity="center"
+                android:background="#0000"
+                android:inputType="phone"
+                android:visibility="gone"
+                android:textSize="15dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_type"
+                android:layout_width="match_parent"
+                android:text="@string/leave_type_text"
+                android:textColor="#000"
+                android:layout_below="@id/tv_leave_phone"
+                android:gravity="center|left"
+                android:visibility="gone"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_type0"
+                android:layout_width="match_parent"
+                android:text="@string/leave_type0_text"
+                android:layout_below="@id/tv_leave_phone"
+                android:gravity="center"
+                android:textColor="#000"
+                android:visibility="gone"
+                android:background="#0000"
+                android:textSize="15dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_reason"
+                android:layout_width="match_parent"
+                android:text="@string/leave_reason_text"
+                android:textColor="#000"
+                android:layout_below="@id/tv_leave_type"
+                android:gravity="center|left"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <EditText
+                android:id="@+id/et_leave_reason"
+                android:layout_width="match_parent"
+                android:hint="@string/leave_reason0_text"
+                android:layout_below="@id/tv_leave_reason"
+                android:background="#fff"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_height="80dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_leave_time"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_below="@id/ry_leave_content"
+            android:layout_height="100dp">
+            <TextView
+                android:id="@+id/tv_leave_start"
+                android:layout_width="match_parent"
+                android:text="@string/leave_start_text"
+                android:gravity="center|left"
+                android:background="#fff"
+                android:textColor="#000"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_end"
+                android:layout_width="match_parent"
+                android:text="@string/leave_end_text"
+                android:layout_below="@id/tv_leave_start"
+                android:gravity="center|left"
+                android:textColor="#000"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_date0"
+                android:layout_width="wrap_content"
+                android:text="@string/leave_selectdate_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_order0"
+                android:layout_width="wrap_content"
+                android:text="@string/leave_selectorder_text"
+                android:layout_alignParentRight="true"
+                android:gravity="right|center"
+                android:textColor="#000"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_date1"
+                android:layout_width="wrap_content"
+                android:text="@string/leave_selectdate_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_below="@+id/tv_leave_date0"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_leave_order1"
+                android:layout_width="wrap_content"
+                android:text="@string/leave_selectorder_text"
+                android:gravity="right|center"
+                android:layout_alignParentRight="true"
+                android:textColor="#000"
+                android:layout_below="@+id/tv_leave_date0"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
