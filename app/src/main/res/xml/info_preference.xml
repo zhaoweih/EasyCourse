@@ -25,6 +25,12 @@
             android:title="@string/personal_Info"
             android:key="info1"/>
         <Preference
+            android:title="@string/submit_leave"
+            android:key="submit"/>
+        <Preference
+            android:title="@string/confirmAndShow_leave"
+            android:key="confirm"/>
+        <Preference
             android:title="@string/login"
             android:key="login"/>
 

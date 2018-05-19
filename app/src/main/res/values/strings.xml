@@ -19,6 +19,8 @@
     <string name="settings">个人信息</string>
     <string name="seat_select">点名</string>
     <string name="personal_Info">详细信息</string>
+    <string name="submit_leave">提交请假条</string>
+    <string name="confirmAndShow_leave">确认并显示请假条</string>
     <!-- info end -->
 
     <!-- login -->
@@ -114,36 +116,13 @@
     <string name="tv_leave_show_phone">点击联系学生</string>
     <string name="rb_show_leave_RBtn1">同意</string>
     <string name="rb_show_leave_RBtn2">拒绝</string>
-    <string name="tv_leave_show_message">教师留言</string>
+    <string name="et_leave_show_message">教师留言</string>
     <string name="et_leave_teachernum0">输入教师编号</string>
     <string name="tv_leave_teachernum">教师编号</string>
     <string name="tv_leave_show_stumun">2015191036</string>
+    <string name="tv_leave_show_state">请求批准状态</string>
+    <string name="tv_leave_show_submit">确认</string>
     <!-- leaveshow end -->
-
-    <!-- leavefinal -->
-    <string name="tv_leavefinaltitle_text">公假条</string>
-    <string name="tv_leave_final_title0_text">尊敬的老师：</string>
-    <string name="tv_leave_final_title1_text">您好</string>
-    <string name="tv_leave_final_content0_text">我因</string>
-    <string name="tv_leave_final_content_text">请假内容</string>
-    <string name="tv_leave_final_title2">无法按时上课，特此向您请假，请假时间</string>
-    <string name="tv_leave_final_starttime">2015年9月12号</string>
-    <string name="tv_leave_final_title3">第1节课到</string>
-    <string name="tv_leave_final_tittle4">2015年9月12号第2节课。恳求您能批准！</string>
-    <string name="tv_leave_final_end1">此致</string>
-    <string name="tv_leave_final_end2">敬礼！</string>
-    <string name="tv_leave_final_faculty">教育科学学院</string>
-    <string name="tv_leave_final_classnum">20151911班</string>
-    <string name="tv_leave_final_name">谭新奎</string>
-    <string name="tv_leave_final_date">2015年9月12号</string>
-    <string name="tv_leave_final_phone">点击联系学生</string>
-    <string name="rb_final_leave_RBtn1">同意</string>
-    <string name="rb_final_leave_RBtn2">拒绝</string>
-    <string name="tv_leave_final_message">教师留言</string>
-    <string name="tv_leave_final_state">已批准</string>
-    <!-- leavefinal end -->
-
-
 
     <!-- selectionview -->
     <string name="seat_selection_prompt_available">可选</string>

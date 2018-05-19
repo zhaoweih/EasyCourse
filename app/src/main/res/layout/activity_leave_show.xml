@@ -19,7 +19,7 @@
             android:background="#fff">
 
             <ImageView
-                android:id="@+id/tv_leaveshowreturntohome"
+                android:id="@+id/iv_leaveshowreturntohome"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/userinformationtitle" />
@@ -36,13 +36,13 @@
                 android:textSize="20dp" />
 
             <Button
-                android:id="@+id/tv_leaveshowsubmit"
+                android:id="@+id/bt_leaveshowsubmit"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:background="#0000"
                 android:src="@drawable/userinformationtitle"
-                android:text="@string/leave_submit_text"
+                android:text="@string/tv_leave_show_submit"
                 android:textColor="#00a2e9"
                 android:textSize="15dp" />
         </RelativeLayout>
@@ -79,15 +79,16 @@
                 android:layout_below="@+id/tv_leave_show_title1"
                 android:layout_marginLeft="25dp"
                 android:background="#fff"
+                android:visibility="gone"
                 android:gravity="center|left"
                 android:text="@string/tv_leave_content0_text" />
 
             <TextView
                 android:id="@+id/tv_leave_show_content"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_leave_content0"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/tv_leave_show_content_text"
                 android:textColor="#000" />
 
@@ -97,6 +98,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/tv_leave_show_content"
                 android:layout_marginLeft="5dp"
+                android:visibility="gone"
                 android:gravity="center|left"
                 android:text="@string/tv_leave_show_title2" />
 
@@ -107,6 +109,7 @@
                 android:layout_below="@+id/tv_leave_show_content"
                 android:layout_toRightOf="@id/tv_leave_show_title2"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/tv_leave_show_starttime"
                 android:textColor="#000" />
 
@@ -117,6 +120,7 @@
                 android:layout_below="@+id/tv_leave_show_starttime"
                 android:background="#fff"
                 android:gravity="center|left"
+                android:visibility="gone"
                 android:text="@string/tv_leave_show_title3"
                 android:textColor="#000" />
 
@@ -127,6 +131,7 @@
                 android:layout_below="@+id/tv_leave_show_starttime"
                 android:layout_toRightOf="@id/tv_leave_show_title3"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/tv_leave_show_tittle4"
                 android:textColor="#000" />
         </RelativeLayout>
@@ -230,14 +235,35 @@
             </RadioGroup>
 
             <EditText
-                android:id="@+id/tv_leave_show_message"
+                android:id="@+id/et_leave_show_message"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@id/rg_show_leave_rBtnGrp"
                 android:background="#0000"
                 android:gravity="center"
-                android:hint="@string/tv_leave_show_message"
+                android:hint="@string/et_leave_show_message"
                 android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_leave_show_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/et_leave_show_message"
+                android:layout_marginRight="20dp"
+                android:textColor="#00a2e9"
+                android:text="@string/tv_leave_show_state"
+                />
+            <TextView
+                android:id="@+id/tv_leave_show_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tv_leave_show_state"
+                android:layout_marginRight="20dp"
+                android:textColor="#000"
+                android:text="@string/tv_leave_show_state"
+                />
         </RelativeLayout>
 
 
