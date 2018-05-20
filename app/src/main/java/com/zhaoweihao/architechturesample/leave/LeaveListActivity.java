@@ -50,6 +50,8 @@ public class LeaveListActivity extends AppCompatActivity {
     private LinearLayout emptyView;
 
     private LeaveListAdapter adapter;
+
+    private ArrayList<Leave> leaveList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +79,6 @@ public class LeaveListActivity extends AppCompatActivity {
         log(THIS_CLASS, url);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            log(THIS_CLASS, "测试点");
             requestLeaveList(url);
         });
 
@@ -115,7 +116,10 @@ public class LeaveListActivity extends AppCompatActivity {
                     RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
                     if (restResponse.getCode() == 200) {
                         // 转换json为 List<Leave>
-                        ArrayList<Leave> leaveList = new Gson().fromJson(restResponse.getPayload().toString(), new TypeToken<List<Leave>>(){}.getType());
+
+                            leaveList.clear();
+                            leaveList.addAll(new Gson().fromJson(restResponse.getPayload().toString(), new TypeToken<List<Leave>>(){}.getType()));
+                        
 
 
                         // 将List展示到界面上，可用ListView 或者 RecyclerView
@@ -131,6 +135,7 @@ public class LeaveListActivity extends AppCompatActivity {
                                 recyclerView.setAdapter(adapter);
                             }
                             else {
+                                log(THIS_CLASS, "测试点");
                                 adapter.notifyDataSetChanged();
                             }
                             // 撤销loading状态
