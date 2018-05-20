@@ -4,9 +4,11 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +17,20 @@ import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.Leave;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.database.User;
+import com.zhaoweihao.architechturesample.ui.LoginActivity;
 import com.zhaoweihao.architechturesample.ui.RegisterActivity;
 
 import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,10 +42,11 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 public class LeaveSubmit extends AppCompatActivity implements View.OnClickListener {
     private static final Class thisClass = LeaveSubmit.class;
     private TextView tv_leave_name0, tv_leave_num0, et_leave_teachernum0, tv_leave_coursenum0;
+    private ImageView iv_leavereturntohome;
     private TextView tv_leave_date0, tv_leave_date1, tv_leave_order0, tv_leave_order1, tv_leave_type0, tv_leave_end;
     private EditText et_leave_phone0, et_leave_reason;
     private Button bt_leavesubmit;
-    private User user3;
+    private com.zhaoweihao.architechturesample.database.User user3;
     int startTimeSelected;
     int endTimeSelected;
     int startOrderSelected;
@@ -60,7 +70,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         SelectedEndTimeFlag = false;
         SelectedStartOrderFlag = false;
         SelectedEndOrderFlag = false;
-        user3 = DataSupport.findLast(User.class);
+        user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
         date0 = getDateStringArrray(new Date(), 5);
         //姓名，学号，选择课程编号显示相应的教师编号，输入联系电话
         tv_leave_name0 = (TextView) findViewById(R.id.tv_leave_name0);
@@ -73,6 +83,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         tv_leave_order1 = (TextView) findViewById(R.id.tv_leave_order1);
         tv_leave_type0 = (TextView) findViewById(R.id.tv_leave_type0);
         tv_leave_end = (TextView) findViewById(R.id.tv_leave_end);
+        iv_leavereturntohome = (ImageView) findViewById(R.id.iv_leavereturntohome);
 
         bt_leavesubmit = (Button) findViewById(R.id.bt_leavesubmit);
 
@@ -87,6 +98,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         tv_leave_order1.setOnClickListener(this);
         tv_leave_type0.setOnClickListener(this);
         bt_leavesubmit.setOnClickListener(this);
+        iv_leavereturntohome.setOnClickListener(this);
 
         tv_leave_name0.setText(user3.getName());
         tv_leave_num0.setText(user3.getStudentId());
@@ -97,9 +109,9 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         final String addclass[] = {"第1节", "第2节", "第3节", "第4节", "第5节", "第6节", "第7节", "第8节", "第9节", "第10节"};
         switch (view.getId()) {
             case R.id.bt_leavesubmit:
-                if(!et_leave_teachernum0.getText().toString().equals("")&&!et_leave_reason.getText().toString().equals("")&&((SelectedStartTimeFlag||SelectedEndTimeFlag)&&SelectedStartOrderFlag)){
+                if (!et_leave_teachernum0.getText().toString().equals("") && !et_leave_reason.getText().toString().equals("") && ((SelectedStartTimeFlag || SelectedEndTimeFlag) && SelectedStartOrderFlag)) {
                     submit();
-                }else {
+                } else {
                     Toast.makeText(LeaveSubmit.this, "请检查未填写信息！", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -125,7 +137,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                 new AlertDialog.Builder(LeaveSubmit.this).setItems(date0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        SelectedStartTimeFlag=true;
+                        SelectedStartTimeFlag = true;
                         startTimeSelected = i;
                         tv_leave_date0.setText(date0[i]);
                         tv_leave_date1.setText(getDateString(getNextkDay(new Date(), endTimeSelected + i)));
@@ -137,7 +149,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                 new AlertDialog.Builder(LeaveSubmit.this).setItems(addDays, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        SelectedEndTimeFlag=true;
+                        SelectedEndTimeFlag = true;
                         if (i == 0 && (startOrderSelected > endOrderSelected)) {
                             Toast.makeText(LeaveSubmit.this, "请先调整开始节数或结束节数", Toast.LENGTH_SHORT).show();
                         } else {
@@ -152,7 +164,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                 new AlertDialog.Builder(LeaveSubmit.this).setItems(addclass, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        SelectedStartOrderFlag=true;
+                        SelectedStartOrderFlag = true;
                         startOrderSelected = i;
                         if (endTimeSelected > 0) {
                             startOrderSelected = i;
@@ -178,7 +190,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                 new AlertDialog.Builder(LeaveSubmit.this).setItems(addclass, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        SelectedEndOrderFlag=true;
+                        SelectedEndOrderFlag = true;
                         endOrderSelected = i;
                         if (endTimeSelected > 0) {
                             endOrderSelected = i;
@@ -195,6 +207,9 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                         }
                     }
                 }).create().show();
+                break;
+            case R.id.iv_leavereturntohome:
+                finish();
                 break;
 
         }
@@ -221,6 +236,16 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         return String.format("%tY", date) + "年" + String.format("%tm", date) + "月" + String.format("%te", date) + "日";
     }
 
+    public String getNowDateShort(Date currentTime) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = formatter.format(currentTime);
+       /* log(thisClass,dateString);
+        ParsePosition pos = new ParsePosition(0);
+        Date c2 = formatter.parse(dateString, pos);
+        log(thisClass,currentTime.toString());*/
+        return dateString;
+    }
+
     public void submit() {
         /**
          * @id id int
@@ -231,13 +256,18 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
          * @tecAdvise 申请状态
          */
         Leave leave1 = new Leave();
-        leave1.setStuId(user3.getUserId());
+        leave1.setStuId(user3.getStuId());
         leave1.setStudentId(user3.getStudentId());
         leave1.setTeacherId(et_leave_teachernum0.getText().toString());
         leave1.setStatus(1);
-        leave1.setTecAdvise("");
-        leave1.setContent("我因" + et_leave_reason.getText().toString() + "无法按时上课，特此向您请假，请假时间是：" + tv_leave_date0.getText().toString() +
-                tv_leave_order0.getText().toString() + "课到" + tv_leave_date1.getText().toString() + tv_leave_order1.getText().toString() + "课。恳求您能批准！");
+        leave1.setTecAdvise(null);
+        //getNowDateShort(getNowDateShort(getNextkDay(new Date(),startTimeSelected)))
+        leave1.setStartDate(getNowDateShort(getNextkDay(new Date(), startTimeSelected)));
+        //getNowDateShort(getNextkDay(new Date(),endTimeSelected))
+        leave1.setEndDate(getNowDateShort(getNextkDay(new Date(), endTimeSelected)));
+        leave1.setStartNum(startOrderSelected + 1);
+        leave1.setEndNum(endOrderSelected + 1);
+        leave1.setContent(et_leave_reason.getText().toString());
         //转换成json数据，借助gson
         String json = new Gson().toJson(leave1);
         log(thisClass, json);
@@ -256,14 +286,23 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                 //Gson解析数据 json -> 对象
                 try {
                     RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                    if (restResponse == null) {
+                        runOnUiThread(() -> Toast.makeText(LeaveSubmit.this, "发送请求失败！", Toast.LENGTH_SHORT).show());
+                        return;
+                    }
                     log(thisClass, restResponse.getCode().toString());
                     //状态码500表示失败，打印错误信息
                     if (restResponse.getCode() == 500) {
                         log(thisClass, restResponse.getMsg());
+                        runOnUiThread(() -> Toast.makeText(LeaveSubmit.this, "发送请求失败！"+restResponse.getMsg(), Toast.LENGTH_SHORT).show());
                     }
                     //200代表成功，打印成功信息
                     if (restResponse.getCode() == 200) {
                         log(thisClass, "已成功发送");
+                        runOnUiThread(() -> {
+                            Toast.makeText(LeaveSubmit.this, "已成功发送！", Toast.LENGTH_SHORT).show();
+                            finish();
+                        });
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -37,7 +37,6 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
         back = (ImageView) findViewById(R.id.iv_userinformationtitle);
         User user3 = DataSupport.findLast(User.class);
 
-
         tv_year0 = (TextView) findViewById(R.id.tv_userinformationyear0);
         tv_degree0 = (TextView) findViewById(R.id.tv_userinformationdegree0);
         tv_classnum0 = (TextView) findViewById(R.id.tv_userinformationclassnum0);
@@ -101,8 +100,6 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
             tv_teachernum0.setVisibility(View.GONE);
             tv_teacherid.setVisibility(View.GONE);
 
-
-
         }
 
         back.setOnClickListener(this);
@@ -111,8 +108,7 @@ public class UserInformation extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_userinformationtitle:
-            Intent intent=new Intent(this,MainActivity.class);
-            startActivity(intent);
+            finish();
             break;
 
         }

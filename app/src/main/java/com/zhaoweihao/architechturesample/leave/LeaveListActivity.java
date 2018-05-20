@@ -10,14 +10,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.Leave;
 import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewClickListener;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListener;
+
+import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +46,6 @@ public class LeaveListActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
 
     private LeaveListAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +59,20 @@ public class LeaveListActivity extends AppCompatActivity {
         // 假设当前是学生用户，初始化参数名字
         String studentId = "studentId";// 学生应选用这个
         String teacherId = "teacherId";
-
-        String code = "2015191054";
+        String positionId=studentId;
+        String code ="";
+        //获取当前的学生的请假信息
+        User user3 = DataSupport.findLast(User.class);
         // 这里判断是老师还是学生 (省略判断语句)
-        //if ()
+        if (!(user3.getTeacherId()==null)){
+           code=user3.getTeacherId();
+           positionId=teacherId;
+        }else{
+            code=user3.getStudentId();
+            positionId=studentId;
+        }
         // 拼接完整url
-        String url = suffix + "?" + studentId + "=" + code;
-
+        String url=suffix + "?" + positionId + "=" + code;
         log(THIS_CLASS, url);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
@@ -140,6 +150,12 @@ public class LeaveListActivity extends AppCompatActivity {
                             getSupportActionBar().setTitle("有" + wait +"条正在处理");
 
                             adapter.setItemClickListener((v, position) -> {
+                                Toast.makeText(LeaveListActivity.this,""+position,Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(LeaveListActivity.this,LeaveShow.class);
+                                Bundle bundle=new Bundle();
+                                bundle.putInt("num",position);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
                                 // 处理单击事件
                             });
                             adapter.setItemLongClickListener((view, position) -> {

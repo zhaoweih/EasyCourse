@@ -1,5 +1,12 @@
 package com.zhaoweihao.architechturesample.data;
 
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static com.zhaoweihao.architechturesample.util.Utils.log;
+
 public class Leave {
 
     /**
@@ -11,6 +18,10 @@ public class Leave {
      * content : 5月20日请假
      * status : 1
      * tecAdvise : 申请通过
+     * startDate:开始申请时间 类型为date
+     * endDate:请假结束时间 类型为date
+     * startNum:开始请假的节数  int
+     * endNum:节数请假的节数  int
      */
 
     private int id;
@@ -21,6 +32,10 @@ public class Leave {
     private String content;
     private int status;
     private String tecAdvise;
+    private String startDate;
+    private String endDate;
+    private int startNum;
+    private int endNum;
 
     public int getId() {
         return id;
@@ -85,4 +100,36 @@ public class Leave {
     public void setTecAdvise(String tecAdvise) {
         this.tecAdvise = tecAdvise;
     }
+
+    public String getStartDate() {
+        return  startDate;
+    }
+
+    public void setStartDate(String startDate)  {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return  endDate;
+    }
+
+    public void setEndDate(String endDate)  {
+        this.endDate =endDate;
+    }
+
+    public int getStartNum(){
+        return  startNum;
+    }
+    public void setStartNum(int startNum){
+        this.startNum=startNum;
+    }
+    public int getEndNum(){
+        return endNum;
+    }
+    public void setEndNum(int endNum){
+        this.endNum=endNum;
+    }
+
+
+
 }

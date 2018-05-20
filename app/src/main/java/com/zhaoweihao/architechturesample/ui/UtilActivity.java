@@ -130,7 +130,7 @@ public class UtilActivity extends AppCompatActivity {
         saveData.setOnClickListener(v -> {
             try {
                 com.zhaoweihao.architechturesample.database.User user = new com.zhaoweihao.architechturesample.database.User();
-                user.setUserId(1000);
+                user.setStuId(1000);
                 user.setUsername("zhaoweihao22");
                 user.setStudentId("2015191054");
                 user.setClassId("20151912");

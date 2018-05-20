@@ -32,11 +32,8 @@
         <activity android:name=".leave.LeaveListActivity" >
 
         </activity>
-        <activity android:name=".leave.LeaveSubmit">
-
-        </activity>
-        <activity android:name=".leave.LeaveShow" />
-        <activity android:name=".leave.LeaveFinal"></activity>
+        <activity android:name=".leave.LeaveSubmit"/>
+        <activity android:name=".leave.LeaveShow"/>
     </application>
 
 </manifest>

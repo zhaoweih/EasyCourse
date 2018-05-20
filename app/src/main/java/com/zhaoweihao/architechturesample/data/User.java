@@ -17,7 +17,7 @@ public class User {
      * @sex 性别 int
      * @name 真实姓名
      */
-
+    private Integer id;
     private String username;
     private String password;
     private String studentId;
@@ -30,6 +30,13 @@ public class User {
     private Integer sex;
     private String name;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getUsername() {
         return username;
     }
