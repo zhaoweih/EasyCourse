@@ -65,14 +65,18 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
         //获取请假信息
         User user3 = DataSupport.findLast(User.class);
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if(user3.getStudentId()==null&&!(user3.getTeacherId()==null)){
-            positionmode=2;//代表教师
-            submit(user3.getTeacherId(), bundle.getInt("num",0),2);
-        }else if(!(user3.getStudentId()==null)&&user3.getTeacherId()==null){
-            submit(user3.getStudentId(), bundle.getInt("num",0),1);
-            positionmode=1;//代表学生
-        }
+//        Bundle bundle = intent.getExtras();
+        Leave leave = (Leave)intent.getSerializableExtra("leave");
+
+        log(thisClass, leave.getContent());
+
+//        if(user3.getStudentId()==null&&!(user3.getTeacherId()==null)){
+//            positionmode=2;//代表教师
+//            submit(user3.getTeacherId(), bundle.getInt("num",0),2);
+//        }else if(!(user3.getStudentId()==null)&&user3.getTeacherId()==null){
+//            submit(user3.getStudentId(), bundle.getInt("num",0),1);
+//            positionmode=1;//代表学生
+//        }
     }
 
     public void initView() {
