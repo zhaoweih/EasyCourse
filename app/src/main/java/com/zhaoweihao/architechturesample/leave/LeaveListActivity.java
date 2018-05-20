@@ -27,6 +27,8 @@ import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import okhttp3.Call;
@@ -52,6 +54,7 @@ public class LeaveListActivity extends AppCompatActivity {
     private LeaveListAdapter adapter;
 
     private ArrayList<Leave> leaveList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,12 +72,12 @@ public class LeaveListActivity extends AppCompatActivity {
         //获取当前的学生的请假信息
         User user3 = DataSupport.findLast(User.class);
         // 这里判断是老师还是学生 (省略判断语句)
-        if (user3.getTeacherId() != null){
+        if (user3.getTeacherId() != null) {
             // 拼接完整url
-            url=suffix + "?" + teacherId + "=" + user3.getTeacherId();
-        }else{
+            url = suffix + "?" + teacherId + "=" + user3.getTeacherId();
+        } else {
             // 拼接完整url
-            url=suffix + "?" + studentId + "=" + user3.getStudentId();
+            url = suffix + "?" + studentId + "=" + user3.getStudentId();
         }
         log(THIS_CLASS, url);
 
@@ -95,9 +98,8 @@ public class LeaveListActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * @param url 拼接好的url
-     * 此方法请求请假条数据
+     *            此方法请求请假条数据
      */
     private void requestLeaveList(String url) {
         // 设置loading状态
@@ -117,10 +119,17 @@ public class LeaveListActivity extends AppCompatActivity {
                     if (restResponse.getCode() == 200) {
                         // 转换json为 List<Leave>
 
-                            leaveList.clear();
-                            leaveList.addAll(new Gson().fromJson(restResponse.getPayload().toString(), new TypeToken<List<Leave>>(){}.getType()));
-                        
+                        leaveList.clear();
 
+                        leaveList.addAll(new Gson().fromJson(restResponse.getPayload().toString(), new TypeToken<List<Leave>>() {
+                        }.getType()));
+
+                        // 将数据排序
+                        Collections.sort(leaveList, (leave1, leave2) -> {
+                            Integer id1 = leave1.getStatus();
+                            Integer id2 = leave2.getStatus();
+                            return id1.compareTo(id2);
+                        });
 
                         // 将List展示到界面上，可用ListView 或者 RecyclerView
                         // 这里以RecyclerView为例
@@ -133,15 +142,14 @@ public class LeaveListActivity extends AppCompatActivity {
                             if (adapter == null) {
                                 adapter = new LeaveListAdapter(LeaveListActivity.this, leaveList);
                                 recyclerView.setAdapter(adapter);
-                            }
-                            else {
+                            } else {
                                 log(THIS_CLASS, "测试点");
                                 adapter.notifyDataSetChanged();
                             }
                             // 撤销loading状态
                             swipeRefreshLayout.setRefreshing(false);
                             // 统计数量
-                            int wait = 0,fail = 0,success = 0;
+                            int wait = 0, fail = 0, success = 0;
                             for (Leave leave : leaveList) {
                                 switch (leave.getStatus()) {
                                     case 1:
@@ -157,13 +165,17 @@ public class LeaveListActivity extends AppCompatActivity {
 
                                 }
                             }
-                            getSupportActionBar().setTitle("有" + wait +"条正在处理");
+                            getSupportActionBar().setTitle("有" + wait + "条正在处理");
 
                             adapter.setItemClickListener((v, position) -> {
-                                Intent intent=new Intent(LeaveListActivity.this,LeaveShow.class);
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("num",position);
-                                intent.putExtras(bundle);
+//                                Intent intent = new Intent(LeaveListActivity.this, LeaveShow.class);
+//                                Bundle bundle = new Bundle();
+//                                bundle.putInt("num", position);
+//                                intent.putExtras(bundle);
+//                                startActivity(intent);
+
+                                Intent intent = new Intent(LeaveListActivity.this, LeaveShow.class);
+                                intent.putExtra("leave", leaveList.get(position));
                                 startActivity(intent);
                                 // 处理单击事件
                             });
@@ -172,7 +184,6 @@ public class LeaveListActivity extends AppCompatActivity {
                             });
                         });
                     }
-
 
 
                 } catch (Exception e) {

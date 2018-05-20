@@ -1,5 +1,6 @@
 package com.zhaoweihao.architechturesample.data;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -7,7 +8,7 @@ import java.util.Date;
 
 import static com.zhaoweihao.architechturesample.util.Utils.log;
 
-public class Leave {
+public class Leave implements Serializable{
 
     /**
      * id : 1
