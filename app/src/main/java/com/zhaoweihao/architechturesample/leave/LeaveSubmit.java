@@ -294,10 +294,15 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
                     //状态码500表示失败，打印错误信息
                     if (restResponse.getCode() == 500) {
                         log(thisClass, restResponse.getMsg());
+                        runOnUiThread(() -> Toast.makeText(LeaveSubmit.this, "发送请求失败！"+restResponse.getMsg(), Toast.LENGTH_SHORT).show());
                     }
                     //200代表成功，打印成功信息
                     if (restResponse.getCode() == 200) {
                         log(thisClass, "已成功发送");
+                        runOnUiThread(() -> {
+                            Toast.makeText(LeaveSubmit.this, "已成功发送！", Toast.LENGTH_SHORT).show();
+                            finish();
+                        });
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.zhaoweihao.architechturesample.leave;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
     private EditText et_leave_show_message;
     private RadioGroup rg_show_leave_rBtnGrp;
     private RadioButton rb_show_leave_RBtn1,rb_show_leave_RBtn2;
-
+    private int positionmode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,17 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
 
         //获取请假信息
         User user3 = DataSupport.findLast(User.class);
-        submit(user3.getStudentId(), 0);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(user3.getStudentId()==null&&!(user3.getTeacherId()==null)){
+            positionmode=2;//代表教师
+            submit(user3.getTeacherId(), bundle.getInt("num",0),2);
+        }else if(!(user3.getStudentId()==null)&&user3.getTeacherId()==null){
+            submit(user3.getStudentId(), bundle.getInt("num",0),1);
+            positionmode=1;//代表学生
+        }
+
+
 
         //提交审批请假条
         bt_leaveshowsubmit = (Button) findViewById(R.id.bt_leaveshowsubmit);
@@ -110,7 +121,8 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
     }
 
     //从学生学号，获取到学生的所有请假条数组，在所有请假条中获取该学生某个请假条，num为0代表为该学生的所有的请假条中的第一条
-    public void submit(String studentId, int num) {
+    //mode如果为1代表是学生，为2代表是教师
+    public void submit(String positinoId, int num,int mode) {
 
         /**
          * @id id int (不需要提交，数据库自动生成)
@@ -126,9 +138,16 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
          * @sex 性别 int
          * @name 真实姓名
          */
-
+        String after = "leave/query?studentId=" + positinoId;
         //发送post请求注册
-        String after = "leave/query?studentId=" + studentId;
+        switch (mode){
+            case 1:
+                after = "leave/query?studentId=" + positinoId;
+                break;
+            case 2:
+                after="leave/query?teacherId=" + positinoId;
+        }
+
 
         sendGetRequest(after, new Callback() {
             @Override
@@ -167,23 +186,47 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
                             tvs[3].setText(leaves[num].getStudentId());
                             leaveId=leaves[num].getId();
                             tecId=leaves[num].getTecId();
-                            if(leaves[num].getStatus()!=1){
-                                if(leaves[num].getStatus()==3){
-                                    tvs[5].setText("教师已批准！");
-                                }else if(leaves[num].getStatus()==2){
-                                    tvs[5].setText("教师已拒绝！");
+                            if(positionmode==1){
+                                if(leaves[num].getStatus()!=1){
+                                    if(leaves[num].getStatus()==3){
+                                        tvs[5].setText("教师已批准！");
+                                    }else if(leaves[num].getStatus()==2){
+                                        tvs[5].setText("教师已拒绝！");
+                                    }
+                                    et_leave_show_message.setVisibility(View.GONE);
+                                    rg_show_leave_rBtnGrp.setVisibility(View.GONE);
+                                    bt_leaveshowsubmit.setVisibility(View.INVISIBLE);
+                                    if(!leaves[num].getTecAdvise().equals("")){
+                                        tvs[6].setVisibility(View.VISIBLE);
+                                        tvs[6].setText("教师留言："+leaves[num].getTecAdvise());
+                                    }
+                                }else {
+                                    et_leave_show_message.setVisibility(View.GONE);
+                                    rg_show_leave_rBtnGrp.setVisibility(View.GONE);
+                                    bt_leaveshowsubmit.setVisibility(View.INVISIBLE);
+                                    tvs[5].setText("等待教师审批!");
+                                    tvs[6].setVisibility(View.INVISIBLE);
                                 }
-                                et_leave_show_message.setVisibility(View.GONE);
-                                rg_show_leave_rBtnGrp.setVisibility(View.GONE);
-                                bt_leaveshowsubmit.setVisibility(View.INVISIBLE);
-                                if(!leaves[num].getTecAdvise().equals("")){
-                                    tvs[6].setVisibility(View.VISIBLE);
-                                    tvs[6].setText("教师留言："+leaves[num].getTecAdvise());
+                            }else if(positionmode==2){
+                                if(leaves[num].getStatus()!=1){
+                                    if(leaves[num].getStatus()==3){
+                                        tvs[5].setText("教师已批准！");
+                                    }else if(leaves[num].getStatus()==2){
+                                        tvs[5].setText("教师已拒绝！");
+                                    }
+                                    et_leave_show_message.setVisibility(View.GONE);
+                                    rg_show_leave_rBtnGrp.setVisibility(View.GONE);
+                                    bt_leaveshowsubmit.setVisibility(View.INVISIBLE);
+                                    if(!leaves[num].getTecAdvise().equals("")){
+                                        tvs[6].setVisibility(View.VISIBLE);
+                                        tvs[6].setText("教师留言："+leaves[num].getTecAdvise());
+                                    }
+                                }else {
+                                    tvs[5].setText("等待教师审批!");
+                                    tvs[6].setVisibility(View.INVISIBLE);
                                 }
-                            }else {
-                                tvs[5].setText("等待教师审批!");
-                                tvs[6].setVisibility(View.INVISIBLE);
                             }
+
                             queryStudentInformation(leaves[num].getStuId());
                         });
                     }

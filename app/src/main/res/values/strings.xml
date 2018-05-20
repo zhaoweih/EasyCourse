@@ -20,7 +20,7 @@
     <string name="seat_select">点名</string>
     <string name="personal_Info">详细信息</string>
     <string name="submit_leave">提交请假条</string>
-    <string name="confirmAndShow_leave">确认并显示请假条</string>
+    <string name="confirmAndShow_leave">已提交的请假条</string>
     <!-- info end -->
 
     <!-- login -->

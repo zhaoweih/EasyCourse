@@ -29,7 +29,9 @@
         <activity android:name=".ui.UtilActivity" />
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
-        <activity android:name=".leave.LeaveListActivity" />
+        <activity android:name=".leave.LeaveListActivity" >
+
+        </activity>
         <activity android:name=".leave.LeaveSubmit"/>
         <activity android:name=".leave.LeaveShow"/>
     </application>

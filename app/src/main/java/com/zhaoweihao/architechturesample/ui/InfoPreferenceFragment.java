@@ -30,6 +30,7 @@ import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.Leave;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.database.User;
+import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
 import com.zhaoweihao.architechturesample.leave.LeaveShow;
 import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
 
@@ -50,7 +51,7 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 
 /**
  * Created by lizhaotailang on 2017/5/21.
- *
+ * <p>
  * A preference fragment that displays the setting options and
  * about page.
  */
@@ -58,18 +59,19 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 public class InfoPreferenceFragment extends PreferenceFragmentCompat {
     private static final Class thisClass = InfoPreferenceFragment.class;
     private boolean Toastflag;
+
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
-        Toastflag=true;
+        Toastflag = true;
         addPreferencesFromResource(R.xml.info_preference);
 
         // 测试显示信息界面
 
         findPreference("info1").setOnPreferenceClickListener(p -> {
             User user3 = DataSupport.findLast(User.class);
-            if(user3==null){
-                Toast.makeText(getActivity(),"请先登录！",Toast.LENGTH_SHORT).show();
-            }else {
+            if (user3 == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else {
                 Intent intent = new Intent(getActivity(), UserInformation.class);
                 startActivity(intent);
             }
@@ -79,9 +81,11 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
 
         findPreference("submit").setOnPreferenceClickListener(p -> {
             User user3 = DataSupport.findLast(User.class);
-            if(user3==null){
-                Toast.makeText(getActivity(),"请先登录！",Toast.LENGTH_SHORT).show();
-            }else {
+            if (user3 == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else if (user3.getStudentId() == null) {
+                Toast.makeText(getActivity(), "您不是学生，无法请假！", Toast.LENGTH_SHORT).show();
+            } else {
                 Intent intent = new Intent(getActivity(), LeaveSubmit.class);
                 startActivity(intent);
             }
@@ -91,12 +95,16 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
 
         findPreference("confirm").setOnPreferenceClickListener(p -> {
             User user3 = DataSupport.findLast(User.class);
-            if(user3==null){
-                Toast.makeText(getActivity(),"请先登录！",Toast.LENGTH_SHORT).show();
-            }else {
-                submit(user3.getStudentId());
-                if(Toastflag){
-                    Toast.makeText(getActivity(),"写完请假条之后才可显示请假条！",Toast.LENGTH_SHORT).show();
+            if (user3 == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else {
+                if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
+                    submit(user3.getTeacherId(), 2);
+                } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
+                    submit(user3.getStudentId(), 1);
+                }
+                if (Toastflag) {
+                    Toast.makeText(getActivity(), "写完请假条之后才可显示请假条！", Toast.LENGTH_SHORT).show();
                 }
             }
             return true;
@@ -116,8 +124,9 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
 
 
     }
+
     //判断学生是否有请假条
-    public void submit(String studentId) {
+    public void submit(String positoinId, int mode) {
 
         /**
          * @id id int (不需要提交，数据库自动生成)
@@ -135,7 +144,12 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
          */
 
         //发送post请求注册
-        String after = "leave/query?studentId=" + studentId;
+        String after = "leave/query?studentId=" + positoinId;
+        if (mode == 1) {
+            after = "leave/query?studentId=" + positoinId;
+        } else if (mode == 2) {
+            after = "leave/query?teacherId=" + positoinId;
+        }
 
         sendGetRequest(after, new Callback() {
             @Override
@@ -161,17 +175,17 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
                         //执行注册成功后的操作
                         //...
 
-                            Leave leaves[] = new Gson().fromJson(restResponse.getPayload().toString(), Leave[].class);
-                            if(leaves.length==0){
+                        Leave leaves[] = new Gson().fromJson(restResponse.getPayload().toString(), Leave[].class);
+                        if (leaves.length == 0) {
 
-                            }else{
-                                Toastflag=false;
-                                Intent intent = new Intent(getActivity(), LeaveShow.class);
-                                startActivity(intent);
-                            }
+                        } else {
+                            Toastflag = false;
+                            Intent intent = new Intent(getActivity(), LeaveListActivity.class);
+                            startActivity(intent);
+                        }
 
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
