@@ -2,6 +2,7 @@ package com.zhaoweihao.architechturesample.leave;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,41 +53,14 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
     private RadioButton rb_show_leave_RBtn1,rb_show_leave_RBtn2;
     private int positionmode;
 
+    private RelativeLayout relativeLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leave_show);
         initView();
-    }
-
-    public void initView() {
-
-        for (int i = 0; i < ids.length; i++) {
-            tvs[i] = (TextView) findViewById(ids[i]);
-            tvs[i].setText("暂无");
-        }
-        iv_leaveshowreturntohome=(ImageView)findViewById(R.id.iv_leaveshowreturntohome);
-        et_leave_show_message=(EditText)findViewById(R.id.et_leave_show_message);
-
-        rg_show_leave_rBtnGrp=(RadioGroup)findViewById(R.id.rg_show_leave_rBtnGrp);
-        rb_show_leave_RBtn1=(RadioButton)findViewById(R.id.rb_show_leave_RBtn1);
-        rb_show_leave_RBtn2=(RadioButton)findViewById(R.id.rb_show_leave_RBtn2);
-
-        rg_show_leave_rBtnGrp.setOnCheckedChangeListener(
-                new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i){
-                            case R.id.rb_show_leave_RBtn1:
-                                status=3;
-                                break;
-                            case R.id.rb_show_leave_RBtn2:
-                                status=2;
-                                break;
-                        }
-                    }
-                }
-        );
 
         //获取请假信息
         User user3 = DataSupport.findLast(User.class);
@@ -98,11 +73,42 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
             submit(user3.getStudentId(), bundle.getInt("num",0),1);
             positionmode=1;//代表学生
         }
+    }
 
+    public void initView() {
+
+        relativeLayout = findViewById(R.id.ry_leaveshowmain);
+        swipeRefreshLayout = findViewById(R.id.refresh_layout);
+
+        swipeRefreshLayout.setRefreshing(true);
+
+        for (int i = 0; i < ids.length; i++) {
+            tvs[i] = findViewById(ids[i]);
+            tvs[i].setText("暂无");
+        }
+        iv_leaveshowreturntohome= findViewById(R.id.iv_leaveshowreturntohome);
+        et_leave_show_message= findViewById(R.id.et_leave_show_message);
+
+        rg_show_leave_rBtnGrp= findViewById(R.id.rg_show_leave_rBtnGrp);
+        rb_show_leave_RBtn1= findViewById(R.id.rb_show_leave_RBtn1);
+        rb_show_leave_RBtn2= findViewById(R.id.rb_show_leave_RBtn2);
+
+        rg_show_leave_rBtnGrp.setOnCheckedChangeListener(
+                (radioGroup, i) -> {
+                    switch (i){
+                        case R.id.rb_show_leave_RBtn1:
+                            status=3;
+                            break;
+                        case R.id.rb_show_leave_RBtn2:
+                            status=2;
+                            break;
+                    }
+                }
+        );
 
 
         //提交审批请假条
-        bt_leaveshowsubmit = (Button) findViewById(R.id.bt_leaveshowsubmit);
+        bt_leaveshowsubmit = findViewById(R.id.bt_leaveshowsubmit);
         bt_leaveshowsubmit.setOnClickListener(v -> {
            confirm();
         });
@@ -228,6 +234,8 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
                             }
 
                             queryStudentInformation(leaves[num].getStuId());
+
+
                         });
                     }
                 } catch (Exception e) {
@@ -284,6 +292,9 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
                             tvs[1].setText(user1.getDepartment());
                             tvs[2].setText(user1.getClassId() + "班");
                             tvs[4].setText(user1.getName());
+                            // 加载完后再展示
+                            swipeRefreshLayout.setRefreshing(false);
+                            relativeLayout.setVisibility(View.VISIBLE);
                         });
                     }
                 } catch (Exception e) {
@@ -316,7 +327,6 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String body = response.body().string();
-                log(thisClass, body);
                 //解析json数据组装RestResponse对象
                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
                 if ( restResponse.getCode() == 500 ) {

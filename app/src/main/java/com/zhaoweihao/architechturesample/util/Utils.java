@@ -11,6 +11,11 @@ public class Utils {
         Log.d(c.getSimpleName(),msg);
     }
     public static ProgressDialog createDialog(Context context) {
-       return null;
+
+        ProgressDialog progress = new ProgressDialog(context);
+        progress.setMessage("请稍等...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        return progress;
+
     }
 }
