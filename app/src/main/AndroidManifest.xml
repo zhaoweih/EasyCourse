@@ -26,7 +26,9 @@
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity" />
+        <activity android:name=".ui.UtilActivity" >
+
+        </activity>
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
         <activity android:name=".leave.LeaveListActivity" >

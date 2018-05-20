@@ -6,10 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".leave.LeaveShow">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/ry_leaveshowmain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="invisible"
         android:background="#fff">
 
         <RelativeLayout
@@ -268,5 +274,7 @@
 
 
     </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

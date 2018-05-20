@@ -54,4 +54,10 @@
         android:layout_height="wrap_content"
         android:text="解析payload"
         />
+    <Button
+        android:id="@+id/btn_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="展示加载窗口"
+        />
 </LinearLayout>

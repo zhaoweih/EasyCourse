@@ -1,5 +1,7 @@
 package com.zhaoweihao.architechturesample.ui;
 
+import android.app.ProgressDialog;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,8 +30,10 @@ public class UtilActivity extends AppCompatActivity {
 
     private static final Class thisClass = UtilActivity.class;
 
-    private Button sendPost,sendGet,saveData,readData,showData,parseData;
+    private Button sendPost,sendGet,saveData,readData,showData,parseData,showLoading;
     private TextView showText;
+
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,6 +216,20 @@ public class UtilActivity extends AppCompatActivity {
                 }
             });
         });
+
+        showLoading.setOnClickListener( v -> {
+            // 创建加载中窗口
+            progressDialog = createDialog(this);
+            // 展示加载中
+            progressDialog.show();
+
+            Handler handler = new Handler();
+            // 这里延迟2秒加载中消失，实际应用场景应该是所有数据加载完窗口消失
+            handler.postDelayed(() -> progressDialog.dismiss(), 2000);
+
+
+
+        });
     }
 
     private void initViews() {
@@ -222,5 +240,6 @@ public class UtilActivity extends AppCompatActivity {
         showData = findViewById(R.id.btn_show);
         showText = findViewById(R.id.tv_show);
         parseData = findViewById(R.id.btn_parse);
+        showLoading = findViewById(R.id.btn_loading);
     }
 }
