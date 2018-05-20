@@ -268,7 +268,6 @@
                 android:layout_below="@id/tv_leave_show_state"
                 android:layout_marginRight="20dp"
                 android:textColor="#000"
-                android:text="@string/tv_leave_show_state"
                 />
         </RelativeLayout>
 

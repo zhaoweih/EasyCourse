@@ -88,7 +88,6 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
 
         for (int i = 0; i < ids.length; i++) {
             tvs[i] = findViewById(ids[i]);
-            tvs[i].setText("暂无");
         }
         iv_leaveshowreturntohome= findViewById(R.id.iv_leaveshowreturntohome);
         et_leave_show_message= findViewById(R.id.et_leave_show_message);
@@ -114,7 +113,12 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
         //提交审批请假条
         bt_leaveshowsubmit = findViewById(R.id.bt_leaveshowsubmit);
         bt_leaveshowsubmit.setOnClickListener(v -> {
-           confirm();
+            if(status==0){
+               Toast.makeText(LeaveShow.this,"请选择同意或拒绝！",Toast.LENGTH_SHORT).show();
+            }else if(status==2||status==3){
+                confirm();
+            }
+
         });
 
         iv_leaveshowreturntohome.setOnClickListener(this);
@@ -206,7 +210,7 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
                                     et_leave_show_message.setVisibility(View.GONE);
                                     rg_show_leave_rBtnGrp.setVisibility(View.GONE);
                                     bt_leaveshowsubmit.setVisibility(View.INVISIBLE);
-                                    if(!leaves[num].getTecAdvise().equals("")){
+                                    if(!(leaves[num].getTecAdvise()==null)){
                                         tvs[6].setVisibility(View.VISIBLE);
                                         tvs[6].setText("教师留言："+leaves[num].getTecAdvise());
                                     }
@@ -227,7 +231,7 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
                                     et_leave_show_message.setVisibility(View.GONE);
                                     rg_show_leave_rBtnGrp.setVisibility(View.GONE);
                                     bt_leaveshowsubmit.setVisibility(View.INVISIBLE);
-                                    if(!leaves[num].getTecAdvise().equals("")){
+                                    if(!(leaves[num].getTecAdvise()==null)){
                                         tvs[6].setVisibility(View.VISIBLE);
                                         tvs[6].setText("教师留言："+leaves[num].getTecAdvise());
                                     }
