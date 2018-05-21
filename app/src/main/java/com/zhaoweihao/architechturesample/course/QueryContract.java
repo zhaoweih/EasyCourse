@@ -2,22 +2,25 @@ package com.zhaoweihao.architechturesample.course;
 
 import com.zhaoweihao.architechturesample.BasePresenter;
 import com.zhaoweihao.architechturesample.BaseView;
+import com.zhaoweihao.architechturesample.data.course.Query;
 import com.zhaoweihao.architechturesample.data.course.Submit;
-import com.zhaoweihao.architechturesample.timeline.ZhihuDailyContract;
 
-public interface SubmitContract {
+import java.util.ArrayList;
+
+public interface QueryContract {
 
     interface View extends BaseView<Presenter> {
-        void showResult(Boolean status);
+        void showResult(ArrayList<Query> queryArrayList);
 
         void startLoading();
 
         void stopLoading();
 
         void showLoadError();
+
     }
 
     interface  Presenter extends BasePresenter {
-        void submit(Submit submit);
+        void query(String url);
     }
 }
