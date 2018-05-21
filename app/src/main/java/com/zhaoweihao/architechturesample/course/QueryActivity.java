@@ -7,17 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.course.Query;
-import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewClickListener;
-import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListener;
 
 import java.util.ArrayList;
 
-public class QueryActivity extends AppCompatActivity implements QueryContract.View{
+public class QueryActivity extends AppCompatActivity implements QueryContract.View {
+
+    public static final String TAG = "QueryActivity";
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -25,6 +28,11 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
     private QueryContract.Presenter presenter;
     private QueryAdapter adapter;
     private String url;
+
+    private EditText input;
+    private Button query;
+
+    private Boolean checkTecOrStu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +43,22 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
 
         initViews(null);
 
-        String courseName = "牛津和爱因斯坦的搏斗";
-        String teacherId = "20151120";
+        checkTecOrStu = presenter.checkTecOrStu();
 
-        // 以用课程名称查询为例
         String suffix = "course/query";
-        url = suffix + "?" + "courseName=" + courseName;
 
-        presenter.query(url);
+        String regex = "[0-9]+";
+
+        query.setOnClickListener(v -> {
+            String inputText = input.getText().toString();
+            // 如果全是数字则认为输入的是教师编号
+            if ( inputText.matches(regex) )
+                url = suffix + "?" + "teacherId=" + inputText;
+            else
+                url = suffix + "?" + "courseName=" + inputText;
+
+            presenter.query(url);
+        });
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             presenter.query(url);
@@ -56,7 +72,7 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
     public void showResult(ArrayList<Query> queryArrayList) {
         runOnUiThread(() -> {
             if (adapter == null) {
-                adapter = new QueryAdapter(this, queryArrayList);
+                adapter = new QueryAdapter(this, queryArrayList, checkTecOrStu);
                 recyclerView.setAdapter(adapter);
             }
             else {
@@ -64,6 +80,9 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
             }
             adapter.setItemClickListener((v, position) -> {
                 // 处理单击行为
+                ArrayList<Query> queries = presenter.getQueryList();
+                Query query = queries.get(position);
+                // 传递过去
             });
             adapter.setItemLongClickListener((view, position) -> {
                 // 处理长按行为
@@ -103,6 +122,8 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         swipeRefreshLayout = findViewById(R.id.refresh);
         emptyView = findViewById(R.id.empty_view);
+        input = findViewById(R.id.input);
+        query = findViewById(R.id.query);
     }
 
     @Override

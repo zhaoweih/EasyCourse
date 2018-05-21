@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,13 +29,16 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHol
     private LayoutInflater inflater;
     private final List<Query> list;
 
+    private final Boolean checkTecOrStu;
+
     private OnRecyclerViewClickListener listener;
     private OnRecyclerViewLongClickListener longClickListener;
 
-    public QueryAdapter(Context context, ArrayList<Query> list) {
+    public QueryAdapter(Context context, ArrayList<Query> list, Boolean checkTecOrStu) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
+        this.checkTecOrStu = checkTecOrStu;
     }
 
     @Override
@@ -45,6 +49,9 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHol
     @Override
     public void onBindViewHolder(QueryAdapter.QueryViewHolder holder, int position) {
         Query query = list.get(position);
+
+        if (checkTecOrStu)
+            holder.select.setVisibility(View.VISIBLE);
 
         holder.name.setText("课程名称: " + query.getCourseName());
         holder.description.setText("课程简介: " + query.getDescription());
@@ -69,6 +76,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHol
     public class QueryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
         TextView name,description,teacherName,selectNum;
+        Button select;
 
         OnRecyclerViewClickListener listener;
         OnRecyclerViewLongClickListener longClickListener;
@@ -80,6 +88,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHol
             description = itemView.findViewById(R.id.description);
             teacherName = itemView.findViewById(R.id.teacher_name);
             selectNum = itemView.findViewById(R.id.num);
+            select = itemView.findViewById(R.id.select);
 
             this.listener = listener;
             itemView.setOnClickListener(this);

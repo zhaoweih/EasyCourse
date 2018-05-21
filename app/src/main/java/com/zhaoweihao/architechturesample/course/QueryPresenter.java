@@ -10,6 +10,9 @@ import com.zhaoweihao.architechturesample.data.OnStringListener;
 import com.zhaoweihao.architechturesample.data.StringModelImpl;
 import com.zhaoweihao.architechturesample.data.course.Query;
 import com.zhaoweihao.architechturesample.data.course.Submit;
+import com.zhaoweihao.architechturesample.database.User;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,5 +70,29 @@ public class QueryPresenter implements QueryContract.Presenter, OnStringListener
     public void query(String url) {
         view.startLoading();
         model.sentGetRequestInSMI(url, this);
+    }
+
+    @Override
+    public ArrayList<Query> getQueryList() {
+        return queryList;
+    }
+
+    @Override
+    public Boolean checkTecOrStu() {
+        User user = DataSupport.findLast(User.class);
+        if ( user == null ) {
+            return false;
+        }
+
+        if ( user.getStudentId() != null) {
+            return true;
+        }
+
+        if ( user.getTeacherId() != null) {
+            return false;
+        }
+
+        return false;
+
     }
 }

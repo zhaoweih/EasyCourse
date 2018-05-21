@@ -22,5 +22,9 @@ public interface QueryContract {
 
     interface  Presenter extends BasePresenter {
         void query(String url);
+
+        ArrayList<Query> getQueryList();
+
+        Boolean checkTecOrStu();
     }
 }
