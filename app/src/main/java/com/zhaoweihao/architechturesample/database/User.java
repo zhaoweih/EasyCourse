@@ -9,7 +9,7 @@ public class User extends DataSupport {
      */
 
     private Integer id;
-    private Integer stuId;
+    private Integer userId;
     private String username;
     private String studentId;
     private String teacherId;
@@ -28,12 +28,15 @@ public class User extends DataSupport {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getStuId() {
-        return stuId;
+
+    public Integer getUserId() {
+        return userId;
     }
-    public void setStuId(Integer stuId) {
-        this.stuId = stuId;
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
+
     public String getUsername() {
         return username;
     }
