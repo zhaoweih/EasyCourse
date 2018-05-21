@@ -195,7 +195,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             com.zhaoweihao.architechturesample.database.User user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
             user3.delete();
             com.zhaoweihao.architechturesample.database.User user = new com.zhaoweihao.architechturesample.database.User();
-            user.setStuId(1000);
+            user.setUserId(1000);
             user.setUsername("zhaoweihao22");
             user.setStudentId("2015191054");
             user.setClassId("20151912");
@@ -281,7 +281,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                         com.zhaoweihao.architechturesample.data.User user = new Gson().fromJson(restResponse.getPayload().toString(),com.zhaoweihao.architechturesample.data.User.class);
                         com.zhaoweihao.architechturesample.database.User user1 = new com.zhaoweihao.architechturesample.database.User();
-                        user1.setStuId(user.getId());
+                        user1.setUserId(user.getId());
                         user1.setUsername(user.getUsername());
                         user1.setStudentId(user.getStudentId());
                         user1.setClassId(user.getClassId());
@@ -296,7 +296,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         user1.save();
                         List<com.zhaoweihao.architechturesample.database.User> allNews = DataSupport.findAll(com.zhaoweihao.architechturesample.database.User.class);
 
-                        log(thisClass, "保存到数据库成功"+user.getId()+"**********"+user1.getStuId()+"当前所有的user个数"+allNews.size());
+                        log(thisClass, "保存到数据库成功"+user.getId()+"**********"+user1.getUserId()+"当前所有的user个数"+allNews.size());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

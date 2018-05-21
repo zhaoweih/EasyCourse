@@ -256,7 +256,7 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
          * @tecAdvise 申请状态
          */
         Leave leave1 = new Leave();
-        leave1.setStuId(user3.getStuId());
+        leave1.setStuId(user3.getUserId());
         leave1.setStudentId(user3.getStudentId());
         leave1.setTeacherId(et_leave_teachernum0.getText().toString());
         leave1.setStatus(1);
