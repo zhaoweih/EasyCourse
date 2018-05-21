@@ -83,6 +83,7 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
         relativeLayout = findViewById(R.id.ry_leaveshowmain);
         swipeRefreshLayout = findViewById(R.id.refresh_layout);
 
+        swipeRefreshLayout.setEnabled(true);
         swipeRefreshLayout.setRefreshing(true);
 
         for (int i = 0; i < ids.length; i++) {
@@ -236,6 +237,7 @@ public class LeaveShow extends AppCompatActivity implements View.OnClickListener
                             tvs[4].setText(user1.getName());
                             // 加载完后再展示
                             swipeRefreshLayout.setRefreshing(false);
+                            swipeRefreshLayout.setEnabled(false);
                             relativeLayout.setVisibility(View.VISIBLE);
                         });
                     }
