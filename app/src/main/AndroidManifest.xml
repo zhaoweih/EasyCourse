@@ -26,16 +26,16 @@
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity" >
-
-        </activity>
+        <activity android:name=".ui.UtilActivity" />
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
-        <activity android:name=".leave.LeaveListActivity" >
+        <activity android:name=".leave.LeaveListActivity" />
+        <activity android:name=".leave.LeaveSubmit" />
+        <activity android:name=".leave.LeaveShow" />
+        <activity android:name=".course.CourseActivity" />
+        <activity android:name=".course.SubmitActivity">
 
         </activity>
-        <activity android:name=".leave.LeaveSubmit"/>
-        <activity android:name=".leave.LeaveShow"/>
     </application>
 
 </manifest>
