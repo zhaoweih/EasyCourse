@@ -71,7 +71,7 @@ public class StringModelImpl {
                     return;
                 }
                 if (restResponse.getCode() == 500) {
-                    listener.onError("请求失败");
+                    listener.onError(restResponse.getMsg());
                     return;
                 }
                 if (restResponse.getCode() == 200) {

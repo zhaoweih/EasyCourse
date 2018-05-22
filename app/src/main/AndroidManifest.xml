@@ -29,13 +29,16 @@
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
         <activity android:name=".course.CourseActivity" />
-        <activity android:name=".course.SubmitActivity"></activity>
-        <activity android:name=".course.QueryActivity">
+        <activity android:name=".course.SubmitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".course.QueryActivity">
+
         </activity>
     </application>
 
