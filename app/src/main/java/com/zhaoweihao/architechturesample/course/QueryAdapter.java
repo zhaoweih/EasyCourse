@@ -76,7 +76,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHol
     public class QueryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
         TextView name,description,teacherName,selectNum;
-        Button select;
+        ImageView select;
 
         OnRecyclerViewClickListener listener;
         OnRecyclerViewLongClickListener longClickListener;

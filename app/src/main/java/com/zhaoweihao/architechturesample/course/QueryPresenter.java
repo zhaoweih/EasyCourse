@@ -9,6 +9,7 @@ import com.zhaoweihao.architechturesample.data.Leave;
 import com.zhaoweihao.architechturesample.data.OnStringListener;
 import com.zhaoweihao.architechturesample.data.StringModelImpl;
 import com.zhaoweihao.architechturesample.data.course.Query;
+import com.zhaoweihao.architechturesample.data.course.Select;
 import com.zhaoweihao.architechturesample.data.course.Submit;
 import com.zhaoweihao.architechturesample.database.User;
 
@@ -42,7 +43,7 @@ public class QueryPresenter implements QueryContract.Presenter, OnStringListener
     @Override
     public void onSuccess(String payload) {
         if (payload == null) {
-            view.showLoadError();
+            view.showSelectSuccess(true);
             view.stopLoading();
             return;
         }
@@ -53,7 +54,7 @@ public class QueryPresenter implements QueryContract.Presenter, OnStringListener
             view.showResult(queryList);
             view.stopLoading();
         } catch (Exception e) {
-            view.showLoadError();
+            view.showLoadError(e.toString());
             view.stopLoading();
         }
 
@@ -62,7 +63,7 @@ public class QueryPresenter implements QueryContract.Presenter, OnStringListener
 
     @Override
     public void onError(String error) {
-        view.showLoadError();
+        view.showLoadError(error);
         view.stopLoading();
     }
 
@@ -94,5 +95,30 @@ public class QueryPresenter implements QueryContract.Presenter, OnStringListener
 
         return false;
 
+    }
+
+    @Override
+    public void selectCourse(Query query, String password) {
+        /**
+         * courseId : 4
+         * stuId : 20
+         * studentId : 2015191054
+         * courseName : 大学语文
+         * teacherName : 赵威豪
+         * password : 123456
+         */
+        User user = DataSupport.findLast(User.class);
+        Select select = new Select();
+        select.setCourseId(query.getId());
+        select.setStuId(user.getUserId());
+        select.setStudentId(user.getStudentId());
+        select.setCourseName(query.getCourseName());
+        select.setTeacherName(query.getTeacherName());
+        select.setPassword(password);
+
+        String suffix = "course/select";
+        String json = new Gson().toJson(select);
+
+        model.sentPostRequestInSMI(suffix, json, this);
     }
 }

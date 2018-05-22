@@ -65,15 +65,16 @@
 
     </LinearLayout>
 
-        <Button
-            android:visibility="invisible"
-            android:layout_gravity="center"
-            android:id="@+id/select"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="选课"
-            />
+       <ImageView
+           android:layout_gravity="center"
+           android:id="@+id/select"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:scaleType="centerInside"
+           android:layout_height="50dp"
+           android:src="@drawable/tap"
+           android:visibility="invisible"
+           />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

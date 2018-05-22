@@ -3,6 +3,7 @@ package com.zhaoweihao.architechturesample.course;
 import com.zhaoweihao.architechturesample.BasePresenter;
 import com.zhaoweihao.architechturesample.BaseView;
 import com.zhaoweihao.architechturesample.data.course.Query;
+import com.zhaoweihao.architechturesample.data.course.Select;
 import com.zhaoweihao.architechturesample.data.course.Submit;
 
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ public interface QueryContract {
 
         void stopLoading();
 
-        void showLoadError();
+        void showLoadError(String error);
+
+        void showSelectSuccess(Boolean status);
 
     }
 
@@ -26,5 +29,7 @@ public interface QueryContract {
         ArrayList<Query> getQueryList();
 
         Boolean checkTecOrStu();
+
+        void selectCourse(Query query, String password);
     }
 }
