@@ -76,4 +76,19 @@ public class SubmitActivity extends AppCompatActivity implements SubmitContract.
             }
         });
     }
+
+    @Override
+    public void startLoading() {
+
+    }
+
+    @Override
+    public void stopLoading() {
+
+    }
+
+    @Override
+    public void showLoadError() {
+
+    }
 }
