@@ -19,7 +19,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
@@ -36,13 +40,11 @@
         <activity android:name=".leave.LeaveListActivity" />
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
-        <activity android:name=".course.CourseActivity" />
-        <activity android:name=".course.SubmitActivity">
-
-
+        <activity android:name=".course.CourseActivity"></activity>
+        <activity android:name=".course.SendNoti">
         </activity>
+        <activity android:name=".course.SubmitActivity"></activity>
         <activity android:name=".course.QueryActivity">
-
         </activity>
     </application>
 

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".course.SendNoti">
+    <RelativeLayout
+        android:id="@+id/ry_sendnotimain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/ry_sendnotitittle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/iv_sendnotireturntohome"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/userinformationtitle" />
+            <TextView
+                android:id="@+id/tv_sendnotititle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="@string/sendnoti_title_text"
+                android:textColor="#000"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/bt_sendnotisubmit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="#0000"
+                android:textSize="15dp"
+                android:textColor="#00a2e9"
+                android:text="@string/sendnoti_submit_text"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/userinformationtitle" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_sendnotitop"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/ry_sendnotitittle"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_sendnoti_coursenum"
+                android:layout_width="match_parent"
+                android:text="@string/sendnoti_coursenum0_text"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_sendnoti_content"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_below="@id/ry_sendnotitop"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_sendnoti_content"
+                android:layout_width="match_parent"
+                android:hint="@string/sendnoti_reason0_text"
+                android:background="#fff"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:layout_height="80dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_sendnoti_time"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/ry_sendnoti_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_sendnoti_date"
+                android:layout_width="match_parent"
+                android:text="@string/sendnoti_selectdate_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="#000"
+                android:background="#fff"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_sendnoti_order"
+                android:layout_width="match_parent"
+                android:text="@string/sendnoti_selectorder_text"
+                android:layout_below="@id/tv_sendnoti_date"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="#000"
+                android:layout_marginTop="5dp"
+                android:background="#fff"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
