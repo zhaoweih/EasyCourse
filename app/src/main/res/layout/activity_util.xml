@@ -60,4 +60,17 @@
         android:layout_height="wrap_content"
         android:text="展示加载窗口"
         />
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上传图片并查看"
+        />
+
+    <ImageView
+        android:id="@+id/iv_show"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
 </LinearLayout>
