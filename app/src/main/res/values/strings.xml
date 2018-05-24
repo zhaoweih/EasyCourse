@@ -21,6 +21,9 @@
     <string name="personal_Info">详细信息</string>
     <string name="submit_leave">提交请假条</string>
     <string name="confirmAndShow_leave">已提交的请假条</string>
+    <string name="sendnoti">发送课程通知</string>
+    <string name="submitcourse">提交课程</string>
+    <string name="queryandselectcouse">查询并选课</string>
     <!-- info end -->
 
     <!-- login -->

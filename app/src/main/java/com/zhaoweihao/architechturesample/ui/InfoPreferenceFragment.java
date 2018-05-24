@@ -28,8 +28,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.course.QueryActivity;
+import com.zhaoweihao.architechturesample.course.SendNoti;
+import com.zhaoweihao.architechturesample.course.SubmitActivity;
 import com.zhaoweihao.architechturesample.data.Leave;
 import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.data.course.Query;
+import com.zhaoweihao.architechturesample.data.course.Select;
+import com.zhaoweihao.architechturesample.data.course.Submit;
 import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
 import com.zhaoweihao.architechturesample.leave.LeaveShow;
@@ -131,7 +137,24 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             startActivity(intent);
             return true;
         });
-
+        // 打开发布课程
+        findPreference("sendnoti").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), SendNoti.class);
+            startActivity(intent);
+            return true;
+        });
+        // 打开提交课程
+        findPreference("submitcourse").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), SubmitActivity.class);
+            startActivity(intent);
+            return true;
+        });
+        // 打开课程查询并选课queryandselectcourse
+        findPreference("queryandselectcourse").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), QueryActivity.class);
+            startActivity(intent);
+            return true;
+        });
 
     }
 

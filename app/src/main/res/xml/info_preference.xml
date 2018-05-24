@@ -37,6 +37,15 @@
         <Preference
             android:title="@string/seat_select"
             android:key="seat_select"/>
+        <Preference
+            android:title="@string/sendnoti"
+            android:key="sendnoti"/>
+        <Preference
+            android:title="@string/submitcourse"
+            android:key="submitcourse"/>
+        <Preference
+            android:title="@string/queryandselectcouse"
+            android:key="queryandselectcourse"/>
 
     </PreferenceCategory>
 
