@@ -20,7 +20,11 @@
             android:theme="@style/AppTheme"></activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.UtilActivity"></activity>
@@ -34,11 +38,7 @@
         <activity android:name=".course.SubmitActivity" />
         <activity android:name=".course.QueryActivity"></activity>
         <activity android:name=".seat.CreateActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

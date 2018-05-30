@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.data.seat.Create;
 import com.zhaoweihao.architechturesample.data.seat.SeatSel;
 
 import java.io.IOException;
@@ -165,19 +166,23 @@ public class MySelectedSeats extends SelectedSeats {
                            }
                        }
 
-                       Log.d(TAG, after.toString());
 
                        String placeholder = after.toString();
 
                        // placeholder是拼装好的座位状态
                         addRowBean.setColumnStates(placeholder);
 
-                        String jsonString = new Gson().toJson(seatSel);
-                        Log.d(TAG, jsonString);
+                        String classCode = "20774";
+                        Create create = new Create();
+                        create.setClassCode(classCode);
+                        create.setSeatSel(seatSel);
+
+                        String json = new Gson().toJson(create);
+//                        String jsonString = new Gson().toJson(seatSel);
 
                         // 发送网络请求写入新的座位表
-                        String suffix = "seat/post";
-                        sendPostRequest(suffix, jsonString, new Callback() {
+                        String suffix = "seat/update";
+                        sendPostRequest(suffix, json, new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
 
@@ -187,11 +192,10 @@ public class MySelectedSeats extends SelectedSeats {
                             public void onResponse(Call call, Response response) throws IOException {
                                 String body = response.body().string();
                                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
-                                if (restResponse.getSuccess()) {
+                                if (restResponse.getCode() == 200) {
                                     // 更新座位表成功，后续应该更新座位表
-                                    Log.d(TAG, "座位表更新成功");
+                                    Log.d(TAG, "更新座位成功");
                                 }
-                                Log.d(TAG, body);
                             }
                         });
 

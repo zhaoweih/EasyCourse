@@ -1,6 +1,7 @@
 package sviolet.seatselectionview.demo;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.seat.SeatSel;
 
 import java.io.IOException;
@@ -66,7 +68,7 @@ public class SeatSelectionActivity extends TAppCompatActivity {
     @Override
     protected void onInitViews(Bundle savedInstanceState) {
         // 网络请求座位数据
-        String classCode = "20772";
+        String classCode = "20774";
         String suffix = "seat/enter?classCode=" + classCode;
         sendGetRequest(suffix, new Callback() {
             @Override
@@ -78,14 +80,22 @@ public class SeatSelectionActivity extends TAppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String body = response.body().string();
-                log(thisClass, body);
-                runOnUiThread(() -> {
+                try {
+                    RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                    if (restResponse.getCode() == 500)
+                        return;
+                    seatSel = new Gson().fromJson(restResponse.getPayload().toString(), SeatSel.class);
+                    runOnUiThread(() -> {
                     // 更新座位界面
-                    seatSel = new Gson().fromJson(body, SeatSel.class);
                     initData();
                     initView();
                     initSeatSelectionView(seatTable);
                 });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                log(thisClass, body);
+
 
             }
         });
