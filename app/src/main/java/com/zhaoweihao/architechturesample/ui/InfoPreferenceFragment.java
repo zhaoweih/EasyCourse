@@ -29,11 +29,13 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.course.QueryActivity;
+import com.zhaoweihao.architechturesample.course.QuerySelectActivity;
 import com.zhaoweihao.architechturesample.course.SendNoti;
 import com.zhaoweihao.architechturesample.course.SubmitActivity;
 import com.zhaoweihao.architechturesample.data.Leave;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.course.Query;
+import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.data.course.Select;
 import com.zhaoweihao.architechturesample.data.course.Submit;
 import com.zhaoweihao.architechturesample.database.User;
@@ -152,6 +154,12 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
         // 打开课程查询并选课queryandselectcourse
         findPreference("queryandselectcourse").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), QueryActivity.class);
+            startActivity(intent);
+            return true;
+        });
+        // 打开课程查询并选课queryselectcourse
+        findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), QuerySelectActivity.class);
             startActivity(intent);
             return true;
         });

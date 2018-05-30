@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -21,30 +20,25 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.UtilActivity"></activity>
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
         <activity android:name=".leave.LeaveListActivity" />
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
-        <activity android:name=".course.CourseActivity"></activity>
-        <activity android:name=".course.SendNoti">
+        <activity android:name=".course.CourseActivity">
+
         </activity>
-        <activity android:name=".course.SubmitActivity"></activity>
-        <activity android:name=".course.QueryActivity">
+        <activity android:name=".course.SendNoti"></activity>
+        <activity android:name=".course.SubmitActivity" />
+        <activity android:name=".course.QueryActivity"></activity>
+        <activity android:name=".course.QuerySelectActivity">
         </activity>
     </application>
 
