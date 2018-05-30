@@ -29,12 +29,16 @@ public class CreatePresenter implements CreateContract.Presenter, OnStringListen
 
     @Override
     public void onSuccess(String payload) {
+
         view.showResult(true);
+        view.stopLoading();
     }
 
     @Override
     public void onError(String error) {
+
         view.showResult(false);
+        view.stopLoading();
     }
 
     @Override
@@ -42,6 +46,7 @@ public class CreatePresenter implements CreateContract.Presenter, OnStringListen
         String suffix = "seat/create";
         String json = new Gson().toJson(create);
 
+        view.startLoading();
         model.sentPostRequestInSMI(suffix, json, this);
     }
 }

@@ -113,13 +113,19 @@
             android:background="#D0D0D0"/>
 
     </LinearLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
 
     <sviolet.seatselectionview.view.SeatSelectionView
         android:id="@+id/seat_selection_selection_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:clickable="true" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:id="@+id/seat_selection_bottom_bar"

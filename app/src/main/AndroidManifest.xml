@@ -17,7 +17,7 @@
             android:name=".ui.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity">
             <intent-filter>
@@ -27,17 +27,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity"></activity>
+        <activity android:name=".ui.UtilActivity" />
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
         <activity android:name=".leave.LeaveListActivity" />
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
         <activity android:name=".course.CourseActivity" />
-        <activity android:name=".course.SendNoti"></activity>
+        <activity android:name=".course.SendNoti" />
         <activity android:name=".course.SubmitActivity" />
-        <activity android:name=".course.QueryActivity"></activity>
+        <activity android:name=".course.QueryActivity" />
         <activity android:name=".seat.CreateActivity">
+
+        </activity>
+        <activity android:name=".seat.EnterActivity">
 
         </activity>
     </application>

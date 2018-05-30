@@ -25,6 +25,7 @@
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:layout_marginTop="?actionBarSize">
 
         <FrameLayout
@@ -33,53 +34,36 @@
             android:background="@color/colorBaseBackground"
             android:clickable="true"
             android:focusable="true">
-            <LinearLayout
-                android:orientation="vertical"
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TextView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="点名房间密令"
-                    />
-                <EditText
-                    android:id="@+id/et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="请输入房间密令，格式例如：20774"
-                    android:inputType="number"
-                    android:lines="5"
-                    />
-                <RadioGroup
-                    android:id="@+id/rg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <RadioButton
-                        android:id="@+id/rb_wen"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="文科楼普通课室(7X16)"
-                        />
-                    <RadioButton
-                        android:id="@+id/rb_li"
+                        android:gravity="center"
+                        android:text="输入老师提供的密令🔑进入点名系统"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="理科楼普通课室(7X16)"
-                        />
-                    <RadioButton
-                        android:id="@+id/rb_dl"
+                        android:hint="请输入密令" />
+
+                    <Button
+                        android:id="@+id/btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="东丽楼普通课室(7X16)"
-                        />
-                </RadioGroup>
-                <Button
-                    android:id="@+id/btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="确认"
-                    />
-            </LinearLayout>
+                        android:text="确认进入" />
+                </LinearLayout>
+            </RelativeLayout>
         </FrameLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>

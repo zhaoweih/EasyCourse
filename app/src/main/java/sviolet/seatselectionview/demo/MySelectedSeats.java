@@ -1,6 +1,7 @@
 package sviolet.seatselectionview.demo;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
@@ -48,15 +50,23 @@ public class MySelectedSeats extends SelectedSeats {
     private List<TextView> selectedItemTextViews;
     private Button seatSelectionButton;
 
+
+
     private Animation bottomBarInAnimation;//底部栏动画
     private Animation bottomBarOutAnimation;//底部栏动画
 
     private SeatSel seatSel;
+    private String classCode;
+    private SeatSelectionActivity seatSelectionActivity;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private Context context;
 
     private boolean isBottomBarShown = false;
 
     public MySelectedSeats(SeatSelectionView seatSelectionView, AuditoriumInfo auditoriumInfo,
-                           Context context, View bottomBar, LinearLayout selectedItemContainer, TextView totalPriceTextView, TextView priceDetailTextView, Button seatSelectionButton, SeatSel seatSel) {
+                           Context context, View bottomBar, LinearLayout selectedItemContainer, TextView totalPriceTextView, TextView priceDetailTextView, Button seatSelectionButton, SeatSel seatSel, String classCode, SwipeRefreshLayout swipeRefreshLayout, SeatSelectionActivity seatSelectionActivity) {
 
         super(seatSelectionView, auditoriumInfo.getMaxSeatNum());
 
@@ -83,6 +93,11 @@ public class MySelectedSeats extends SelectedSeats {
         this.selectedItemTextViews = new ArrayList<>(auditoriumInfo.getMaxSeatNum());
 
         this.seatSel = seatSel;
+        this.classCode = classCode;
+        this.swipeRefreshLayout = swipeRefreshLayout;
+        this.context = context;
+        this.seatSelectionActivity = seatSelectionActivity;
+
 
 
         //初始化动画
@@ -142,7 +157,6 @@ public class MySelectedSeats extends SelectedSeats {
             seatSelectionButton.setOnClickListener(null);
             seatSelectionButton.setOnClickListener(v -> {
                 //这里执行确认选位后的操作
-                Log.d(TAG, seat.getRowId());
                 for (SeatSel.AddRowBean addRowBean: seatSel.getAddRow()) {
                     if (addRowBean.getRowId().equals(seat.getRowId())) {
                        String[] columnStatesArray = addRowBean.getColumnStates().split("\\|");
@@ -154,7 +168,6 @@ public class MySelectedSeats extends SelectedSeats {
                                same = same + 1;
                            }
                        }
-                       Log.d(TAG, "前面总共有相同项数目为" + same);
                        columnStatesArray[Integer.valueOf(seat.getColumnId()) - 1 + same] = "U";
                        StringBuilder after = new StringBuilder("");
                        for (int j = 0; j < columnStatesArray.length; j++) {
@@ -172,7 +185,6 @@ public class MySelectedSeats extends SelectedSeats {
                        // placeholder是拼装好的座位状态
                         addRowBean.setColumnStates(placeholder);
 
-                        String classCode = "20774";
                         Create create = new Create();
                         create.setClassCode(classCode);
                         create.setSeatSel(seatSel);
@@ -194,7 +206,9 @@ public class MySelectedSeats extends SelectedSeats {
                                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
                                 if (restResponse.getCode() == 200) {
                                     // 更新座位表成功，后续应该更新座位表
-                                    Log.d(TAG, "更新座位成功");
+                                    seatSelectionActivity.runOnUiThread(() -> {
+                                        Toast.makeText(seatSelectionActivity, "占位成功，请手动刷新查看", Toast.LENGTH_SHORT).show();
+                                    });
                                 }
                             }
                         });

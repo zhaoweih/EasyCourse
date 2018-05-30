@@ -1,10 +1,13 @@
 package sviolet.seatselectionview.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.gson.Gson;
@@ -37,7 +40,7 @@ import static com.zhaoweihao.architechturesample.util.Utils.*;
 import static com.zhaoweihao.architechturesample.util.HttpUtil.*;
 
 @ResourceId(R.layout.seat_selection)
-public class SeatSelectionActivity extends TAppCompatActivity {
+public class SeatSelectionActivity extends TAppCompatActivity{
 
     private static final Class thisClass = SeatSelectionActivity.class;
 
@@ -57,6 +60,8 @@ public class SeatSelectionActivity extends TAppCompatActivity {
     private TextView priceDetailTextView;
     @ResourceId(R.id.btn_seat_selection)
     private Button seatSelectionButton;//确认选座按钮
+    @ResourceId(R.id.refresh)
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private SeatImagePoolImpl imagePool;//图片池
 
@@ -65,10 +70,30 @@ public class SeatSelectionActivity extends TAppCompatActivity {
     private SeatTable seatTable;
     private SeatSel seatSel;
 
+    private String classCode;
+
     @Override
     protected void onInitViews(Bundle savedInstanceState) {
-        // 网络请求座位数据
-        String classCode = "20774";
+
+//        Intent intent = getIntent();
+//
+//        // 网络请求座位数据
+//        classCode = intent.getStringExtra("code");
+
+        classCode = "20774";
+        requestData(classCode);
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            requestData(classCode);
+        });
+
+
+
+    }
+
+
+    private void requestData(String classCode) {
+        swipeRefreshLayout.setRefreshing(true);
         String suffix = "seat/enter?classCode=" + classCode;
         sendGetRequest(suffix, new Callback() {
             @Override
@@ -86,21 +111,18 @@ public class SeatSelectionActivity extends TAppCompatActivity {
                         return;
                     seatSel = new Gson().fromJson(restResponse.getPayload().toString(), SeatSel.class);
                     runOnUiThread(() -> {
-                    // 更新座位界面
-                    initData();
-                    initView();
-                    initSeatSelectionView(seatTable);
-                });
+                        // 更新座位界面
+                        initData();
+                        initView();
+                        initSeatSelectionView(seatTable);
+                        swipeRefreshLayout.setRefreshing(false);
+                    });
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 //                log(thisClass, body);
-
-
             }
         });
-
-
     }
 
     @Override
@@ -126,7 +148,10 @@ public class SeatSelectionActivity extends TAppCompatActivity {
                 totalPriceTextView,
                 priceDetailTextView,
                 seatSelectionButton,
-                seatSel
+                seatSel,
+                classCode,
+                swipeRefreshLayout,
+                this
                 );
 
         cinemaNameView.setText(auditoriumInfo.getCinemaName());
