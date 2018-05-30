@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.RestResponse;
-import com.zhaoweihao.architechturesample.data.SeatSel;
+import com.zhaoweihao.architechturesample.data.seat.SeatSel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -218,8 +218,8 @@ public class MySelectedSeats extends SelectedSeats {
     public void refreshBottomBarPrice(){
         int seatNum = getSeatNum();
         float totalPrice = seatNum * auditoriumInfo.getPrice();
-        totalPriceTextView.setText(totalPrice + "元");
-        priceDetailTextView.setText(auditoriumInfo.getPrice() + "元 X " + seatNum);
+        totalPriceTextView.setText("注意");
+        priceDetailTextView.setText("提交后的座位不能更改");
     }
 
     private final View.OnClickListener onSelectedItemClickListener = new View.OnClickListener() {

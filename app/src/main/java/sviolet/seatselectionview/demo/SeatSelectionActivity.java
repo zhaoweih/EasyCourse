@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.data.SeatSel;
+import com.zhaoweihao.architechturesample.data.seat.SeatSel;
 
 import java.io.IOException;
 
@@ -63,31 +63,11 @@ public class SeatSelectionActivity extends TAppCompatActivity {
     private SeatTable seatTable;
     private SeatSel seatSel;
 
-    private String jsonExample = "{\n" +
-            "\trowNum:15,\n" +
-            "\tcolumnNum:25,\n" +
-            "\taddRow:[\n" +
-            "\t{\n" +
-            "\t\trow:0,\n" +
-            "\t\trowId:\"1\",\n" +
-            "\t\tcolumnIds:\"N|N|N|N|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|N|N\",\n" +
-            "\t\tcolumnTypes:\"N|N|N|N|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|N|N\",\n" +
-            "\t\tcolumnStates:\"N|N|N|N|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|N|N\"\n" +
-            "\t\t              \n" +
-            "\t},\n" +
-            "\t{\n" +
-            "\t\trow:1,\n" +
-            "\t\trowId:\"2\",\n" +
-            "\t\tcolumnIds:\"N|N|N|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|N\",\n" +
-            "\t\tcolumnTypes:\"N|N|N|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|N\",\n" +
-            "\t\tcolumnStates:\"N|N|N|A|U|U|U|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|A|N\"\n" +
-            "\t}\n" +
-            "]}";
-
     @Override
     protected void onInitViews(Bundle savedInstanceState) {
         // 网络请求座位数据
-        String suffix = "seat/get?id=3";
+        String classCode = "20772";
+        String suffix = "seat/enter?classCode=" + classCode;
         sendGetRequest(suffix, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -120,7 +100,6 @@ public class SeatSelectionActivity extends TAppCompatActivity {
     }
 
     private void initData(){
-        log(thisClass, jsonExample);
         auditoriumInfo = DataEmulate.initAuditoriumInfo();
 //        seatTable = DataEmulate.initSeatTable1(getApplicationContext());
         seatTable = DataEmulate.initSeatTable3(getApplicationContext(), seatSel);

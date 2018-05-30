@@ -1,4 +1,4 @@
-package com.zhaoweihao.architechturesample.data;
+package com.zhaoweihao.architechturesample.data.seat;
 
 import java.util.List;
 
