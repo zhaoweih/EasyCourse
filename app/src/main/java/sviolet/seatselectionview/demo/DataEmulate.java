@@ -2,7 +2,7 @@ package sviolet.seatselectionview.demo;
 
 import android.content.Context;
 
-import com.zhaoweihao.architechturesample.data.SeatSel;
+import com.zhaoweihao.architechturesample.data.seat.SeatSel;
 
 import java.util.List;
 
@@ -21,12 +21,26 @@ import sviolet.turquoise.util.droid.MeasureUtils;
  */
 public class DataEmulate {
 
-    public static AuditoriumInfo initAuditoriumInfo(){
+    public static AuditoriumInfo initAuditoriumInfo(String classCode, int mode){
         AuditoriumInfo info = new AuditoriumInfo();
-        info.setCinemaName("文科楼108");
-        info.setSession("课程编号：100000");
-        info.setAuditoriumName("班级编号：20151911");
-        info.setMaxSeatNum(4);
+        String name = "";
+        switch (mode) {
+            case 1:
+                name = "文科楼样例课室";
+                break;
+            case 2:
+                name = "理科楼样例课室";
+                break;
+            case 3:
+                name = "东丽楼样例课室";
+                break;
+                default:
+
+        }
+        info.setCinemaName(name);
+        info.setSession("密令：" + classCode);
+        info.setAuditoriumName("讲台");
+        info.setMaxSeatNum(1);
         info.setPrice(25);
         return info;
     }

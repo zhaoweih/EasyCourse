@@ -1,6 +1,7 @@
 package sviolet.seatselectionview.demo;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +10,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.RestResponse;
-import com.zhaoweihao.architechturesample.data.SeatSel;
+import com.zhaoweihao.architechturesample.data.seat.Create;
+import com.zhaoweihao.architechturesample.data.seat.Record;
+import com.zhaoweihao.architechturesample.data.seat.SeatSel;
+import com.zhaoweihao.architechturesample.database.User;
+
+import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,15 +54,23 @@ public class MySelectedSeats extends SelectedSeats {
     private List<TextView> selectedItemTextViews;
     private Button seatSelectionButton;
 
+
+
     private Animation bottomBarInAnimation;//底部栏动画
     private Animation bottomBarOutAnimation;//底部栏动画
 
     private SeatSel seatSel;
+    private String classCode;
+    private SeatSelectionActivity seatSelectionActivity;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private Context context;
 
     private boolean isBottomBarShown = false;
 
     public MySelectedSeats(SeatSelectionView seatSelectionView, AuditoriumInfo auditoriumInfo,
-                           Context context, View bottomBar, LinearLayout selectedItemContainer, TextView totalPriceTextView, TextView priceDetailTextView, Button seatSelectionButton, SeatSel seatSel) {
+                           Context context, View bottomBar, LinearLayout selectedItemContainer, TextView totalPriceTextView, TextView priceDetailTextView, Button seatSelectionButton, SeatSel seatSel, String classCode, SwipeRefreshLayout swipeRefreshLayout, SeatSelectionActivity seatSelectionActivity) {
 
         super(seatSelectionView, auditoriumInfo.getMaxSeatNum());
 
@@ -82,6 +97,11 @@ public class MySelectedSeats extends SelectedSeats {
         this.selectedItemTextViews = new ArrayList<>(auditoriumInfo.getMaxSeatNum());
 
         this.seatSel = seatSel;
+        this.classCode = classCode;
+        this.swipeRefreshLayout = swipeRefreshLayout;
+        this.context = context;
+        this.seatSelectionActivity = seatSelectionActivity;
+
 
 
         //初始化动画
@@ -128,6 +148,20 @@ public class MySelectedSeats extends SelectedSeats {
     }
 
     public void refreshBottomBarSelectedItems(){
+        Record record = new Record();
+
+        record.setClassCode(classCode);
+
+        User user = DataSupport.findLast(User.class);
+        if (user == null) {
+            return;
+        }
+        if (user.getStudentId() == null) {
+            Toast.makeText(seatSelectionActivity, "你不是学生", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        record.setStudentId(user.getStudentId());
+
         //先移除全部View
         selectedItemContainer.removeAllViews();
         if (getSeatNum() > getMaxSeatNum()){
@@ -140,8 +174,9 @@ public class MySelectedSeats extends SelectedSeats {
             selectedItemContainer.addView(selectedItemViews.get(i));
             seatSelectionButton.setOnClickListener(null);
             seatSelectionButton.setOnClickListener(v -> {
+                record.setClassColumn(Integer.valueOf(seat.getColumnId()));
+                record.setClassRow(Integer.valueOf(seat.getRowId()));
                 //这里执行确认选位后的操作
-                Log.d(TAG, seat.getRowId());
                 for (SeatSel.AddRowBean addRowBean: seatSel.getAddRow()) {
                     if (addRowBean.getRowId().equals(seat.getRowId())) {
                        String[] columnStatesArray = addRowBean.getColumnStates().split("\\|");
@@ -153,7 +188,6 @@ public class MySelectedSeats extends SelectedSeats {
                                same = same + 1;
                            }
                        }
-                       Log.d(TAG, "前面总共有相同项数目为" + same);
                        columnStatesArray[Integer.valueOf(seat.getColumnId()) - 1 + same] = "U";
                        StringBuilder after = new StringBuilder("");
                        for (int j = 0; j < columnStatesArray.length; j++) {
@@ -165,19 +199,22 @@ public class MySelectedSeats extends SelectedSeats {
                            }
                        }
 
-                       Log.d(TAG, after.toString());
 
                        String placeholder = after.toString();
 
                        // placeholder是拼装好的座位状态
                         addRowBean.setColumnStates(placeholder);
 
-                        String jsonString = new Gson().toJson(seatSel);
-                        Log.d(TAG, jsonString);
+                        Create create = new Create();
+                        create.setClassCode(classCode);
+                        create.setSeatSel(seatSel);
+
+                        String json = new Gson().toJson(create);
+//                        String jsonString = new Gson().toJson(seatSel);
 
                         // 发送网络请求写入新的座位表
-                        String suffix = "seat/post";
-                        sendPostRequest(suffix, jsonString, new Callback() {
+                        String suffix = "seat/update";
+                        sendPostRequest(suffix, json, new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
 
@@ -187,11 +224,14 @@ public class MySelectedSeats extends SelectedSeats {
                             public void onResponse(Call call, Response response) throws IOException {
                                 String body = response.body().string();
                                 RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
-                                if (restResponse.getSuccess()) {
+                                if (restResponse.getCode() == 200) {
+
                                     // 更新座位表成功，后续应该更新座位表
-                                    Log.d(TAG, "座位表更新成功");
+                                    seatSelectionActivity.runOnUiThread(() -> {
+                                        Toast.makeText(seatSelectionActivity, "占位成功，请手动刷新查看", Toast.LENGTH_SHORT).show();
+                                        addRecord(record);
+                                    });
                                 }
-                                Log.d(TAG, body);
                             }
                         });
 
@@ -215,11 +255,35 @@ public class MySelectedSeats extends SelectedSeats {
         }
     }
 
+    private void addRecord(Record record) {
+        String suffix = "seat/record/add";
+
+        String json = new Gson().toJson(record);
+
+        sendPostRequest(suffix, json, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                if (restResponse.getCode() == 200){
+                    seatSelectionActivity.runOnUiThread(() -> {
+                        Toast.makeText(seatSelectionActivity, "添加座位纪录成功", Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+        });
+    }
+
     public void refreshBottomBarPrice(){
         int seatNum = getSeatNum();
         float totalPrice = seatNum * auditoriumInfo.getPrice();
-        totalPriceTextView.setText(totalPrice + "元");
-        priceDetailTextView.setText(auditoriumInfo.getPrice() + "元 X " + seatNum);
+        totalPriceTextView.setText("注意");
+        priceDetailTextView.setText("提交后的座位不能更改");
     }
 
     private final View.OnClickListener onSelectedItemClickListener = new View.OnClickListener() {
