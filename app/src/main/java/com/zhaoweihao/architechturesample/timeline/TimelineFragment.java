@@ -46,6 +46,8 @@ public class TimelineFragment extends Fragment {
 
         }
 
+        new DoubanMomentPresenter(mDoubanFragment);
+
     }
 
     @Nullable

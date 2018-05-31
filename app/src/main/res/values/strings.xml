@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">ArchitechtureSample</string>
 
-    <string name="zhihu_daily">日报页面</string>
-    <string name="guokr_handpick">果仁挑选</string>
-    <string name="douban_moment">豆瓣时刻</string>
+    <string name="zhihu_daily">我的通知</string>
+    <string name="guokr_handpick">果壳精选</string>
+    <string name="douban_moment">我的课程</string>
 
-    <string name="timeline">时间线</string>
-    <string name="favorites">最爱</string>
+    <string name="timeline">主要</string>
+    <string name="favorites">更多</string>
     <string name="info">信息</string>
 
     <!-- timeline -->
