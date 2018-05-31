@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 
 import static com.zhaoweihao.architechturesample.util.HttpUtil.*;
+import static com.zhaoweihao.architechturesample.util.Utils.log;
 
 import java.io.IOException;
 
@@ -47,6 +48,7 @@ public class StringModelImpl {
                         return;
                     }
                     listener.onSuccess(restResponse.getPayload().toString());
+                    log(StringModelImpl.class, restResponse.getPayload().toString());
                 }
 
             }

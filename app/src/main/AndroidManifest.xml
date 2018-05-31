@@ -25,12 +25,18 @@
 
         </activity>
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity" />
+        <activity android:name=".ui.UtilActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
         <activity android:name=".leave.LeaveListActivity" />
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
+
         <activity android:name=".course.CourseActivity" />
         <activity android:name=".course.SendNoti" />
         <activity android:name=".course.SubmitActivity" />
@@ -39,14 +45,12 @@
 
         </activity>
         <activity android:name=".seat.EnterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".seat.SeatRecActivity">
 
+        </activity>
+        <activity android:name=".course.QuerySelectActivity">
         </activity>
     </application>
 
