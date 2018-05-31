@@ -124,6 +124,7 @@ public class CreateActivity extends AppCompatActivity implements CreateContract.
 
                 Intent intent = new Intent(CreateActivity.this, SeatSelectionActivity.class);
                 intent.putExtra("code", classCode);
+                intent.putExtra("mode", mode);
                 startActivity(intent);
             });
         }

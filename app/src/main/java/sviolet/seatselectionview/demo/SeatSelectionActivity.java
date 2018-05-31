@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,7 +14,9 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.data.User;
 import com.zhaoweihao.architechturesample.data.seat.SeatSel;
+import com.zhaoweihao.architechturesample.seat.SeatRecActivity;
 
 import java.io.IOException;
 
@@ -62,6 +65,8 @@ public class SeatSelectionActivity extends TAppCompatActivity{
     private Button seatSelectionButton;//确认选座按钮
     @ResourceId(R.id.refresh)
     private SwipeRefreshLayout swipeRefreshLayout;
+    @ResourceId(R.id.tv_rec)
+    private TextView record;
 
     private SeatImagePoolImpl imagePool;//图片池
 
@@ -71,21 +76,30 @@ public class SeatSelectionActivity extends TAppCompatActivity{
     private SeatSel seatSel;
 
     private String classCode;
+    private int mode;
 
     @Override
     protected void onInitViews(Bundle savedInstanceState) {
 
-//        Intent intent = getIntent();
-//
-//        // 网络请求座位数据
-//        classCode = intent.getStringExtra("code");
+        Intent intent = getIntent();
 
-        classCode = "20774";
+        // 网络请求座位数据
+        classCode = intent.getStringExtra("code");
+
+        mode = intent.getIntExtra("mode", 1);
+
+//        classCode = "20774";
+//        mode = 1;
         requestData(classCode);
 
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            requestData(classCode);
+        swipeRefreshLayout.setOnRefreshListener(() -> requestData(classCode));
+
+        record.setOnClickListener(v -> {
+            Intent intent2 = new Intent(this, SeatRecActivity.class);
+            intent2.putExtra("code",classCode);
+            startActivity(intent2);
         });
+
 
 
 
@@ -132,7 +146,7 @@ public class SeatSelectionActivity extends TAppCompatActivity{
     }
 
     private void initData(){
-        auditoriumInfo = DataEmulate.initAuditoriumInfo();
+        auditoriumInfo = DataEmulate.initAuditoriumInfo(classCode, mode);
 //        seatTable = DataEmulate.initSeatTable1(getApplicationContext());
         seatTable = DataEmulate.initSeatTable3(getApplicationContext(), seatSel);
 //        seatTable = DataEmulate.initSeatTable3(getApplicationContext());
