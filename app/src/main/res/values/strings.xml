@@ -19,12 +19,12 @@
     <string name="settings">个人信息</string>
     <string name="seat_select">点名</string>
     <string name="personal_Info">详细信息</string>
-    <string name="submit_leave">提交请假条</string>
-    <string name="confirmAndShow_leave">已提交的请假条</string>
-    <string name="sendnoti">发送课程通知</string>
-    <string name="submitcourse">提交课程</string>
-    <string name="queryandselectcouse">查询并选课</string>
-    <string name="queryselectcouse">查询选课信息</string>
+    <string name="submit_leave">提交请假条(4S)</string>
+    <string name="confirmAndShow_leave">已提交的请假条(4S)</string>
+    <string name="sendnoti">发送课程通知(4T)</string>
+    <string name="submitcourse">提交课程(4T)</string>
+    <string name="queryandselectcouse">查询并选课(4S)</string>
+    <string name="queryselectcouse">查询选课信息(4S)</string>
     <!-- info end -->
 
     <!-- login -->

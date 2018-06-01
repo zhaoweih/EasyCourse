@@ -24,31 +24,12 @@
         <Preference
             android:title="@string/personal_Info"
             android:key="info1"/>
-        <Preference
-            android:title="@string/submit_leave"
-            android:key="submit"/>
-        <Preference
-            android:title="@string/confirmAndShow_leave"
-            android:key="confirm"/>
+
         <Preference
             android:title="@string/login"
             android:key="login"/>
 
-        <Preference
-            android:title="@string/seat_select"
-            android:key="seat_select"/>
-        <Preference
-            android:title="@string/sendnoti"
-            android:key="sendnoti"/>
-        <Preference
-            android:title="@string/submitcourse"
-            android:key="submitcourse"/>
-        <Preference
-            android:title="@string/queryandselectcouse"
-            android:key="queryandselectcourse"/>
-        <Preference
-            android:title="@string/queryselectcouse"
-            android:key="queryselectcourse"/>
+
     </PreferenceCategory>
 
 
