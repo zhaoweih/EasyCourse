@@ -42,6 +42,7 @@ import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
 import com.zhaoweihao.architechturesample.leave.LeaveShow;
 import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
+import com.zhaoweihao.architechturesample.seat.EnterActivity;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
@@ -135,7 +136,7 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
         });
         // 打开点名界面
         findPreference("seat_select").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), SeatSelectionActivity.class);
+            Intent intent = new Intent(getActivity(), EnterActivity.class);
             startActivity(intent);
             return true;
         });
