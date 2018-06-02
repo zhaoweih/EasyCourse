@@ -1,4 +1,4 @@
-package com.zhaoweihao.architechturesample.course;
+package com.zhaoweihao.architechturesample.timeline;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.data.OnStringListener;
-import com.zhaoweihao.architechturesample.data.course.Query;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewClickListener;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListener;
@@ -18,7 +16,7 @@ import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListe
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuerySelectAdapter extends RecyclerView.Adapter<QuerySelectAdapter.QueryViewHolder> {
+public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapter.DoubanMomentViewHolder> {
     private final Context context;
     private LayoutInflater inflater;
     private final List<QuerySelect> list;
@@ -26,19 +24,19 @@ public class QuerySelectAdapter extends RecyclerView.Adapter<QuerySelectAdapter.
 
     private OnRecyclerViewClickListener listener;
     private OnRecyclerViewLongClickListener longClickListener;
-    public QuerySelectAdapter(Context context, ArrayList<QuerySelect> list, Boolean checkTecOrStu) {
+    public DoubanMomentAdapter(Context context, ArrayList<QuerySelect> list, Boolean checkTecOrStu) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
         this.checkTecOrStu = checkTecOrStu;
     }
     @Override
-    public QuerySelectAdapter.QueryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new QuerySelectAdapter.QueryViewHolder(inflater.inflate(R.layout.query_select_course_layout,parent,false),listener,longClickListener);
+    public DoubanMomentAdapter.DoubanMomentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new DoubanMomentAdapter.DoubanMomentViewHolder(inflater.inflate(R.layout.query_select_course_layout,parent,false),listener,longClickListener);
     }
 
     @Override
-    public void onBindViewHolder(QuerySelectAdapter.QueryViewHolder holder, int position) {
+    public void onBindViewHolder(DoubanMomentAdapter.DoubanMomentViewHolder holder, int position) {
         QuerySelect query = list.get(position);
 
         if (checkTecOrStu)
@@ -63,7 +61,7 @@ public class QuerySelectAdapter extends RecyclerView.Adapter<QuerySelectAdapter.
         this.longClickListener = longClickListener;
     }
 
-    public class QueryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
+    public class DoubanMomentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
         TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername;
         ImageView iv_query_select_course_manage;
@@ -71,7 +69,7 @@ public class QuerySelectAdapter extends RecyclerView.Adapter<QuerySelectAdapter.
         OnRecyclerViewClickListener listener;
         OnRecyclerViewLongClickListener longClickListener;
 
-        public QueryViewHolder(View itemView, OnRecyclerViewClickListener listener, OnRecyclerViewLongClickListener longClickListener) {
+        public DoubanMomentViewHolder(View itemView, OnRecyclerViewClickListener listener, OnRecyclerViewLongClickListener longClickListener) {
             super(itemView);
 
             tv_query_select_course_id = itemView.findViewById(R.id.tv_query_select_course_id);

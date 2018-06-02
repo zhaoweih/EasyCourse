@@ -17,44 +17,33 @@
             android:name=".ui.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.LoginActivity" >
-
-        </activity>
-        <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity">
-
-        </activity>
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity" >
-
-        </activity>
+        <activity android:name=".ui.UtilActivity" />
         <activity android:name=".ui.RegisterListView" />
         <activity android:name=".ui.UserInformation" />
         <activity android:name=".leave.LeaveListActivity" />
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
-
         <activity android:name=".course.CourseActivity" />
         <activity android:name=".course.SendNoti" />
         <activity android:name=".course.SubmitActivity" />
         <activity android:name=".course.QueryActivity" />
-        <activity android:name=".seat.CreateActivity">
-
-        </activity>
-        <activity android:name=".seat.EnterActivity">
-
-        </activity>
-        <activity android:name=".seat.SeatRecActivity">
-
-        </activity>
-        <activity android:name=".course.QuerySelectActivity">
-        </activity>
+        <activity android:name=".seat.CreateActivity" />
+        <activity android:name=".seat.EnterActivity" />
+        <activity android:name=".seat.SeatRecActivity" />
+        <activity android:name=".course.QuerySelectActivity" />
+        <activity android:name=".course.QuerySelectCourseActivity"></activity>
+        <activity android:name=".course.CourseManagerActivity"></activity>
+        <activity android:name=".course.QueryNotiActivity"></activity>
     </application>
 
 </manifest>

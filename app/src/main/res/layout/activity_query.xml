@@ -49,10 +49,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:background="#fff"
+                        android:layout_marginLeft="10dp"
                         android:hint="请输入课程名字或者教师编号" />
 
                     <Button
                         android:id="@+id/query"
+                        android:background="#0000"
+                        android:textColor="@color/colorAccent"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

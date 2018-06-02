@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".course.QuerySelectActivity">
+    tools:context=".course.QuerySelectCourseActivity">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/query_select_refresh"
+        android:id="@+id/query_noti_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize">
@@ -37,7 +37,7 @@
                 android:orientation="vertical">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_query_select_course_list"
+                    android:id="@+id/rv_query_noti_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -46,7 +46,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/query_select_empty_view"
+                android:id="@+id/query_noti_empty_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"

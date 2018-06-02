@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016 lizhaotailang
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="请假系统"
+        >
+        <Preference
+            android:title="@string/submit_leave"
+            android:key="submit"/>
+        <Preference
+            android:title="@string/confirmAndShow_leave"
+            android:key="confirm"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="点名系统">
+
+        <Preference
+            android:title="创建点名房间(4T)"
+            android:key="seat_create"/>
+
+        <Preference
+            android:title="进入点名系统(4S)"
+            android:key="seat_enter"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="课程系统"
+        >
+        <Preference
+            android:title="@string/sendnoti"
+            android:key="sendnoti"/>
+        <Preference
+            android:title="@string/submitcourse"
+            android:key="submitcourse"/>
+        <Preference
+            android:title="@string/queryandselectcouse"
+            android:key="queryandselectcourse"/>
+        <!--<Preference
+            android:title="@string/queryselectcouse"
+            android:key="queryselectcourse"/>-->
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

@@ -14,7 +14,10 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
+
+import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -30,7 +33,8 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 public class SendNoti extends AppCompatActivity implements View.OnClickListener {
     private static final Class thisClass = SendNoti.class;
     //课程编号、公告的截止日期、增加的截止日期的时间（一星期，两星期、三星期、四星期、一个月、两个月、三个月）
-    TextView tv_sendnoti_coursenum, tv_sendnoti_date, tv_sendnoti_order;
+    TextView  tv_sendnoti_date, tv_sendnoti_order;
+    EditText et_sendnoti_coursenum;
             //返回到主页
     ImageView iv_sendnotireturntohome;
     //公告的内容
@@ -49,15 +53,13 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_noti);
         initViews();
-        setCurrentCoursename();
-
         setTvSendNotDate(expireTime);
     }
 
     private void initViews() {
         expireTime = 0;
         expireDuration = 0;
-        tv_sendnoti_coursenum = (TextView) findViewById(R.id.tv_sendnoti_coursenum);
+        et_sendnoti_coursenum = (EditText) findViewById(R.id.et_sendnoti_coursenum);
         tv_sendnoti_date = (TextView) findViewById(R.id.tv_sendnoti_date);
         tv_sendnoti_order = (TextView) findViewById(R.id.tv_sendnoti_order);
         iv_sendnotireturntohome=(ImageView) findViewById(R.id.iv_sendnotireturntohome);
@@ -66,10 +68,11 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
         bt_sendnotisubmit = (Button) findViewById(R.id.bt_sendnotisubmit);
 
 
-        tv_sendnoti_coursenum.setOnClickListener(this);
+        et_sendnoti_coursenum.setOnClickListener(this);
         tv_sendnoti_date.setOnClickListener(this);
         tv_sendnoti_order.setOnClickListener(this);
         iv_sendnotireturntohome.setOnClickListener(this);
+        bt_sendnotisubmit.setOnClickListener(this);
     }
 
     @Override
@@ -79,7 +82,7 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.bt_sendnotisubmit:
-               // submitNoti();
+               submitNoti();
                 break;
             case R.id.tv_sendnoti_date:
                 new AlertDialog.Builder(SendNoti.this).setItems(expires, new DialogInterface.OnClickListener() {
@@ -126,9 +129,6 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    public void setCurrentCoursename() {
-        tv_sendnoti_coursenum.setText("当前课程：first head java");
-    }
 
 
 
@@ -150,16 +150,16 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
     public void submitNoti() {
 
         com.zhaoweihao.architechturesample.data.course.SendNoti sendNoti=new com.zhaoweihao.architechturesample.data.course.SendNoti();
-        sendNoti.setCourseId(4);
+        sendNoti.setCourseId(Integer.valueOf(et_sendnoti_coursenum.getText().toString()));
         sendNoti.setContent(et_sendnoti_content.getText().toString());
-        sendNoti.setDate(new LeaveSubmit().getNowDateShort(LeaveSubmit.getNextkDay(new Date(),expireTime+expireDuration)));
-        sendNoti.setTecId("26");
-
+        sendNoti.setDate(new LeaveSubmit().getNowDateShort(new Date()));
+        sendNoti.setEndDate(new LeaveSubmit().getNowDateShort(LeaveSubmit.getNextkDay(new Date(),expireTime+expireDuration)));
+        sendNoti.setTecId(DataSupport.findLast(User.class).getUserId());
         //转换成json数据，借助gson
         String json = new Gson().toJson(sendNoti);
         log(thisClass, json);
         //发送post请求注册
-        String after = "leave/submit";
+        String after = "noti/sendCourseNoti";
         sendPostRequest(after, json, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

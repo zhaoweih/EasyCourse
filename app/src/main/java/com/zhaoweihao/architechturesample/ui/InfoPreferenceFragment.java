@@ -87,60 +87,20 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             }
             return true;
         });
-        // 测试提交请假条
 
-        findPreference("submit").setOnPreferenceClickListener(p -> {
-            User user3 = DataSupport.findLast(User.class);
-            if (user3 == null) {
-                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
-            } else if (user3.getStudentId() == null) {
-                Toast.makeText(getActivity(), "您不是学生，无法请假！", Toast.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(getActivity(), LeaveSubmit.class);
-                startActivity(intent);
-            }
-            return true;
-        });
-        // 测试确认请假条并显示请假条
-
-        findPreference("confirm").setOnPreferenceClickListener(p -> {
-            User user3 = DataSupport.findLast(User.class);
-            if (user3 == null) {
-                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
-            } else {
-                // 修改点
-                // 不要在这里做请求网络的工作，交给LeaveListActivity就可以
-                Intent intent = new Intent(getActivity(), LeaveListActivity.class);
-                startActivity(intent);
-
-
-//                if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
-////                    submit(user3.getTeacherId(), 2);
-//
-//                    log(thisClass, "测试点1");
-//                } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
-////                    submit(user3.getStudentId(), 1);
-//                    log(thisClass, "测试点2");
-//                }
-//                if (Toastflag) {
-//                    Toast.makeText(getActivity(), "写完请假条之后才可显示请假条！", Toast.LENGTH_SHORT).show();
-//                }
-            }
-            return true;
-        });
         // 打开登录界面
         findPreference("login").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
             return true;
         });
-        // 打开点名界面
+
+        /*  // 打开点名界面
         findPreference("seat_select").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), EnterActivity.class);
             startActivity(intent);
             return true;
-        });
-        // 打开发布课程
+        });// 打开发布课程
         findPreference("sendnoti").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), SendNoti.class);
             startActivity(intent);
@@ -163,74 +123,9 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             Intent intent = new Intent(getActivity(), QuerySelectActivity.class);
             startActivity(intent);
             return true;
-        });
+        });*/
+
 
     }
 
-    //判断学生是否有请假条
-//    public void submit(String positoinId, int mode) {
-//
-//        /**
-//         * @id id int (不需要提交，数据库自动生成)
-//         * @username 用户名
-//         * @password 密码
-//         * @studentId 学号
-//         * @teacherId 教师编号
-//         * @classId 班级编号
-//         * @department 学院
-//         * @education 学历 int
-//         * @date 入学时间
-//         * @school 学校
-//         * @sex 性别 int
-//         * @name 真实姓名
-//         */
-//
-//        //发送post请求注册
-//        String after = "leave/query?studentId=" + positoinId;
-//        if (mode == 1) {
-//            after = "leave/query?studentId=" + positoinId;
-//        } else if (mode == 2) {
-//            after = "leave/query?teacherId=" + positoinId;
-//        }
-//
-//        sendGetRequest(after, new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                //发送请求失败，有可能是网络断了或者其他的
-//                //Toast.makeText(RegisterActivity.this,"发送请求失败，请检查网络！", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                String body = response.body().string();
-//                //Gson解析数据 json -> 对象
-//                try {
-//                    RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
-//                    //状态码500表示失败，打印错误信息
-//                    if (restResponse.getCode() == 500) {
-//                        log(thisClass, restResponse.getMsg());
-//                    }
-//                    //200代表成功，打印成功信息
-//                    if (restResponse.getCode() == 200) {
-//                        log(thisClass, "已成功注册");
-//                        // Toast.makeText(RegisterActivity.this,"注册成功！", Toast.LENGTH_SHORT).show();
-//                        //执行注册成功后的操作
-//                        //...
-//
-//                        Leave leaves[] = new Gson().fromJson(restResponse.getPayload().toString(), Leave[].class);
-//                        if (leaves.length == 0) {
-//
-//                        } else {
-//                            Toastflag = false;
-//                            Intent intent = new Intent(getActivity(), LeaveListActivity.class);
-//                            startActivity(intent);
-//                        }
-//
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
 }

@@ -1,5 +1,6 @@
 package com.zhaoweihao.architechturesample.timeline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.course.QueryActivity;
 
 
 public class TimelineFragment extends Fragment {
@@ -46,6 +48,8 @@ public class TimelineFragment extends Fragment {
 
         }
 
+        new DoubanMomentPresenter(mDoubanFragment);
+
     }
 
     @Nullable
@@ -57,10 +61,10 @@ public class TimelineFragment extends Fragment {
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 2) {
-                    mFab.hide();
-                } else {
+                if (tab.getPosition() == 1) {
                     mFab.show();
+                } else {
+                    mFab.hide();
                 }
             }
 
@@ -76,11 +80,15 @@ public class TimelineFragment extends Fragment {
         });
 
         mFab.setOnClickListener(v -> {
-            if (mTabLayout.getSelectedTabPosition() == 0) {
-                //展示日期选择器
-            } else  {
-                //展示日期选择器
-            }
+//            if (mTabLayout.getSelectedTabPosition() == 0) {
+//                //展示日期选择器
+//
+//            } else  {
+//                //展示日期选择器
+//            }
+            // 点击浮动按钮进入搜索课程页面
+            Intent intent = new Intent(getActivity(), QueryActivity.class);
+            startActivity(intent);
         });
 
         return view;
