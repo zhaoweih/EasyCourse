@@ -55,7 +55,7 @@
                android:layout_height="match_parent"
                android:text="占位纪录"
                android:layout_weight="2"
-               android:textColor="@color/colorPrimary"
+               android:textColor="@color/colorAccent"
                />
        </LinearLayout>
 

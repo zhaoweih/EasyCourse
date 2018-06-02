@@ -134,11 +134,7 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
             startActivity(intent);
             return true;
         });
-        /*// 打开课程查询并选课queryselectcourse
-        findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
 
-            return true;
-        });
 
         // 打开翻译页面
         findPreference("translate").setOnPreferenceClickListener(p -> {
@@ -152,7 +148,7 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
             Intent intent = new Intent(getActivity(), ZhihuDailyActivity.class);
             startActivity(intent);
             return true;
-        });*/
+        });
 
     }
 
