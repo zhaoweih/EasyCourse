@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.course.QueryActivity;
-import com.zhaoweihao.architechturesample.course.QuerySelectActivity;
 import com.zhaoweihao.architechturesample.course.SendNoti;
 import com.zhaoweihao.architechturesample.course.SubmitActivity;
 import com.zhaoweihao.architechturesample.database.User;
@@ -32,12 +31,8 @@ import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
 import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
 import com.zhaoweihao.architechturesample.seat.CreateActivity;
 import com.zhaoweihao.architechturesample.seat.EnterActivity;
-import com.zhaoweihao.architechturesample.ui.LoginActivity;
-import com.zhaoweihao.architechturesample.ui.UserInformation;
 
 import org.litepal.crud.DataSupport;
-
-import sviolet.seatselectionview.demo.SeatSelectionActivity;
 
 
 /**
@@ -116,8 +111,7 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
         });
         // 打开课程查询并选课queryselectcourse
         findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), QuerySelectActivity.class);
-            startActivity(intent);
+            
             return true;
         });
 

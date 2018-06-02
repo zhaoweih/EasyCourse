@@ -52,9 +52,6 @@
         <activity android:name=".seat.SeatRecActivity">
 
         </activity>
-        <activity android:name=".course.QuerySelectActivity">
-
-        </activity>
     </application>
 
 </manifest>

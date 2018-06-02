@@ -17,45 +17,16 @@
 package com.zhaoweihao.architechturesample.ui;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.course.QueryActivity;
-import com.zhaoweihao.architechturesample.course.QuerySelectActivity;
-import com.zhaoweihao.architechturesample.course.SendNoti;
-import com.zhaoweihao.architechturesample.course.SubmitActivity;
-import com.zhaoweihao.architechturesample.data.Leave;
-import com.zhaoweihao.architechturesample.data.RestResponse;
-import com.zhaoweihao.architechturesample.data.course.Query;
-import com.zhaoweihao.architechturesample.data.course.QuerySelect;
-import com.zhaoweihao.architechturesample.data.course.Select;
-import com.zhaoweihao.architechturesample.data.course.Submit;
 import com.zhaoweihao.architechturesample.database.User;
-import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
-import com.zhaoweihao.architechturesample.leave.LeaveShow;
-import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
 
 import org.litepal.crud.DataSupport;
-import org.litepal.tablemanager.Connector;
-
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import sviolet.seatselectionview.demo.SeatSelectionActivity;
-
-import static com.zhaoweihao.architechturesample.util.HttpUtil.sendGetRequest;
-import static com.zhaoweihao.architechturesample.util.Utils.*;
 
 
 /**

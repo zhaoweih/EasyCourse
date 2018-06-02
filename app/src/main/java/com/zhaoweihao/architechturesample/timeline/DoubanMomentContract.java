@@ -19,11 +19,9 @@ package com.zhaoweihao.architechturesample.timeline;
 
 import com.zhaoweihao.architechturesample.BasePresenter;
 import com.zhaoweihao.architechturesample.BaseView;
-import com.zhaoweihao.architechturesample.course.QuerySelectContract;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public interface DoubanMomentContract {
