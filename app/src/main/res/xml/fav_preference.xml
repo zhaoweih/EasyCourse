@@ -60,5 +60,18 @@
             android:key="queryselectcourse"/>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="小工具"
+        >
+        <Preference
+            android:title="翻译君"
+            android:key="translate"/>
+
+        <Preference
+            android:title="知乎日报"
+            android:key="zhihu_daily"/>
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

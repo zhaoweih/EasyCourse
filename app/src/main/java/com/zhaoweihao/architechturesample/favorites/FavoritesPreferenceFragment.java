@@ -29,8 +29,10 @@ import com.zhaoweihao.architechturesample.course.SubmitActivity;
 import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
 import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
+import com.zhaoweihao.architechturesample.reading.ZhihuDailyActivity;
 import com.zhaoweihao.architechturesample.seat.CreateActivity;
 import com.zhaoweihao.architechturesample.seat.EnterActivity;
+import com.zhaoweihao.architechturesample.tools.TranslateActivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -111,7 +113,21 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
         });
         // 打开课程查询并选课queryselectcourse
         findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
-            
+
+            return true;
+        });
+
+        // 打开翻译页面
+        findPreference("translate").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), TranslateActivity.class);
+            startActivity(intent);
+            return true;
+        });
+
+        // 打开知乎日报
+        findPreference("zhihu_daily").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), ZhihuDailyActivity.class);
+            startActivity(intent);
             return true;
         });
 

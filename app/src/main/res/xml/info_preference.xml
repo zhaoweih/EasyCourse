@@ -29,8 +29,53 @@
             android:title="@string/login"
             android:key="login"/>
 
+        <Preference
+            android:title="@string/logout"
+            android:key="login"/>
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="关于">
+        <Preference
+            android:title="@string/version"
+            android:key="version"/>
+        <Preference
+            android:title="Why this App"
+            android:key="why"/>
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="贡献者">
+        <Preference
+            android:title="Android Client"
+            android:key="contributors_android"
+            android:summary="赵威豪&amp;谭新奎"
+            />
+        <Preference
+            android:title="后端(Java)"
+            android:key="contributors_backend"
+            android:summary="赵威豪"
+            />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="支持">
+        <Preference
+            android:title="源代码"
+            android:key="source"
+            android:summary="@string/source_code_desc"
+            />
+        <Preference android:title="反馈bug / 建议"
+            android:key="feedback"
+            android:summary="帮助我们改进应用"/>
+        <Preference android:title="赞赏"
+            android:key="coffee"
+            />
+        <Preference android:title="开源许可证"
+            android:key="open_source_license"/>
+    </PreferenceCategory>
 </PreferenceScreen>

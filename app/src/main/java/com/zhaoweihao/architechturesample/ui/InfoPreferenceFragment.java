@@ -18,12 +18,16 @@ package com.zhaoweihao.architechturesample.ui;
 
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.support.annotation.StringRes;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.widget.Toast;
 
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.customtabs.CustomTabsHelper;
 import com.zhaoweihao.architechturesample.database.User;
 
 import org.litepal.crud.DataSupport;
@@ -65,7 +69,52 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             return true;
         });
 
+        // 打开源代码网页
+        findPreference("source").setOnPreferenceClickListener(p -> {
+            CustomTabsHelper.openUrl(getContext(), getString(R.string.source_code_desc));
+            return true;
+        });
 
+        // 打开贡献者目录
+        findPreference("contributors_android").setOnPreferenceClickListener(p -> {
+            CustomTabsHelper.openUrl(getContext(), getString(R.string.contributors));
+            return true;
+        });
+
+        // 打开贡献者目录
+        findPreference("contributors_backend").setOnPreferenceClickListener(p -> {
+            CustomTabsHelper.openUrl(getContext(), getString(R.string.contributors_backend));
+            return true;
+        });
+
+        // 通过发送邮件反馈
+        findPreference("feedback").setOnPreferenceClickListener(p -> {
+            try{
+                Uri uri = Uri.parse(getString(R.string.sendto));
+                Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic));
+                intent.putExtra(Intent.EXTRA_TEXT,
+                        getString(R.string.device_model) + Build.MODEL + "\n"
+                                + getString(R.string.sdk_version) + Build.VERSION.RELEASE + "\n"
+                                + getString(R.string.version));
+                startActivity(intent);
+            } catch (android.content.ActivityNotFoundException ex){
+                showMessage(R.string.no_mail_app);
+            }
+            return true;
+        });
+
+        // 展示开源协议
+        findPreference("open_source_license").setOnPreferenceClickListener(p -> {
+            startActivity(new Intent(getActivity(), LicenseActivity.class));
+            return true;
+        });
+
+
+    }
+
+    private void showMessage(@StringRes int resId) {
+        Toast.makeText(getContext(), resId, Toast.LENGTH_SHORT).show();
     }
 
 }
