@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.zhaoweihao.architechturesample.course.QuerySelectContract;
 import com.zhaoweihao.architechturesample.data.OnStringListener;
 import com.zhaoweihao.architechturesample.data.StringModelImpl;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;

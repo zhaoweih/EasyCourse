@@ -24,6 +24,9 @@
     <string name="sendnoti">发送课程通知(4T)</string>
     <string name="submitcourse">提交课程(4T)</string>
     <string name="queryandselectcouse">查询并选课(4S)</string>
+
+    <string name="logout">注销</string>
+
     <string name="queryselectcouse">查询已选课程信息(4S)</string>
     <!-- info end -->
     <!-- manager -->
@@ -149,7 +152,33 @@
     <string name="seat_selection_bottom_bar_submit">确认座位</string>
     <!-- selectionview end -->
 
+    <!-- translate -->
+    <string name="input_text">在此输入要翻译的文本...</string>
+    <string name="copy_success">复制成功</string>
+    <string name="input_empty">输入的文本为空</string>
+    <string name="translate_title">译文</string>
+    <string name="explains_title">详细译义</string>
+    <string name="web_title">短语</string>
+    <string name="share_choice">请选择要分享的应用</string>
+
+    <!-- translate end -->
+
+    <string name="no_browser_found">No browser found</string>
+
+    <string name="source_code_desc">https://github.com/zhaoweih/4S-T</string>
+    <string name="contributors">https://github.com/zhaoweih/4S-T/graphs/contributors</string>
+    <string name="sendto">mailto:zhaoweihao.dev@gmail.com</string>
+    <string name="mail_topic">4ST Feedback / Advice</string>
+    <string name="device_model">Device Version:</string>
+    <string name="sdk_version">SDK Version:</string>
+    <string name="no_mail_app">No email app found</string>
+
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="contributors_backend">https://github.com/zhaoweih</string>
+    <string name="version">Version:V1.0.0</string>
+
+    <string name="open_source_licenses">Open Source Licenses</string>
+
 
 </resources>

@@ -17,46 +17,26 @@
 package com.zhaoweihao.architechturesample.ui;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.support.annotation.StringRes;
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.course.QueryActivity;
-import com.zhaoweihao.architechturesample.course.QuerySelectActivity;
-import com.zhaoweihao.architechturesample.course.SendNoti;
-import com.zhaoweihao.architechturesample.course.SubmitActivity;
-import com.zhaoweihao.architechturesample.data.Leave;
-import com.zhaoweihao.architechturesample.data.RestResponse;
-import com.zhaoweihao.architechturesample.data.course.Query;
-import com.zhaoweihao.architechturesample.data.course.QuerySelect;
-import com.zhaoweihao.architechturesample.data.course.Select;
-import com.zhaoweihao.architechturesample.data.course.Submit;
+import com.zhaoweihao.architechturesample.customtabs.CustomTabsHelper;
 import com.zhaoweihao.architechturesample.database.User;
+
 import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
 import com.zhaoweihao.architechturesample.leave.LeaveShow;
 import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
 import com.zhaoweihao.architechturesample.seat.EnterActivity;
 
+
 import org.litepal.crud.DataSupport;
-import org.litepal.tablemanager.Connector;
-
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import sviolet.seatselectionview.demo.SeatSelectionActivity;
-
-import static com.zhaoweihao.architechturesample.util.HttpUtil.sendGetRequest;
-import static com.zhaoweihao.architechturesample.util.Utils.*;
 
 
 /**
@@ -95,37 +75,53 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-        /*  // 打开点名界面
-        findPreference("seat_select").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), EnterActivity.class);
-            startActivity(intent);
-            return true;
-        });// 打开发布课程
-        findPreference("sendnoti").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), SendNoti.class);
-            startActivity(intent);
+        // 打开源代码网页
+        findPreference("source").setOnPreferenceClickListener(p -> {
+            CustomTabsHelper.openUrl(getContext(), getString(R.string.source_code_desc));
             return true;
         });
-        // 打开提交课程
-        findPreference("submitcourse").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), SubmitActivity.class);
-            startActivity(intent);
+
+        // 打开贡献者目录
+        findPreference("contributors_android").setOnPreferenceClickListener(p -> {
+            CustomTabsHelper.openUrl(getContext(), getString(R.string.contributors));
             return true;
         });
-        // 打开课程查询并选课queryandselectcourse
-        findPreference("queryandselectcourse").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), QueryActivity.class);
-            startActivity(intent);
+
+        // 打开贡献者目录
+        findPreference("contributors_backend").setOnPreferenceClickListener(p -> {
+            CustomTabsHelper.openUrl(getContext(), getString(R.string.contributors_backend));
             return true;
         });
-        // 打开课程查询并选课queryselectcourse
-        findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), QuerySelectActivity.class);
-            startActivity(intent);
+
+        // 通过发送邮件反馈
+        findPreference("feedback").setOnPreferenceClickListener(p -> {
+            try{
+                Uri uri = Uri.parse(getString(R.string.sendto));
+                Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic));
+                intent.putExtra(Intent.EXTRA_TEXT,
+                        getString(R.string.device_model) + Build.MODEL + "\n"
+                                + getString(R.string.sdk_version) + Build.VERSION.RELEASE + "\n"
+                                + getString(R.string.version));
+                startActivity(intent);
+            } catch (android.content.ActivityNotFoundException ex){
+                showMessage(R.string.no_mail_app);
+            }
             return true;
-        });*/
+        });
+
+        // 展示开源协议
+        findPreference("open_source_license").setOnPreferenceClickListener(p -> {
+            startActivity(new Intent(getActivity(), LicenseActivity.class));
+            return true;
+        });
 
 
+    }
+
+
+    private void showMessage(@StringRes int resId) {
+        Toast.makeText(getContext(), resId, Toast.LENGTH_SHORT).show();
     }
 
 }
