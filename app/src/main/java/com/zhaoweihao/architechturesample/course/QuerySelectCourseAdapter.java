@@ -1,4 +1,4 @@
-package com.zhaoweihao.architechturesample.timeline;
+package com.zhaoweihao.architechturesample.course;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +16,7 @@ import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListe
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapter.DoubanMomentViewHolder> {
+public class QuerySelectCourseAdapter extends RecyclerView.Adapter<QuerySelectCourseAdapter.QueryViewHolder>{
     private final Context context;
     private LayoutInflater inflater;
     private final List<QuerySelect> list;
@@ -24,27 +24,23 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
 
     private OnRecyclerViewClickListener listener;
     private OnRecyclerViewLongClickListener longClickListener;
-    public DoubanMomentAdapter(Context context, ArrayList<QuerySelect> list, Boolean checkTecOrStu) {
+    public QuerySelectCourseAdapter(Context context, ArrayList<QuerySelect> list, Boolean checkTecOrStu) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
         this.checkTecOrStu = checkTecOrStu;
     }
     @Override
-    public DoubanMomentAdapter.DoubanMomentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DoubanMomentAdapter.DoubanMomentViewHolder(inflater.inflate(R.layout.query_select_course_layout,parent,false),listener,longClickListener);
+    public QuerySelectCourseAdapter.QueryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new QuerySelectCourseAdapter.QueryViewHolder(inflater.inflate(R.layout.query_course_student_list_layout,parent,false),listener,longClickListener);
     }
 
     @Override
-    public void onBindViewHolder(DoubanMomentAdapter.DoubanMomentViewHolder holder, int position) {
+    public void onBindViewHolder(QuerySelectCourseAdapter.QueryViewHolder holder, int position) {
         QuerySelect query = list.get(position);
-
         if (checkTecOrStu)
             holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);
-
-        holder.tv_query_select_course_id.setText("课程ID: " + query.getCourseId());
-        holder.tv_query_select_course_name.setText("课程名称: " + query.getCourseName());
-        holder.tv_query_select_course_teachername.setText("课程老师: " + query.getTeacherName());
+        holder.tv_query_student_list_studentId.setText("学号: " + query.getStudentId());
 
     }
 
@@ -61,21 +57,23 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
         this.longClickListener = longClickListener;
     }
 
-    public class DoubanMomentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
+    public class QueryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
-        TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername;
+        //TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername;
+        TextView tv_query_student_list_studentId;
         ImageView iv_query_select_course_manage;
 
         OnRecyclerViewClickListener listener;
         OnRecyclerViewLongClickListener longClickListener;
 
-        public DoubanMomentViewHolder(View itemView, OnRecyclerViewClickListener listener, OnRecyclerViewLongClickListener longClickListener) {
+        public QueryViewHolder(View itemView, OnRecyclerViewClickListener listener, OnRecyclerViewLongClickListener longClickListener) {
             super(itemView);
 
-            tv_query_select_course_id = itemView.findViewById(R.id.tv_query_select_course_id);
-            tv_query_select_course_name = itemView.findViewById(R.id.tv_query_select_course_name);
-            tv_query_select_course_teachername = itemView.findViewById(R.id.tv_query_select_course_teachername);
+           // tv_query_select_course_id = itemView.findViewById(R.id.tv_query_select_course_id);
+            //tv_query_select_course_name = itemView.findViewById(R.id.tv_query_select_course_name);
+           // tv_query_select_course_teachername = itemView.findViewById(R.id.tv_query_select_course_teachername);
             //iv_query_select_course_manage= itemView.findViewById(R.id.iv_query_select_course_manage);去掉图片
+            tv_query_student_list_studentId=itemView.findViewById(R.id.tv_query_student_list_studentId);
 
             this.listener = listener;
             itemView.setOnClickListener(this);

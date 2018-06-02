@@ -55,9 +55,9 @@
         <Preference
             android:title="@string/queryandselectcouse"
             android:key="queryandselectcourse"/>
-        <Preference
+        <!--<Preference
             android:title="@string/queryselectcouse"
-            android:key="queryselectcourse"/>
+            android:key="queryselectcourse"/>-->
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -47,19 +47,21 @@ import org.litepal.crud.DataSupport;
 public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
     private static final Class thisClass = FavoritesPreferenceFragment.class;
     private boolean Toastflag;
+    private User userCheck;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         Toastflag = true;
-        addPreferencesFromResource(R.xml.fav_preference);
 
+        //用来判断当前的用户为学生或老师
+        addPreferencesFromResource(R.xml.fav_preference);
         // 测试提交请假条
 
         findPreference("submit").setOnPreferenceClickListener(p -> {
-            User user3 = DataSupport.findLast(User.class);
-            if (user3 == null) {
+            userCheck= DataSupport.findLast(User.class);
+            if (userCheck == null) {
                 Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
-            } else if (user3.getStudentId() == null) {
+            } else if (userCheck.getStudentId() == null) {
                 Toast.makeText(getActivity(), "您不是学生，无法请假！", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(getActivity(), LeaveSubmit.class);
@@ -70,8 +72,8 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
         // 测试确认请假条并显示请假条
 
         findPreference("confirm").setOnPreferenceClickListener(p -> {
-            User user3 = DataSupport.findLast(User.class);
-            if (user3 == null) {
+            userCheck= DataSupport.findLast(User.class);
+            if (userCheck == null) {
                 Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
             } else {
                 // 修改点
@@ -83,8 +85,15 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
         });
         // 创建点名房间
         findPreference("seat_create").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), CreateActivity.class);
-            startActivity(intent);
+            userCheck= DataSupport.findLast(User.class);
+            if (userCheck == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else if (userCheck.getTeacherId() == null) {
+                Toast.makeText(getActivity(), "您不是老师，无法创建点名房间！", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getActivity(), CreateActivity.class);
+                startActivity(intent);
+            }
             return true;
         });
         // 进入点名房间
@@ -93,16 +102,30 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
             startActivity(intent);
             return true;
         });
-        // 打开发布课程
+        // 打开发布课程通知
         findPreference("sendnoti").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), SendNoti.class);
-            startActivity(intent);
+            userCheck= DataSupport.findLast(User.class);
+            if (userCheck == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else if (userCheck.getTeacherId() == null) {
+                Toast.makeText(getActivity(), "您不是老师，无法发布通知！", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getActivity(), SendNoti.class);
+                startActivity(intent);
+            }
             return true;
         });
         // 打开提交课程
         findPreference("submitcourse").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), SubmitActivity.class);
-            startActivity(intent);
+            userCheck= DataSupport.findLast(User.class);
+            if (userCheck == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else if (userCheck.getTeacherId() == null) {
+                Toast.makeText(getActivity(), "您不是老师，无法提交课程！", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getActivity(), SubmitActivity.class);
+                startActivity(intent);
+            }
             return true;
         });
         // 打开课程查询并选课queryandselectcourse
@@ -111,7 +134,7 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
             startActivity(intent);
             return true;
         });
-        // 打开课程查询并选课queryselectcourse
+        /*// 打开课程查询并选课queryselectcourse
         findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
 
             return true;
@@ -129,7 +152,7 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
             Intent intent = new Intent(getActivity(), ZhihuDailyActivity.class);
             startActivity(intent);
             return true;
-        });
+        });*/
 
     }
 

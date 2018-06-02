@@ -6,12 +6,14 @@ public class SendNoti {
      @content: "课后作业：查询潮州八景",
      @date: 2018-05-25,
      @tecId： 26
+     @endDate:2018-05-25
      */
 
     private int courseId;
     private String content;
     private String date;
-    private String tecId;
+    private int tecId;
+    private String endDate;
 
     public int getCourseId() {
         return courseId;
@@ -33,10 +35,16 @@ public class SendNoti {
     public void setDate(String date) {
         this.date = date;
     }
-    public String getTecId() {
+    public int getTecId() {
         return tecId;
     }
-    public void setTecId(String tecId) {
+    public void setTecId(int tecId) {
         this.tecId = tecId;
+    }
+    public String getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }

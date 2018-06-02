@@ -29,6 +29,13 @@ import android.widget.Toast;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.customtabs.CustomTabsHelper;
 import com.zhaoweihao.architechturesample.database.User;
+<<<<<<< HEAD
+=======
+import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
+import com.zhaoweihao.architechturesample.leave.LeaveShow;
+import com.zhaoweihao.architechturesample.leave.LeaveSubmit;
+import com.zhaoweihao.architechturesample.seat.EnterActivity;
+>>>>>>> TanXinKui-master
 
 import org.litepal.crud.DataSupport;
 
@@ -69,6 +76,7 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             return true;
         });
 
+<<<<<<< HEAD
         // 打开源代码网页
         findPreference("source").setOnPreferenceClickListener(p -> {
             CustomTabsHelper.openUrl(getContext(), getString(R.string.source_code_desc));
@@ -112,6 +120,38 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
 
 
     }
+=======
+        /*  // 打开点名界面
+        findPreference("seat_select").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), EnterActivity.class);
+            startActivity(intent);
+            return true;
+        });// 打开发布课程
+        findPreference("sendnoti").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), SendNoti.class);
+            startActivity(intent);
+            return true;
+        });
+        // 打开提交课程
+        findPreference("submitcourse").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), SubmitActivity.class);
+            startActivity(intent);
+            return true;
+        });
+        // 打开课程查询并选课queryandselectcourse
+        findPreference("queryandselectcourse").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), QueryActivity.class);
+            startActivity(intent);
+            return true;
+        });
+        // 打开课程查询并选课queryselectcourse
+        findPreference("queryselectcourse").setOnPreferenceClickListener(p -> {
+            Intent intent = new Intent(getActivity(), QuerySelectActivity.class);
+            startActivity(intent);
+            return true;
+        });*/
+
+>>>>>>> TanXinKui-master
 
     private void showMessage(@StringRes int resId) {
         Toast.makeText(getContext(), resId, Toast.LENGTH_SHORT).show();

@@ -48,12 +48,13 @@
             android:layout_margin="5dp"
             android:background="#fff"
             android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tv_sendnoti_coursenum"
+            <EditText
+                android:id="@+id/et_sendnoti_coursenum"
                 android:layout_width="match_parent"
-                android:text="@string/sendnoti_coursenum0_text"
+                android:hint="@string/sendnoti_coursenum0_text"
                 android:gravity="center"
                 android:textColor="#000"
+                android:background="#fff"
                 android:textSize="18dp"
                 android:layout_height="40dp" />
         </RelativeLayout>
@@ -76,8 +77,8 @@
         <RelativeLayout
             android:id="@+id/ry_sendnoti_time"
             android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
+            android:layout_margin="25dp"
+            android:layout_width="match_parent"
             android:layout_below="@id/ry_sendnoti_content"
             android:layout_height="wrap_content">
             <TextView
@@ -87,8 +88,10 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:textColor="#000"
-                android:background="#fff"
+                android:textColor="#fff"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/round_border_sendnoti_button"
                 android:layout_height="40dp" />
             <TextView
                 android:id="@+id/tv_sendnoti_order"
@@ -97,9 +100,9 @@
                 android:layout_below="@id/tv_sendnoti_date"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:textColor="#000"
-                android:layout_marginTop="5dp"
-                android:background="#fff"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/round_border_sendnoti_button"
+                android:textColor="#fff"
                 android:layout_height="40dp" />
         </RelativeLayout>
     </RelativeLayout>

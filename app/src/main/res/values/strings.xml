@@ -24,10 +24,15 @@
     <string name="sendnoti">发送课程通知(4T)</string>
     <string name="submitcourse">提交课程(4T)</string>
     <string name="queryandselectcouse">查询并选课(4S)</string>
-    <string name="queryselectcouse">查询选课信息(4S)</string>
-    <string name="logout">注销</string>
-    <!-- info end -->
 
+    <string name="logout">注销</string>
+
+    <string name="queryselectcouse">查询已选课程信息(4S)</string>
+    <!-- info end -->
+    <!-- manager -->
+    <string name="showStudentList">查看选择该课程的学生</string>
+    <string name="showNotiList">查看该课程的通告</string>
+    <!-- manager end -->
     <!-- login -->
     <string name="register_text">马上注册</string>
     <string name="returntohome_text">返回主页</string>
@@ -134,7 +139,7 @@
 
     <string name="sendnoti_title_text">课程公告</string>
     <string name="sendnoti_submit_text">发布</string>
-    <string name="sendnoti_coursenum0_text">选择课程编号</string>
+    <string name="sendnoti_coursenum0_text">请输入课程编号</string>
     <string name="sendnoti_reason0_text">填写课程公告信息</string>
     <string name="sendnoti_selectdate_text">选择公告截止日期</string>
     <string name="sendnoti_selectorder_text">点击选择增加日期</string>

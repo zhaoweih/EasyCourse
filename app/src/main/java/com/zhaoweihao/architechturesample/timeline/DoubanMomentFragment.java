@@ -1,5 +1,6 @@
 package com.zhaoweihao.architechturesample.timeline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.course.CourseManagerActivity;
+import com.zhaoweihao.architechturesample.course.QuerySelectCourseActivity;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.database.User;
 
@@ -99,10 +102,13 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
             else {
                 adapter.notifyDataSetChanged();
             }
+
             adapter.setItemClickListener((v, position) -> {
                 ArrayList<QuerySelect> queries = presenter.getQueryList();
                 QuerySelect query = queries.get(position);
-
+                Intent intent=new Intent(getActivity(), CourseManagerActivity.class);
+                intent.putExtra("courseId",query.getCourseId());
+                startActivity(intent);
             });
             adapter.setItemLongClickListener((view, position) -> {
                 // 处理长按行为

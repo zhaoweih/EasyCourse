@@ -45,21 +45,31 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="输入老师提供的密令🔑进入点名系统"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/et"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="#fff"
+                        android:gravity="center"
+                        android:textSize="15dp"
                         android:hint="请输入密令" />
 
                     <Button
                         android:id="@+id/btn"
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="300dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:background="@drawable/round_border_manager_button"
                         android:layout_height="wrap_content"
                         android:text="确认进入" />
                 </LinearLayout>
