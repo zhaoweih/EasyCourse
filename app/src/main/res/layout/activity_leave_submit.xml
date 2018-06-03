@@ -48,7 +48,7 @@
             android:id="@+id/ry_leavetop"
             android:layout_width="match_parent"
             android:layout_below="@+id/ry_leavetitle"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_leave_name"
@@ -125,7 +125,7 @@
         <RelativeLayout
             android:id="@+id/ry_leave_content"
             android:layout_width="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:layout_below="@id/ry_leavetop"
             android:layout_height="wrap_content">
             <TextView
@@ -189,8 +189,8 @@
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/ry_leave_time"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_below="@id/ry_leave_content"
             android:layout_height="100dp">

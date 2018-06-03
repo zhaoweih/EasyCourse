@@ -29,6 +29,7 @@ import com.zhaoweihao.architechturesample.data.User;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -133,15 +134,43 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         if (et_studentnum.getText().toString().equals("") || et_classnum.getText().toString().equals("") || et_name.getText().toString().equals("")) {
                             Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
                         } else {
-                            submit();
-                            myhandler.post(updateThread);
+                            AlertDialog alert = new AlertDialog.Builder(RegisterActivity.this).setTitle("温馨提示")
+                                    .setMessage("注册后部分数据将无法更改，确定要注册？")
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                                        @Override//处理确定按钮点击事件
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            submit();
+                                            myhandler.post(updateThread);
+                                        }
+                                    })
+                                    .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                                        @Override
+                                        public void onClick (DialogInterface dialog,int which){
+                                            dialog.cancel();//对话框关闭。
+                                        }
+                                    }).create();
+                            alert.show();
                         }
                     } else if (tv_position.getText().toString().equals("老师")) {
                         if (et_teachernum.getText().toString().equals("") || et_name.getText().toString().equals("")) {
                             Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
                         } else {
-                            submit();
-                            myhandler.post(updateThread);
+                            AlertDialog alert = new AlertDialog.Builder(RegisterActivity.this).setTitle("温馨提示")
+                                    .setMessage("注册后部分数据将无法更改，确定要注册？")
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                                        @Override//处理确定按钮点击事件
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            submit();
+                                            myhandler.post(updateThread);
+                                        }
+                                    })
+                                    .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                                        @Override
+                                        public void onClick (DialogInterface dialog,int which){
+                                            dialog.cancel();//对话框关闭。
+                                        }
+                                    }).create();
+                            alert.show();
                         }
                     }
                 }

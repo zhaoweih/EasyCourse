@@ -54,7 +54,8 @@ public class SubmitActivity extends AppCompatActivity implements SubmitContract.
             return;
         }
 
-        toolbar.setTitle("提交课程");
+        //toolbar.setTitle("提交课程");
+        getSupportActionBar().setTitle("提交课程");
 
         teacherId.setText(user.getTeacherId());
 

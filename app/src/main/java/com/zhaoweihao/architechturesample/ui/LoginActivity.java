@@ -114,8 +114,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 // 修改代码
 //                Intent intent0 = new Intent(LoginActivity.this,MainActivity.class);
 //                startActivity(intent0);
-                finish();
-                break;
+                if(DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class)==null){
+                    Toast.makeText(LoginActivity.this,"请先登录！",Toast.LENGTH_SHORT).show();
+                }else {
+                    finish();
+                    break;
+                }
         }
     }
 

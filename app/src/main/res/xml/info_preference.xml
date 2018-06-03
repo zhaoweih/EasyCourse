@@ -31,7 +31,7 @@
 
         <Preference
             android:title="@string/logout"
-            android:key="login"/>
+            android:key="logout"/>
 
     </PreferenceCategory>
 

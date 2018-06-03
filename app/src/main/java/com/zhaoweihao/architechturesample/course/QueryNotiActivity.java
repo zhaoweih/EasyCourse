@@ -44,12 +44,13 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
             presenter.querySelect(url);
         } else if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
             presenter.querySelect(url);
-            query_noti_refresh.setOnRefreshListener(() -> {
-                presenter.querySelect(url);
-                adapter.notifyDataSetChanged();
-                stopLoading();
-            });
+
         }*/
+        query_noti_refresh.setOnRefreshListener(() -> {
+            presenter.querySelect(url);
+            adapter.notifyDataSetChanged();
+            stopLoading();
+        });
         presenter.querySelect(url);
     }
     @Override

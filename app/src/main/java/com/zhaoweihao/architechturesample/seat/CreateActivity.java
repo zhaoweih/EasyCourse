@@ -59,6 +59,7 @@ public class CreateActivity extends AppCompatActivity implements CreateContract.
         new CreatePresenter(this, this);
 
         initViews(null);
+        getSupportActionBar().setTitle("创建点名房间");
 
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId){
@@ -168,5 +169,6 @@ public class CreateActivity extends AppCompatActivity implements CreateContract.
         radioGroup = findViewById(R.id.rg);
         button = findViewById(R.id.btn);
         swipeRefreshLayout = findViewById(R.id.refresh);
+        setSupportActionBar(findViewById(R.id.toolbar));
     }
 }
