@@ -23,6 +23,7 @@ public class EnterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter);
 
         initViews();
+        getSupportActionBar().setTitle("进入点名系统");
 
         button.setOnClickListener(v -> {
             String code = editText.getText().toString();
@@ -42,5 +43,6 @@ public class EnterActivity extends AppCompatActivity {
     private void initViews() {
         editText = findViewById(R.id.et);
         button = findViewById(R.id.btn);
+        setSupportActionBar(findViewById(R.id.toolbar));
     }
 }

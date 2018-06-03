@@ -20,6 +20,7 @@ import com.zhaoweihao.architechturesample.course.CourseManagerActivity;
 import com.zhaoweihao.architechturesample.course.QuerySelectCourseActivity;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.database.User;
+import com.zhaoweihao.architechturesample.ui.LoginActivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -53,27 +54,40 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
         initViews(view);
 
         checkTecOrStu = presenter.checkTecOrStu();
-        String suffix = "course/querySelectByStuId";
+        //String suffix ;
+        try {
+            init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return view;
+    }
+    public void init(){
+        if(DataSupport.findLast(User.class)==null){
+
+            Intent intent=new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
         User user3 = DataSupport.findLast(User.class);
         if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
-            Toast.makeText(getActivity(), "您不是学生！", Toast.LENGTH_SHORT).show();
-        } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
-            url = suffix+"?"+"stuId="+user3.getUserId();
+            url =  "course/query?teacherId="+user3.getTeacherId();
             presenter.querySelect(url);
-            query_select_refresh.setOnRefreshListener(() -> {
-                presenter.querySelect(url);
-                adapter.notifyDataSetChanged();
-                stopLoading();
-            });
+            // Toast.makeText(getActivity(), "您不是学生！", Toast.LENGTH_SHORT).show();
+        } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
+            url = "course/querySelectByStuId?stuId="+user3.getUserId();
+            presenter.querySelect(url);
         }
-
-        return view;
+        query_select_refresh.setOnRefreshListener(() -> {
+            presenter.querySelect(url);
+            if(adapter!=null){
+            adapter.notifyDataSetChanged();
+            stopLoading();}
+        });
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -107,7 +121,12 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
                 ArrayList<QuerySelect> queries = presenter.getQueryList();
                 QuerySelect query = queries.get(position);
                 Intent intent=new Intent(getActivity(), CourseManagerActivity.class);
-                intent.putExtra("courseId",query.getCourseId());
+                User user3 = DataSupport.findLast(User.class);
+                if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
+                    intent.putExtra("courseId",query.getId());
+                } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
+                    intent.putExtra("courseId",query.getCourseId());
+                }
                 startActivity(intent);
             });
             adapter.setItemLongClickListener((view, position) -> {
@@ -145,5 +164,6 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
     public void onResume() {
         super.onResume();
         presenter.start();
+        init();
     }
 }

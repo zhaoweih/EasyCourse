@@ -17,12 +17,14 @@
 package com.zhaoweihao.architechturesample.ui;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.support.annotation.StringRes;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.widget.Toast;
 
@@ -67,14 +69,40 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
             }
             return true;
         });
-
+        /*
+         *
+         *
+         *
+         * **/
         // 打开登录界面
         findPreference("login").setOnPreferenceClickListener(p -> {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
             return true;
         });
+        // 注销
+        findPreference("logout").setOnPreferenceClickListener(p -> {
 
+            AlertDialog alert = new AlertDialog.Builder(getActivity()).setTitle("温馨提示")
+                    .setMessage("确定要注销么？")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                        @Override//处理确定按钮点击事件
+                        public void onClick(DialogInterface dialog, int which) {
+                            com.zhaoweihao.architechturesample.database.User user3 = DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class);
+                            user3.delete();
+                            Intent intent = new Intent(getActivity(), LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                      @Override
+                     public void onClick (DialogInterface dialog,int which){
+                    dialog.cancel();//对话框关闭。
+                }
+            }).create();
+            alert.show();
+            return true;
+        });
         // 打开源代码网页
         findPreference("source").setOnPreferenceClickListener(p -> {
             CustomTabsHelper.openUrl(getContext(), getString(R.string.source_code_desc));
@@ -95,16 +123,16 @@ public class InfoPreferenceFragment extends PreferenceFragmentCompat {
 
         // 通过发送邮件反馈
         findPreference("feedback").setOnPreferenceClickListener(p -> {
-            try{
+            try {
                 Uri uri = Uri.parse(getString(R.string.sendto));
-                Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
+                Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic));
                 intent.putExtra(Intent.EXTRA_TEXT,
                         getString(R.string.device_model) + Build.MODEL + "\n"
                                 + getString(R.string.sdk_version) + Build.VERSION.RELEASE + "\n"
                                 + getString(R.string.version));
                 startActivity(intent);
-            } catch (android.content.ActivityNotFoundException ex){
+            } catch (android.content.ActivityNotFoundException ex) {
                 showMessage(R.string.no_mail_app);
             }
             return true;

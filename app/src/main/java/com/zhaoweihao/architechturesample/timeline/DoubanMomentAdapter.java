@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
+import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewClickListener;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListener;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +41,22 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
     @Override
     public void onBindViewHolder(DoubanMomentAdapter.DoubanMomentViewHolder holder, int position) {
         QuerySelect query = list.get(position);
+        User user3 = DataSupport.findLast(User.class);
+        if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
+            if(query!=null){
+                holder.tv_query_select_course_id.setText("课程ID: " + query.getId());
+                holder.tv_query_select_course_name.setText("课程名称: " + query.getCourseName());
+                holder.tv_query_select_course_teachername.setText("课程老师: " + query.getTeacherName());}
+        } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
+            if(query!=null){
+                holder.tv_query_select_course_id.setText("课程ID: " + query.getCourseId());
+                holder.tv_query_select_course_name.setText("课程名称: " + query.getCourseName());
+                holder.tv_query_select_course_teachername.setText("课程老师: " + query.getTeacherName());}
+        }
 
-        if (checkTecOrStu)
-            holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);
+        /*if (checkTecOrStu)
+            holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);*/
 
-        holder.tv_query_select_course_id.setText("课程ID: " + query.getCourseId());
-        holder.tv_query_select_course_name.setText("课程名称: " + query.getCourseName());
-        holder.tv_query_select_course_teachername.setText("课程老师: " + query.getTeacherName());
 
     }
 
