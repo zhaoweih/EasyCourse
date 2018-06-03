@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,16 @@ import com.zhaoweihao.architechturesample.course.QuerySelectCourseActivity;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.ui.LoginActivity;
+import com.zhaoweihao.architechturesample.ui.MainActivity;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+
+import static com.zhaoweihao.architechturesample.util.Utils.log;
 
 public class DoubanMomentFragment extends Fragment implements DoubanMomentContract.View{
 
@@ -54,17 +61,22 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
         initViews(view);
 
         checkTecOrStu = presenter.checkTecOrStu();
-        //String suffix ;
-        try {
-            init();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        requestTecOrStu();
+
+        query_select_refresh.setOnRefreshListener(() -> {
+            presenter.querySelect(url);
+            if(adapter!=null){
+                adapter.notifyDataSetChanged();
+                stopLoading();}
+        });
+
         return view;
     }
-    public void init(){
-        if(DataSupport.findLast(User.class)==null){
 
+    public void requestTecOrStu() {
+        
+        if(DataSupport.findLast(User.class)==null){
             Intent intent=new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         }
@@ -72,22 +84,19 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
         if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
             url =  "course/query?teacherId="+user3.getTeacherId();
             presenter.querySelect(url);
-            // Toast.makeText(getActivity(), "您不是学生！", Toast.LENGTH_SHORT).show();
         } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
             url = "course/querySelectByStuId?stuId="+user3.getUserId();
             presenter.querySelect(url);
         }
-        query_select_refresh.setOnRefreshListener(() -> {
-            presenter.querySelect(url);
-            if(adapter!=null){
-            adapter.notifyDataSetChanged();
-            stopLoading();}
-        });
+
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 注册EventBus
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -164,6 +173,19 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
     public void onResume() {
         super.onResume();
         presenter.start();
-        init();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        // 注销EventBus
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(LoginActivity.MessageEvent event) {
+        requestTecOrStu();
     }
 }

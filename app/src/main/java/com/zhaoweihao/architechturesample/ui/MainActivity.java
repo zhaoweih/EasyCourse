@@ -12,6 +12,10 @@ import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.favorites.FavoritesFragment;
 import com.zhaoweihao.architechturesample.timeline.TimelineFragment;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -73,6 +77,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+
+
 
     private void initViews() {
         mBottomNavigationView = findViewById(R.id.bottom_nav);

@@ -23,6 +23,9 @@ import com.zhaoweihao.architechturesample.data.Login;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.User;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Timer timer;
     TimerTask timerTask;
 
+    public static int LOGIN_CALL_DOUBAN_CODE = 7;
+
     String HHH="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initView();
 
         timer.schedule(timerTask,200,200);//延时200ms，每隔200毫秒执行一次run方法
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event) {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -104,16 +125,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 getUsers();
                 }
 
-              /*  testlitepal();
-                Intent intent2 = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent2);*/
+
 
 
             break;
             case R.id.btn_returntohome:
-                // 修改代码
-//                Intent intent0 = new Intent(LoginActivity.this,MainActivity.class);
-//                startActivity(intent0);
                 if(DataSupport.findLast(com.zhaoweihao.architechturesample.database.User.class)==null){
                     Toast.makeText(LoginActivity.this,"请先登录！",Toast.LENGTH_SHORT).show();
                 }else {
@@ -254,6 +270,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "登陆失败"+restResponse.getMsg(), Toast.LENGTH_SHORT).show();
                             ed_username.setText("");
                             ed_password.setText("");
+
                         });
 
                     } catch (Exception e) {
@@ -262,21 +279,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 // code 200等于登录成功
                 if ( restResponse.getCode() == 200 ) {
-                    //首先获取payload (Object) , toString()转换成json
-                    //接着用gson将json组装起来
-                    //切换主进程更新UI
-                    try {
-                        runOnUiThread(() -> {
-                            Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                          /*  Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(intent);*/
-                          finish();
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
                     try {
                         List<com.zhaoweihao.architechturesample.database.User> allDatas = DataSupport.findAll(com.zhaoweihao.architechturesample.database.User.class);
                         if(allDatas.size()>0){
@@ -304,10 +306,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    //首先获取payload (Object) , toString()转换成json
+                    //接着用gson将json组装起来
+                    //切换主进程更新UI
+                    try {
+                        runOnUiThread(() -> {
+                            Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                            // 发送全局事件
+                            EventBus.getDefault().post(new MessageEvent());
+                          finish();
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+
                 }
             }
         });
 
     }
+
+    public static class MessageEvent { /* Additional fields if needed */ }
+
+
+
 
 }
