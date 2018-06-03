@@ -55,11 +55,11 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
 
         checkTecOrStu = presenter.checkTecOrStu();
         //String suffix ;
-        try {
+        /*try {
             init();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return view;
     }
     public void init(){
