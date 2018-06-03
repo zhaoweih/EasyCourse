@@ -48,7 +48,7 @@ public class TimelineFragment extends Fragment {
 
         }
 
-        new DoubanMomentPresenter(mDoubanFragment);
+        new DoubanMomentPresenter(getActivity(), mDoubanFragment);
 
     }
 
