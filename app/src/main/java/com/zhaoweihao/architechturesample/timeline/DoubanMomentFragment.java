@@ -88,7 +88,6 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
