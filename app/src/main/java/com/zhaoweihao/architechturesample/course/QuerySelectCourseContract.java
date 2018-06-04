@@ -16,7 +16,7 @@ public interface QuerySelectCourseContract {
 
         void showLoadError(String error);
 
-        void showSelectSuccess(Boolean status);
+        void showConfirmSuccess(Boolean status);
 
     }
 
@@ -26,5 +26,7 @@ public interface QuerySelectCourseContract {
         ArrayList<QuerySelect> getQueryList();
 
         Boolean checkTecOrStu();
+
+        void confirmRecord(QuerySelect querySelect);
     }
 }

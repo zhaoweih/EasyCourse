@@ -179,6 +179,7 @@
     <string name="version">Version:V1.0.0</string>
 
     <string name="open_source_licenses">Open Source Licenses</string>
+    <string name="showQuizList">查看答题排行榜</string>
 
 
 </resources>
