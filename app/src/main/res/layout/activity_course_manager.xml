@@ -54,6 +54,19 @@
                 android:textColor="@color/colorAccent"
                 android:background="@drawable/round_border_manager_button"
                 android:layout_below="@id/bt_activity_course_manager_StudentList" />
+
+            <Button
+                android:id="@+id/bt_activity_course_manager_QuizList"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:text="@string/showQuizList"
+                android:textSize="18dp"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/round_border_manager_button"
+                android:layout_below="@id/bt_activity_course_manager_NotiList" />
         </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

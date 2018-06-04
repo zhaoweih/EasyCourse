@@ -9,6 +9,7 @@ import com.zhaoweihao.architechturesample.data.StringModelImpl;
 import com.zhaoweihao.architechturesample.data.course.Query;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.data.course.Select;
+import com.zhaoweihao.architechturesample.data.quiz.Add;
 import com.zhaoweihao.architechturesample.database.User;
 
 import org.litepal.crud.DataSupport;
@@ -40,7 +41,7 @@ public class QuerySelectCoursePresenter implements QuerySelectCourseContract.Pre
     @Override
     public void onSuccess(String payload) {
         if (payload == null) {
-            view.showSelectSuccess(true);
+            view.showConfirmSuccess(true);
             view.stopLoading();
             return;
         }
@@ -91,6 +92,34 @@ public class QuerySelectCoursePresenter implements QuerySelectCourseContract.Pre
         }
 
         return false;
+
+    }
+
+    @Override
+    public void confirmRecord(QuerySelect querySelect) {
+        Add add = new Add();
+        add.setCourseId(querySelect.getCourseId());
+        add.setStudentId(querySelect.getStudentId());
+
+        User user = DataSupport.findLast(User.class);
+
+        if (user == null ) {
+            view.showLoadError("请先登录");
+            return;
+        }
+
+        if (user.getTeacherId() == null) {
+            view.showLoadError("你不是老师，不能执行此操作");
+            return;
+        }
+
+        add.setTeacherId(user.getTeacherId());
+
+        String json = new Gson().toJson(add);
+
+        String suffix = "quiz/add";
+
+        model.sentPostRequestInSMI(suffix, json, this);
 
     }
 }

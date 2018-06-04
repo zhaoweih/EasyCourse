@@ -75,7 +75,7 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
     }
 
     public void requestTecOrStu() {
-        
+
         if(DataSupport.findLast(User.class)==null){
             Intent intent=new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);

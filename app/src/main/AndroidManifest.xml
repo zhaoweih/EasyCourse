@@ -23,7 +23,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
@@ -38,29 +37,21 @@
         <activity android:name=".course.SendNoti" />
         <activity android:name=".course.SubmitActivity" />
         <activity android:name=".course.QueryActivity" />
-        <activity android:name=".seat.CreateActivity">
+        <activity android:name=".seat.CreateActivity"></activity>
+        <activity android:name=".seat.EnterActivity"></activity>
+        <activity android:name=".seat.SeatRecActivity"></activity>
+        <activity android:name=".tools.TranslateActivity"></activity>
+        <activity android:name=".ui.LicenseActivity" />
+        <activity android:name=".reading.ZhihuDailyActivity"></activity>
+        <activity android:name=".reading.DetailActivity" />
+        <activity android:name=".course.QuerySelectCourseActivity">
 
         </activity>
-        <activity android:name=".seat.EnterActivity">
+        <activity android:name=".course.CourseManagerActivity" />
+        <activity android:name=".course.QueryNotiActivity" />
+        <activity android:name=".quiz.QuizActivity">
 
         </activity>
-        <activity android:name=".seat.SeatRecActivity">
-
-        </activity>
-        <activity android:name=".tools.TranslateActivity">
-
-        </activity>
-        <activity android:name=".ui.LicenseActivity"/>
-
-        <activity android:name=".reading.ZhihuDailyActivity">
-
-        </activity>
-        <activity android:name=".reading.DetailActivity"/>
-
-
-        <activity android:name=".course.QuerySelectCourseActivity"></activity>
-        <activity android:name=".course.CourseManagerActivity"></activity>
-        <activity android:name=".course.QueryNotiActivity"></activity>
     </application>
 
 </manifest>
