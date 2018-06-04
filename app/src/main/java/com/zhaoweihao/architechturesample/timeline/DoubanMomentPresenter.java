@@ -22,8 +22,8 @@ public class DoubanMomentPresenter implements DoubanMomentContract.Presenter,OnS
     private StringModelImpl model;
     private ArrayList<QuerySelect> queryList = new ArrayList<>();
 
-    public DoubanMomentPresenter(DoubanMomentContract.View view) {
-//        this.context = context;
+    public DoubanMomentPresenter(Context context, DoubanMomentContract.View view) {
+        this.context = context;
         this.view = view;
         this.view.setPresenter(this);
         model = new StringModelImpl(context);
