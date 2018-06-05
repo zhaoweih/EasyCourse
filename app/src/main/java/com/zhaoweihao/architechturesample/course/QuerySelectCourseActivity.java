@@ -1,14 +1,22 @@
 package com.zhaoweihao.architechturesample.course;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhaoweihao.architechturesample.R;
@@ -18,9 +26,10 @@ import com.zhaoweihao.architechturesample.database.User;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class QuerySelectCourseActivity extends AppCompatActivity implements QuerySelectCourseContract.View{
-    public static final String TAG = "QuerySelectCourseActivity";
+    public static final String TAG = "QuerySelectCourse";
     private RecyclerView rv_query_select_course_1_list;
     private SwipeRefreshLayout query_select_course_refresh;
     private LinearLayout query_select_course_empty_view;
@@ -28,6 +37,7 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
     private QuerySelectCourseAdapter adapter;
     private String url;
     private Boolean checkTecOrStu;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +48,55 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
         checkTecOrStu = presenter.checkTecOrStu();
         String suffix = "course/querySelectByCourseId";
         User user3 = DataSupport.findLast(User.class);
-        url = suffix+"?"+"courseId="+intent.getIntExtra("courseId",0);
-        /*if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
-            Toast.makeText(QuerySelectCourseActivity.this, "您不是老师！", Toast.LENGTH_SHORT).show();
+        url = suffix + "?" + "courseId=" + "4";
 
-            presenter.querySelect(url);
-        } else if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
-            presenter.querySelect(url);
+//        url = suffix+"?"+"courseId="+intent.getIntExtra("courseId",0);
 
-        }*/
         query_select_course_refresh.setOnRefreshListener(() -> {
             presenter.querySelect(url);
             adapter.notifyDataSetChanged();
             stopLoading();
         });
+
+        toolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.random:
+                    // 执行随机选取操作
+                    QuerySelect querySelect = randomSelect(presenter.getQueryList());
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setTitle("抽到的学生学号为：")
+                            .setMessage(querySelect.getStudentId())
+                            .setPositiveButton("确认添加纪录", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    presenter.confirmRecord(querySelect);
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .show();
+                    TextView textView = dialog.findViewById(android.R.id.message);
+                    textView.setTextSize(30);
+                    textView.setTextColor(ContextCompat.getColor(QuerySelectCourseActivity.this,R.color.colorAccent));
+                    break;
+                    default:
+            }
+            return true;
+        });
         presenter.querySelect(url);
+    }
+
+
+    private QuerySelect randomSelect(ArrayList<QuerySelect> querySelects) {
+        int max = querySelects.size();
+        int min = 0;
+        Random random = new Random();
+        int s = random.nextInt(max)%(max-min+1) + min;
+        return querySelects.get(s);
     }
     @Override
     public void showResult(ArrayList<QuerySelect> queryArrayList) {
@@ -95,9 +139,9 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
     }
 
     @Override
-    public void showSelectSuccess(Boolean status) {
+    public void showConfirmSuccess(Boolean status) {
         if (status) {
-            Snackbar.make(rv_query_select_course_1_list, "选课成功", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(rv_query_select_course_1_list, "为该同学添加答题次数成功", Snackbar.LENGTH_SHORT).show();
         }
     }
 
@@ -114,11 +158,18 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
         rv_query_select_course_1_list.setLayoutManager(new LinearLayoutManager(this));
         query_select_course_refresh = findViewById(R.id.query_select_course_refresh);
        query_select_course_empty_view= findViewById(R.id.query_select_empty_view);
-        setSupportActionBar(findViewById(R.id.toolbar));
+       toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
     @Override
     protected void onResume() {
         super.onResume();
         presenter.start();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.student_random, menu);
+        return true;
     }
 }

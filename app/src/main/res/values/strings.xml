@@ -135,7 +135,7 @@
     <!-- leaveshow end -->
 
 
-    <!-- leave -->
+    <!-- sendnoti -->
 
     <string name="sendnoti_title_text">课程公告</string>
     <string name="sendnoti_submit_text">发布</string>
@@ -143,7 +143,15 @@
     <string name="sendnoti_reason0_text">填写课程公告信息</string>
     <string name="sendnoti_selectdate_text">选择公告截止日期</string>
     <string name="sendnoti_selectorder_text">点击选择增加日期</string>
-    <!-- leave end -->
+    <!-- sendnoti end -->
+    <!-- sendtopic -->
+    <string name="sendtopic_title_text">课程讨论</string>
+    <string name="sendtopic_submit_text">发布</string>
+    <string name="sendtopic_coursenum0_text">请输入课程编号</string>
+    <string name="sendtopic_reason0_text">填写课程讨论信息</string>
+    <string name="sendtopic_selectdate_text">选择公告截止日期</string>
+    <string name="sendtopic_selectorder_text">点击选择增加日期</string>
+    <!-- sendtopic end -->
     <!-- selectionview -->
     <string name="seat_selection_prompt_available">可选</string>
     <string name="seat_selection_prompt_unavailable">不可选</string>
@@ -179,6 +187,7 @@
     <string name="version">Version:V1.0.0</string>
 
     <string name="open_source_licenses">Open Source Licenses</string>
+    <string name="showQuizList">查看答题排行榜</string>
 
 
 </resources>
