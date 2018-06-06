@@ -17,6 +17,37 @@ public class Select implements Serializable{
     private Integer numC = 0;
     private Integer numD = 0;
 
+    public Integer getNumA() {
+        return numA;
+    }
+
+    public void setNumA(Integer numA) {
+        this.numA = numA;
+    }
+
+    public Integer getNumB() {
+        return numB;
+    }
+
+    public void setNumB(Integer numB) {
+        this.numB = numB;
+    }
+
+    public Integer getNumC() {
+        return numC;
+    }
+
+    public void setNumC(Integer numC) {
+        this.numC = numC;
+    }
+
+    public Integer getNumD() {
+        return numD;
+    }
+
+    public void setNumD(Integer numD) {
+        this.numD = numD;
+    }
 
     public Integer getId() {
         return id;

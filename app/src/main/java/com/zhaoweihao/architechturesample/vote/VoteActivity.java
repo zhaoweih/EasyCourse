@@ -39,6 +39,7 @@ public class VoteActivity extends AppCompatActivity {
     // 四个选择按钮
     private RadioButton radioButton1,radioButton2,radioButton3,radioButton4;
     private Button prev,next;
+    private Button result;
 
     private List<Select> selects;
 
@@ -113,6 +114,12 @@ public class VoteActivity extends AppCompatActivity {
 
 
         });
+
+        result.setOnClickListener(v -> {
+            Intent intent1 = new Intent(VoteActivity.this, ResultActivity.class);
+            intent1.putExtra("voteObj", add);
+            startActivity(intent1);
+        });
     }
 
     private void addRecord() {
@@ -171,6 +178,7 @@ public class VoteActivity extends AppCompatActivity {
         next = findViewById(R.id.btn_next);
         title = findViewById(R.id.tv_title);
         num = findViewById(R.id.tv_num);
+        result = findViewById(R.id.btn_result);
 
         radioButton1 = findViewById(R.id.rb_1);
         radioButton2 = findViewById(R.id.rb_2);
