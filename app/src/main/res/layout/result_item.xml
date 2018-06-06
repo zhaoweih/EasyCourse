@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="@dimen/activity_vertical_margin"
     android:layout_marginRight="@dimen/activity_vertical_margin"
     android:layout_marginTop="@dimen/activity_horizontal_margin">
@@ -10,100 +11,297 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp">
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
 
-        <TextView
-            android:id="@+id/title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:text="题目: "
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/title"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="示例题目"
+                />
+        </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/tv_a"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="选项A: "
+                />
+            <TextView
+                android:id="@+id/tv_a"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="示例选项A"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_a_num"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-        <TextView
-            android:id="@+id/tv_b"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="人数: "
+                />
+            <TextView
+                android:id="@+id/tv_a_num"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="6"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_b_num"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="选项B: "
+                />
+            <TextView
+                android:id="@+id/tv_b"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="示例选项B"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_c"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="人数: "
+                />
+            <TextView
+                android:id="@+id/tv_b_num"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="2"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_c_num"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="选项C: "
+                />
+            <TextView
+                android:id="@+id/tv_c"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="示例选项C"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_d"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="人数: "
+                />
+            <TextView
+                android:id="@+id/tv_c_num"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="3"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_d_num"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="选项D: "
+                />
+            <TextView
+                android:id="@+id/tv_d"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="示例选项D"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:text="人数: "
+                />
+            <TextView
+                android:id="@+id/tv_d_num"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="5"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <com.lixs.charts.BarChart.LBarChartView
+            android:id="@+id/chart"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            app:barShowNumber="4"
+            app:borderColor="@color/colorAccent"
+            app:bottomTextSpace="20dp"
+            app:dataTextColor="@color/colorAccent"
+            app:dataTextSize="12sp"
+            app:descriptionTextColor="@color/colorAccent"
+            app:descriptionTextSize="20sp"
+            app:isClickAnimation="true"
+            app:labelTextColor="@color/colorAccent"
+            app:labelTextSize="10sp"
+            app:leftTextSpace="30dp"
+            app:title="数据统计图"
+            app:titleTextColor="@color/colorAccent"
+            app:titleTextSize="20sp"
+            app:topTextSpace="50dp" />
+
 
     </LinearLayout>
 

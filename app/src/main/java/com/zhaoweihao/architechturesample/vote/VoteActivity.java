@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -44,7 +45,6 @@ public class VoteActivity extends AppCompatActivity {
     // 四个选择按钮
     private RadioButton radioButton1,radioButton2,radioButton3,radioButton4;
     private Button prev,next;
-    private Button result;
 
     private List<Select> selects;
 
@@ -61,6 +61,8 @@ public class VoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vote);
 
         initViews();
+
+        getSupportActionBar().setTitle("问卷");
 
         Intent intent = getIntent();
 
@@ -118,12 +120,6 @@ public class VoteActivity extends AppCompatActivity {
             addRec.setSelectId(count + 1);
 
 
-        });
-
-        result.setOnClickListener(v -> {
-            Intent intent1 = new Intent(VoteActivity.this, ResultActivity.class);
-            intent1.putExtra("voteObj", add);
-            startActivity(intent1);
         });
     }
 
@@ -197,12 +193,13 @@ public class VoteActivity extends AppCompatActivity {
         next = findViewById(R.id.btn_next);
         title = findViewById(R.id.tv_title);
         num = findViewById(R.id.tv_num);
-        result = findViewById(R.id.btn_result);
 
         radioButton1 = findViewById(R.id.rb_1);
         radioButton2 = findViewById(R.id.rb_2);
         radioButton3 = findViewById(R.id.rb_3);
         radioButton4 = findViewById(R.id.rb_4);
+
+        setSupportActionBar(findViewById(R.id.toolbar));
 
     }
 }

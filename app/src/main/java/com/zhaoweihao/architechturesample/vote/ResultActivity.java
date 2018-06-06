@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,6 +32,8 @@ public class ResultActivity extends AppCompatActivity {
 
     public static final String TAG = "ResultActivity";
 
+    private Toolbar toolbar;
+
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -50,6 +53,8 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         initViews();
+
+        getSupportActionBar().setTitle("投票结果分析");
 
         Intent intent = getIntent();
 
@@ -105,7 +110,8 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        setSupportActionBar(findViewById(R.id.toolbar));
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         swipeRefreshLayout = findViewById(R.id.refresh);

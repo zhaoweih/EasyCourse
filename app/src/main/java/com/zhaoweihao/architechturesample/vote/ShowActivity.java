@@ -1,6 +1,7 @@
 package com.zhaoweihao.architechturesample.vote;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -143,12 +144,6 @@ public class ShowActivity extends AppCompatActivity {
 
                              adapter.setItemClickListener((v, position) -> {
                                  // 处理单击事件
-//                                 Log.d(TAG, new Gson().toJson(voteList.get(position)));
-//                                 Intent intent = new Intent(ShowActivity.this, VoteActivity.class);
-//                                 intent.putExtra("voteObj", voteList.get(position));
-//                                 intent.putExtra("position", position);
-//                                 intent.putExtra("courseId", courseId);
-//                                 startActivity(intent);
 
                                  //Make new Dialog
                                  AlertDialog.Builder dialog = new AlertDialog.Builder(ShowActivity.this);
@@ -157,6 +152,8 @@ public class ShowActivity extends AppCompatActivity {
                                  LinearLayout layout = new LinearLayout(ShowActivity.this);
                                  layout.setOrientation(LinearLayout.VERTICAL);
                                  final Button toVote = new Button(ShowActivity.this);
+                                 toVote.setBackgroundColor(ContextCompat.getColor(ShowActivity.this, R.color.colorPrimary));
+                                 toVote.setTextColor(ContextCompat.getColor(ShowActivity.this, R.color.white));
                                  toVote.setText("To Vote");
                                  toVote.setOnClickListener(v1 -> {
                                      Log.d(TAG, new Gson().toJson(voteList.get(position)));
@@ -173,6 +170,8 @@ public class ShowActivity extends AppCompatActivity {
                                      intent.putExtra("courseId", courseId);
                                      startActivity(intent);
                                  });
+                                 toResult.setBackgroundColor(ContextCompat.getColor(ShowActivity.this, R.color.colorPrimary));
+                                 toResult.setTextColor(ContextCompat.getColor(ShowActivity.this, R.color.white));
                                  toResult.setText("To Result");
                                  layout.addView(toResult);
 

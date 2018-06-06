@@ -2,12 +2,15 @@ package com.zhaoweihao.architechturesample.vote;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lixs.charts.BarChart.DragInerfaces;
+import com.lixs.charts.BarChart.LBarChartView;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.vote.Select;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewClickListener;
@@ -21,6 +24,8 @@ import java.util.List;
  */
 
 public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.ResultListViewHolder>{
+
+    private static final String TAG = "ResultListAdapter";
 
     private final Context context;
     private LayoutInflater inflater;
@@ -44,16 +49,21 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
     public void onBindViewHolder(ResultListAdapter.ResultListViewHolder holder, int position) {
         Select select = list.get(position);
 
+        int total = select.getNumA() + select.getNumB() + select.getNumC() + select.getNumD();
+
+        Log.d(TAG, total + "");
+
         holder.title.setText(select.getTitle());
         holder.choiceA.setText(select.getChoiceA());
-        holder.numA.setText(String.valueOf(select.getNumA()));
+        holder.numA.setText(select.getNumA() + " " + "(" + (select.getNumA()*100.0f)/total + "%)");
         holder.choiceB.setText(select.getChoiceB());
-        holder.numB.setText(String.valueOf(select.getNumB()));
+        holder.numB.setText(select.getNumB() + " " + "(" + (select.getNumB()*100.0f)/total + "%)");
         holder.choiceC.setText(select.getChoiceC());
-        holder.numC.setText(String.valueOf(select.getNumC()));
+        holder.numC.setText(select.getNumC() + " " + "(" + (select.getNumC()*100.0f)/total + "%)");
         holder.choiceD.setText(select.getChoiceD());
-        holder.numD.setText(String.valueOf(select.getNumD()));
+        holder.numD.setText(select.getNumD() + " " + "(" + (select.getNumD()*100.0f)/total + "%)");
 
+        initNewBarDatas(holder, select);
 
     }
 
@@ -74,6 +84,8 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
 
         TextView title,choiceA,choiceB,choiceC,choiceD,numA,numB,numC,numD;
 
+        LBarChartView lBarChartView;
+
         OnRecyclerViewClickListener listener;
         OnRecyclerViewLongClickListener longClickListener;
 
@@ -89,6 +101,7 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
             numC = itemView.findViewById(R.id.tv_c_num);
             choiceD = itemView.findViewById(R.id.tv_d);
             numD = itemView.findViewById(R.id.tv_d_num);
+            lBarChartView = itemView.findViewById(R.id.chart);
 
             this.listener = listener;
             itemView.setOnClickListener(this);
@@ -111,5 +124,26 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
             }
             return true;
         }
+
+
+    }
+
+    private void initNewBarDatas(ResultListAdapter.ResultListViewHolder holder, Select select) {
+        final List<Double> datas = new ArrayList<>();
+        final List<String> description = new ArrayList<>();
+
+        datas.add(Double.valueOf(select.getNumA()));
+        datas.add(Double.valueOf(select.getNumB()));
+        datas.add(Double.valueOf(select.getNumC()));
+        datas.add(Double.valueOf(select.getNumD()));
+
+        description.add("A");
+        description.add("B");
+        description.add("C");
+        description.add("D");
+
+
+        holder.lBarChartView.setDatas(datas, description, true);
+
     }
 }

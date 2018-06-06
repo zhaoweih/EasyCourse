@@ -52,6 +52,8 @@ public class SetActivity extends AppCompatActivity {
 
         initViews();
 
+        getSupportActionBar().setTitle("创建问卷");
+
         selectList.clear();
 
         Intent intent = getIntent();
@@ -191,6 +193,8 @@ public class SetActivity extends AppCompatActivity {
         choiceD = findViewById(R.id.et_choiceD);
         prev = findViewById(R.id.btn_prev);
         next = findViewById(R.id.btn_next);
+
+        setSupportActionBar(findViewById(R.id.toolbar));
 
     }
 }

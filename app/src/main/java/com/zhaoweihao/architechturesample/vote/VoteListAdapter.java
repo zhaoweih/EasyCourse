@@ -46,8 +46,8 @@ public class VoteListAdapter extends RecyclerView.Adapter<VoteListAdapter.VoteLi
     public void onBindViewHolder(VoteListAdapter.VoteListViewHolder holder, int position) {
         Add add = list.get(position);
 
-        holder.title.setText("题目： " + add.getTitle());
-        holder.choiceNum.setText("投票题数： " + add.getChoiceNum());
+        holder.title.setText(add.getTitle());
+        holder.choiceNum.setText(String.valueOf(add.getChoiceNum()));
 
     }
 
@@ -81,9 +81,6 @@ public class VoteListAdapter extends RecyclerView.Adapter<VoteListAdapter.VoteLi
 
             title = itemView.findViewById(R.id.title);
             choiceNum = itemView.findViewById(R.id.choice_num);
-            startDate = itemView.findViewById(R.id.start_date);
-            endDate = itemView.findViewById(R.id.end_date);
-            choiceMode = itemView.findViewById(R.id.choice_mode);
 
 
             this.listener = listener;
