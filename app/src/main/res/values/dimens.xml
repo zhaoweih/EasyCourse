@@ -36,4 +36,8 @@
 
     <dimen name="grid_expected_size">360px</dimen>
 
+    <!--timeselector-->
+    <dimen name="pickerview_textsize">40sp</dimen>
+    <!--timeselector-->
+
 </resources>

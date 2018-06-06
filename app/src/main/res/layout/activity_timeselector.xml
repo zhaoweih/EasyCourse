@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".course.SendTopic">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/ry_sendtopicmain"
         android:layout_width="match_parent"
@@ -101,11 +98,10 @@
                 android:layout_below="@id/tv_sendtopic_date"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:visibility="gone"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/round_border_sendtopic_button"
                 android:textColor="#fff"
                 android:layout_height="40dp" />
         </RelativeLayout>
     </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

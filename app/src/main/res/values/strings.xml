@@ -188,6 +188,24 @@
 
     <string name="open_source_licenses">Open Source Licenses</string>
     <string name="showQuizList">查看答题排行榜</string>
+    <string name="SendTopic">发布课程讨论</string>
+    <string name="QueryTopic">查看课程讨论</string>
+
+
+    <!--timeselector-->
+    <string name="time_selector">時間選擇器</string>
+
+    <string name="pickerview_year">年</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_seconds">秒</string>
+
+
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+    <!--timeselector-->
 
 
 </resources>

@@ -2,7 +2,7 @@ package com.zhaoweihao.architechturesample.data.course;
 
 import java.util.Date;
 
-public class SendTopic {
+public class QueryTopic {
     /**
      @"courseId": 4,int
      @"content": String,
@@ -12,14 +12,24 @@ public class SendTopic {
      @"endDate": null,date
      @"status": 1,int
      */
+
+
+    private int id;
     private int courseId;
     private String content;
     private String teacherId;
     private int tecId;
     private int status;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
+    private String imgUrl;
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public int getCourseId() {
         return courseId;
     }
@@ -40,18 +50,23 @@ public class SendTopic {
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
-    public String getStartDate() {
+
+    public Date getStartDate() {
         return startDate;
     }
-    public void setStartDate(String startDate) {
+
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
-    public String getEndDate() {
+
+    public Date getEndDate() {
         return endDate;
     }
-    public void setEndDate(String endDate) {
+
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
     public int getTecId() {
         return tecId;
     }
@@ -63,5 +78,11 @@ public class SendTopic {
     }
     public void setStatus(int status) {
         this.status = status;
+    }
+    public String getImgUrl() {
+        return imgUrl;
+    }
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

@@ -18,7 +18,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
@@ -40,16 +44,14 @@
         <activity android:name=".ui.LicenseActivity" />
         <activity android:name=".reading.ZhihuDailyActivity" />
         <activity android:name=".reading.DetailActivity" />
-        <activity android:name=".course.QuerySelectCourseActivity"></activity>
+        <activity android:name=".course.QuerySelectCourseActivity" />
         <activity android:name=".course.CourseManagerActivity" />
         <activity android:name=".course.QueryNotiActivity" />
-        <activity android:name=".quiz.QuizActivity"></activity>
-        <activity android:name=".course.SendTopic">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".quiz.QuizActivity" />
+        <activity android:name=".course.SendTopic"></activity>
+        <activity android:name="timeselector.MainActivity"></activity>
+        <activity android:name=".course.QueryTopicActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -1,6 +1,7 @@
 package com.zhaoweihao.architechturesample.course;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,11 +23,14 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import timeselector.inter.CustomListener;
+import timeselector.view.TimePickerView;
 
 import static com.zhaoweihao.architechturesample.util.HttpUtil.sendPostRequest;
 import static com.zhaoweihao.architechturesample.util.Utils.log;
@@ -44,15 +48,19 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
     Button bt_sendtopicsubmit;
     //课程编号,截止日期，增加长度
     int courseNum, expireTime, expireDuration;
-    //显示选择截止日期的数组
-    String expires[] = new String[7];
+    //显示选择截止日期
+    TimePickerView pvCustomTime;
+    //截止时间
+    Date expireDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_topic);
         initViews();
+        initCustomTimePicker();
     }
     private void initViews() {
+        expireDate=new Date();
         expireTime = 0;
         expireDuration = 0;
        // et_sendtopic_coursenum = (EditText) findViewById(R.id.et_sendtopic_coursenum);
@@ -80,55 +88,26 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
                 submittopic();
                 break;
             case R.id.tv_sendtopic_date:
-                new AlertDialog.Builder(SendTopic.this).setItems(expires, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        expireTime = i;
-                    }
-                }).create().show();
-                break;
-            case R.id.tv_sendtopic_order:
-                String addDays[]={"不增加天数", "已增加7天后截止", "已增加21天后截止", "已增加28天后截止", "已增加30天后截止", "已增加31天后截止"};
-                new AlertDialog.Builder(SendTopic.this).setItems(addDays, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        tv_sendtopic_order.setText(addDays[i]);
-                        switch (i) {
-                            case 0:
-                                expireDuration = 0;
-                                break;
-                            case 1:
-                                expireDuration = 7;
-                                break;
-                            case 2:
-                                expireDuration = 21;
-                                break;
-                            case 3:
-                                expireDuration = 28;
-                                break;
-                            case 4:
-                                expireDuration = 30;
-                                break;
-                            case 5:
-                                expireDuration = 31;
-                                break;
-                        }
-                    }
-                }).create().show();
+                if (view.getId() == R.id.tv_sendtopic_date && pvCustomTime != null)
+                    pvCustomTime.show();
                 break;
             case R.id.et_sendtopic_content:
                 break;
         }
     }
     public void submittopic() {
-
+        if( tv_sendtopic_date.getText().toString().equals("选择公告截止日期")||et_sendtopic_content.getText().toString().equals("")){
+            Toast.makeText(this,"请先填写好公告或选择完截止日期！",Toast.LENGTH_SHORT).show();
+            return;
+        }
         com.zhaoweihao.architechturesample.data.course.SendTopic sendtopic=new com.zhaoweihao.architechturesample.data.course.SendTopic();
-        sendtopic.setCourseId(4);
+        sendtopic.setCourseId(getIntent().getIntExtra("courseId",0));
         sendtopic.setStatus(1);
-        DateFormat bf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+        //DateFormat bf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+        DateFormat bf = new SimpleDateFormat("yyyy-MM-dd");
         sendtopic.setContent(et_sendtopic_content.getText().toString());
         sendtopic.setStartDate(bf.format(new Date()));
-        sendtopic.setEndDate(bf.format(new Date()));
+        sendtopic.setEndDate(bf.format(expireDate));
         sendtopic.setTecId(DataSupport.findLast(User.class).getUserId());
         sendtopic.setTeacherId(DataSupport.findLast(User.class).getTeacherId());
         //转换成json数据，借助gson
@@ -174,5 +153,50 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+    }
+    private String getTime(Date date) {
+        //可根据需要自行截取数据显示
+       // SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
+    }
+    private void initCustomTimePicker() {
+
+        //系统当前时间
+        Calendar selectorDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        //startDate.set(2000, 1, 23);
+        //startDate.set();
+        //系统当前时间
+        Calendar endDate = Calendar.getInstance();
+        endDate.set(2028, 2, 28);
+        //时间选择器 ，自定义布局
+        pvCustomTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectorListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                tv_sendtopic_date.setText("截止时间："+getTime(date));
+                expireDate=date;
+            }
+        })
+                .setDate(selectorDate)
+                .setRangDate(startDate, endDate)
+                .setLayoutRes(R.layout.pickerview_custom_time,
+                        new CustomListener() {
+                            @Override
+                            public void customLayout(View v) {
+                                final TextView tvSubmit = (TextView) v.findViewById(R.id.tv_finish);
+                                tvSubmit.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        pvCustomTime.returnData();
+                                        pvCustomTime.dismiss();
+                                    }
+                                });
+                            }
+                        }).setType(new boolean[]{true, true, true, false, false, false})
+                .setLabel("年", "月", "日", "时", "分")
+                .isCenterLabel(false)
+               // .setDividerColor(0xFF24AD9D)
+                .build();
     }
 }
