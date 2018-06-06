@@ -10,14 +10,19 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.vote.Add;
 import com.zhaoweihao.architechturesample.data.vote.AddRec;
 import com.zhaoweihao.architechturesample.data.vote.Record;
 import com.zhaoweihao.architechturesample.data.vote.Select;
+import com.zhaoweihao.architechturesample.database.User;
 
+
+import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -124,7 +129,13 @@ public class VoteActivity extends AppCompatActivity {
 
     private void addRecord() {
         String suffix = "vote/record/read";
-        String studentId = "2015191054";
+        User user = DataSupport.findLast(User.class);
+        if (user == null || user.getStudentId() == null) {
+            Toast.makeText(this, "请登录或以学生身份登录", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        String studentId = user.getStudentId();
 
         Record record = new Record();
         record.setStudentId(studentId);
@@ -142,7 +153,15 @@ public class VoteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                runOnUiThread(() -> {
+                    if (restResponse.getCode() == 200) {
+                        Toast.makeText(VoteActivity.this, "提交投票成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
 
             }
         });
