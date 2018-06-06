@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.quiz.QuizActivity;
+import com.zhaoweihao.architechturesample.vote.ShowActivity;
 
 public class CourseManagerActivity extends AppCompatActivity implements View.OnClickListener{
     Button bt_activity_course_manager_NotiList,bt_activity_course_manager_StudentList;
@@ -29,6 +30,7 @@ public class CourseManagerActivity extends AppCompatActivity implements View.OnC
         bt_activity_course_manager_NotiList.setOnClickListener(this);
         bt_activity_course_manager_StudentList.setOnClickListener(this);
         findViewById(R.id.bt_activity_course_manager_QuizList).setOnClickListener(this);
+        findViewById(R.id.btn_to_vote).setOnClickListener(this);
         setSupportActionBar(findViewById(R.id.toolbar1));
     }
     @Override
@@ -50,6 +52,12 @@ public class CourseManagerActivity extends AppCompatActivity implements View.OnC
                 intent.putExtra("courseId", courseId);
                 startActivity(intent);
                 break;
+            case R.id.btn_to_vote:
+                intent = new Intent(CourseManagerActivity.this, ShowActivity.class);
+                intent.putExtra("courseId", courseId);
+                startActivity(intent);
+                break;
+                default:
 
         }
     }

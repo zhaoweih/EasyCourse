@@ -168,12 +168,6 @@ public class LeaveListActivity extends AppCompatActivity {
                             getSupportActionBar().setTitle("有" + wait + "条正在处理");
 
                             adapter.setItemClickListener((v, position) -> {
-//                                Intent intent = new Intent(LeaveListActivity.this, LeaveShow.class);
-//                                Bundle bundle = new Bundle();
-//                                bundle.putInt("num", position);
-//                                intent.putExtras(bundle);
-//                                startActivity(intent);
-
                                 Intent intent = new Intent(LeaveListActivity.this, LeaveShow.class);
                                 intent.putExtra("leave", leaveList.get(position));
                                 startActivity(intent);
