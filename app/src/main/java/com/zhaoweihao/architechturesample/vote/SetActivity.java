@@ -39,8 +39,8 @@ public class SetActivity extends AppCompatActivity {
 
     private List<Select> selectList = new ArrayList<>();
 
-    private static int j = 0;
-    private static int choiceNum;
+    private int j = 0;
+    private int choiceNum;
 
     private int courseId;
     private String theme;

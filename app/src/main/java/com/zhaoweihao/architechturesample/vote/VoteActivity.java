@@ -50,9 +50,9 @@ public class VoteActivity extends AppCompatActivity {
 
     private List<AddRec> addRecs = new ArrayList<>();
 
-    private static int count = 0;
-    private static int choiceNum = 0;
-    private static int voidId = 0;
+    private int count = 0;
+    private int choiceNum = 0;
+    private int voidId = 0;
 
 
     @Override
