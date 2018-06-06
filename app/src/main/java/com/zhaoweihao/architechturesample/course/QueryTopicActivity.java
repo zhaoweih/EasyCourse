@@ -15,8 +15,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.data.OnStringListener;
+import com.zhaoweihao.architechturesample.data.StringModelImpl;
+import com.zhaoweihao.architechturesample.data.course.DeleteTopic;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.data.course.QueryTopic;
 import com.zhaoweihao.architechturesample.data.course.SendTopic;
@@ -27,7 +32,7 @@ import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class QueryTopicActivity extends AppCompatActivity implements QueryTopicContract.View{
+public class QueryTopicActivity extends AppCompatActivity implements QueryTopicContract.View {
     public static final String TAG = "QueryTopic";
     private RecyclerView rv_query_topic_1_list;
     private SwipeRefreshLayout query_topic_refresh;
@@ -72,9 +77,34 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                 ArrayList<QueryTopic> queries = presenter.getQueryList();
                 QueryTopic query = queries.get(position);
             });
-            getSupportActionBar().setTitle("已有"+queryArrayList.size()+"位同学选择该课程");
+            if(queryArrayList.size()==0){
+                getSupportActionBar().setTitle("暂无讨论帖");
+            }else{
+                getSupportActionBar().setTitle("已有"+queryArrayList.size()+"个讨论帖");
+            }
             adapter.setItemLongClickListener((view, position) -> {
+                ArrayList<QueryTopic> queries = presenter.getQueryList();
+                QueryTopic query = queries.get(position);
                 // 处理长按行为
+                AlertDialog alert = new AlertDialog.Builder(this).setTitle("温馨提示")
+                        .setMessage("确定要删除讨论吗？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                            @Override//处理确定按钮点击事件
+                            public void onClick(DialogInterface dialog, int which) {
+                                String suffix = "discuss/delete";
+                                DeleteTopic deletetopic=new DeleteTopic();
+                                deletetopic.setId(query.getId());
+                                String json = new Gson().toJson(deletetopic);
+                                presenter.deleteTopic(suffix,json,url);
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick (DialogInterface dialog,int which){
+                                dialog.cancel();//对话框关闭。
+                            }
+                        }).create();
+                alert.show();
             });
         });
     }

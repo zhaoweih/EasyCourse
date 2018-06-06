@@ -21,7 +21,7 @@ public interface QueryTopicContract {
 
     interface  Presenter extends BasePresenter {
         void queryTopic(String url);
-
+        void deleteTopic(String url,String json,String urlRefresh);
         ArrayList<QueryTopic> getQueryList();
 
         Boolean checkTecOrStu();
