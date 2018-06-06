@@ -14,10 +14,18 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.vote.Add;
+import com.zhaoweihao.architechturesample.data.vote.AddRec;
+import com.zhaoweihao.architechturesample.data.vote.Record;
 import com.zhaoweihao.architechturesample.data.vote.Select;
 
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 import static com.zhaoweihao.architechturesample.util.HttpUtil.*;
 
@@ -34,7 +42,11 @@ public class VoteActivity extends AppCompatActivity {
 
     private List<Select> selects;
 
+    private List<AddRec> addRecs = new ArrayList<>();
+
     private static int count = 0;
+    private static int choiceNum = 0;
+    private static int voidId = 0;
 
 
     @Override
@@ -50,20 +62,85 @@ public class VoteActivity extends AppCompatActivity {
 
         selects = add.getSelectList();
 
+        voidId = add.getId();
+
+        for (int i = 0; i < selects.size(); i ++) {
+            addRecs.add(new AddRec());
+        }
+
         loadVote(selects.get(0));
 
         next.setOnClickListener(v -> {
+            if (count == selects.size() - 1) {
+                addRecord();
+                return;
+            }
+            radioGroup.clearCheck();
             count ++;
             loadVote(selects.get(count));
             hideOrShowBtn();
-
         });
 
         prev.setOnClickListener(v -> {
+            radioGroup.clearCheck();
             count --;
             loadVote(selects.get(count));
             hideOrShowBtn();
         });
+
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            Log.d(TAG, count + " ");
+            switch (checkedId) {
+                case R.id.rb_1:
+                    choiceNum = 1;
+                    break;
+                case R.id.rb_2:
+                    choiceNum = 2;
+                    break;
+                case R.id.rb_3:
+                    choiceNum = 3;
+                    break;
+                case R.id.rb_4:
+                    choiceNum = 4;
+                    break;
+                    default:
+                        break;
+            }
+
+            AddRec addRec = addRecs.get(count);
+            addRec.setChoice(choiceNum);
+            addRec.setSelectId(count + 1);
+
+
+        });
+    }
+
+    private void addRecord() {
+        String suffix = "vote/record/read";
+        String studentId = "2015191054";
+
+        Record record = new Record();
+        record.setStudentId(studentId);
+        record.setVoteId(voidId);
+        record.setRecJson(addRecs);
+
+        String json = new Gson().toJson(record);
+
+        Log.d(TAG, json);
+
+        sendPostRequest(suffix, json, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+
+            }
+        });
+
+
     }
 
     private void loadVote(Select select) {
@@ -73,12 +150,11 @@ public class VoteActivity extends AppCompatActivity {
         radioButton2.setText(select.getChoiceB());
         radioButton3.setText(select.getChoiceC());
         radioButton4.setText(select.getChoiceD());
-        Log.d(TAG, count + "");
     }
 
     private void hideOrShowBtn() {
         if (count == selects.size() - 1)
-            next.setVisibility(View.INVISIBLE);
+            next.setText("OK");
         else
             next.setVisibility(View.VISIBLE);
 
