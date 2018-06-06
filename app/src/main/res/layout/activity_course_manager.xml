@@ -92,5 +92,6 @@
                 android:background="@drawable/round_border_manager_button"
                 android:layout_below="@id/bt_activity_course_manager_SendTopic" />
         </RelativeLayout>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
