@@ -1,57 +1,80 @@
 package com.zhaoweihao.architechturesample.course;
 
-import android.provider.ContactsContract;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+
 
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.database.User;
+import com.zhaoweihao.architechturesample.leave.LeaveListActivity;
+import com.zhaoweihao.architechturesample.quiz.QuizActivity;
+import com.zhaoweihao.architechturesample.seat.EnterActivity;
+import com.zhaoweihao.architechturesample.vote.ShowActivity;
 
-import org.litepal.crud.DataSupport;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
- * 课程管理界面
+ * 4 testing UI
  */
 
 public class CourseActivity extends AppCompatActivity {
 
-    private Button submit,query,select,selectByStuId,selectByCourseId;
+    private int courseId;
+
+    @OnClick(R.id.check_stu) void checkStu() {
+        Intent intent = new Intent(this, QuerySelectCourseActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.check_noti) void checkNoti() {
+        Intent intent = new Intent(this, QueryNotiActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.to_vote) void toVote() {
+        Intent intent = new Intent(this, ShowActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.to_discuss) void toDiscuss() {
+        Intent intent = new Intent(this, QueryTopicActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.to_rank) void toRank() {
+        Intent intent = new Intent(this, QuizActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.to_leave) void toLeave() {
+        Intent intent = new Intent(this, LeaveListActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.to_seat) void toSeat() {
+        Intent intent = new Intent(this, EnterActivity.class);
+        intent.putExtra("courseId", courseId);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
-        // 初始化控件
-        initViews();
-        // 设置标题
-        getSupportActionBar().setTitle("课程管理");
+        setContentView(R.layout.fragment_fav_new);
 
-        User user = DataSupport.findLast(User.class);
+        courseId = getIntent().getIntExtra("courseId", 0);
 
-        if (user == null)
-            // 用户没有登录
-            return;
-
-        if (user.getTeacherId() == null)
-            // 隐藏提交课程按钮
-            submit.setVisibility(View.INVISIBLE);
-
-        if (user.getStudentId() == null)
-            // 隐藏选课按钮
-            select.setVisibility(View.INVISIBLE);
-
-        // 各个按钮点击事件
+        ButterKnife.bind(this);
 
     }
 
-    private void initViews() {
-        submit = findViewById(R.id.btn_submit);
-        query = findViewById(R.id.btn_query);
-        select = findViewById(R.id.btn_select);
-        selectByStuId = findViewById(R.id.btn_query_select_by_stuid);
-        selectByCourseId = findViewById(R.id.btn_query_select_by_courseid);
-        setSupportActionBar(findViewById(R.id.toolbar));
-    }
+
 }

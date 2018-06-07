@@ -35,7 +35,9 @@
         <activity android:name=".leave.LeaveListActivity" />
         <activity android:name=".leave.LeaveSubmit" />
         <activity android:name=".leave.LeaveShow" />
-        <activity android:name=".course.CourseActivity" />
+        <activity android:name=".course.CourseActivity" >
+
+        </activity>
         <activity android:name=".course.SendNoti" />
         <activity android:name=".course.SubmitActivity" />
         <activity android:name=".course.QueryActivity" />
