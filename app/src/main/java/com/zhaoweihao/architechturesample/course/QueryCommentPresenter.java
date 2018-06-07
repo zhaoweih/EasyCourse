@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import com.zhaoweihao.architechturesample.data.OnStringListener;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.StringModelImpl;
-import com.zhaoweihao.architechturesample.data.course.QueryTopic;
+import com.zhaoweihao.architechturesample.data.course.QueryComment;
 import com.zhaoweihao.architechturesample.database.User;
 
 import org.litepal.crud.DataSupport;
@@ -23,15 +23,15 @@ import okhttp3.Response;
 
 import static com.zhaoweihao.architechturesample.util.HttpUtil.sendPostRequest;
 
-public class QueryCommentPresenter implements QueryTopicContract.Presenter, OnStringListener {
-    public static final String TAG = "QueryTopicPresenter";
+public class QueryCommentPresenter implements QueryCommentContract.Presenter, OnStringListener {
+    public static final String TAG = "QueryCommentPresenter";
 
-    private QueryTopicContract.View view;
+    private QueryCommentContract.View view;
     private Context context;
     private StringModelImpl model;
-    private ArrayList<QueryTopic> queryList = new ArrayList<>();
+    private ArrayList<QueryComment> queryList = new ArrayList<>();
 
-    public QueryCommentPresenter(Context context, QueryTopicContract.View view) {
+    public QueryCommentPresenter(Context context, QueryCommentContract.View view) {
         this.context = context;
         this.view = view;
         this.view.setPresenter(this);
@@ -54,10 +54,10 @@ public class QueryCommentPresenter implements QueryTopicContract.Presenter, OnSt
             return;
         }
         try {
-            List<QueryTopic> queryTopics = new Gson().fromJson(payload, new TypeToken<List<QueryTopic>>() {
+            List<QueryComment> QueryComments = new Gson().fromJson(payload, new TypeToken<List<QueryComment>>() {
             }.getType());
             queryList.clear();
-            queryList.addAll(new Gson().fromJson(payload, new TypeToken<List<QueryTopic>>() {
+            queryList.addAll(new Gson().fromJson(payload, new TypeToken<List<QueryComment>>() {
             }.getType()));
             view.showResult(queryList);
             view.stopLoading();
@@ -75,7 +75,7 @@ public class QueryCommentPresenter implements QueryTopicContract.Presenter, OnSt
     }
 
     @Override
-    public void queryTopic(String url) {
+    public void QueryComment(String url) {
         view.startLoading();
         model.sentGetRequestInSMI(url, this);
 
@@ -98,14 +98,14 @@ public class QueryCommentPresenter implements QueryTopicContract.Presenter, OnSt
                 }
                 // code 200等于登录成功
                 if (restResponse.getCode() == 200) {
-                   queryTopic(urlRefresh);
+                   QueryComment(urlRefresh);
                 }
             }
         });
     }
 
     @Override
-    public ArrayList<QueryTopic> getQueryList() {
+    public ArrayList<QueryComment> getQueryList() {
         return queryList;
     }
 

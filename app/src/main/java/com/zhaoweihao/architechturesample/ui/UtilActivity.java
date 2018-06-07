@@ -22,6 +22,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
+import com.lixs.charts.BarChart.DragInerfaces;
+import com.lixs.charts.BarChart.LBarChartView;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.Login;
 import com.zhaoweihao.architechturesample.data.RestResponse;
@@ -36,6 +38,7 @@ import org.litepal.crud.DataSupport;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import okhttp3.Call;
@@ -64,6 +67,7 @@ public class UtilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_util);
         //控件初始化
         initViews();
+
         //发送post请求示例,以注册功能为例
         sendPost.setOnClickListener(v -> {
             //假设一些数据
@@ -263,6 +267,8 @@ public class UtilActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void showImageSelector() {
         Matisse.from(this)

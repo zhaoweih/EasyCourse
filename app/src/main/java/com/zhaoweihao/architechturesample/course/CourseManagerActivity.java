@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.quiz.QuizActivity;
+import com.zhaoweihao.architechturesample.vote.ShowActivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -42,6 +43,7 @@ public class CourseManagerActivity extends AppCompatActivity implements View.OnC
         }else {
             findViewById(R.id.bt_activity_course_manager_SendTopic).setVisibility(View.GONE);
         }
+        findViewById(R.id.btn_to_vote).setOnClickListener(this);
         setSupportActionBar(findViewById(R.id.toolbar1));
     }
     @Override
@@ -73,6 +75,13 @@ public class CourseManagerActivity extends AppCompatActivity implements View.OnC
                 intent.putExtra("courseId", courseId);
                 startActivity(intent);
                 break;
+            case R.id.btn_to_vote:
+                intent = new Intent(CourseManagerActivity.this, ShowActivity.class);
+                intent.putExtra("courseId", courseId);
+                startActivity(intent);
+                break;
+                default:
+
         }
     }
 }

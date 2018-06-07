@@ -2,13 +2,13 @@ package com.zhaoweihao.architechturesample.course;
 
 import com.zhaoweihao.architechturesample.BasePresenter;
 import com.zhaoweihao.architechturesample.BaseView;
-import com.zhaoweihao.architechturesample.data.course.QueryTopic;
+import com.zhaoweihao.architechturesample.data.course.QueryComment;
 
 import java.util.ArrayList;
 
 public interface QueryCommentContract {
     interface View extends BaseView< QueryCommentContract.Presenter> {
-        void showResult(ArrayList<QueryTopic> queryArrayList);
+        void showResult(ArrayList<QueryComment> queryArrayList);
 
         void startLoading();
 
@@ -20,9 +20,9 @@ public interface QueryCommentContract {
     }
 
     interface  Presenter extends BasePresenter {
-        void queryTopic(String url);
+        void QueryComment(String url);
         void deleteTopic(String url, String json, String urlRefresh);
-        ArrayList<QueryTopic> getQueryList();
+        ArrayList<QueryComment> getQueryList();
 
         Boolean checkTecOrStu();
     }

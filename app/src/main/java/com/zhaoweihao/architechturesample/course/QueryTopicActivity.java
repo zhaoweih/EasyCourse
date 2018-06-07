@@ -42,6 +42,7 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
     private String url;
     private Boolean checkTecOrStu;
     private Toolbar toolbar;
+    private int courseId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         initViews(null);
         Intent intent = getIntent();
         checkTecOrStu = presenter.checkTecOrStu();
+        courseId=intent.getIntExtra("courseId",0);
         String suffix = "discuss/query?courseId="+intent.getIntExtra("courseId",0);
         User user3 = DataSupport.findLast(User.class);
         url=suffix;
@@ -66,7 +68,12 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
     @Override
     public void showResult(ArrayList<QueryTopic> queryArrayList) {
         runOnUiThread(() -> {
-            if (adapter == null) {
+        if(queryArrayList.size()==0){
+            getSupportActionBar().setTitle("暂无讨论帖");
+        }else{
+            getSupportActionBar().setTitle("已有"+queryArrayList.size()+"个讨论帖");
+        }
+         if (adapter == null) {
                 adapter = new QueryTopicAdapter(this, queryArrayList,false);
                 rv_query_topic_1_list.setAdapter(adapter);
             }
@@ -74,14 +81,19 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                 adapter.notifyDataSetChanged();
             }
             adapter.setItemClickListener((v, position) -> {
-                ArrayList<QueryTopic> queries = presenter.getQueryList();
-                QueryTopic query = queries.get(position);
+               /* queries1 = presenter.getQueryList();
+                QueryTopic query = queries1.get(position);*/
+                Intent intent = new Intent(QueryTopicActivity.this, QueryCommentActivity.class);
+                intent.putExtra("commentContent",queryArrayList.get(position).getContent());
+                intent.putExtra("commentEndDate",queryArrayList.get(position).getEndDate());
+                intent.putExtra("commentStartDate",queryArrayList.get(position).getStartDate());
+                intent.putExtra("teacherId",queryArrayList.get(position).getTeacherId());
+                intent.putExtra("courseId",courseId);
+                intent.putExtra("discussId",queryArrayList.get(position).getId());
+                startActivity(intent);
+
             });
-            if(queryArrayList.size()==0){
-                getSupportActionBar().setTitle("暂无讨论帖");
-            }else{
-                getSupportActionBar().setTitle("已有"+queryArrayList.size()+"个讨论帖");
-            }
+
             adapter.setItemLongClickListener((view, position) -> {
                 ArrayList<QueryTopic> queries = presenter.getQueryList();
                 QueryTopic query = queries.get(position);

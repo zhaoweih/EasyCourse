@@ -20,8 +20,8 @@ public class QueryTopic {
     private String teacherId;
     private int tecId;
     private int status;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private String imgUrl;
     public int getId() {
         return id;
@@ -51,19 +51,19 @@ public class QueryTopic {
         this.teacherId = teacherId;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

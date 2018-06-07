@@ -67,18 +67,33 @@
                 android:textColor="@color/colorAccent"
                 android:background="@drawable/round_border_manager_button"
                 android:layout_below="@id/bt_activity_course_manager_NotiList" />
+
+
             <Button
-                android:id="@+id/bt_activity_course_manager_SendTopic"
+                android:id="@+id/btn_to_vote"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="2dp"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
-                android:text="@string/SendTopic"
+                android:text="投票系统"
                 android:textSize="18dp"
                 android:textColor="@color/colorAccent"
                 android:background="@drawable/round_border_manager_button"
                 android:layout_below="@id/bt_activity_course_manager_QuizList" />
+            <Button
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:id="@+id/bt_activity_course_manager_SendTopic"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/round_border_manager_button"
+                android:text="@string/SendTopic"
+                android:textSize="18dp"
+                android:layout_below="@id/btn_to_vote"
+                />
             <Button
                 android:id="@+id/bt_activity_course_manager_QueryTopic"
                 android:layout_centerHorizontal="true"
