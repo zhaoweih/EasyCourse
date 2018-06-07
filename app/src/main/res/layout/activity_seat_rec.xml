@@ -33,6 +33,16 @@
             android:background="@color/colorBaseBackground"
             android:clickable="true"
             android:focusable="true">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/table"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_record_list"
@@ -40,6 +50,7 @@
                 android:layout_height="match_parent">
 
             </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/empty_view"

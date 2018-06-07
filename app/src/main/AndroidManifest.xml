@@ -41,8 +41,12 @@
         <activity android:name=".course.SendNoti" />
         <activity android:name=".course.SubmitActivity" />
         <activity android:name=".course.QueryActivity" />
-        <activity android:name=".seat.CreateActivity" />
-        <activity android:name=".seat.EnterActivity" />
+        <activity android:name=".seat.CreateActivity" >
+
+        </activity>
+        <activity android:name=".seat.EnterActivity" >
+
+        </activity>
         <activity android:name=".seat.SeatRecActivity" />
         <activity android:name=".tools.TranslateActivity" />
         <activity android:name=".ui.LicenseActivity" />

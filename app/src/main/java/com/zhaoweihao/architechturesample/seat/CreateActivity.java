@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -40,6 +43,7 @@ public class CreateActivity extends AppCompatActivity implements CreateContract.
     private RadioGroup radioGroup;
     private Button button;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView imageView;
 
     private static final int SEAT_MODE_ONE = 1;
     private static final int SEAT_MODE_TWO = 2;
@@ -77,6 +81,23 @@ public class CreateActivity extends AppCompatActivity implements CreateContract.
         });
 
         swipeRefreshLayout.setEnabled(false);
+
+        code.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                imageView.setImageResource(R.drawable.hunt);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         button.setOnClickListener(v -> {
             classCode = code.getText().toString();
@@ -170,5 +191,17 @@ public class CreateActivity extends AppCompatActivity implements CreateContract.
         button = findViewById(R.id.btn);
         swipeRefreshLayout = findViewById(R.id.refresh);
         setSupportActionBar(findViewById(R.id.toolbar));
+
+        imageView = findViewById(R.id.building);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

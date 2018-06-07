@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -151,6 +152,11 @@ public class ShowActivity extends AppCompatActivity {
 
                                  LinearLayout layout = new LinearLayout(ShowActivity.this);
                                  layout.setOrientation(LinearLayout.VERTICAL);
+                                 final ImageView imageView = new ImageView(ShowActivity.this);
+                                 imageView.setImageResource(R.drawable.research);
+                                 layout.addView(imageView);
+                                 imageView.getLayoutParams().height = 350;
+                                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                                  final Button toVote = new Button(ShowActivity.this);
                                  toVote.setBackgroundColor(ContextCompat.getColor(ShowActivity.this, R.color.colorPrimary));
                                  toVote.setTextColor(ContextCompat.getColor(ShowActivity.this, R.color.white));
