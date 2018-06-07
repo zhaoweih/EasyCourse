@@ -27,35 +27,26 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
 
     private OnRecyclerViewClickListener listener;
     private OnRecyclerViewLongClickListener longClickListener;
+
     public DoubanMomentAdapter(Context context, ArrayList<QuerySelect> list, Boolean checkTecOrStu) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
         this.checkTecOrStu = checkTecOrStu;
     }
+
     @Override
     public DoubanMomentAdapter.DoubanMomentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DoubanMomentAdapter.DoubanMomentViewHolder(inflater.inflate(R.layout.query_select_course_layout,parent,false),listener,longClickListener);
+        return new DoubanMomentAdapter.DoubanMomentViewHolder(inflater.inflate(R.layout.query_select_course_layout, parent, false), listener, longClickListener);
     }
 
     @Override
     public void onBindViewHolder(DoubanMomentAdapter.DoubanMomentViewHolder holder, int position) {
         QuerySelect query = list.get(position);
-        User user3 = DataSupport.findLast(User.class);
-        if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
-            if(query!=null){
-                holder.tv_query_select_course_id.setText("课程ID: " + query.getId());
-                holder.tv_query_select_course_name.setText("课程名称: " + query.getCourseName());
-                holder.tv_query_select_course_teachername.setText("课程老师: " + query.getTeacherName());}
-        } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
-            if(query!=null){
-                holder.tv_query_select_course_id.setText("课程ID: " + query.getCourseId());
-                holder.tv_query_select_course_name.setText("课程名称: " + query.getCourseName());
-                holder.tv_query_select_course_teachername.setText("课程老师: " + query.getTeacherName());}
-        }
 
-        /*if (checkTecOrStu)
-            holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);*/
+        holder.tv_query_select_course_id.setText(String.valueOf(query.getId()));
+        holder.tv_query_select_course_name.setText(query.getCourseName());
+        holder.tv_query_select_course_teachername.setText(query.getTeacherName());
 
 
     }
@@ -73,10 +64,9 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
         this.longClickListener = longClickListener;
     }
 
-    public class DoubanMomentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
+    public class DoubanMomentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-        TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername,tv_query_select_course_teacherId;
-        ImageView iv_query_select_course_manage;
+        TextView tv_query_select_course_id, tv_query_select_course_name, tv_query_select_course_teachername, tv_query_select_course_teacherId;
 
         OnRecyclerViewClickListener listener;
         OnRecyclerViewLongClickListener longClickListener;
@@ -87,8 +77,7 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
             tv_query_select_course_id = itemView.findViewById(R.id.tv_query_select_course_id);
             tv_query_select_course_name = itemView.findViewById(R.id.tv_query_select_course_name);
             tv_query_select_course_teachername = itemView.findViewById(R.id.tv_query_select_course_teachername);
-            tv_query_select_course_teacherId=itemView.findViewById(R.id.tv_query_select_course_teacherId);
-            //iv_query_select_course_manage= itemView.findViewById(R.id.iv_query_select_course_manage);去掉图片
+            tv_query_select_course_teacherId = itemView.findViewById(R.id.tv_query_select_course_teacherId);
 
             this.listener = listener;
             itemView.setOnClickListener(this);
