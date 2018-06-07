@@ -76,11 +76,12 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
             SendComment sendComment=new SendComment();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("请输入您的评论");
+            builder.setIcon(R.drawable.comment1);
             final EditText input = new EditText(this);
             input.setInputType(InputType.TYPE_CLASS_TEXT );
             input.setBackgroundColor(0x665544);
             input.setTextAlignment(input.TEXT_ALIGNMENT_CENTER);
-            input.setHint("请输入您的评论");
             builder.setView(input);
             builder.setPositiveButton("发送", (dialog, which) ->{
                 String url1="discuss/comment/add";
@@ -175,11 +176,18 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
         query_comment_empty_view= findViewById(R.id.query_select_empty_view);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
     @Override
     protected void onResume() {
         super.onResume();
         presenter.start();
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
     @Override
     public void showConfirmSuccess(Boolean status) {

@@ -103,7 +103,9 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                 ArrayList<QueryTopic> queries = presenter.getQueryList();
                 QueryTopic query = queries.get(position);
                 // 处理长按行为
-                AlertDialog alert = new AlertDialog.Builder(this).setTitle("温馨提示")
+                AlertDialog alert = new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.warming)
+                        .setTitle("温馨提示")
                         .setMessage("确定要删除讨论吗？")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
                             @Override//处理确定按钮点击事件
@@ -114,7 +116,6 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                                 deletetopic.setId(query.getId());
                                 String json = new Gson().toJson(deletetopic);
                                 presenter.deleteTopic(suffix,json,url);
-
                             }
                         })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener(){
@@ -170,6 +171,13 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         });
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
     @Override
     protected void onResume() {
