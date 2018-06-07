@@ -62,6 +62,7 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
 
         checkTecOrStu = presenter.checkTecOrStu();
 
+
         requestTecOrStu();
 
         query_select_refresh.setOnRefreshListener(() -> {

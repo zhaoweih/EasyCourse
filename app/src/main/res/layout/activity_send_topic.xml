@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".course.SendTopic">
+    <RelativeLayout
+        android:id="@+id/ry_sendtopicmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/ry_sendtopictittle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/iv_sendtopicreturntohome"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/userinformationtitle" />
+            <TextView
+                android:id="@+id/tv_sendtopictitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="@string/sendtopic_title_text"
+                android:textColor="#000"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/bt_sendtopicsubmit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="#0000"
+                android:textSize="15dp"
+                android:textColor="#00a2e9"
+                android:text="@string/sendtopic_submit_text"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/userinformationtitle" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_sendtopictop"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/ry_sendtopictittle"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/et_sendtopic_coursenum"
+                android:layout_width="match_parent"
+                android:hint="@string/sendtopic_coursenum0_text"
+                android:gravity="center"
+                android:textColor="#000"
+                android:background="#fff"
+                android:textSize="18dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_sendtopic_content"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_below="@id/ry_sendtopictop"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_sendtopic_content"
+                android:layout_width="match_parent"
+                android:hint="@string/sendtopic_reason0_text"
+                android:background="#fff"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:layout_height="80dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_sendtopic_time"
+            android:gravity="center"
+            android:layout_margin="25dp"
+            android:layout_width="match_parent"
+            android:layout_below="@id/ry_sendtopic_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_sendtopic_date"
+                android:layout_width="match_parent"
+                android:text="@string/sendtopic_selectdate_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="#fff"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/round_border_sendtopic_button"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/tv_sendtopic_order"
+                android:layout_width="match_parent"
+                android:text="@string/sendtopic_selectorder_text"
+                android:layout_below="@id/tv_sendtopic_date"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:visibility="gone"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/round_border_sendtopic_button"
+                android:textColor="#fff"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

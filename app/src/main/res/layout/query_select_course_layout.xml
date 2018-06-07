@@ -32,7 +32,18 @@
             android:layout_below="@id/tv_query_select_course_id"
             android:gravity="center|left"
              />
-
+        <TextView
+            android:id="@+id/tv_query_select_course_teacherId"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:textColor="#000"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:layout_below="@id/tv_query_select_course_name"
+            android:gravity="center|left"
+            />
         <TextView
             android:id="@+id/tv_query_select_course_teachername"
             android:layout_width="match_parent"
@@ -41,7 +52,7 @@
             android:textSize="16dp"
             android:textColor="#000"
             android:layout_height="30dp"
-            android:layout_below="@id/tv_query_select_course_name"
+            android:layout_below="@id/tv_query_select_course_teacherId"
             android:gravity="center|left"
             />
     </RelativeLayout>

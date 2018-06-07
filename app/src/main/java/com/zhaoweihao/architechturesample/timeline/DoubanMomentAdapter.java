@@ -75,7 +75,7 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
 
     public class DoubanMomentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
-        TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername;
+        TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername,tv_query_select_course_teacherId;
         ImageView iv_query_select_course_manage;
 
         OnRecyclerViewClickListener listener;
@@ -87,6 +87,7 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
             tv_query_select_course_id = itemView.findViewById(R.id.tv_query_select_course_id);
             tv_query_select_course_name = itemView.findViewById(R.id.tv_query_select_course_name);
             tv_query_select_course_teachername = itemView.findViewById(R.id.tv_query_select_course_teachername);
+            tv_query_select_course_teacherId=itemView.findViewById(R.id.tv_query_select_course_teacherId);
             //iv_query_select_course_manage= itemView.findViewById(R.id.iv_query_select_course_manage);去掉图片
 
             this.listener = listener;

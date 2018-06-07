@@ -50,9 +50,13 @@
         <activity android:name=".course.CourseManagerActivity" />
         <activity android:name=".course.QueryNotiActivity" />
         <activity android:name=".quiz.QuizActivity" />
+        <activity android:name=".course.SendTopic"/>
+        <activity android:name="timeselector.MainActivity"/>
+        <activity android:name=".course.QueryTopicActivity"/>
+        <activity android:name=".course.QueryCommentActivity"/>
         <activity android:name=".vote.VoteActivity" />
-        <activity android:name=".vote.SetActivity"></activity>
-        <activity android:name=".vote.ShowActivity"></activity>
+        <activity android:name=".vote.SetActivity"/>
+        <activity android:name=".vote.ShowActivity"/>
         <activity android:name=".vote.ResultActivity" />
     </application>
 

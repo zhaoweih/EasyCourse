@@ -130,8 +130,15 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
         });
         // 打开课程查询并选课queryandselectcourse
         findPreference("queryandselectcourse").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), QueryActivity.class);
-            startActivity(intent);
+            userCheck= DataSupport.findLast(User.class);
+            if (userCheck == null) {
+                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+            } else if (userCheck.getTeacherId() == null) {
+                Intent intent = new Intent(getActivity(), QueryActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), "您不学生，无法选课！", Toast.LENGTH_SHORT).show();
+            }
             return true;
         });
 
