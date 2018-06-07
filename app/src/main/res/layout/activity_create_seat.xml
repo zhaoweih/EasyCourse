@@ -29,65 +29,84 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorBaseBackground"
             android:clickable="true"
             android:focusable="true">
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:gravity="center|top"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/building"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/building" />
+
                 <TextView
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
-                    android:layout_height="20dp"
                     android:text="输入点名房间密令并选择样式"
-                    />
+                    android:textSize="20sp" />
+
                 <EditText
                     android:id="@+id/et"
                     android:layout_width="match_parent"
-                    android:gravity="center"
                     android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
                     android:background="#fff"
-                    android:hint="请输入房间密令，格式例如：20774"
+                    android:gravity="center"
+                    android:hint="请输入密令"
                     android:inputType="number"
-                    android:lines="5"
-                    />
+                    android:textSize="16sp" />
+
                 <RadioGroup
                     android:id="@+id/rg"
                     android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="请选择课室"
+                        android:layout_margin="8dp"
+                        />
+
                     <RadioButton
                         android:id="@+id/rb_wen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="文科楼普通课室(7X16)"
-                        />
+                        android:text="文科楼406" />
+
                     <RadioButton
                         android:id="@+id/rb_li"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="理科楼普通课室(7X16)"
-                        />
+                        android:text="理科楼203" />
+
                     <RadioButton
                         android:id="@+id/rb_dl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="东丽楼普通课室(7X16)"
-                        />
+                        android:text="东丽楼102" />
                 </RadioGroup>
-                <Button
-                    android:id="@+id/btn"
-                    android:layout_width="300dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/round_border_manager_button"
-                    android:text="确认"
-                    android:textColor="@color/colorAccent"
-                    />
+
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/colorAccent"
+                android:text="确认"
+                android:textColor="@color/white" />
         </FrameLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>

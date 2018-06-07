@@ -76,6 +76,7 @@ public class SeatSelectionActivity extends TAppCompatActivity{
     private SeatSel seatSel;
 
     private String classCode;
+    private int courseId;
     private int mode;
 
     @Override
@@ -86,10 +87,10 @@ public class SeatSelectionActivity extends TAppCompatActivity{
         // 网络请求座位数据
         classCode = intent.getStringExtra("code");
 
+        courseId = intent.getIntExtra("courseId", 0);
+
         mode = intent.getIntExtra("mode", 1);
 
-//        classCode = "20774";
-//        mode = 1;
         requestData(classCode);
 
         swipeRefreshLayout.setOnRefreshListener(() -> requestData(classCode));
@@ -97,11 +98,9 @@ public class SeatSelectionActivity extends TAppCompatActivity{
         record.setOnClickListener(v -> {
             Intent intent2 = new Intent(this, SeatRecActivity.class);
             intent2.putExtra("code",classCode);
+            intent2.putExtra("courseId", courseId);
             startActivity(intent2);
         });
-
-
-
 
     }
 

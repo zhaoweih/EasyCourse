@@ -3,24 +3,36 @@ package com.zhaoweihao.architechturesample.seat;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.course.QueryAdapter;
-import com.zhaoweihao.architechturesample.data.course.Query;
+import com.zhaoweihao.architechturesample.data.RestResponse;
+import com.zhaoweihao.architechturesample.data.course.QuerySelect;
 import com.zhaoweihao.architechturesample.data.seat.Record;
 
+import static com.zhaoweihao.architechturesample.util.HttpUtil.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class SeatRecActivity extends AppCompatActivity implements SeatRecContract.View{
+
+    public static final String TAG = "SeatRecActivity";
 
     private SeatRecContract.Presenter presenter;
 
@@ -31,6 +43,8 @@ public class SeatRecActivity extends AppCompatActivity implements SeatRecContrac
     private LinearLayout emptyView;
 
     private String classCode;
+    private int courseId;
+    private int stuNum = 0;
 
 
     @Override
@@ -42,12 +56,15 @@ public class SeatRecActivity extends AppCompatActivity implements SeatRecContrac
 
         initViews(null);
 
-//        classCode = "20774";
-
         Intent intent = getIntent();
         classCode = intent.getStringExtra("code");
+        courseId = intent.getIntExtra("courseId", 0);
 
-        getSupportActionBar().setTitle("密令为" + classCode + "的占位纪录");
+        if (courseId == 0) {
+            Toast.makeText(this, "unknown error", Toast.LENGTH_SHORT).show();
+        }
+
+        request();
 
         presenter.query(classCode);
 
@@ -58,6 +75,28 @@ public class SeatRecActivity extends AppCompatActivity implements SeatRecContrac
         });
 
 
+    }
+
+    private void request() {
+        String suffix = "course/querySelectByCourseId?courseId=" + courseId;
+
+        sendGetRequest(suffix, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                RestResponse restResponse = new Gson().fromJson(body, RestResponse.class);
+                if (restResponse.getCode() == 200) {
+                    List<QuerySelect> list = new Gson().fromJson(restResponse.getPayload().toString(), new TypeToken<List<QuerySelect>>() {
+                    }.getType());
+                    runOnUiThread(() -> stuNum = list.size());
+                }
+            }
+        });
     }
 
     @Override
@@ -82,6 +121,12 @@ public class SeatRecActivity extends AppCompatActivity implements SeatRecContrac
             adapter.setItemLongClickListener((view, position) -> {
                 // 处理长按行为
             });
+            if (stuNum != 0) {
+                getSupportActionBar().setTitle("应到" + stuNum + "人," + "已到" + recordArrayList.size() + "人" );
+            }
+
+
+
         });
     }
 
@@ -118,5 +163,14 @@ public class SeatRecActivity extends AppCompatActivity implements SeatRecContrac
         emptyView = findViewById(R.id.empty_view);
         setSupportActionBar(findViewById(R.id.toolbar));
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

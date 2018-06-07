@@ -83,25 +83,26 @@ public class FavoritesPreferenceFragment extends PreferenceFragmentCompat {
             }
             return true;
         });
-        // 创建点名房间
-        findPreference("seat_create").setOnPreferenceClickListener(p -> {
-            userCheck= DataSupport.findLast(User.class);
-            if (userCheck == null) {
-                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
-            } else if (userCheck.getTeacherId() == null) {
-                Toast.makeText(getActivity(), "您不是老师，无法创建点名房间！", Toast.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(getActivity(), CreateActivity.class);
-                startActivity(intent);
-            }
-            return true;
-        });
-        // 进入点名房间
-        findPreference("seat_enter").setOnPreferenceClickListener(p -> {
-            Intent intent = new Intent(getActivity(), EnterActivity.class);
-            startActivity(intent);
-            return true;
-        });
+        // 取消进入
+//        // 创建点名房间
+//        findPreference("seat_create").setOnPreferenceClickListener(p -> {
+//            userCheck= DataSupport.findLast(User.class);
+//            if (userCheck == null) {
+//                Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+//            } else if (userCheck.getTeacherId() == null) {
+//                Toast.makeText(getActivity(), "您不是老师，无法创建点名房间！", Toast.LENGTH_SHORT).show();
+//            } else {
+//                Intent intent = new Intent(getActivity(), CreateActivity.class);
+//                startActivity(intent);
+//            }
+//            return true;
+//        });
+//        // 进入点名房间
+//        findPreference("seat_enter").setOnPreferenceClickListener(p -> {
+//            Intent intent = new Intent(getActivity(), EnterActivity.class);
+//            startActivity(intent);
+//            return true;
+//        });
         // 打开发布课程通知
         findPreference("sendnoti").setOnPreferenceClickListener(p -> {
             userCheck= DataSupport.findLast(User.class);
