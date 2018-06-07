@@ -65,6 +65,9 @@ dependencies {
 
     implementation 'com.lixs.charts:charts:1.0.6'
 
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
 
 
 

@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.zhaoweihao.architechturesample.R;
+import com.zhaoweihao.architechturesample.course.CourseActivity;
 import com.zhaoweihao.architechturesample.course.CourseManagerActivity;
 import com.zhaoweihao.architechturesample.course.QuerySelectCourseActivity;
 import com.zhaoweihao.architechturesample.data.course.QuerySelect;
@@ -130,7 +131,7 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
             adapter.setItemClickListener((v, position) -> {
                 ArrayList<QuerySelect> queries = presenter.getQueryList();
                 QuerySelect query = queries.get(position);
-                Intent intent=new Intent(getActivity(), CourseManagerActivity.class);
+                Intent intent=new Intent(getActivity(), CourseActivity.class);
                 User user3 = DataSupport.findLast(User.class);
                 if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
                     intent.putExtra("courseId",query.getId());
