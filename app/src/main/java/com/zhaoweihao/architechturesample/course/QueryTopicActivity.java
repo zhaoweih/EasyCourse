@@ -50,10 +50,11 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_topic);
         new QueryTopicPresenter(this, this);
-        initViews(null);
+
         Intent intent = getIntent();
         checkTecOrStu = presenter.checkTecOrStu();
         courseId=intent.getIntExtra("courseId",0);
+        initViews(null);
         String suffix = "discuss/query?courseId="+intent.getIntExtra("courseId",0);
         User user3 = DataSupport.findLast(User.class);
         url=suffix;
@@ -102,7 +103,9 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                 ArrayList<QueryTopic> queries = presenter.getQueryList();
                 QueryTopic query = queries.get(position);
                 // 处理长按行为
-                AlertDialog alert = new AlertDialog.Builder(this).setTitle("温馨提示")
+                AlertDialog alert = new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.warming)
+                        .setTitle("温馨提示")
                         .setMessage("确定要删除讨论吗？")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
                             @Override//处理确定按钮点击事件
@@ -113,7 +116,6 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                                 deletetopic.setId(query.getId());
                                 String json = new Gson().toJson(deletetopic);
                                 presenter.deleteTopic(suffix,json,url);
-
                             }
                         })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener(){
@@ -157,12 +159,25 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         query_topic_refresh = findViewById(R.id.query_topic_refresh);
         query_topic_empty_view= findViewById(R.id.query_select_empty_view);
         ftbn_query_topic=findViewById(R.id.ftbn_query_topic);
+        if(DataSupport.findLast(User.class).getTeacherId()==null){
+            ftbn_query_topic.setVisibility(View.INVISIBLE);
+        }else {
+            ftbn_query_topic.setVisibility(View.VISIBLE);
+        }
         ftbn_query_topic.setOnClickListener(v->{
             Intent intent=new Intent(QueryTopicActivity.this, com.zhaoweihao.architechturesample.course.SendTopic.class);
+            intent.putExtra("courseId",courseId);
             startActivity(intent);
         });
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
     @Override
     protected void onResume() {
