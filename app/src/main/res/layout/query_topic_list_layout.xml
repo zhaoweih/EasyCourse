@@ -8,24 +8,32 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/iv_query_topic_list_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/debate"/>
         <TextView
             android:id="@+id/tv_query_topic_list_content"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_query_topic_list_icon"
             android:textColor="#000"
+            android:layout_marginLeft="20dp"
             android:textSize="18dp"
             android:layout_height="50dp"
             android:singleLine="true"
             android:ellipsize="end"
-            android:maxEms="10"
+            android:maxEms="6"
             android:text="2015191036"
             android:gravity="center|left"
             />
         <TextView
             android:id="@+id/tv_query_topic_list_startDate"
             android:layout_width="match_parent"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
             android:textColor="#000"
             android:textSize="18dp"
             android:layout_height="50dp"

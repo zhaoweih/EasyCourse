@@ -1,6 +1,7 @@
 package com.zhaoweihao.architechturesample.course;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
     private static final Class thisClass = SendNoti.class;
     //课程编号、公告的截止日期、增加的截止日期的时间（一星期，两星期、三星期、四星期、一个月、两个月、三个月）
     TextView  tv_sendnoti_date, tv_sendnoti_order;
-    EditText et_sendnoti_coursenum;
+    TextView tv_sendnoti_coursenum;
             //返回到主页
     ImageView iv_sendnotireturntohome;
     //公告的内容
@@ -45,6 +46,8 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
     int courseNum, expireTime, expireDuration;
     //显示选择截止日期的数组
     String expires[] = new String[7];
+    
+    private int courseId;
 
 
 
@@ -57,18 +60,22 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void initViews() {
+        Intent intent=getIntent();
+        courseId=intent.getIntExtra("courseId",0);
         expireTime = 0;
         expireDuration = 0;
-        et_sendnoti_coursenum = (EditText) findViewById(R.id.et_sendnoti_coursenum);
+        tv_sendnoti_coursenum = (TextView) findViewById(R.id.tv_sendnoti_coursenum);
+        tv_sendnoti_coursenum.setText("课程Id为"+courseId);
         tv_sendnoti_date = (TextView) findViewById(R.id.tv_sendnoti_date);
         tv_sendnoti_order = (TextView) findViewById(R.id.tv_sendnoti_order);
         iv_sendnotireturntohome=(ImageView) findViewById(R.id.iv_sendnotireturntohome);
 
         et_sendnoti_content = (EditText) findViewById(R.id.et_sendnoti_content);
         bt_sendnotisubmit = (Button) findViewById(R.id.bt_sendnotisubmit);
+         
 
 
-        et_sendnoti_coursenum.setOnClickListener(this);
+        tv_sendnoti_coursenum.setOnClickListener(this);
         tv_sendnoti_date.setOnClickListener(this);
         tv_sendnoti_order.setOnClickListener(this);
         iv_sendnotireturntohome.setOnClickListener(this);
@@ -150,7 +157,7 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
     public void submitNoti() {
 
         com.zhaoweihao.architechturesample.data.course.SendNoti sendNoti=new com.zhaoweihao.architechturesample.data.course.SendNoti();
-        sendNoti.setCourseId(Integer.valueOf(et_sendnoti_coursenum.getText().toString()));
+        sendNoti.setCourseId(courseId);
         sendNoti.setContent(et_sendnoti_content.getText().toString());
         sendNoti.setDate(new LeaveSubmit().getNowDateShort(new Date()));
         sendNoti.setEndDate(new LeaveSubmit().getNowDateShort(LeaveSubmit.getNextkDay(new Date(),expireTime+expireDuration)));
@@ -199,4 +206,5 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
         });
 
     }
+
 }
