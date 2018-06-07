@@ -6,10 +6,10 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/product_sans_regular"
+        android:font="@font/sans"
         app:fontStyle="normal"
         app:fontWeight="400"
-        app:font="@font/product_sans_regular"
+        app:font="@font/sans"
         />
 
     <font

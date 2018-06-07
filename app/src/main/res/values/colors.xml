@@ -4,10 +4,12 @@
     <color name="colorPrimaryDark">#386cc0</color>
     <color name="colorAccent">#4688f0</color>
 
+    <color name="colorBlue">#4083ed</color>
+
     <color name="colorBaseBackground">#fafafa</color>
 
-    <color name="colorNavItemUnselected">#757575</color>
-    <color name="colorNavItemSelected">@color/colorAccent</color>
+    <color name="colorNavItemUnselected">#d3dbe8</color>
+    <color name="colorNavItemSelected">@color/white</color>
 
     <color name="colorPrimaryText">#838383</color>
     <color name="colorSecondaryText">#757575</color>
