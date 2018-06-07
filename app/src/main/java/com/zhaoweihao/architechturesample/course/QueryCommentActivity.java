@@ -11,9 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
@@ -58,6 +61,24 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
             stopLoading();
         });
         presenter.QueryComment(url);
+        ftbn_query_comment.setOnClickListener(v -> {
+
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            final EditText input = new EditText(this);
+            input.setInputType(InputType.TYPE_CLASS_TEXT );
+            input.setBackgroundColor(0x665544);
+            input.setTextAlignment(input.TEXT_ALIGNMENT_CENTER);
+            input.setHint("请输入您的评论");
+            builder.setView(input);
+            builder.setPositiveButton("发送", (dialog, which) ->{
+
+            });
+            builder.setNegativeButton("取消", (dialog, which) -> {
+            });
+            builder.show();
+                }
+        );
     }
     @Override
     public void showResult(ArrayList<QueryComment> queryArrayList) {
