@@ -6,55 +6,146 @@
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_query_select_course_id"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textSize="16dp"
-            android:textColor="#000"
-            android:gravity="center|left"
-             />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp">
 
-        <TextView
-            android:id="@+id/tv_query_select_course_name"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textSize="16dp"
-            android:textColor="#000"
-            android:layout_below="@id/tv_query_select_course_id"
-            android:gravity="center|left"
-             />
-        <TextView
-            android:id="@+id/tv_query_select_course_teacherId"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textSize="16dp"
-            android:textColor="#000"
-            android:layout_height="30dp"
-            android:visibility="gone"
-            android:layout_below="@id/tv_query_select_course_name"
-            android:gravity="center|left"
-            />
-        <TextView
-            android:id="@+id/tv_query_select_course_teachername"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textSize="16dp"
-            android:textColor="#000"
-            android:layout_height="30dp"
-            android:layout_below="@id/tv_query_select_course_teacherId"
-            android:gravity="center|left"
-            />
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="3"
+                    android:lineSpacingExtra="4dp"
+                    android:text="课程编号:  "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_query_select_course_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="5"
+                    android:lineSpacingExtra="4dp"
+                    android:text="4"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="3"
+                    android:lineSpacingExtra="4dp"
+                    android:text="课程名称:  "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_query_select_course_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="5"
+                    android:lineSpacingExtra="4dp"
+                    android:text="大学语文"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="3"
+                    android:lineSpacingExtra="4dp"
+                    android:text="教师编号:  "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_query_select_course_teacherId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="5"
+                    android:lineSpacingExtra="4dp"
+                    android:text="20151120"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="3"
+                    android:lineSpacingExtra="4dp"
+                    android:text="教师名称:  "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_query_select_course_teachername"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="5"
+                    android:lineSpacingExtra="4dp"
+                    android:text="赵威豪"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="3"
+            android:padding="18dp"
+            android:src="@drawable/course" />
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>
