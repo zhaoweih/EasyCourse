@@ -36,7 +36,6 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
     private QuerySelectCourseContract.Presenter presenter;
     private QuerySelectCourseAdapter adapter;
     private String url;
-    private Boolean checkTecOrStu;
     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
         new QuerySelectCoursePresenter(this, this);
         initViews(null);
         Intent intent = getIntent();
-        checkTecOrStu = presenter.checkTecOrStu();
         String suffix = "course/querySelectByCourseId";
         User user3 = DataSupport.findLast(User.class);
         url = suffix + "?" + "courseId=" + "4";
@@ -102,7 +100,7 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
     public void showResult(ArrayList<QuerySelect> queryArrayList) {
         runOnUiThread(() -> {
             if (adapter == null) {
-                adapter = new QuerySelectCourseAdapter(this, queryArrayList,false);
+                adapter = new QuerySelectCourseAdapter(this, queryArrayList);
                 rv_query_select_course_1_list.setAdapter(adapter);
             }
             else {

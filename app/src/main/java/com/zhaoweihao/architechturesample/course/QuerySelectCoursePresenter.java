@@ -76,24 +76,6 @@ public class QuerySelectCoursePresenter implements QuerySelectCourseContract.Pre
         return queryList;
     }
 
-    @Override
-    public Boolean checkTecOrStu() {
-        User user = DataSupport.findLast(User.class);
-        if ( user == null ) {
-            return false;
-        }
-
-        if ( user.getStudentId() != null) {
-            return true;
-        }
-
-        if ( user.getTeacherId() != null) {
-            return false;
-        }
-
-        return false;
-
-    }
 
     @Override
     public void confirmRecord(QuerySelect querySelect) {
