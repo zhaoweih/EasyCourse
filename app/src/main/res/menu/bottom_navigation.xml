@@ -7,17 +7,17 @@
         <item
             android:id="@+id/nav_timeline"
             android:enabled="true"
-            android:icon="@drawable/ic_activity_black_24dp"
-            android:title="@string/timeline" />
+            android:icon="@drawable/course_new"
+            android:title="课程" />
         <item
             android:id="@+id/nav_favorites"
             android:enabled="true"
-            android:icon="@drawable/ic_favorite_24dp"
-            android:title="@string/favorites"/>
+            android:icon="@drawable/tools"
+            android:title="功能"/>
         <item
             android:id="@+id/nav_info"
             android:enabled="true"
-            android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="@string/info"/>
+            android:icon="@drawable/personal"
+            android:title="个人"/>
     </group>
 </menu>
