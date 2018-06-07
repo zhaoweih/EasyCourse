@@ -52,6 +52,7 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
     TimePickerView pvCustomTime;
     //截止时间
     Date expireDate;
+    private int courseId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,8 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
         initCustomTimePicker();
     }
     private void initViews() {
+        Intent intent=getIntent();
+        courseId=intent.getIntExtra("courseId",0);
         expireDate=new Date();
         expireTime = 0;
         expireDuration = 0;
@@ -82,7 +85,7 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_sendtopicreturntohome:
-                finish();
+               finish();
                 break;
             case R.id.bt_sendtopicsubmit:
                 submittopic();

@@ -50,10 +50,11 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_topic);
         new QueryTopicPresenter(this, this);
-        initViews(null);
+
         Intent intent = getIntent();
         checkTecOrStu = presenter.checkTecOrStu();
         courseId=intent.getIntExtra("courseId",0);
+        initViews(null);
         String suffix = "discuss/query?courseId="+intent.getIntExtra("courseId",0);
         User user3 = DataSupport.findLast(User.class);
         url=suffix;
@@ -157,8 +158,14 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         query_topic_refresh = findViewById(R.id.query_topic_refresh);
         query_topic_empty_view= findViewById(R.id.query_select_empty_view);
         ftbn_query_topic=findViewById(R.id.ftbn_query_topic);
+        if(DataSupport.findLast(User.class).getTeacherId()==null){
+            ftbn_query_topic.setVisibility(View.INVISIBLE);
+        }else {
+            ftbn_query_topic.setVisibility(View.VISIBLE);
+        }
         ftbn_query_topic.setOnClickListener(v->{
             Intent intent=new Intent(QueryTopicActivity.this, com.zhaoweihao.architechturesample.course.SendTopic.class);
+            intent.putExtra("courseId",courseId);
             startActivity(intent);
         });
         toolbar = findViewById(R.id.toolbar);
