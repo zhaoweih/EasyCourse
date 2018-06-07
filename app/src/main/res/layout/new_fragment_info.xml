@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="个人" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fl_login"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <ImageView
+                android:src="@drawable/login"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:text="登录"
+                android:textSize="30sp"
+                android:background="#B3FFFFFF"
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_ps"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <ImageView
+                android:src="@drawable/privacy"
+                android:scaleType="centerInside"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:text="个人"
+                android:textSize="30sp"
+                android:background="#B3FFFFFF"
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_ab"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <ImageView
+                android:src="@drawable/setting"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:text="关于"
+                android:textSize="30sp"
+                android:background="#B3FFFFFF"
+                />
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
