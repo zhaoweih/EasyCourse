@@ -81,7 +81,6 @@ public class CourseManagerActivity extends AppCompatActivity implements View.OnC
                 startActivity(intent);
                 break;
                 default:
-
         }
     }
 }

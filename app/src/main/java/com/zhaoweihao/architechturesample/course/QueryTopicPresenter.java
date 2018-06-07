@@ -102,6 +102,7 @@ public class QueryTopicPresenter implements QueryTopicContract.Presenter, OnStri
                 }
                 // code 200等于登录成功
                 if (restResponse.getCode() == 200) {
+
                    queryTopic(urlRefresh);
                 }
             }

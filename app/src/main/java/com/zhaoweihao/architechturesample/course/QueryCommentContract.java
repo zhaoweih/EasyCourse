@@ -21,7 +21,7 @@ public interface QueryCommentContract {
 
     interface  Presenter extends BasePresenter {
         void QueryComment(String url);
-        void deleteTopic(String url, String json, String urlRefresh);
+        void sendComment(String url, String json, String urlRefresh);
         ArrayList<QueryComment> getQueryList();
 
         Boolean checkTecOrStu();

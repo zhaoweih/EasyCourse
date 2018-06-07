@@ -22,12 +22,14 @@ import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.course.DeleteTopic;
 import com.zhaoweihao.architechturesample.data.course.QueryComment;
+import com.zhaoweihao.architechturesample.data.course.SendComment;
 import com.zhaoweihao.architechturesample.database.User;
 
 import org.litepal.crud.DataSupport;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class QueryCommentActivity extends AppCompatActivity implements QueryCommentContract.View {
     public static final String TAG = "QueryComment";
@@ -41,6 +43,8 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
     private Boolean checkTecOrStu;
     private Toolbar toolbar;
     private FloatingActionButton ftbn_query_comment;
+    private int discussId,stuId;
+    private String studentId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +54,14 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
         Intent intent = getIntent();
         checkTecOrStu = presenter.checkTecOrStu();
         String suffix = "discuss/comment/query?discussId="+intent.getIntExtra("discussId",0);
-
+        discussId=intent.getIntExtra("discussId",0);
         User user3 = DataSupport.findLast(User.class);
+        if(user3.getStudentId()!=null){
+            studentId=user3.getStudentId();
+            stuId=user3.getId();
+        }else {
+            ftbn_query_comment.setVisibility(View.INVISIBLE);
+        }
         url=suffix;
 //        url = suffix + "?" + "courseId=" + "4";
 //        url = suffix+"?"+"courseId="+intent.getIntExtra("courseId",0);
@@ -63,6 +73,7 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
         presenter.QueryComment(url);
         ftbn_query_comment.setOnClickListener(v -> {
 
+            SendComment sendComment=new SendComment();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             final EditText input = new EditText(this);
@@ -72,7 +83,18 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
             input.setHint("请输入您的评论");
             builder.setView(input);
             builder.setPositiveButton("发送", (dialog, which) ->{
-
+                String url1="discuss/comment/add";
+                sendComment.setDiscussId(discussId);
+                sendComment.setContent( input.getText().toString());
+                sendComment.setStudentId(studentId);
+                sendComment.setStuId(stuId);
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                sendComment.setDate(sdf.format(new Date()));
+                String json = new Gson().toJson(sendComment);
+                if(input.getText().toString().equals("")){
+                    Toast.makeText(QueryCommentActivity.this,"请填写评论！",Toast.LENGTH_SHORT).show();
+                }else {
+                presenter.sendComment(url1,json,url);}
             });
             builder.setNegativeButton("取消", (dialog, which) -> {
             });
