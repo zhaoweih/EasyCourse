@@ -19,17 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:titleTextColor="@color/colorPrimaryText"
+            app:titleTextColor="@color/white"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:title="@string/timeline" />
+            app:title="轻课" />
 
         <android.support.design.widget.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tab_layout"
-            app:tabBackground="@color/colorPrimary"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabBackground="@color/colorBlue"
+            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
             app:tabTextColor="@drawable/nav_item_color"
             app:tabGravity="fill"
             />
