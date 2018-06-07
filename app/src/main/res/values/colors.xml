@@ -32,4 +32,6 @@
     <color name="pickerview_bgColor_default">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <!--timeselector-->
+
+    <color name="t_blue">#6499ccff</color>
 </resources>

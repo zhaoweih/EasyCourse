@@ -17,6 +17,7 @@ import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.data.vote.Add;
 import com.zhaoweihao.architechturesample.data.vote.Select;
+import com.zhaoweihao.architechturesample.seat.EnterActivity;
 
 import static com.zhaoweihao.architechturesample.util.HttpUtil.*;
 
@@ -46,6 +47,8 @@ public class ResultActivity extends AppCompatActivity {
     private ArrayList<Add> voteList = new ArrayList<>();
 
     private int position;
+
+    private Intent intent3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +94,13 @@ public class ResultActivity extends AppCompatActivity {
                             }
 
                             adapter.setItemClickListener((v, position) -> {
+                                Log.d(TAG, "selects size" + selects.size() + "position " + position);
+                                Log.d(TAG, new Gson().toJson(selects.get(position)));
                                 // 处理单击事件
-
+                                Select select = selects.get(position);
+                                intent3 = new Intent(ResultActivity.this, ChartActivity.class);
+                                intent3.putExtra("select", select);
+                                startActivity(intent3);
                             });
                             adapter.setItemLongClickListener((view, position) -> {
                                 // 处理长按事件
