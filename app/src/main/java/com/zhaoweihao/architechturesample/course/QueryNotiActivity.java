@@ -2,6 +2,7 @@ package com.zhaoweihao.architechturesample.course;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -27,17 +28,20 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
     private QueryNotiAdapter adapter;
     private String url;
     private Boolean checkTecOrStu;
+    private FloatingActionButton ftbn_query_noti;
+    private int courseId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_noti);
         new QueryNotiPresenter(this, this);
-        initViews(null);
         Intent intent = getIntent();
+        courseId=intent.getIntExtra("courseId",0);
+        initViews(null);
         checkTecOrStu = presenter.checkTecOrStu();
         String suffix = "noti/queryCourseNotiByCourseId";
         User user3 = DataSupport.findLast(User.class);
-        url = suffix+"?"+"courseId="+intent.getIntExtra("courseId",0);
+        url = suffix+"?"+"courseId="+courseId;
         /*if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
             Toast.makeText(QuerySelectCourseActivity.this, "您不是老师！", Toast.LENGTH_SHORT).show();
 
@@ -108,11 +112,25 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
 
     @Override
     public void initViews(View view) {
+        ftbn_query_noti=findViewById(R.id.ftbn_query_noti);
         rv_query_noti_list= findViewById(R.id.rv_query_noti_list);
         rv_query_noti_list.setLayoutManager(new LinearLayoutManager(this));
         query_noti_refresh = findViewById(R.id.query_noti_refresh);
        query_noti_empty_view= findViewById(R.id.query_noti_empty_view);
+
+        ftbn_query_noti.setOnClickListener(v->{
+            Intent intent=new Intent(QueryNotiActivity.this, com.zhaoweihao.architechturesample.course.SendNoti.class);
+            intent.putExtra("courseId",courseId);
+            startActivity(intent);
+        });
         setSupportActionBar(findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
     @Override
     protected void onResume() {

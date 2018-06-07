@@ -75,4 +75,13 @@
         </FrameLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/ftbn_query_noti"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="300dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/write"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 </android.support.constraint.ConstraintLayout>
