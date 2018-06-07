@@ -25,8 +25,6 @@ public interface QuerySelectCourseContract {
 
         ArrayList<QuerySelect> getQueryList();
 
-        Boolean checkTecOrStu();
-
         void confirmRecord(QuerySelect querySelect);
     }
 }
