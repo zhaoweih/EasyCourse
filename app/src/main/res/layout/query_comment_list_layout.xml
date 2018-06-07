@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:layout_marginBottom="4dp"
-    android:layout_marginTop="4dp">
+    android:layout_margin="0dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="0dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="60dp"
+        android:background="#1000"
+        android:paddingLeft="5dp"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/tv_query_comment_list_studentId"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorAccent"
             android:textSize="18dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:text="2015191036"
             android:gravity="center|left"
             />
+        <TextView
+            android:id="@+id/tv_query_comment_list_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/tv_query_comment_list_studentId"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:layout_height="wrap_content"
+            android:text="2015191036"
+            />
     </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+</RelativeLayout>

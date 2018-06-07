@@ -2,6 +2,7 @@ package com.zhaoweihao.architechturesample.course;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -43,6 +44,7 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
     private Boolean checkTecOrStu;
     private Toolbar toolbar;
     private int courseId;
+    private FloatingActionButton ftbn_query_topic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +97,8 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
             });
 
             adapter.setItemLongClickListener((view, position) -> {
+                User user3 = DataSupport.findLast(User.class);
+                if(user3.getTeacherId()!=null){
                 ArrayList<QueryTopic> queries = presenter.getQueryList();
                 QueryTopic query = queries.get(position);
                 // 处理长按行为
@@ -104,10 +108,12 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                             @Override//处理确定按钮点击事件
                             public void onClick(DialogInterface dialog, int which) {
                                 String suffix = "discuss/delete";
+                                //String suffix1="discuss/comment/delete";
                                 DeleteTopic deletetopic=new DeleteTopic();
                                 deletetopic.setId(query.getId());
                                 String json = new Gson().toJson(deletetopic);
                                 presenter.deleteTopic(suffix,json,url);
+
                             }
                         })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener(){
@@ -116,7 +122,7 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
                                 dialog.cancel();//对话框关闭。
                             }
                         }).create();
-                alert.show();
+                alert.show();}
             });
         });
     }
@@ -150,6 +156,11 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
         rv_query_topic_1_list.setLayoutManager(new LinearLayoutManager(this));
         query_topic_refresh = findViewById(R.id.query_topic_refresh);
         query_topic_empty_view= findViewById(R.id.query_select_empty_view);
+        ftbn_query_topic=findViewById(R.id.ftbn_query_topic);
+        ftbn_query_topic.setOnClickListener(v->{
+            Intent intent=new Intent(QueryTopicActivity.this, com.zhaoweihao.architechturesample.course.SendTopic.class);
+            startActivity(intent);
+        });
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }

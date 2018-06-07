@@ -40,7 +40,8 @@ public class QueryCommentAdapter extends RecyclerView.Adapter<QueryCommentAdapte
         QueryComment query = list.get(position);
      /*   if (checkTecOrStu)
             holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);*/
-        holder.tv_query_comment_list_studentId.setText(query.getContent());
+        holder.tv_query_comment_list_studentId.setText(query.getStudentId()+":");
+        holder.tv_query_comment_list_content.setText(query.getContent());
 
     }
 
@@ -60,7 +61,10 @@ public class QueryCommentAdapter extends RecyclerView.Adapter<QueryCommentAdapte
     public class QueryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
         //TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername;
-        TextView tv_query_comment_list_studentId;
+        TextView tv_query_comment_list_studentId,tv_query_comment_list_content;
+        /**
+         * tv_query_comment_list_studentId
+         * */
         ImageView iv_query_select_course_manage;
 
         OnRecyclerViewClickListener listener;
@@ -74,6 +78,7 @@ public class QueryCommentAdapter extends RecyclerView.Adapter<QueryCommentAdapte
            // tv_query_select_course_teachername = itemView.findViewById(R.id.tv_query_select_course_teachername);
             //iv_query_select_course_manage= itemView.findViewById(R.id.iv_query_select_course_manage);去掉图片
             tv_query_comment_list_studentId=itemView.findViewById(R.id.tv_query_comment_list_studentId);
+            tv_query_comment_list_content=itemView.findViewById(R.id.tv_query_comment_list_content);
 
             this.listener = listener;
             itemView.setOnClickListener(this);

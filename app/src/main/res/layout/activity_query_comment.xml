@@ -36,42 +36,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <ImageView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp" />
-                <TextView
-                    android:id="@+id/tv_query_comment_teacherId"
+                <android.support.v7.widget.CardView
+                    android:layout_margin="5dp"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="-50dp"
-                    android:layout_marginLeft="60dp"
-                    android:textSize="18dp"
-                    android:textColor="@color/colorAccent"
-                    android:layout_height="50dp" />
-                <TextView
-                    android:layout_marginTop="-25dp"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="60dp"
-                    android:id="@+id/tv_query_comment_content"
-                    android:textSize="20dp"
-                    android:textColor="#000"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginLeft="60dp"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/tv_query_comment_startDate"
-                    android:textSize="13dp"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:id="@+id/tv_query_comment_endDate"
-                    android:textSize="13dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                    <ImageView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@mipmap/ic_launcher"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+                    <TextView
+                        android:id="@+id/tv_query_comment_teacherId"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="60dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/colorAccent"
+                        android:layout_height="50dp" />
+                    <TextView
+                        android:layout_marginTop="-25dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="60dp"
+                        android:id="@+id/tv_query_comment_content"
+                        android:textSize="20dp"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginLeft="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/tv_query_comment_startDate"
+                        android:textSize="13dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/tv_query_comment_endDate"
+                        android:textSize="13dp"
+                        android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_query_comment_1_list"
                     android:layout_width="match_parent"
@@ -111,6 +123,31 @@
         </FrameLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
+    <RelativeLayout
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_query_comment_content"
+            android:layout_width="320dp"
+            android:background="#1fff"
+            android:hint="请输入评论!"
+            android:gravity="center"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/bt_query_comment_confirm"
+            android:layout_toRightOf="@id/et_query_comment_content"
+            android:background="#1000"
+            android:text="发送"
+            android:textColor="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </RelativeLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/ftbn_query_comment"
         android:layout_marginTop="450dp"

@@ -81,7 +81,7 @@ public class QueryCommentPresenter implements QueryCommentContract.Presenter, On
 
     }
     @Override
-    public void deleteTopic(String url,String json,String urlRefresh) {
+    public void sendComment(String url,String json,String urlRefresh) {
         view.startLoading();
         sendPostRequest(url, json, new Callback() {
             @Override
