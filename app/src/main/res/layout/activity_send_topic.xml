@@ -41,6 +41,7 @@
                 android:layout_alignParentRight="true"
                 android:src="@drawable/userinformationtitle" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/ry_sendtopictop"
             android:layout_width="match_parent"
@@ -49,6 +50,7 @@
             android:background="#fff"
             android:visibility="gone"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/et_sendtopic_coursenum"
                 android:layout_width="match_parent"
@@ -65,10 +67,14 @@
             android:layout_margin="5dp"
             android:layout_below="@id/ry_sendtopictop"
             android:layout_height="wrap_content">
-
+            <ImageView
+                android:background="@drawable/discuss0"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp" />
             <EditText
                 android:id="@+id/et_sendtopic_content"
                 android:layout_width="match_parent"
+                android:layout_marginTop="120dp"
                 android:hint="@string/sendtopic_reason0_text"
                 android:background="#fff"
                 android:gravity="center"

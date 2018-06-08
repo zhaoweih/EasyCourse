@@ -42,10 +42,11 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
     public void onBindViewHolder(QueryNotiAdapter.QueryViewHolder holder, int position) {
         com.zhaoweihao.architechturesample.data.course.SendNoti query = list.get(position);
         //if (checkTecOrStu)
+
         String string = query.getEndDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String todayString=sdf.format(new Date());
         try {
+            String todayString=sdf.format(new Date());
             if(sdf.parse(todayString).after(sdf.parse(string))){
                 //list.remove(position);
                 holder.tv_query_noti_list_endDate.setVisibility(View.GONE);
