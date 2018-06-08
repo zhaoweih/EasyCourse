@@ -55,13 +55,9 @@ public class InfoFragment extends Fragment {
             }
         });
         about.setOnClickListener(v -> {
-
+            Intent intent = new Intent(getActivity(), AboutActivity.class);
+            startActivity(intent);
         });
-
-//        getChildFragmentManager().beginTransaction()
-//                .replace(R.id.info_container, new InfoPreferenceFragment())
-//                .commit();
-
 
         return view;
     }
