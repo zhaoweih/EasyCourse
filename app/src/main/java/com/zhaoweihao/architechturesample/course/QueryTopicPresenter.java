@@ -50,8 +50,8 @@ public class QueryTopicPresenter implements QueryTopicContract.Presenter, OnStri
 
     @Override
     public void onSuccess(String payload) {
+        Log.d(TAG, "测试点4");
 
-        Log.e(TAG, payload);
         if (payload == null) {
             view.showConfirmSuccess(true);
             view.stopLoading();
@@ -74,6 +74,7 @@ public class QueryTopicPresenter implements QueryTopicContract.Presenter, OnStri
 
     @Override
     public void onError(String error) {
+        Log.d(TAG, "测试点3");
         view.showLoadError(error);
         view.stopLoading();
     }

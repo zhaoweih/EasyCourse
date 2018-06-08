@@ -1,7 +1,5 @@
 package com.zhaoweihao.architechturesample.course;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
@@ -10,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +15,6 @@ import android.widget.LinearLayout;
 
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.course.Query;
-import com.zhaoweihao.architechturesample.data.course.Select;
 
 import java.util.ArrayList;
 
@@ -146,7 +142,6 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
         }
     }
 
-
     @Override
     public void initViews(View view) {
         recyclerView = findViewById(R.id.rv_course_list);
@@ -156,6 +151,15 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
         input = findViewById(R.id.input);
         query = findViewById(R.id.query);
         setSupportActionBar(findViewById(R.id.toolbar));
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override

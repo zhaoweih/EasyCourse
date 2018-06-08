@@ -1,6 +1,7 @@
 package com.zhaoweihao.architechturesample.course;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -58,6 +59,7 @@ public class QueryNotiPresenter implements QueryNotiContract.Presenter, OnString
 
     @Override
     public void onError(String error) {
+        Log.d(TAG, "测试点2");
         view.showLoadError(error);
         view.stopLoading();
     }

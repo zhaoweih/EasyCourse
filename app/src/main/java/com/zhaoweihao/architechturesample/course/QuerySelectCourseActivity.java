@@ -159,11 +159,20 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
        query_select_course_empty_view= findViewById(R.id.query_select_empty_view);
        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
     @Override
     protected void onResume() {
         super.onResume();
         presenter.start();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
