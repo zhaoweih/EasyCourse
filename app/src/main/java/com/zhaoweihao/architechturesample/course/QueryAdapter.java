@@ -53,10 +53,10 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHol
         if (checkTecOrStu)
             holder.select.setVisibility(View.VISIBLE);
 
-        holder.name.setText("课程名称: " + query.getCourseName());
-        holder.description.setText("课程简介: " + query.getDescription());
-        holder.teacherName.setText("课程老师: " + query.getTeacherName());
-        holder.selectNum.setText("选课人数: " + query.getCourseNum());
+        holder.name.setText(query.getCourseName());
+        holder.description.setText(query.getDescription());
+        holder.teacherName.setText(query.getTeacherName());
+        holder.selectNum.setText(String.valueOf(query.getCourseNum()));
 
     }
 

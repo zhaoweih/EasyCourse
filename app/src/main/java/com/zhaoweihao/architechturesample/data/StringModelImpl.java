@@ -1,6 +1,7 @@
 package com.zhaoweihao.architechturesample.data;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -16,6 +17,9 @@ import okhttp3.Call;
  */
 
 public class StringModelImpl {
+
+
+    public static final String TAG = "StringModelImpl";
 
     private Context context;
 
