@@ -26,23 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize">
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBaseBackground"
             android:clickable="true"
             android:focusable="true">
-            <ImageView
-                android:background="@drawable/podiums"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
-                android:layout_marginTop="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </android.support.v7.widget.RecyclerView>
@@ -77,7 +69,6 @@
                     android:textColor="@color/colorAccent" />
             </LinearLayout>
         </FrameLayout>
-        </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -148,7 +148,7 @@ public class ShowActivity extends AppCompatActivity {
 
                                  //Make new Dialog
                                  AlertDialog.Builder dialog = new AlertDialog.Builder(ShowActivity.this);
-                                 dialog.setTitle("To Vote|Result ");
+                                 dialog.setTitle("去投票或者查看结果 ");
 
                                  LinearLayout layout = new LinearLayout(ShowActivity.this);
                                  layout.setOrientation(LinearLayout.VERTICAL);
@@ -160,7 +160,7 @@ public class ShowActivity extends AppCompatActivity {
                                  final Button toVote = new Button(ShowActivity.this);
                                  toVote.setBackgroundColor(ContextCompat.getColor(ShowActivity.this, R.color.colorPrimary));
                                  toVote.setTextColor(ContextCompat.getColor(ShowActivity.this, R.color.white));
-                                 toVote.setText("To Vote");
+                                 toVote.setText("去投票");
                                  toVote.setOnClickListener(v1 -> {
                                      Log.d(TAG, new Gson().toJson(voteList.get(position)));
                                      Intent intent = new Intent(ShowActivity.this, VoteActivity.class);
@@ -178,7 +178,7 @@ public class ShowActivity extends AppCompatActivity {
                                  });
                                  toResult.setBackgroundColor(ContextCompat.getColor(ShowActivity.this, R.color.colorPrimary));
                                  toResult.setTextColor(ContextCompat.getColor(ShowActivity.this, R.color.white));
-                                 toResult.setText("To Result");
+                                 toResult.setText("查看结果");
                                  layout.addView(toResult);
 
                                  dialog.setView(layout);
