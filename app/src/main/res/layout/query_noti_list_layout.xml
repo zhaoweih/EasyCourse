@@ -3,43 +3,97 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:background="#fff"
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp">
 
     <RelativeLayout
+        android:id="@+id/ry_query_noti_list"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#fff"
         android:layout_height="wrap_content">
-
+        <RelativeLayout
+            android:id="@+id/ry_notilist"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="#fff"
+            android:layout_height="wrap_content"
+            >
         <TextView
             android:id="@+id/tv_query_noti_list_date"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_toRightOf="@id/tv_query_noti_list_endDate1"
             android:layout_marginLeft="15dp"
             android:gravity="center|left"
-            android:text=""
+            android:text="发布日期："
             android:textColor="#000"
             android:textSize="18dp" />
+            <TextView
+                android:id="@+id/tv_query_noti_list_date1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center|left"
+                android:text="发布日期:"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tv_query_noti_list_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:gravity="center|left"
-            android:layout_below="@id/tv_query_noti_list_date"
-            android:text=""
-            android:textColor="#000"
-            android:textSize="18dp" />
-        <TextView
-            android:id="@+id/tv_query_noti_list_endDate"
-            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
             android:gravity="center|left"
-            android:layout_below="@id/tv_query_noti_list_content"
-            android:text=""
+            android:layout_toRightOf="@id/tv_query_noti_list_content1"
+            android:layout_below="@id/tv_query_noti_list_endDate"
+            android:text="发布日期"
             android:textColor="#000"
             android:textSize="18dp" />
+            <TextView
+                android:id="@+id/tv_query_noti_list_content1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center|left"
+                android:layout_below="@id/tv_query_noti_list_endDate"
+                android:text="通知内容:"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
+            <TextView
+                android:id="@+id/tv_query_noti_list_endDate1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@id/tv_query_noti_list_date"
+                android:layout_marginLeft="15dp"
+                android:gravity="center|left"
+                android:text="截止日期:"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
+            <TextView
+                android:id="@+id/tv_query_noti_list_endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@id/tv_query_noti_list_date"
+                android:gravity="center|left"
+                android:layout_toRightOf="@id/tv_query_noti_list_endDate1"
+                android:text="发布日期"
+                android:textColor="#000"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/tv_query_noti_list_icon"
+            android:src="@drawable/loud"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

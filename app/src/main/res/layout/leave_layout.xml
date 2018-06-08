@@ -18,29 +18,61 @@
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
         android:paddingLeft="16dp"
+        android:gravity="center"
         android:paddingRight="16dp">
-
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/applicant0"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:text="申请学号:"
+            android:textColor="@color/colorAccent"
+            android:lineSpacingExtra="4dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/applicant"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="15dp"
             android:textSize="16sp"
+            android:text="5555"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxEms="6"
             android:textColor="@color/black"
             android:lineSpacingExtra="4dp" />
-
-
-        <TextView
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/content"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/content0"
             android:layout_marginLeft="15dp"
+            android:text="申请内容:"
+            android:textSize="16sp"
+            android:textColor="@color/colorAccent"
+            android:lineSpacingExtra="4dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/content"
+            android:text="555"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxEms="6"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:lineSpacingExtra="4dp" />
-
+        </LinearLayout>
     </LinearLayout>
 
         <ImageView
