@@ -1,14 +1,12 @@
+**⚠️WARN: All the Icon & Image was downloaded from iconfont.cn/ &dribbble.com.Due to legal issues📖, please don't use any of images or icons in commerical project.thanks...**
+
 log.preview.img
 
-Vote
-
-Img1
-
-![](./preview/vote_1.png)
-
-img2
-
-![](./preview/vote_2.png)
+| preview.Vote.show         | preview.Vote.result       |
+| ------------------------- | ------------------------- |
+| ![](./preview/vote_1.png) | ![](./preview/vote_2.png) |
+| Preview .my               | Preview .courseManagement |
+| ![](./preview/my.png)     | ![](./preview/mana.png)   |
 
 ### Description:
 
