@@ -35,10 +35,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+                <ImageView
+                    android:background="@drawable/discuss0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_query_topic_1_list"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="-80dp"
                     android:layout_height="match_parent">
 
                 </android.support.v7.widget.RecyclerView>

@@ -137,11 +137,11 @@
 
     <!-- sendnoti -->
 
-    <string name="sendnoti_title_text">课程公告</string>
+    <string name="sendnoti_title_text">课程通知</string>
     <string name="sendnoti_submit_text">发布</string>
     <string name="sendnoti_coursenum0_text">请输入课程编号</string>
-    <string name="sendnoti_reason0_text">填写课程公告信息</string>
-    <string name="sendnoti_selectdate_text">选择公告截止日期</string>
+    <string name="sendnoti_reason0_text">填写课程通知信息</string>
+    <string name="sendnoti_selectdate_text">选择通知截止日期</string>
     <string name="sendnoti_selectorder_text">点击选择增加日期</string>
     <!-- sendnoti end -->
     <!-- sendtopic -->
@@ -149,7 +149,7 @@
     <string name="sendtopic_submit_text">发布</string>
     <string name="sendtopic_coursenum0_text">请输入课程编号</string>
     <string name="sendtopic_reason0_text">填写课程讨论信息</string>
-    <string name="sendtopic_selectdate_text">选择公告截止日期</string>
+    <string name="sendtopic_selectdate_text">选择通知截止日期</string>
     <string name="sendtopic_selectorder_text">点击选择增加日期</string>
     <!-- sendtopic end -->
     <!-- selectionview -->
