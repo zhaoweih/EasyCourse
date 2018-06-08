@@ -68,6 +68,7 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
 //        url = suffix+"?"+"courseId="+intent.getIntExtra("courseId",0);
         query_comment_refresh.setOnRefreshListener(() -> {
             presenter.QueryComment(url);
+            if (adapter != null)
             adapter.notifyDataSetChanged();
             stopLoading();
         });

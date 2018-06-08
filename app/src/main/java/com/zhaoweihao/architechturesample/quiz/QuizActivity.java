@@ -26,7 +26,6 @@ public class QuizActivity extends AppCompatActivity implements QuizContract.View
     private QuizContract.Presenter presenter;
     private QuizAdapter adapter;
 
-
     private String courseId;
 
 
@@ -45,6 +44,7 @@ public class QuizActivity extends AppCompatActivity implements QuizContract.View
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             presenter.queryQuizList(courseId);
+            if (adapter != null)
             adapter.notifyDataSetChanged();
             stopLoading();
         });

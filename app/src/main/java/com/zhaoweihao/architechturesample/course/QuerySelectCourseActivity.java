@@ -52,6 +52,7 @@ public class QuerySelectCourseActivity extends AppCompatActivity implements Quer
 
         query_select_course_refresh.setOnRefreshListener(() -> {
             presenter.querySelect(url);
+            if (adapter != null)
             adapter.notifyDataSetChanged();
             stopLoading();
         });
