@@ -44,9 +44,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     public void onBindViewHolder(QuizAdapter.QuizViewHolder holder, int position) {
         Query query = list.get(position);
 
-        holder.name.setText("学生姓名： " + query.getStudentName());
-        holder.studentId.setText("学号： " + query.getStudentId());
-        holder.quizNum.setText("答题次数： " + query.getQuizNum());
+        holder.name.setText(query.getStudentName());
+        holder.studentId.setText(""+query.getStudentId());
+        holder.quizNum.setText(""+query.getQuizNum());
     }
 
     @Override

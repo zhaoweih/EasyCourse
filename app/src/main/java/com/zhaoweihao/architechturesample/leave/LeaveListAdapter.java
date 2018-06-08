@@ -46,8 +46,8 @@ public class LeaveListAdapter extends RecyclerView.Adapter<LeaveListAdapter.Leav
     @Override
     public void onBindViewHolder(LeaveListAdapter.LeaveListViewHolder holder, int position) {
         Leave leave = list.get(position);
-        holder.applicant.setText("申请人: " + leave.getStudentId());
-        holder.content.setText("申请内容: " + leave.getContent());
+        holder.applicant.setText(leave.getStudentId());
+        holder.content.setText(leave.getContent());
 
         switch (leave.getStatus()) {
             case 1:

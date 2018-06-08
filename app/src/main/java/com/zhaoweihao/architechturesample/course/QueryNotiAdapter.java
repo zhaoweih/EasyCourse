@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zhaoweihao.architechturesample.R;
@@ -27,6 +28,7 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
     private LayoutInflater inflater;
     private final List<SendNoti> list;
     private final Boolean checkTecOrStu;
+    private final Date todayDate=new Date();
 
     private OnRecyclerViewClickListener listener;
     private OnRecyclerViewLongClickListener longClickListener;
@@ -49,16 +51,18 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
         String string = query.getEndDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            String todayString=sdf.format(new Date());
+            String todayString=sdf.format(todayDate);
             if(sdf.parse(todayString).after(sdf.parse(string))){
+                holder.ry_query_noti_list.setVisibility(View.GONE);
+                Log.v("tringModelImpl","hhhh"+query.getEndDate()+"hhh"+query.getDate()+"hhh"+position+"****");
                 //list.remove(position);
-                holder.tv_query_noti_list_endDate.setVisibility(View.GONE);
+               /* holder.tv_query_noti_list_endDate.setVisibility(View.GONE);
                 holder.tv_query_noti_list_content.setVisibility(View.GONE);
-                holder.tv_query_noti_list_date.setVisibility(View.GONE);
+                holder.tv_query_noti_list_date.setVisibility(View.GONE);*/
             }else {
-                holder.tv_query_noti_list_endDate.setText("截止日期："+query.getEndDate());
-                holder.tv_query_noti_list_content.setText("通告内容:"+query.getContent());
-                holder.tv_query_noti_list_date.setText("发布日期："+query.getDate());
+                holder.tv_query_noti_list_endDate.setText(query.getEndDate());
+                holder.tv_query_noti_list_content.setText(query.getContent());
+                holder.tv_query_noti_list_date.setText(query.getDate());
             }
         } catch (ParseException e) {
             Log.e(TAG, e.toString());
@@ -89,6 +93,7 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
 
         //TextView tv_query_select_course_id,tv_query_select_course_name,tv_query_select_course_teachername;
         TextView tv_query_noti_list_content,tv_query_noti_list_endDate,tv_query_noti_list_date;
+        RelativeLayout ry_query_noti_list;
         ImageView iv_query_select_course_manage;
 
         OnRecyclerViewClickListener listener;
@@ -104,6 +109,7 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
             tv_query_noti_list_content=itemView.findViewById(R.id.tv_query_noti_list_content);
             tv_query_noti_list_endDate=itemView.findViewById(R.id.tv_query_noti_list_endDate);
             tv_query_noti_list_date=itemView.findViewById(R.id.tv_query_noti_list_date);
+            ry_query_noti_list=itemView.findViewById(R.id.ry_query_noti_list);
 
             this.listener = listener;
             itemView.setOnClickListener(this);
