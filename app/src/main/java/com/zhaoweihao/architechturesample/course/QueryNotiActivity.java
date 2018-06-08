@@ -52,6 +52,7 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
         }*/
         query_noti_refresh.setOnRefreshListener(() -> {
             presenter.querySelect(url);
+            if (adapter != null)
             adapter.notifyDataSetChanged();
             stopLoading();
         });

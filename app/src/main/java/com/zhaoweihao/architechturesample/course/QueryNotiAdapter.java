@@ -2,6 +2,7 @@ package com.zhaoweihao.architechturesample.course;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import java.util.Date;
 import java.util.List;
 
 public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.QueryViewHolder>{
+    public static final String TAG = "QueryNotiAdapter";
+
     private final Context context;
     private LayoutInflater inflater;
     private final List<SendNoti> list;
@@ -58,6 +61,7 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
                 holder.tv_query_noti_list_date.setText("发布日期："+query.getDate());
             }
         } catch (ParseException e) {
+            Log.e(TAG, e.toString());
             e.printStackTrace();
 
         }

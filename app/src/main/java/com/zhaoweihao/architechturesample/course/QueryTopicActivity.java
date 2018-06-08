@@ -62,6 +62,7 @@ public class QueryTopicActivity extends AppCompatActivity implements QueryTopicC
 //        url = suffix+"?"+"courseId="+intent.getIntExtra("courseId",0);
         query_topic_refresh.setOnRefreshListener(() -> {
             presenter.queryTopic(url);
+            if(adapter != null)
             adapter.notifyDataSetChanged();
             stopLoading();
         });

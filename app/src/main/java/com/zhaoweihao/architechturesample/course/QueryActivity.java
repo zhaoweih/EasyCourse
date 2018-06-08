@@ -68,6 +68,7 @@ public class QueryActivity extends AppCompatActivity implements QueryContract.Vi
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             presenter.query(url);
+            if (adapter != null)
             adapter.notifyDataSetChanged();
             stopLoading();
         });
