@@ -9,21 +9,33 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_height="100dp">
-        <ImageView
-            android:id="@+id/iv_query_topic_list_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/debate"/>
+        android:layout_margin="5dp"
+        android:layout_height="60dp">
+         <RelativeLayout
+             android:layout_width="wrap_content"
+             android:layout_centerVertical="true"
+             android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_query_topic_list_content_title"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxEms="6"
+            android:text="内容："
+            android:gravity="center|left"
+            />
         <TextView
             android:id="@+id/tv_query_topic_list_content"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@id/iv_query_topic_list_icon"
+            android:layout_toRightOf="@id/tv_query_topic_list_content_title"
             android:textColor="#000"
             android:layout_marginLeft="20dp"
             android:textSize="18dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:singleLine="true"
             android:ellipsize="end"
             android:maxEms="6"
@@ -31,15 +43,39 @@
             android:gravity="center|left"
             />
         <TextView
-            android:id="@+id/tv_query_topic_list_startDate"
-            android:layout_width="match_parent"
-            android:layout_marginRight="10dp"
-            android:textColor="#000"
+            android:id="@+id/tv_query_topic_list_startDate_title"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/tv_query_topic_list_content_title"
+            android:textColor="@color/colorAccent"
+            android:layout_marginLeft="20dp"
             android:textSize="18dp"
-            android:layout_height="50dp"
-            android:text="2015191036"
-            android:gravity="center|right"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxEms="6"
+            android:text="时间："
+            android:gravity="center|left"
             />
+        <TextView
+            android:id="@+id/tv_query_topic_list_startDate"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/tv_query_topic_list_content_title"
+            android:layout_toRightOf="@id/tv_query_topic_list_startDate_title"
+            android:textColor="#000"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_height="wrap_content"
+            android:text="2015191036"
+            android:gravity="center"
+            />
+         </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_query_topic_list_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/discuss"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

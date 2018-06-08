@@ -114,8 +114,14 @@ public class QuizActivity extends AppCompatActivity implements QuizContract.View
         swipeRefreshLayout = findViewById(R.id.refresh);
         emptyView = findViewById(R.id.empty_view);
         setSupportActionBar(findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
-
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
+    }
     @Override
     protected void onResume() {
         super.onResume();

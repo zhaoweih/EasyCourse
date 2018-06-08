@@ -19,18 +19,21 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/query_topic_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize">
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBaseBackground"
             android:clickable="true"
             android:focusable="true">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,17 +42,15 @@
                     android:background="@drawable/discuss0"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp" />
-
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_query_topic_1_list"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="-80dp"
+                    android:layout_marginTop="-50dp"
                     android:layout_height="match_parent">
-
                 </android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
-
+            </ScrollView>
             <LinearLayout
                 android:id="@+id/query_topic_empty_view"
                 android:layout_width="match_parent"
@@ -79,7 +80,7 @@
             </LinearLayout>
         </FrameLayout>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/ftbn_query_topic"
         android:layout_marginTop="450dp"

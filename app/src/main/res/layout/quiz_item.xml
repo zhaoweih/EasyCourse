@@ -14,38 +14,87 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp">
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/ry_quiz_item_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/name0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:text="学生姓名："
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
         <TextView
             android:id="@+id/name"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/name0"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
-
-
+            <TextView
+                android:id="@+id/student_id0"
+                android:layout_below="@id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:text="学生学号："
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
         <TextView
             android:id="@+id/student_id"
-            android:layout_width="match_parent"
+            android:layout_below="@id/name"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/student_id0"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
-
+            <TextView
+                android:id="@+id/quiz_num0"
+                android:layout_below="@id/student_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:text="答题次数："
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
         <TextView
             android:id="@+id/quiz_num"
-            android:layout_width="match_parent"
+            android:layout_below="@id/student_id"
+            android:layout_width="100dp"
+            android:layout_toRightOf="@id/quiz_num0"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
-
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ry_quiz_item_right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+         <ImageView
+             android:src="@drawable/rank"
+             android:layout_width="60dp"
+             android:layout_height="60dp" />
+        </RelativeLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
