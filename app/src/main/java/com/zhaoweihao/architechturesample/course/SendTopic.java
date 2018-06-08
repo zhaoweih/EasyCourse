@@ -88,7 +88,23 @@ public class SendTopic extends AppCompatActivity implements View.OnClickListener
                finish();
                 break;
             case R.id.bt_sendtopicsubmit:
-                submittopic();
+                AlertDialog alert = new AlertDialog.Builder(SendTopic.this)
+                        .setTitle("温馨提示")
+                        .setIcon(R.drawable.warming)
+                        .setMessage("您提交讨论后将法修改，但可以删除，确定提交？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                            @Override//处理确定按钮点击事件
+                            public void onClick(DialogInterface dialog, int which) {
+                                submittopic();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick (DialogInterface dialog,int which){
+                                dialog.cancel();//对话框关闭。
+                            }
+                        }).create();
+                alert.show();
                 break;
             case R.id.tv_sendtopic_date:
                 if (view.getId() == R.id.tv_sendtopic_date && pvCustomTime != null)

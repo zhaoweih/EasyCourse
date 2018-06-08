@@ -45,10 +45,24 @@
                 android:src="@drawable/userinformationtitle" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/ry_background"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/ry_leavetitle"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@drawable/leave"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp" />
+        </RelativeLayout>
+        <RelativeLayout
             android:id="@+id/ry_leavetop"
             android:layout_width="match_parent"
-            android:layout_below="@+id/ry_leavetitle"
-            android:layout_margin="10dp"
+            android:layout_marginTop="-180dp"
+            android:layout_below="@+id/ry_background"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:background="#fff"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_leave_name"
@@ -110,10 +124,10 @@
                 android:gravity="center|left"
                 android:background="#fff"
                 android:layout_height="40dp" />
-            <EditText
-                android:id="@+id/et_leave_teachernum0"
+            <TextView
+                android:id="@+id/tv_leave_teachernum0"
                 android:layout_width="match_parent"
-                android:hint="@string/et_leave_teachernum0"
+                android:hint="@string/tv_leave_teachernum0"
                 android:layout_below="@+id/tv_leave_coursenum"
                 android:gravity="center"
                 android:textColor="#000"
@@ -172,6 +186,7 @@
                 android:id="@+id/tv_leave_reason"
                 android:layout_width="match_parent"
                 android:text="@string/leave_reason_text"
+                android:visibility="gone"
                 android:textColor="#000"
                 android:layout_below="@id/tv_leave_type"
                 android:gravity="center|left"

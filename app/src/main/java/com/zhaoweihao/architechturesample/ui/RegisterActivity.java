@@ -156,6 +156,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             Toast.makeText(this, "请输入完整！", Toast.LENGTH_SHORT).show();
                         } else {
                             AlertDialog alert = new AlertDialog.Builder(RegisterActivity.this).setTitle("温馨提示")
+                                    .setIcon(R.drawable.warming)
                                     .setMessage("注册后部分数据将无法更改，确定要注册？")
                                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
                                         @Override//处理确定按钮点击事件
