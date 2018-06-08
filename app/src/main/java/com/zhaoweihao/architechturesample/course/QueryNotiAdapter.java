@@ -13,7 +13,10 @@ import com.zhaoweihao.architechturesample.data.course.SendNoti;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewClickListener;
 import com.zhaoweihao.architechturesample.interfaze.OnRecyclerViewLongClickListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.QueryViewHolder>{
@@ -38,12 +41,29 @@ public class QueryNotiAdapter extends RecyclerView.Adapter<QueryNotiAdapter.Quer
     @Override
     public void onBindViewHolder(QueryNotiAdapter.QueryViewHolder holder, int position) {
         com.zhaoweihao.architechturesample.data.course.SendNoti query = list.get(position);
-        if (checkTecOrStu)
-        holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);
+        //if (checkTecOrStu)
+        String string = query.getEndDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String todayString=sdf.format(new Date());
+        try {
+            if(sdf.parse(todayString).after(sdf.parse(string))){
+                //list.remove(position);
+                holder.tv_query_noti_list_endDate.setVisibility(View.GONE);
+                holder.tv_query_noti_list_content.setVisibility(View.GONE);
+                holder.tv_query_noti_list_date.setVisibility(View.GONE);
+            }else {
+                holder.tv_query_noti_list_endDate.setText("截止日期："+query.getEndDate());
+                holder.tv_query_noti_list_content.setText("通告内容:"+query.getContent());
+                holder.tv_query_noti_list_date.setText("发布日期："+query.getDate());
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
 
-        holder.tv_query_noti_list_content.setText("通告内容:"+query.getContent());
-        holder.tv_query_noti_list_endDate.setText("截止日期："+query.getEndDate());
-        holder.tv_query_noti_list_date.setText("发布日期："+query.getDate());
+        }
+
+
+        //holder.iv_query_select_course_manage.setVisibility(View.VISIBLE);
+
 
     }
 
