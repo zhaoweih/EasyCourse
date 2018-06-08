@@ -3,6 +3,7 @@ package com.zhaoweihao.architechturesample.leave;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,8 @@ public class LeaveListActivity extends AppCompatActivity {
 
     private ArrayList<Leave> leaveList = new ArrayList<>();
 
+    private FloatingActionButton ftbn_leave;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,16 +78,23 @@ public class LeaveListActivity extends AppCompatActivity {
         if (user3.getTeacherId() != null) {
             // 拼接完整url
             url = suffix + "?" + teacherId + "=" + user3.getTeacherId();
+            ftbn_leave.setVisibility(View.INVISIBLE);
         } else {
             // 拼接完整url
             url = suffix + "?" + studentId + "=" + user3.getStudentId();
+            ftbn_leave.setVisibility(View.VISIBLE);
         }
         log(THIS_CLASS, url);
 
-        swipeRefreshLayout.setOnRefreshListener(() -> {
+        swipeRefreshLayout.setOnRefreshListener(() ->{
             requestLeaveList(url);
         });
-
+        Intent intent1=getIntent();
+        ftbn_leave.setOnClickListener(v->{
+           Intent intent=new Intent(LeaveListActivity.this,LeaveSubmit.class);
+           intent.putExtra("courseId",intent1.getIntExtra("courseId",0));
+           startActivity(intent);
+        });
         // 请求数据
         requestLeaveList(url);
     }
@@ -95,6 +105,14 @@ public class LeaveListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         swipeRefreshLayout = findViewById(R.id.refresh);
         emptyView = findViewById(R.id.empty_view);
+        ftbn_leave=findViewById(R.id.ftbn_leave);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 
     /**

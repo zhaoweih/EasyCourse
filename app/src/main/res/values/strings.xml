@@ -127,8 +127,8 @@
     <string name="rb_show_leave_RBtn1">同意</string>
     <string name="rb_show_leave_RBtn2">拒绝</string>
     <string name="et_leave_show_message">教师留言</string>
-    <string name="et_leave_teachernum0">输入教师编号</string>
-    <string name="tv_leave_teachernum">教师编号</string>
+    <string name="tv_leave_teachernum0">课程编号</string>
+    <string name="tv_leave_teachernum">课程编号</string>
     <string name="tv_leave_show_stumun">2015191036</string>
     <string name="tv_leave_show_state">请求批准状态</string>
     <string name="tv_leave_show_submit">确认</string>

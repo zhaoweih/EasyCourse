@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.Leave;
+import com.zhaoweihao.architechturesample.data.LeaveSubmitdata;
 import com.zhaoweihao.architechturesample.data.RestResponse;
 import com.zhaoweihao.architechturesample.database.User;
 import com.zhaoweihao.architechturesample.ui.LoginActivity;
@@ -41,7 +42,7 @@ import static com.zhaoweihao.architechturesample.util.Utils.log;
 
 public class LeaveSubmit extends AppCompatActivity implements View.OnClickListener {
     private static final Class thisClass = LeaveSubmit.class;
-    private TextView tv_leave_name0, tv_leave_num0, et_leave_teachernum0, tv_leave_coursenum0;
+    private TextView tv_leave_name0, tv_leave_num0, tv_leave_teachernum0, tv_leave_coursenum0;
     private ImageView iv_leavereturntohome;
     private TextView tv_leave_date0, tv_leave_date1, tv_leave_order0, tv_leave_order1, tv_leave_type0, tv_leave_end;
     private EditText et_leave_phone0, et_leave_reason;
@@ -75,7 +76,8 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         //姓名，学号，选择课程编号显示相应的教师编号，输入联系电话
         tv_leave_name0 = (TextView) findViewById(R.id.tv_leave_name0);
         tv_leave_num0 = (TextView) findViewById(R.id.tv_leave_num0);
-        et_leave_teachernum0 = (TextView) findViewById(R.id.et_leave_teachernum0);
+        tv_leave_teachernum0 = (TextView) findViewById(R.id.tv_leave_teachernum0);
+        tv_leave_teachernum0.setText(getIntent().getIntExtra("courseId",0)+"");
         tv_leave_coursenum0 = (TextView) findViewById(R.id.tv_leave_coursenum0);
         tv_leave_date0 = (TextView) findViewById(R.id.tv_leave_date0);
         tv_leave_date1 = (TextView) findViewById(R.id.tv_leave_date1);
@@ -109,8 +111,24 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
         final String addclass[] = {"第1节", "第2节", "第3节", "第4节", "第5节", "第6节", "第7节", "第8节", "第9节", "第10节"};
         switch (view.getId()) {
             case R.id.bt_leavesubmit:
-                if (!et_leave_teachernum0.getText().toString().equals("") && !et_leave_reason.getText().toString().equals("") && ((SelectedStartTimeFlag || SelectedEndTimeFlag) && SelectedStartOrderFlag)) {
-                    submit();
+                if (!tv_leave_teachernum0.getText().toString().equals("") && !et_leave_reason.getText().toString().equals("") && ((SelectedStartTimeFlag || SelectedEndTimeFlag) && SelectedStartOrderFlag)) {
+                    AlertDialog alert = new AlertDialog.Builder(LeaveSubmit.this)
+                            .setTitle("温馨提示")
+                            .setIcon(R.drawable.warming)
+                            .setMessage("您提交请假条后将无法修改，确定提交？")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                                @Override//处理确定按钮点击事件
+                                public void onClick(DialogInterface dialog, int which) {
+                                    submit();
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick (DialogInterface dialog,int which){
+                                    dialog.cancel();//对话框关闭。
+                                }
+                            }).create();
+                    alert.show();
                 } else {
                     Toast.makeText(LeaveSubmit.this, "请检查未填写信息！", Toast.LENGTH_SHORT).show();
                 }
@@ -255,10 +273,10 @@ public class LeaveSubmit extends AppCompatActivity implements View.OnClickListen
          * @status
          * @tecAdvise 申请状态
          */
-        Leave leave1 = new Leave();
+        LeaveSubmitdata leave1 = new LeaveSubmitdata();
         leave1.setStuId(user3.getUserId());
         leave1.setStudentId(user3.getStudentId());
-        leave1.setTeacherId(et_leave_teachernum0.getText().toString());
+        leave1.setCourseId(getIntent().getIntExtra("courseId",0));
         leave1.setStatus(1);
         leave1.setTecAdvise(null);
         //getNowDateShort(getNowDateShort(getNextkDay(new Date(),startTimeSelected)))

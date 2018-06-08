@@ -43,8 +43,13 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<DoubanMomentAdapte
     @Override
     public void onBindViewHolder(DoubanMomentAdapter.DoubanMomentViewHolder holder, int position) {
         QuerySelect query = list.get(position);
+        User user3 = DataSupport.findLast(User.class);
+        if (user3.getStudentId() == null && !(user3.getTeacherId() == null)) {
+            holder.tv_query_select_course_id.setText(String.valueOf(query.getId()));
+        } else if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
+            holder.tv_query_select_course_id.setText(String.valueOf(query.getCourseId()));
+        }
 
-        holder.tv_query_select_course_id.setText(String.valueOf(query.getId()));
         holder.tv_query_select_course_name.setText(query.getCourseName());
         holder.tv_query_select_course_teachername.setText(query.getTeacherName());
 

@@ -89,7 +89,24 @@ public class SendNoti extends AppCompatActivity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.bt_sendnotisubmit:
-               submitNoti();
+                AlertDialog alert = new AlertDialog.Builder(SendNoti.this)
+                        .setTitle("温馨提示")
+                        .setIcon(R.drawable.warming)
+                        .setMessage("您提交通知后将法修改,通知过期自动删除，确定提交？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                            @Override//处理确定按钮点击事件
+                            public void onClick(DialogInterface dialog, int which) {
+                                submitNoti();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick (DialogInterface dialog,int which){
+                                dialog.cancel();//对话框关闭。
+                            }
+                        }).create();
+                alert.show();
+
                 break;
             case R.id.tv_sendnoti_date:
                 new AlertDialog.Builder(SendNoti.this).setItems(expires, new DialogInterface.OnClickListener() {
