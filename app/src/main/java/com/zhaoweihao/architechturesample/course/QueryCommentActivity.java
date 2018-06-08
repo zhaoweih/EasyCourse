@@ -27,6 +27,7 @@ import com.zhaoweihao.architechturesample.database.User;
 
 import org.litepal.crud.DataSupport;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -168,6 +169,16 @@ public class QueryCommentActivity extends AppCompatActivity implements QueryComm
         intent.putExtra("teacherId",queryArrayList.get(position).getTeacherId());
         intent.putExtra("courseId",courseId);
         intent.putExtra("discussId",queryArrayList.get(position).getId());*/
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String todayString=sdf.format(new Date());
+        try {
+            if(sdf.parse(todayString).after(sdf.parse(intent.getStringExtra("commentEndDate")))){
+                ftbn_query_comment.setVisibility(View.INVISIBLE);
+                tv_query_comment_endDate.setText("已停止评论");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
         rv_query_comment_1_list= findViewById(R.id.rv_query_comment_1_list);

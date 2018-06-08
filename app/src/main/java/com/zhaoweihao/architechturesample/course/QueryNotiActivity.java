@@ -40,7 +40,7 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
         initViews(null);
         checkTecOrStu = presenter.checkTecOrStu();
         String suffix = "noti/queryCourseNotiByCourseId";
-        User user3 = DataSupport.findLast(User.class);
+
         url = suffix+"?"+"courseId="+courseId;
         /*if (!(user3.getStudentId() == null) && user3.getTeacherId() == null) {
             Toast.makeText(QuerySelectCourseActivity.this, "您不是老师！", Toast.LENGTH_SHORT).show();
@@ -72,7 +72,7 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
                 com.zhaoweihao.architechturesample.data.course.SendNoti query = queries.get(position);
                 
             });
-            getSupportActionBar().setTitle("共有"+queryArrayList.size()+"条公告");
+            getSupportActionBar().setTitle("通知栏");
             adapter.setItemLongClickListener((view, position) -> {
                 // 处理长按行为
             });
@@ -123,6 +123,12 @@ public class QueryNotiActivity extends AppCompatActivity implements QueryNotiCon
             intent.putExtra("courseId",courseId);
             startActivity(intent);
         });
+        User user3 = DataSupport.findLast(User.class);
+        if(user3.getStudentId()!=null){
+            ftbn_query_noti.setVisibility(View.INVISIBLE);
+        }else {
+            ftbn_query_noti.setVisibility(View.VISIBLE);
+        }
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
