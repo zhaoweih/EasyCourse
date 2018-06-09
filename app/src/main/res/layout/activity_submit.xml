@@ -34,6 +34,11 @@
             android:layout_width="match_parent"
             android:layout_margin="5dp"
             android:layout_height="match_parent">
+            <ImageView
+                android:background="@drawable/submitcourse"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="-50dp"
+                android:layout_height="180dp" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
