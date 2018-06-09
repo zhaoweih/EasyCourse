@@ -1,5 +1,7 @@
 package com.zhaoweihao.architechturesample.course;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,8 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
 import com.zhaoweihao.architechturesample.data.User;
+import com.zhaoweihao.architechturesample.data.course.DeleteTopic;
 import com.zhaoweihao.architechturesample.data.course.Submit;
 
 import org.litepal.crud.DataSupport;
@@ -68,17 +72,35 @@ public class SubmitActivity extends AppCompatActivity implements SubmitContract.
                     String teacherNameText = teacherName.getText().toString();
                     String descriptionText = description.getText().toString();
                     String passwordText = password.getText().toString();
-                    if (courseNameText.equals("")||teacherNameText.equals("")||descriptionText.equals("")||passwordText.equals(""))
+                    if (courseNameText.equals("")||teacherNameText.equals("")||descriptionText.equals("")||passwordText.equals("")){
                         Toast.makeText(this, "不能为空", Toast.LENGTH_SHORT).show();
-                    Submit submit = new Submit();
-                    submit.setTecId(user.getUserId());
-                    submit.setTeacherId(user.getTeacherId());
-                    submit.setCourseName(courseNameText);
-                    submit.setTeacherName(teacherNameText);
-                    submit.setDescription(descriptionText);
-                    submit.setPassword(passwordText);
-                    // 交给presenter去进行网络请求，各自负责的功能清晰
-                    presenter.submit(submit);
+                    }else{
+                        AlertDialog alert = new AlertDialog.Builder(this)
+                                .setIcon(R.drawable.warming)
+                                .setTitle("温馨提示")
+                                .setMessage("确定要提交课程吗？")
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {//设置确定按钮
+                                    @Override//处理确定按钮点击事件
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Submit submit = new Submit();
+                                        submit.setTecId(user.getUserId());
+                                        submit.setTeacherId(user.getTeacherId());
+                                        submit.setCourseName(courseNameText);
+                                        submit.setTeacherName(teacherNameText);
+                                        submit.setDescription(descriptionText);
+                                        submit.setPassword(passwordText);
+                                        // 交给presenter去进行网络请求，各自负责的功能清晰
+                                        presenter.submit(submit);
+                                    }
+                                })
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();//对话框关闭。
+                                    }
+                                }).create();
+                        alert.show();
+                    }
                     break;
             }
             return true;
@@ -104,6 +126,14 @@ public class SubmitActivity extends AppCompatActivity implements SubmitContract.
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
