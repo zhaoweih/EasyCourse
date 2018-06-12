@@ -188,6 +188,7 @@ public class DoubanMomentFragment extends Fragment implements DoubanMomentContra
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(LoginActivity.MessageEvent event) {
+        Log.d(TAG, "测试点");
         requestTecOrStu();
     }
 }

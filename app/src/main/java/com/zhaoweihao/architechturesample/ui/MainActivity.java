@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         initViews();
 
         initFragments(savedInstanceState);
@@ -67,13 +68,12 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(mInfoFragment);
                     break;
 
-                    default:
-                        break;
+                default:
+                    break;
             }
             ft.commit();
             return true;
         }));
-
 
 
     }
@@ -86,11 +86,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
-
-
-
-
 
     private void initViews() {
         mBottomNavigationView = findViewById(R.id.bottom_nav);
@@ -165,4 +162,11 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(LoginActivity.MessageEvent event) {
+        Log.d(TAG, "测试点");
+    }
+
+
 }

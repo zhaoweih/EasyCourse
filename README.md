@@ -15,11 +15,14 @@
 
 👽后端代码：
 
-- [4S&T-Back-End](https://github.com/zhaoweih/4S-T-Back-End)
+- [EasyCourse-Back-End](https://github.com/zhaoweih/4S-T-Back-End)
 
   🌈已删除数据库密码，如要运行请先在LoadConfig.java里填入自己的数据库密码，默认帐户是root
 
 - 数据库sql文件:[mydatabase.sql](./sql/mydatabase.sql)
+
+## 预览版本 Preview APK file:
+[Google Drive](https://drive.google.com/file/d/1yrj-MC7z9RuapCLPsHx0z2QGjcb4IwsV/view?usp=sharing)
 
 ## 预览图 Preview:
 
