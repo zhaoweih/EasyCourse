@@ -16,7 +16,7 @@ public class HttpUtil {
      * 提供发送get请求和post请求的静态方法
      */
 
-    private static final String prefix = "http://zhaoweihao.com:9001/api/";
+    private static final String prefix = "http://coffee.zhaoweihao.com:9001/api/";
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
