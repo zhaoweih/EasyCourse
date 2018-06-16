@@ -22,7 +22,7 @@
 - 数据库sql文件:[mydatabase.sql](./sql/mydatabase.sql)
 
 ## 预览版本 Preview APK file:
-[Google Drive](https://drive.google.com/file/d/1yrj-MC7z9RuapCLPsHx0z2QGjcb4IwsV/view?usp=sharing)
+[Google Drive](https://drive.google.com/file/d/1cObfceAaLpYykKcX1yn5dlhKGv9Hqy87/view?usp=sharing)
 
 ## 预览图 Preview:
 
