@@ -2,64 +2,222 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhaoweihao.architechturesample">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="org.litepal.LitePalApplication"
+        android:name=".EasyCourseApplication_"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ScoreActivity" />
+        <activity android:name=".activity.example.MqttActivity" />
+        <activity android:name=".activity.example.SocketActivity" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.MainLoginActivity" />
+        <activity android:name=".activity.HomeScanCustomCaptureActivity" />
+        <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
+        <activity android:name=".activity.MainRegisterActivity" />
+        <activity android:name=".activity.example.UtilActivity" />
+        <activity android:name=".activity.MainRegisterListView" />
+        <activity android:name=".activity.HomeCourseMoreLeaveListActivity" />
+        <activity android:name=".activity.HomeCourseMoreLeaveSubmitActivity" />
+        <activity android:name=".activity.HomeCourseMoreLeaveShowActivity" />
+        <activity android:name=".activity.HomeCourseMoreCourseNotiSendActivity" />
+        <activity android:name=".activity.HomeCourseSubmitCourseActivity" />
+        <activity android:name=".activity.HomeCourseSearchQueryCourseActivity" />
+        <activity android:name=".activity.HomeCourseMoreCallRollTecCreateActivity" />
+        <activity android:name=".activity.HomeCourseMoreCallRollStuActivity" />
+        <activity android:name=".activity.HomeCourseMoreCallRollSeatRecActivity" />
+        <activity android:name=".activity.HomeMoreTranslateActivity" />
+        <activity android:name=".activity.PersonalSettingAboutLicenseActivity" />
+        <activity android:name=".activity.HomeMoreZhiHuDailyActivity" />
+        <activity android:name=".activity.HomeMoreZhiHuDailyDetailActivity" />
+        <activity android:name=".activity.HomeCourseClassmateQueryActivity" />
+        <activity android:name=".activity.HomeCourseMoreCourseNotiQueryActivity" />
+        <activity android:name=".activity.HomeCourseMoreQuizRankActivity" />
+        <activity android:name=".activity.HomeCourseTaskTalkTopicSendActivity" />
+        <activity android:name="timeselector.MainActivity" />
+        <activity android:name=".activity.HomeCourseTaskTalkTopicQueryActivity" />
+        <activity android:name=".activity.HomeCourseTaskTalkTopicCommentActivity" />
+        <activity android:name=".activity.HomeCourseMoreVoteToVoteActivity" />
+        <activity android:name=".activity.HomeCourseMoreVoteCreateActivity" />
+        <activity android:name=".activity.HomeCourseMoreVoteActivity" />
+        <activity android:name=".activity.HomeCourseMoreVoteResultActivity" />
+        <activity android:name=".activity.HomeCourseMoreVoteResultChartActivity" />
+        <activity android:name=".activity.HomeCourseMoreTestCreateActivity" />
+        <activity android:name=".activity.PersonalSettingAboutActivity" />
+        <activity android:name=".activity.HomeCourseMoreTestActivity" />
+        <activity android:name=".activity.HomeCourseMoreTestToTestActivity" />
+        <activity android:name=".activity.HomeCourseMoreTestResultActivity" />
+        <activity
+            android:name=".activity.example.UploadActivity"
+            android:label="@string/title_activity_upload"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.example.ZxingActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.example.TestHttpActivity_" />
+        <activity android:name=".activity.example.TestTecentUIActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
-        <activity android:name=".ui.LoginActivity" />
-        <activity android:name="sviolet.seatselectionview.demo.SeatSelectionActivity" />
-        <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.UtilActivity" />
-        <activity android:name=".ui.RegisterListView" />
-        <activity android:name=".ui.UserInformation" />
-        <activity android:name=".leave.LeaveListActivity" />
-        <activity android:name=".leave.LeaveSubmit" />
-        <activity android:name=".leave.LeaveShow" />
-        <activity android:name=".course.CourseActivity" />
-        <activity android:name=".course.SendNoti" />
-        <activity android:name=".course.SubmitActivity" />
-        <activity android:name=".course.QueryActivity" />
-        <activity android:name=".seat.CreateActivity" />
-        <activity android:name=".seat.EnterActivity" />
-        <activity android:name=".seat.SeatRecActivity" />
-        <activity android:name=".tools.TranslateActivity" />
-        <activity android:name=".ui.LicenseActivity" />
-        <activity android:name=".reading.ZhihuDailyActivity" />
-        <activity android:name=".reading.DetailActivity" />
-        <activity android:name=".course.QuerySelectCourseActivity" />
-        <activity android:name=".course.CourseManagerActivity" />
-        <activity android:name=".course.QueryNotiActivity" />
-        <activity android:name=".quiz.QuizActivity" />
-        <activity android:name=".course.SendTopic" />
-        <activity android:name="timeselector.MainActivity" />
-        <activity android:name=".course.QueryTopicActivity" />
-        <activity android:name=".course.QueryCommentActivity" />
-        <activity android:name=".vote.VoteActivity" />
-        <activity android:name=".vote.SetActivity" />
-        <activity android:name=".vote.ShowActivity" />
-        <activity android:name=".vote.ResultActivity" />
-        <activity android:name=".vote.ChartActivity"></activity>
-        <activity android:name=".ui.AboutActivity">
+        <activity android:name=".base.BaseActivity_" />
+        <activity
+            android:name=".activity.HomeSearchAllResourceActivity"
+            android:label="@string/title_activity_main_search_all_resource" />
+        <activity
+            android:name=".activity.NoteSearchAllResourceActivity"
+            android:label="@string/title_activity_note_search_all_resource" />
+        <activity
+            android:name=".activity.MessageSearchAllPeopleActivity"
+            android:label="@string/title_activity_message_search_all_people" />
+        <activity
+            android:name=".activity.HomeMoreActivity"
+            android:label="@string/title_activity_main_more" />
+        <activity
+            android:name=".activity.PersonalSettingActivity"
+            android:label="@string/title_activity_personal_setting" />
+        <activity
+            android:name=".activity.PersonalSettingModifyPasswordActivity"
+            android:label="@string/title_activity_personal_setting_modify_password" />
+        <activity android:name=".activity.ChatSystemActivity_" />
+        <activity
+            android:name=".activity.PersonalSettingCountManagementActivity"
+            android:label="@string/title_activity_personal_setting_count_management" />
+        <activity
+            android:name=".activity.PersonalSettingDescriptionActivity"
+            android:label="@string/title_activity_personal_setting_descriptoin" />
+        <activity
+            android:name=".activity.PersonalSettingPhoneActivity"
+            android:label="@string/title_activity_personal_setting_phone" />
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.zhaoweihao.architechturesample.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".activity.HomeCourseActivity"
+            android:label="@string/title_activity_home_course" />
+        <activity
+            android:name=".activity.HomeCourseDetailAtivity"
+            android:label="@string/title_activity_home_course_detail_ativity" />
+        <activity
+            android:name=".activity.ChatWithWSActivity_"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.HomeResourceActivity"
+            android:label="@string/title_activity_home_resource" />
+        <activity
+            android:name=".activity.HomeActivityActivity"
+            android:label="@string/title_activity_home_huo_dong" />
+        <activity
+            android:name=".activity.NoteActivity"
+            android:label="@string/title_activity_note" /> <!-- Mqtt Service -->
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+        <service android:name=".activity.example.MQTTService" />
+        <service android:name=".activity.example.ValidationMesgService" />
+
+        <activity android:name=".activity.HomeCourseDetailChapterListContentActivity" />
+        <activity android:name=".activity.HomeCourseDetailChapterListContentDetailActivity" />
+        <activity android:name=".activity.HomeCourseDetailChapterAddContentActivity" />
+        <activity
+            android:name=".activity.NoteAddNoteActivity"
+            android:label="@string/title_activity_note_add_note" />
+        <activity
+            android:name=".activity.HomeActivitySubmitActivity"
+            android:label="@string/title_activity_home_submit" />
+        <activity
+            android:name=".activity.HomeActivityDetailActivity"
+            android:label="@string/title_activity_home_detail" />
+        <activity
+            android:name=".activity.NoteNoteBookClassifiedActivity"
+            android:label="@string/title_activity_note_note_book_classified" />
+        <activity
+            android:name=".activity.NoteNoteBookSearchPersonalActivity"
+            android:label="@string/title_activity_note_note_book_search_personal" />
+        <activity
+            android:name=".activity.NoteShowDetailActivity"
+            android:label="@string/title_activity_note_show_detail" />
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:label="@string/app_name">
+              <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
+
+                  <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.HomeResourceDetailActivity"
+            android:label="@string/title_activity_home_resource_detail" />
+        <activity
+            android:name=".activity.HomeResourceListActivity"
+            android:label="@string/title_activity_home_resource_list" />
+        <activity
+            android:name=".activity.HomeResourceSubmitActivity"
+            android:label="@string/title_activity_home_resource_submit" />
+        <activity
+            android:name=".activity.HomeScanInputActivity"
+            android:label="@string/title_activity_home_scan_input" />
+        <activity
+            android:name=".activity.MessageAddressListActivity"
+            android:label="@string/title_activity_message_address_list" />
+        <activity
+            android:name=".activity.MessageValidationListActivity"
+            android:label="@string/title_activity_message_validation_list" />
+        <activity
+            android:name=".activity.MessageMemorandumActivity"
+            android:label="@string/title_activity_message_memorandum" />
+        <activity
+            android:name=".activity.MessageInboxActivity"
+            android:label="@string/title_activity_message_inbox" />
+        <activity
+            android:name=".activity.MessageMemorandumAddActivity"
+            android:label="@string/title_activity_message_memorandum_add" />
+        <activity
+            android:name=".activity.MessageMemorandumDetailActivity"
+            android:label="@string/title_activity_message_memorandum_detail" />
+        <activity
+            android:name=".activity.HomeRecommandChapterListActivity"
+            android:label="@string/title_activity_home_recommand_chapter_list" />
+        <activity
+            android:name=".activity.MessageFriendProfileActivity"
+            android:label="@string/title_activity_message_friend_profile" />
+        <activity android:name=".activity.MainFindLostPassword" />
+        <activity
+            android:name=".activity.example.TestzzVideoplayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:gravity="center|left"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="35dp"
+            android:gravity="center"
+            android:layout_height="match_parent">
+        <com.zhaoweihao.architechturesample.ui.NetWorkImageView
+            app:qmui_corner_radius="10dp"
+            app:qmui_border_color="#0000"
+            android:id="@+id/lml_iv_course_icon"
+            android:layout_width="30dp"
+            android:src="@drawable/memorandum_extremely_important"
+            android:layout_height="30dp" />
+         <TextView
+             android:id="@+id/lml_tv_setTag"
+             android:gravity="center"
+             android:textSize="8sp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lml_ll_title"
+            android:layout_width="195dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/lml_tv_title"
+                android:layout_width="match_parent"
+                android:textColor="#000"
+                android:gravity="bottom"
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/lml_tv_teacher_name"
+                android:gravity="bottom"
+                android:layout_width="match_parent"
+                android:textColor="#8000"
+                android:textSize="13sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+        </LinearLayout>
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_gravity="center"
+            android:id="@+id/lml_iv_collect"
+            app:qmui_borderWidth="1dp"
+            app:qmui_radius="5dp"
+            android:textSize="9sp"
+            android:textColor="#000"
+            app:qmui_borderColor="#000"
+            android:text="@string/collect"
+            app:qmui_isRadiusAdjustBounds="true"
+            android:layout_width="100dp"
+            android:layout_height="20dp" />
+        <ImageView
+            android:id="@+id/lml_iv_mesg"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="0dp"
+            android:visibility="visible"
+            android:background="@drawable/round"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <TextView
+        android:background="#1000"
+        android:layout_marginTop="-1dp"
+        android:layout_marginLeft="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+</LinearLayout>

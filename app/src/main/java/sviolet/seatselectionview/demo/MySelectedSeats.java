@@ -2,7 +2,6 @@ package sviolet.seatselectionview.demo;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,10 +13,10 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.data.RestResponse;
-import com.zhaoweihao.architechturesample.data.seat.Create;
-import com.zhaoweihao.architechturesample.data.seat.Record;
-import com.zhaoweihao.architechturesample.data.seat.SeatSel;
+import com.zhaoweihao.architechturesample.bean.RestResponse;
+import com.zhaoweihao.architechturesample.bean.seat.Create;
+import com.zhaoweihao.architechturesample.bean.seat.Record;
+import com.zhaoweihao.architechturesample.bean.seat.SeatSel;
 import com.zhaoweihao.architechturesample.database.User;
 
 import org.litepal.crud.DataSupport;

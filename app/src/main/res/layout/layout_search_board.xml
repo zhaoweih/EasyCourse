@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/lsb_btn_search"
+            android:clickable="false"
+            android:layout_gravity="center"
+            app:qmui_radius="15dp"
+            app:qmui_borderWidth="1dp"
+            app:qmui_backgroundColor="#1000"
+            app:qmui_borderColor="#0000"
+            android:textSize="13dp"
+            android:textColor="#5000"
+            android:text="@string/search_tip"
+            android:layout_width="330dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/searchboard"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </FrameLayout>
+</LinearLayout>

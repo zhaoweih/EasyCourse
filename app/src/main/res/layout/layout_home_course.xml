@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_home_course"
+    android:background="#fff"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+<com.zhaoweihao.architechturesample.ui.NetWorkImageView
+    app:qmui_corner_radius="10dp"
+    app:qmui_border_color="#0000"
+    android:id="@+id/lhc_iv_course_icon"
+    android:layout_width="45dp"
+    android:src="@drawable/logo"
+    android:layout_height="45dp" />
+<LinearLayout
+    android:id="@+id/lhc_ll_title"
+    android:layout_width="220dp"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical"
+    android:layout_height="50dp">
+    <TextView
+        android:id="@+id/lhc_tv_title"
+        android:layout_width="match_parent"
+        android:textColor="#000"
+        android:gravity="bottom"
+        android:textSize="18sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+    <TextView
+        android:id="@+id/lhc_tv_teacher_name"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:textColor="#8000"
+        android:textSize="13sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+</LinearLayout>
+<com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+    android:layout_gravity="center"
+    android:id="@+id/lhc_iv_collect"
+    app:qmui_borderWidth="1dp"
+    app:qmui_radius="5dp"
+    android:textSize="12sp"
+    android:text="@string/collect"
+    app:qmui_isRadiusAdjustBounds="true"
+    app:qmui_borderColor="@color/colorBlue"
+    android:layout_width="50dp"
+    android:layout_height="20dp" />
+</LinearLayout>
+<TextView
+    android:background="#1000"
+    android:layout_marginTop="-1dp"
+    android:layout_marginLeft="55dp"
+    android:layout_width="match_parent"
+    android:layout_height="1dp" />
+</LinearLayout>

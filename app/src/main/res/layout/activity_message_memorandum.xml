@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MessageMemorandumActivity">
+
+    <LinearLayout
+        android:id="@+id/amm_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hapticFeedbackEnabled="true"
+            android:importantForAccessibility="no"
+            android:tint="@color/colorBlue"
+            app:srcCompat="@drawable/ic_favorite_24dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/long_click_tip"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorBlue" />
+    </LinearLayout>
+
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/amm_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/amm_fl_selector_all"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center|right"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/amm_titleLayout">
+
+        <LinearLayout
+            android:id="@+id/amm_ly_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/amm_tv_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/all_running"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/amm_iv_selector"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/selector"
+                android:textColor="#000"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/amm_ly_selector2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/amm_tv_selector2"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/all_importance"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/amm_iv_selector2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/selector2"
+                android:textColor="#000"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/amm_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/amm_fl_selector_all" />
+
+</android.support.constraint.ConstraintLayout>

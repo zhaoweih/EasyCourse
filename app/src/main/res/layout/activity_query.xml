@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".course.QueryActivity">
+    android:orientation="vertical"
+    tools:context=".activity.HomeCourseSearchQueryCourseActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,94 +18,82 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:visibility="gone"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/refresh"
+    <com.zhaoweihao.architechturesample.ui.SearchBoardInputLayout
+        android:id="@+id/aq_searchBoardInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/aq_empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize">
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <FrameLayout
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hapticFeedbackEnabled="true"
+            android:importantForAccessibility="no"
+            android:layout_marginTop="-50dp"
+            android:src="@drawable/ic_favorite_24dp"
+            android:tint="@color/colorBlue" />
+
+        <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBaseBackground"
-            android:clickable="true"
-            android:focusable="true">
+            android:layout_marginTop="16dp"
+            android:text="@string/empty_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorBlue" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:visibility="gone"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/input"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="4"
-                        android:background="#fff"
-                        android:gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:hint="请输入课程名字或者教师编号" />
-
-                    <Button
-                        android:id="@+id/query"
-                        android:background="#0000"
-                        android:textColor="@color/colorAccent"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="查询" />
-
-                </LinearLayout>
-
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_course_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </android.support.v7.widget.RecyclerView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/empty_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:focusable="true"
+            <EditText
+                android:id="@+id/input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="#fff"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="invisible">
+                android:layout_marginLeft="10dp"
+                android:hint="请输入课程名字或者教师编号" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hapticFeedbackEnabled="true"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/ic_favorite_24dp"
-                    android:tint="@color/colorAccent" />
+            <Button
+                android:id="@+id/query"
+                android:background="#0000"
+                android:textColor="@color/colorAccent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="查询" />
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/empty_content"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/colorAccent" />
-            </LinearLayout>
-        </FrameLayout>
+        </LinearLayout>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_course_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</LinearLayout>

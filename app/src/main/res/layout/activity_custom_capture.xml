@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/dbv_custom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-20dp"
+            app:zxing_framing_rect_height="220dp"
+            app:zxing_framing_rect_width="220dp"
+            app:zxing_preview_scaling_strategy="centerCrop"
+            app:zxing_scanner_layout="@layout/custom_barcode_scanner"
+            app:zxing_use_texture_view="false" />
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/acc_btn_zxing_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/zxingback"
+            />
+        <TextView
+            android:background="#0000"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#fff"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:text="@string/zxing_title" />
+        <FrameLayout
+            android:background="#9000"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/acc_ly_manual_input"
+                    android:layout_weight="1.0"
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/acc_ib_manual_input"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/manual_input"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/zxing_manual_input"
+                    android:textColor="#fff"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1.0"
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:id="@+id/acc_ly_album"
+                    android:layout_height="match_parent">
+                    <ImageButton
+                        android:id="@+id/acc_ib_album"
+                        android:layout_width="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/album"
+                        android:layout_height="40dp" />
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:text="@string/zxing_album"
+                        android:textColor="#fff"/>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+    <ImageView
+        android:layout_marginTop="-500dp"
+        android:id="@+id/acc_iv_forphoto"
+        android:layout_width="500dp"
+        android:layout_height="500dp" />
+
+
+
+</LinearLayout>

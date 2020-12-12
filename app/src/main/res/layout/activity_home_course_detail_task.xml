@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.HomeCourseDetailTaskLayout">
+    <FrameLayout
+        android:id="@+id/ahcdt_fl_homework"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/homework" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/homework"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/ahcdt_fl_talk"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/talk" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/talk"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/ahcdt_fl_exam"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/exam" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/exam"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/ahcdt_fl_chat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/usergroup" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/chat"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+    </FrameLayout>
+</LinearLayout>

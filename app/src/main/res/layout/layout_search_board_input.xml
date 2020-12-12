@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_height="wrap_content">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <Button
+        android:id="@+id/lsbi_bt_back"
+        android:layout_gravity="center|left"
+        android:background="@drawable/back"
+        android:layout_width="30dp"
+        android:layout_margin="5dp"
+        android:layout_height="30dp" />
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:layout_gravity="center"
+        app:qmui_radius="15dp"
+        android:layout_marginLeft="10dp"
+        app:qmui_borderWidth="1dp"
+        app:qmui_backgroundColor="#1000"
+        app:qmui_borderColor="#0000"
+        android:textSize="13dp"
+        android:textColor="#5000"
+        android:layout_width="330dp"
+        android:layout_height="35dp" />
+    <ImageView
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center|left"
+        android:src="@drawable/searchboard"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+    <EditText
+        android:id="@+id/lsbi_et_input"
+        android:layout_gravity="center"
+        android:hint="找人"
+        android:textSize="14dp"
+        android:textColorHint="#2000"
+        android:maxLength="10"
+        android:layout_marginLeft="15dp"
+        android:maxLines="1"
+        android:background="#0000"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+</FrameLayout>
+ <FrameLayout
+
+     android:layout_width="match_parent"
+     android:layout_height="52dp">
+     <TextView
+         android:background="#1000"
+         android:layout_width="match_parent"
+         android:layout_height="1dp" />
+     <TextView
+         android:layout_margin="5dp"
+         android:gravity="center"
+         android:textColor="#5000"
+         android:layout_gravity="center|left"
+         android:text="@string/recent_search"
+         android:layout_width="wrap_content"
+         android:layout_height="30dp" />
+     <ImageButton
+         android:id="@+id/lsbi_ib_clear_history"
+         android:layout_marginRight="5dp"
+         android:layout_gravity="center|right"
+         android:background="@drawable/trashcan"
+         android:layout_width="25dp"
+         android:layout_height="25dp" />
+     <TextView
+         android:background="#1000"
+         android:layout_marginTop="50dp"
+         android:layout_width="match_parent"
+         android:layout_height="1dp" />
+ </FrameLayout>
+ <FrameLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+     <TextView
+         android:id="@+id/lsbi_tv_default"
+         android:layout_gravity="center|top"
+         android:textColor="#5000"
+         android:textSize="12sp"
+         android:gravity="center"
+         android:text="@string/no_search_history"
+         android:layout_width="match_parent"
+         android:layout_height="50dp" />
+     <com.kongzue.stacklabelview.StackLabel
+         android:id="@+id/lsbi_st_search_histroy"
+         app:deleteButton="false"
+         android:layout_width="match_parent"
+         app:textColor="#e6000000"
+         app:itemMargin="4dp"
+         app:paddingHorizontal="12dp"
+         app:paddingVertical="8dp"
+         app:textSize="12dp"
+         android:layout_height="match_parent"/>
+
+ </FrameLayout>
+</LinearLayout>

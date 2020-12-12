@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_marginBottom="2dp"
+    android:layout_height="50dp">
+<TextView
+    android:layout_marginLeft="10dp"
+    android:id="@+id/le_tv_tip"
+    android:text="@string/aboutLightCourse"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:textSize="15sp"
+    android:layout_height="50dp" />
+<EditText
+    android:id="@+id/le_et"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:textColorHint="#2000"
+    android:gravity="center"
+    android:maxLines="1"
+    android:textCursorDrawable="@drawable/edittext_cursor"
+    android:hint="@string/aboutLightCourse"
+    android:textSize="15sp"
+    android:background="#0000"
+    android:layout_height="50dp" />
+<LinearLayout
+    android:layout_gravity="right|center"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/let_ib_visibility_switch"
+        android:layout_gravity="right"
+        android:background="@drawable/showpassword1"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+</LinearLayout>
+
+</LinearLayout>

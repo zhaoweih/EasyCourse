@@ -3,20 +3,16 @@ package sviolet.seatselectionview.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.gson.Gson;
 import com.zhaoweihao.architechturesample.R;
-import com.zhaoweihao.architechturesample.data.RestResponse;
-import com.zhaoweihao.architechturesample.data.User;
-import com.zhaoweihao.architechturesample.data.seat.SeatSel;
-import com.zhaoweihao.architechturesample.seat.SeatRecActivity;
+import com.zhaoweihao.architechturesample.activity.HomeCourseMoreCallRollSeatRecActivity;
+import com.zhaoweihao.architechturesample.bean.RestResponse;
+import com.zhaoweihao.architechturesample.bean.seat.SeatSel;
 
 import java.io.IOException;
 
@@ -96,7 +92,7 @@ public class SeatSelectionActivity extends TAppCompatActivity{
         swipeRefreshLayout.setOnRefreshListener(() -> requestData(classCode));
 
         record.setOnClickListener(v -> {
-            Intent intent2 = new Intent(this, SeatRecActivity.class);
+            Intent intent2 = new Intent(this, HomeCourseMoreCallRollSeatRecActivity.class);
             intent2.putExtra("code",classCode);
             intent2.putExtra("courseId", courseId);
             startActivity(intent2);

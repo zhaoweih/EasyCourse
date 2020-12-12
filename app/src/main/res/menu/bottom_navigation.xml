@@ -5,19 +5,20 @@
         android:checkableBehavior="single"
         android:enabled="true">
         <item
-            android:id="@+id/nav_timeline"
-            android:enabled="true"
-            android:icon="@drawable/course_new"
-            android:title="课程" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="首页" />
         <item
-            android:id="@+id/nav_favorites"
-            android:enabled="true"
-            android:icon="@drawable/tools"
-            android:title="功能"/>
+            android:id="@+id/nav_message"
+            android:icon="@drawable/mesg"
+            android:title="消息"/>
+        <item
+            android:id="@+id/nav_note"
+            android:icon="@drawable/note"
+            android:title="笔记"/>
         <item
             android:id="@+id/nav_info"
-            android:enabled="true"
-            android:icon="@drawable/personal"
+            android:icon="@drawable/user"
             android:title="个人"/>
     </group>
 </menu>

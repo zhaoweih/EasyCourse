@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.NoteNoteBookClassifiedActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.zhaoweihao.architechturesample.ui.TitleLayout
+            android:id="@+id/annbc_titleLayout"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/annbc_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/annbc_empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hapticFeedbackEnabled="true"
+                android:importantForAccessibility="no"
+                android:tint="@color/colorBlue"
+                app:srcCompat="@drawable/ic_favorite_24dp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/empty_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorBlue" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:background="#fff"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/annbc_fl_delete_control"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textColor="@color/colorBlue"
+                android:text="@string/already_selected_note" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:id="@+id/annbc_tv_count_num"
+                android:textColor="@color/colorBlue"
+                android:text="@string/already_selected_num" />
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/annbc_rb_select_note"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="100dp"
+                android:textSize="12sp"
+                android:text="@string/select_all_note"
+                app:qmui_borderColor="@color/colorBlue"
+                app:qmui_borderWidth="1dp"
+                app:qmui_isRadiusAdjustBounds="true"
+                app:qmui_radius="5dp" />
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/annbc_rb_delete_note"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textSize="12sp"
+                android:text="@string/delete_note"
+                app:qmui_backgroundColor="@color/colorBlue"
+                android:textColor="#fff"
+                app:qmui_borderColor="@color/colorBlue"
+                app:qmui_borderWidth="1dp"
+                app:qmui_isRadiusAdjustBounds="true"
+                app:qmui_radius="5dp" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+</FrameLayout>

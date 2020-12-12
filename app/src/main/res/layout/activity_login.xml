@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity">
+    tools:context=".activity.MainLoginActivity">
 
     <RelativeLayout
         android:id="@+id/ry_login"
+        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,7 +19,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:src="@drawable/logo" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:background="#1000"
+            android:layout_marginBottom="-25dp"
+            android:layout_above="@id/ry_username"
+            android:layout_height="1dp" />
         <RelativeLayout
             android:id="@+id/ry_username"
             android:layout_width="wrap_content"
@@ -49,7 +55,11 @@
                 android:visibility="invisible"
                 android:background="@drawable/clear"/>
         </RelativeLayout>
-
+        <TextView
+            android:layout_below="@id/ry_username"
+            android:layout_width="match_parent"
+            android:background="#1000"
+            android:layout_height="1dp" />
         <RelativeLayout
             android:id="@+id/ry_password"
             android:layout_width="wrap_content"
@@ -91,7 +101,11 @@
                 android:background="@drawable/showpassword2"
                 />
         </RelativeLayout>
-
+        <TextView
+            android:layout_below="@id/ry_password"
+            android:layout_width="match_parent"
+            android:background="#1000"
+            android:layout_height="1dp" />
         <Button
             android:id="@+id/btn_login"
             android:layout_width="350dp"
@@ -124,12 +138,10 @@
                 android:layout_height="25dp"
                 android:layout_marginTop="20dp"
                 android:background="#0000"
-                android:text="@string/returntohome_text"
+                android:text="@string/findlostpassword_text"
                 android:textColor="#00a2e9" />
+
         </RelativeLayout>
-
-
-
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

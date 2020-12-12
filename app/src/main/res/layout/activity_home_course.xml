@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HomeCourseActivity">
+
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/ahc_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.zhaoweihao.architechturesample.ui.SearchBoardLayout
+        android:id="@+id/ahc_search_board"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/ahc_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBaseBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ahc_recycleView_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:scrollbarFadeDuration="1"
+                android:scrollbars="vertical" />
+            <LinearLayout
+                android:id="@+id/ahc_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hapticFeedbackEnabled="true"
+                    android:importantForAccessibility="no"
+                    android:tint="@color/colorBlue"
+                    app:srcCompat="@drawable/ic_favorite_24dp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/empty_content"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorBlue" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <com.zhaoweihao.architechturesample.ui.CourseSimpleInfoLayout
+        android:id="@+id/ahc_simpleInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="-650dp"
+        android:visibility="invisible"
+        android:layout_height="match_parent"/>
+</LinearLayout>

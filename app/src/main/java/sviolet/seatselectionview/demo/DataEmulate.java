@@ -2,7 +2,7 @@ package sviolet.seatselectionview.demo;
 
 import android.content.Context;
 
-import com.zhaoweihao.architechturesample.data.seat.SeatSel;
+import com.zhaoweihao.architechturesample.bean.seat.SeatSel;
 
 import java.util.List;
 

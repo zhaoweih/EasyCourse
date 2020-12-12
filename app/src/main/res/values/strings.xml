@@ -2,10 +2,10 @@
     <!--<string name="app_name">ArchitechtureSample</string>-->
     <string name="app_name">轻课</string>
 
-     <string name="zhihu_daily">我的通知</string>
+    <string name="zhihu_daily">我的通知</string>
     <string name="guokr_handpick">我的讨论</string>
-     <string name="douban_moment">我的课程</string>
-   <!-- <string name="zhihu_daily"></string>
+    <string name="douban_moment">我的课程</string>
+    <!-- <string name="zhihu_daily"></string>
     <string name="guokr_handpick"></string>
     <string name="douban_moment">我的课程</string>-->
     <string name="timeline">主要</string>
@@ -39,9 +39,10 @@
     <!-- login -->
     <string name="register_text">马上注册</string>
     <string name="returntohome_text">返回主页</string>
+    <string name="findlostpassword_text">找回密码</string>
     <string name="login_text">登录</string>
-    <string name="login_hint_text">账户名（由6-10位英文字母和数字组成）</string>
-    <string name="password_hint_text">密码（由6-10位英文字母和数字组成）</string>
+    <string name="login_hint_text">账户名（由8-16位英文字母和数字组成）</string>
+    <string name="password_hint_text">密码（由8-16位英文字母和数字组成）</string>
     <!-- login end -->
 
     <!-- register -->
@@ -63,6 +64,7 @@
     <string name="register_et_sex_text">男</string>
     <string name="register_tv_bottom0_text">已有账号，</string>
     <string name="register_tv_bottom1_text">点击去登录</string>
+    <string name="set_question_answer">设置问题和答案用以找回密码和修改密码</string>
     <!-- register end -->
 
     <!-- register_list_view -->
@@ -208,7 +210,147 @@
 
     <string name="pickerview_cancel">取消</string>
     <string name="pickerview_submit">确定</string>
+    <string name="title_activity_upload">UploadActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--timeselector-->
-
-
+    <!--zxing-->
+    <string name="zxing_tip">请将二维码放入框内 即可自动扫描</string>
+    <string name="zxing_title">扫一扫</string>
+    <string name="zxing_manual_input">手动输入</string>
+    <string name="zxing_album">相册</string>
+    <!--fragment_home-->
+    <string name="search_tip">搜索</string>
+    <string name="course_button">课程</string>
+    <string name="resource_button">资源</string>
+    <string name="activity_button">活动</string>
+    <string name="more_button">更多</string>
+    <string name="recent_use">最近使用</string>
+    <string name="recommend">推荐</string>
+    <!--layout_search_board_input-->
+    <string name="recent_search">最近搜索</string>
+    <string name="no_search_history">暂无搜索记录!</string>
+    <string name="title_activity_main_search_all_resource">MainSearchAllResourceActivity</string>
+    <string name="title_activity_note_search_all_resource">NoteSearchAllResourceActivity</string>
+    <!--fragment_message-->
+    <string name="message">信息</string>
+    <!--fragment_home-->
+    <string name="home">首页</string>
+    <string name="title_activity_message_search_all_people">MessageSearchAllPeopleActivity</string>
+    <string name="title_activity_main_more">MainMoreActivity</string>
+    <!--activity_home_more-->
+    <string name="amm_tv_recommend">推荐</string>
+    <string name="amm_tv_translator">翻译君</string>
+    <string name="amm_tv_zhiHuDaily">知乎日报</string>
+    <string name="title_activity_personal_setting">PersonalSettingActivity</string>
+    <!--activity_personal_setting-->
+    <string name="aboutLightCourse">关于轻课</string>
+    <string name="feedback">建议反馈</string>
+    <string name="count_management">账号管理</string>
+    <string name="modify_password">修改密码</string>
+    <!--PersonalSettingModifyPasswordActivity-->
+    <string name="title_activity_personal_setting_modify_password">PersonalSettingModifyPasswordActivity</string>
+    <string name="confirm">确定</string>
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="retype_new_password">确认新密码</string>
+    <!--PersonalSettingCountManagementActivity-->
+    <string name="title_activity_personal_setting_count_management">PersonalSettingCountManagementActivity</string>
+    <string name="head">头像</string>
+    <string name="name">姓名</string>
+    <string name="description">描述</string>
+    <string name="sex">性别</string>
+    <string name="school">学校</string>
+    <string name="phone">手机</string>
+    <string name="exit">退出登录</string>
+    <string name="unknown">未知</string>
+    <string name="id">编号</string>
+    <string name="title_activity_personal_setting_descriptoin">PersonalSettingDescriptoinActivity</string>
+    <string name="title_activity_personal_setting_phone">PersonalSettingPhoneActivity</string>
+    <string name="title_activity_home_course">HomeCourseActivity</string>
+    <!--layout_home_course-->
+    <string name="collect">收藏</string>
+    <string name="chat">聊天</string>
+    <!--layout_note-->
+    <string name="share">转发</string>
+    <string name="title_activity_home_course_detail_ativity">HomeCourseDetailAtivity</string>
+    <!--title_activity_home_course_detail_task-->
+    <string name="title_activity_home_course_detail_task">HomeCourseDetailTaskActivity</string>
+    <string name="homework">作业</string>
+    <string name="talk">讨论</string>
+    <string name="exam">考试</string>
+    <!--HomeCourseDetailChapterActivity-->
+    <string name="title_activity_home_course_detail_chapter">HomeCourseDetailChapterActivity</string>
+    <string name="chapter">添加章节标题</string>
+    <!--HomeCourseDetailMoreActivity-->
+    <string name="title_activity_home_course_detail_more">HomeCourseDetailMoreActivity</string>
+    <string name="enterRollCallSystem">进入点名系统</string>
+    <string name="submitLeaveRequest">提交请假条</string>
+    <string name="LeaveList">进入请假系统</string>
+    <string name="voteSystem">进入投票系统</string>
+    <string name="ranking">查看答题排名</string>
+    <string name="courseNotify">查看课程通知</string>
+    <string name="title_activity_home_resource">HomeResourceActivity</string>
+    <string name="title_activity_home_huo_dong">HomeHuoDongActivity</string>
+    <string name="title_activity_note">NoteActivity</string>
+    <string name="draft">草稿</string>
+    <string name="share_note">共享笔记</string>
+    <string name="private_note">私有笔记</string>
+    <!--submit_course_activity-->
+    <string name="upload_cover">上传封面</string>
+    <string name="title_activity_home_course_detail_chapter_content">HomeCourseDetailChapterContentActivity</string>
+    <string name="add_video_title">添加视频标题</string>
+    <string name="click_to_upload_video">点击上传视频</string>
+    <string name="unit_test">单元测试</string>
+    <string name="title_activity_home_course_detail_chapter_list_content">
+        HomeCourseDetailChapterListContent
+    </string>
+    <string name="title_activity_home_course_detail_chapter_list_content_detail">
+        HomeCourseDetailChapterListContentDetailActivity
+    </string>
+    <string name="title_activity_note_add_note">NoteAddNoteActivity</string>
+    <string name="add_note_title">添加笔记标题</string>
+    <string name="select_note_tag">选择笔记标签</string>
+    <string name="please_input_note_content">  请输入笔记内容...</string>
+    <string name="add_photo_tip">温馨提示：单击可查看图片,最多上传6张图片...</string>
+    <string name="title_activity_home_submit">HomeActivitySubmitActivity</string>
+    <string name="add_activity_tip">请输入活动的内容...</string>
+    <string name="title_activity_home_detail">HomeActivityDetailActivity</string>
+    <string name="title_activity_note_note_book_classified">NoteNoteBookClassifiedActivity</string>
+    <string name="delete_note">删除</string>
+    <string name="select_all_note">全选</string>
+    <string name="already_selected_note">已选择</string>
+    <string name="already_selected_num">0</string>
+    <string name="title_activity_note_note_book_search_personal">
+        NoteNoteBookSearchPersonalActivity
+    </string>
+    <string name="title_activity_note_show_detail">NoteShowDetailActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="slogan">让您的学习更轻松！</string>
+    <string name="app_name_english">Easycourse</string>
+    <string name="app_version">version 1.0.0</string>
+    <string name="title_activity_home_resource_detail">HomeResourceDetailActivity</string>
+    <string name="title_activity_tbstest">TBSTestActivity</string>
+    <string name="title_activity_home_resource_list">HomeResourceListActivity</string>
+    <string name="title_activity_home_resource_submit">HomeResourceSubmitActivity</string>
+    <string name="title_activity_home_scan_input">HomeScanInputActivity</string>
+    <string name="title_activity_message_address_list">MessageAddressListActivity</string>
+    <string name="title_activity_message_validation_list">MessageValidationListActivity</string>
+    <string name="refuse">拒绝</string>
+    <string name="accept">接受</string>
+    <string name="title_activity_message_memorandum">MessageMemorandumActivity</string>
+    <string name="title_activity_message_inbox">MessageInboxActivity</string>
+    <string name="title_activity_message_memorandum_add">MessageMemorandumAddActivity</string>
+    <string name="please_input_simple_memorandum">请输入简要的待办事项...</string>
+    <string name="all">全部</string>
+    <string name="all_running">全部状态</string>
+    <string name="all_importance">全部重要性</string>
+    <string name="long_click_tip">目前没待办事项，长按可删除喔~</string>
+    <string name="title_activity_message_memorandum_detail">MessageMemorandumDetailActivity</string>
+    <string name="title_activity_home_recommand_chapter_list">HomeRecommandChapterListActivity
+    </string>
+    <string name="title_activity_message_friend_profile">MessageFriendProfileActivity</string>
+    <string name="add_to_address_list">添加到通讯录</string>
+    <string name="title_activity_test_jcplayer">TestJCplayerActivity</string>
 </resources>

@@ -4,500 +4,554 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RegisterActivity">
+    tools:context=".activity.MainRegisterActivity">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/ry_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#0000">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#fff"
-                android:gravity="center"
-                android:text="@string/register_information_text"
-                android:textColor="#000"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/btn_submit"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_alignRight="@id/tv_title"
-                android:background="#0000"
-                android:text="@string/register_submit_text"
-                android:textColor="#00a2e9"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/tv_tip1"
+            <RelativeLayout
+                android:id="@+id/ry_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_title"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/register_tip1_text"
-                android:textSize="10dp" />
-        </RelativeLayout>
+                android:layout_marginTop="5dp"
+                android:background="#0000">
 
-        <RelativeLayout
-            android:id="@+id/ry_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ry_title">
+                <com.zhaoweihao.architechturesample.ui.TitleLayout
+                    android:id="@+id/ar_titleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/iv_usernamelogo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/username1" />
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="@string/register_information_text"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/ed_username"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@id/iv_usernamelogo"
-                android:background="#fff"
-                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
-                android:hint="@string/login_hint_text"
-                android:textColor="#00a2e9"
-                android:textColorHint="#4000"
-                android:maxLength="10"
-                android:textSize="14dp" />
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_alignRight="@id/tv_title"
+                    android:background="#0000"
+                    android:text="@string/register_submit_text"
+                    android:textColor="#00a2e9"
+                    android:textSize="15dp"
+                    android:visibility="gone" />
 
-            <ImageButton
-                android:id="@+id/ibtn_clearusername"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/clear"
-                android:visibility="invisible" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_tip1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ar_titleLayout"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/register_tip1_text"
+                    android:textSize="10dp" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/ry_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ry_username"
-            android:layout_marginTop="1dp">
-
-            <ImageView
-                android:id="@+id/iv_passwordlogo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/passwordlogo1" />
-
-            <EditText
-                android:id="@+id/ed_password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@id/iv_passwordlogo"
-                android:background="#fff"
-                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
-                android:hint="@string/password_hint_text"
-                android:inputType="textWebPassword"
-                android:maxLength="10"
-                android:textColor="#00a2e9"
-                android:textColorHint="#4000"
-
-                android:textSize="14dp" />
-
-            <ImageButton
-                android:id="@+id/ibtn_clearpassword"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="-15dp"
-                android:layout_toLeftOf="@+id/ibtn_hidepassword"
-                android:background="@drawable/clear"
-                android:visibility="invisible" />
-
-            <ImageButton
-                android:id="@+id/ibtn_hidepassword"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/showpassword2" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/ry_passwordconfirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ry_password"
-            android:layout_marginTop="1dp">
-
-            <ImageView
-                android:id="@+id/iv_passwordconfirmlogo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/passwordlogo1" />
-
-            <EditText
-                android:id="@+id/ed_passwordconfirm"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@id/iv_passwordconfirmlogo"
-                android:background="#fff"
-                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
-                android:hint="@string/password_confirm_hint_text"
-                android:inputType="textWebPassword"
-                android:textColor="#00a2e9"
-                android:maxLength="10"
-                android:textColorHint="#4000"
-
-                android:textSize="14dp" />
-
-            <ImageButton
-                android:id="@+id/ibtn_clearpasswordconfirm"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="-15dp"
-                android:layout_toLeftOf="@+id/ibtn_hidepasswordconfirm"
-                android:background="@drawable/clear"
-                android:visibility="invisible" />
-
-            <ImageButton
-                android:id="@+id/ibtn_hidepasswordconfirm"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/showpassword2" />
-
-            <TextView
-                android:id="@+id/tv_tip2"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/ry_username"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ibtn_clearpasswordconfirm"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/register_tip2_text"
-                android:textSize="10dp" />
-        </RelativeLayout>
+                android:layout_below="@id/ry_title">
 
-        <ScrollView
-            android:id="@+id/sv_selecteducatoininformation"
-            android:layout_below="@id/ry_passwordconfirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_usernamelogo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/username1" />
+
+                <EditText
+                    android:id="@+id/ed_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/iv_usernamelogo"
+                    android:background="#fff"
+                    android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
+                    android:hint="@string/login_hint_text"
+                    android:maxLength="10"
+                    android:textColor="#00a2e9"
+                    android:textColorHint="#4000"
+                    android:textSize="14dp" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_clearusername"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/clear"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ry_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ry_username"
+                android:layout_marginTop="1dp">
+
+                <ImageView
+                    android:id="@+id/iv_passwordlogo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/passwordlogo1" />
+
+                <EditText
+                    android:id="@+id/ed_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/iv_passwordlogo"
+                    android:background="#fff"
+                    android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
+                    android:hint="@string/password_hint_text"
+                    android:inputType="textWebPassword"
+                    android:maxLength="10"
+                    android:textColor="#00a2e9"
+                    android:textColorHint="#4000"
+
+                    android:textSize="14dp" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_clearpassword"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="-15dp"
+                    android:layout_toLeftOf="@+id/ibtn_hidepassword"
+                    android:background="@drawable/clear"
+                    android:visibility="invisible" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_hidepassword"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/showpassword2" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ry_passwordconfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ry_password"
+                android:layout_marginTop="1dp">
+
+                <ImageView
+                    android:id="@+id/iv_passwordconfirmlogo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/passwordlogo1" />
+
+                <EditText
+                    android:id="@+id/ed_passwordconfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/iv_passwordconfirmlogo"
+                    android:background="#fff"
+                    android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
+                    android:hint="@string/password_confirm_hint_text"
+                    android:inputType="textWebPassword"
+                    android:maxLength="10"
+                    android:textColor="#00a2e9"
+                    android:textColorHint="#4000"
+
+                    android:textSize="14dp" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_clearpasswordconfirm"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="-15dp"
+                    android:layout_toLeftOf="@+id/ibtn_hidepasswordconfirm"
+                    android:background="@drawable/clear"
+                    android:visibility="invisible" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_hidepasswordconfirm"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/showpassword2" />
+
+                <TextView
+                    android:id="@+id/tv_tip2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ibtn_clearpasswordconfirm"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/register_tip2_text"
+                    android:textSize="10dp" />
+            </RelativeLayout>
+
+
             <RelativeLayout
                 android:id="@+id/ry_selecteducatoininformation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ry_passwordconfirm">
 
                 <TextView
                     android:id="@+id/tv_name0"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_teachernum0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
                     android:gravity="center|left"
-                    android:textColor="#000"
                     android:text="@string/userinformation_tv_name0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <EditText
                     android:id="@+id/et_name"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="250dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:hint="@string/register_et_name_text"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/tv_teachernum0"
+                    android:layout_centerHorizontal="true"
                     android:background="#0000"
-                    android:layout_height="50dp" />
+                    android:gravity="center"
+                    android:hint="@string/register_et_name_text"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/tv_teachernum0"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_studentnum0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:visibility="gone"
                     android:gravity="center|left"
-                    android:textColor="#000"
                     android:text="@string/userinformation_tv_teachernum0_text"
-                    android:layout_marginLeft="20dp"
+                    android:textColor="#000"
                     android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:visibility="gone" />
+
                 <EditText
                     android:id="@+id/et_teachernum"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="250dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:hint="@string/register_et_teachernum_text"
-                    android:visibility="gone"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/tv_studentnum0"
+                    android:layout_centerHorizontal="true"
                     android:background="#0000"
-                    android:layout_height="50dp" />
+                    android:gravity="center"
+                    android:hint="@string/register_et_teachernum_text"
+                    android:text=""
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/tv_studentnum0"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_classnum0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
                     android:gravity="center|left"
-                    android:textColor="#000"
                     android:text="@string/userinformation_tv_studentnum0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <EditText
                     android:id="@+id/et_studentnum"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="250dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:hint="@string/register_et_studentnum_text"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/tv_classnum0"
+                    android:layout_centerHorizontal="true"
                     android:background="#0000"
-                    android:layout_height="50dp" />
+                    android:gravity="center"
+                    android:hint="@string/register_et_studentnum_text"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/tv_classnum0"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/tv_sex0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
                     android:gravity="center|left"
-                    android:textColor="#000"
                     android:text="@string/userinformation_tv_classnum0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
-                    android:layout_below="@+id/tv_sex0"
-                    android:layout_height="50dp" />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <EditText
                     android:id="@+id/et_classnum"
-                    android:gravity="center"
                     android:layout_width="250dp"
-                    android:layout_centerHorizontal="true"
-                    android:hint="@string/register_et_classnum_text"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/tv_sex0"
+                    android:layout_centerHorizontal="true"
                     android:background="#0000"
-                    android:layout_height="50dp" />
+                    android:gravity="center"
+                    android:hint="@string/register_et_classnum_text" />
+
                 <TextView
                     android:id="@+id/tv_school0"
                     android:layout_width="match_parent"
-                    android:gravity="center|left"
-                    android:textColor="#000"
-                    android:text="@string/register_tv_school0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    />
+                    android:gravity="center|left"
+                    android:text="@string/register_tv_school0_text"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_faculty0"
                     android:layout_width="match_parent"
-                    android:gravity="center|left"
-                    android:textColor="#000"
-                    android:text="@string/userinformation_tv_faculty0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
                     android:layout_height="50dp"
+                    android:layout_below="@+id/tv_school0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:layout_below="@+id/tv_school0"
-                     />
+                    android:gravity="center|left"
+                    android:text="@string/userinformation_tv_faculty0_text"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_year0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_below="@+id/tv_name0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
-                    android:textColor="#000"
+                    android:background="#fff"
                     android:gravity="center|left"
                     android:text="@string/userinformation_tv_year0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
-                    android:background="#fff"
-                    android:layout_below="@+id/tv_name0"
-                     />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_position0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_below="@+id/tv_faculty0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
-                    android:textColor="#000"
+                    android:background="#fff"
                     android:gravity="center|left"
                     android:text="@string/userinformation_tv_position0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
-                    android:background="#fff"
-                    android:layout_below="@+id/tv_faculty0"
-                    />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_sex0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:textColor="#000"
-                    android:gravity="center|left"
-                    android:text="@string/userinformation_tv_sex0_text"
+                    android:layout_below="@+id/tv_position0"
                     android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
                     android:layout_marginTop="1dp"
                     android:background="#fff"
-                    android:layout_below="@+id/tv_position0"
-                     />
+                    android:gravity="center|left"
+                    android:text="@string/userinformation_tv_sex0_text"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tv_degree0"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_below="@+id/tv_year0"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
-                    android:textColor="#000"
+                    android:background="#fff"
                     android:gravity="center|left"
                     android:text="@string/userinformation_tv_degree0_text"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="18dp"
-                    android:background="#fff"
-                    android:layout_below="@+id/tv_year0"
-                     />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_school"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:text="@string/register_tv_school_text"
                     android:textColor="#000"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_faculty"
                     android:layout_width="match_parent"
-                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_school"
+                    android:gravity="center"
                     android:text="@string/register_tv_faculty_text"
                     android:textColor="#000"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_year"
                     android:layout_width="match_parent"
-                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_below="@id/et_name"
+                    android:gravity="center"
                     android:text="@string/register_tv_year_text"
                     android:textColor="#000"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_position"
                     android:layout_width="match_parent"
-                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_faculty"
+                    android:gravity="center"
                     android:text="@string/register_tv_position_text"
                     android:textColor="#000"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_sex"
                     android:layout_width="match_parent"
-                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_position"
+                    android:gravity="center"
                     android:text="@string/register_et_sex_text"
                     android:textColor="#000"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/tv_degree"
                     android:layout_width="match_parent"
-                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_below="@id/tv_year"
+                    android:gravity="center"
                     android:text="@string/register_tv_degree_text"
                     android:textColor="#000"
-                    android:textSize="18dp"
-                    android:layout_height="50dp" />
+                    android:textSize="18dp" />
+
                 <ImageView
-                    android:layout_alignParentRight="true"
                     android:id="@+id/iv_school0"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="#0000"
-                    android:src="@drawable/registergo"/>
-                <ImageView
                     android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:src="@drawable/registergo" />
+
+                <ImageView
                     android:id="@+id/iv_faculty0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/iv_school0"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#0000"
-                    android:src="@drawable/registergo"/>
-                <ImageView
                     android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:src="@drawable/registergo" />
+
+                <ImageView
                     android:id="@+id/iv_position0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/iv_faculty0"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#0000"
-                    android:src="@drawable/registergo"/>
-                <ImageView
                     android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:src="@drawable/registergo" />
+
+                <ImageView
                     android:id="@+id/iv_sex0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/iv_position0"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#0000"
-                    android:src="@drawable/registergo"/>
-                <ImageView
                     android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:src="@drawable/registergo" />
+
+                <ImageView
                     android:id="@+id/iv_year0"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/tv_name0"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#0000"
-                    android:src="@drawable/registergo"/>
-                <ImageView
                     android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:src="@drawable/registergo" />
+
+                <ImageView
                     android:id="@+id/iv_degree0"
-                    android:layout_below="@+id/tv_year0"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_below="@+id/tv_year0"
+                    android:layout_alignParentRight="true"
                     android:background="#0000"
-                    android:src="@drawable/registergo"/>
+                    android:src="@drawable/registergo" />
             </RelativeLayout>
-        </ScrollView>
 
+            <RelativeLayout
+                android:id="@+id/rl_questionAndAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ry_selecteducatoininformation"
+                android:layout_marginBottom="50dp">
+                <TextView
+                    android:id="@+id/tv_tip3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/set_question_answer"
+                    android:textSize="10dp" />
+                <com.zhaoweihao.architechturesample.ui.GetInputTextOrSelectTagDialogLayout
+                    android:layout_below="@id/tv_tip3"
+                    android:id="@+id/input_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
+                <com.zhaoweihao.architechturesample.ui.GetInputTextOrSelectTagDialogLayout
+                    android:id="@+id/input_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_question" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/ry_bottom"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="40dp"
-            android:background="#fff"
-            android:layout_alignParentBottom="true"
-            >
-
-            <ImageView
-                android:id="@+id/iv_bottom"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_toRightOf="@+id/tv_bottom1"
-                android:layout_centerVertical="true"
-                android:background="#fff"
-                android:src="@drawable/registerbottom" />
-            <TextView
-                android:id="@+id/tv_bottom0"
-                android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:textSize="10dp"
-                android:text="@string/register_tv_bottom0_text"
-                android:layout_height="40dp" />
-            <TextView
-                android:id="@+id/tv_bottom1"
-                android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/tv_bottom0"
-                android:gravity="center"
-                android:textSize="10dp"
-                android:textColor="#3f8ee7"
-                android:text="@string/register_tv_bottom1_text"
-                android:layout_height="40dp" />
         </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/ry_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_bottom"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_bottom1"
+            android:background="#fff"
+            android:src="@drawable/registerbottom" />
+
+        <TextView
+            android:id="@+id/tv_bottom0"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/register_tv_bottom0_text"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/tv_bottom1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_bottom0"
+            android:gravity="center"
+            android:text="@string/register_tv_bottom1_text"
+            android:textColor="#3f8ee7"
+            android:textSize="10dp" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

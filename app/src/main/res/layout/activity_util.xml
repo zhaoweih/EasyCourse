@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.UtilActivity">
+    tools:context=".activity.example.UtilActivity">
 
     <Button
         android:id="@+id/btn_send_post"

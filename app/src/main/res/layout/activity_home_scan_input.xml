@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.HomeScanInputActivity">
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/ahci_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.zhaoweihao.architechturesample.ui.EditTextLayout
+        app:layout_constraintBottom_toTopOf="@id/ahci_qmui_confirm"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/ahci_inputInviteCode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#fff"
+        app:qmui_borderWidth="20dp"
+        android:text="@string/confirm"
+        android:id="@+id/ahci_qmui_confirm"
+        android:background="@color/red"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        />
+</android.support.constraint.ConstraintLayout>

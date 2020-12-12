@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.NoteAddNoteActivity">
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/anan_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/anan_fl_add_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/writenote" />
+
+        <TextView
+            android:id="@+id/anan_tv_note_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:maxLines="1"
+            android:maxEms="12"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/add_note_title"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/anan_iv_ifAddTitle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_marginTop="2dp"
+        android:id="@+id/anan_fl_add_tag"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/writenote" />
+
+        <TextView
+            android:id="@+id/anan_tv_note_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/select_note_tag"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/anan_iv_ifSelectTag"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="visible" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/anan_et_add_content"
+            android:textColorHint="#2000"
+            android:gravity="left|top"
+            android:hint="@string/please_input_note_content"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="#fff"
+            android:inputType="textImeMultiLine"
+            />
+        <ImageView
+            android:id="@+id/anan_iv_ifWriteTag"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="visible" />
+    </FrameLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/anan_ll_im1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@drawable/add_note_pictures"
+                android:id="@+id/anan_iv_1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                />
+
+            <ImageView
+                android:src="@drawable/add_note_pictures"
+                android:id="@+id/anan_iv_2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                />
+
+            <ImageView
+                android:src="@drawable/add_note_pictures"
+                android:id="@+id/anan_iv_3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                />
+            <ImageView
+                android:src="@drawable/add_note_pictures"
+                android:id="@+id/anan_iv_add1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                />
+            <ImageView
+                android:src="@drawable/delete_note_pictures"
+                android:id="@+id/anan_iv_delete1"
+                android:layout_width="30dp"
+                android:layout_marginLeft="-30dp"
+                android:layout_marginTop="50dp"
+                android:layout_height="30dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/anan_ll_im2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/anan_iv_4"
+                android:src="@drawable/add_note_pictures"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/anan_iv_5"
+                android:src="@drawable/add_note_pictures"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/anan_iv_6"
+                android:src="@drawable/add_note_pictures"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                />
+            <ImageView
+                android:src="@drawable/add_note_pictures"
+                android:id="@+id/anan_iv_add2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="20dp"
+                />
+            <ImageView
+                android:src="@drawable/delete_note_pictures"
+                android:id="@+id/anan_iv_delete2"
+                android:layout_width="30dp"
+                android:layout_marginLeft="-30dp"
+                android:layout_marginTop="50dp"
+                android:layout_height="30dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:text="@string/add_photo_tip"
+        android:textColor="#2000"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <com.zhaoweihao.architechturesample.ui.MagnifyPhotoLayout
+        android:id="@+id/anan_maginfyPhotoLayout"
+        android:layout_marginTop="-560dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

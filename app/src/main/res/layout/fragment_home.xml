@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"></android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.Toolbar
+        android:background="#fff"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title=""
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/home"
+            android:textColor="#515151"
+            android:textSize="20dp" />
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/ft_llinvitationshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/scanqr" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:text="邀请码"
+            android:textColor="#000"
+            android:textSize="8dp" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/fh_qmui_btn_main_search_all"
+                    android:layout_gravity="center"
+                    app:qmui_radius="15dp"
+                    app:qmui_borderWidth="1dp"
+                    android:textSize="13dp"
+                    android:textColor="#5000"
+                    android:text="@string/search_tip"
+                    android:layout_width="330dp"
+                    android:layout_height="35dp" />
+                <ImageView
+                    android:layout_marginRight="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/searchboard"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            </FrameLayout>
+            <FrameLayout
+                android:background="#fff"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="3dp"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/fh_ly_course"
+                        android:layout_width="50dp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                            app:qmui_corner_radius="5dp"
+                            app:qmui_border_width="0dp"
+                            android:src="@drawable/maincourse"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#9000"
+                            android:text="@string/course_button"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fh_ly_resource"
+                        android:layout_width="50dp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                            app:qmui_corner_radius="5dp"
+                            app:qmui_border_width="0dp"
+                            android:background="@drawable/resource"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#9000"
+                            android:text="@string/resource_button"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fh_ly_activity"
+                        android:layout_width="50dp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                            app:qmui_corner_radius="5dp"
+                            app:qmui_border_width="0dp"
+                            android:src="@drawable/mainactivity"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#9000"
+                            android:text="@string/activity_button"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fh_ly_more"
+                        android:layout_width="50dp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                            app:qmui_corner_radius="5dp"
+                            app:qmui_border_width="0dp"
+                            android:background="@drawable/mainmore"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#9000"
+                            android:text="@string/more_button"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_marginTop="110dp"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/fh_fl_recent_use"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/recent_use"
+                        android:textColor="#5000"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:layout_height="30dp" />
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/fh_recent_use_recycleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/recommend"
+                        android:textColor="#5000"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:layout_height="30dp" />
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/fh_recommend_recycleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+            </LinearLayout>
+
+
+        </FrameLayout>
+    </ScrollView>
+    <FrameLayout
+        android:id="@+id/ft_flinvitationboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="38dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/selectboardarrow"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fh_tvscanqr"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#0fff"
+                android:gravity="center"
+                android:text="扫一扫"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/fh_tvinvitecode"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="#0fff"
+                android:gravity="center"
+                android:text="邀请码"
+                android:textColor="#000" />
+        </LinearLayout>
+    </FrameLayout>
+    <com.zhaoweihao.architechturesample.ui.CourseSimpleInfoLayout
+        android:id="@+id/fh_course_simple_layout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"/>
+</FrameLayout>

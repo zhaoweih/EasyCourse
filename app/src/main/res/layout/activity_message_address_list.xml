@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MessageAddressListActivity">
+
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/amal_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/amal_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hapticFeedbackEnabled="true"
+            android:importantForAccessibility="no"
+            android:tint="@color/colorBlue"
+            app:srcCompat="@drawable/ic_favorite_24dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/empty_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorBlue" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:id="@+id/amal_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/amal_titleLayout" />
+    <TextView
+        android:id="@+id/amal_tv_totalNum"
+        app:layout_constraintTop_toBottomOf="@id/amal_recyclerView"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="#5000"
+        android:layout_height="wrap_content" />
+</android.support.constraint.ConstraintLayout>

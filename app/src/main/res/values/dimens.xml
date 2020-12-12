@@ -39,5 +39,6 @@
     <!--timeselector-->
     <dimen name="pickerview_textsize">40sp</dimen>
     <!--timeselector-->
+    <dimen name="space_8">8dp</dimen>
 
 </resources>

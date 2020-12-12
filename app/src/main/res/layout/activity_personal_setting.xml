@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.PersonalSettingActivity">
+<com.zhaoweihao.architechturesample.ui.TitleLayout
+    android:id="@+id/aps_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+    <FrameLayout
+        android:id="@+id/aps_fl_count_management"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/count_management"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/aps_fl_modify_password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/modify_password"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/aps_fl_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/feedback"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/aps_fl_about_lightCourse"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/aboutLightCourse"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+</LinearLayout>

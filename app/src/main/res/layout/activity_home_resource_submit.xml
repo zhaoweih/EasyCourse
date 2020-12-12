@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HomeResourceSubmitActivity">
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/ahrs_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/ahrs_btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <RelativeLayout
+        android:id="@+id/rl1_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+</LinearLayout>

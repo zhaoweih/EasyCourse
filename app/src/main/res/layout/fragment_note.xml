@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title=""
+            app:titleTextColor="@color/white">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="笔记"
+                android:textColor="#515151"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/im_toolbar_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:rotation="0"
+                android:src="@drawable/notearrowdown" />
+
+            <ImageView
+                android:id="@+id/im_toolbar_addnote"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/writenote" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/fn_searchboard"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_border_searchboard"
+                    android:gravity="center"
+                    android:textColor="#e6e6e6"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="-25dp"
+                    android:src="@drawable/searchboard" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="搜索"
+                    android:textColor="#bdbdbd"
+                    android:textSize="14sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fn_note"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="33dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/notebook" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="60dp"
+                    android:background="#B3FFFFFF"
+                    android:gravity="center"
+                    android:text="笔记"
+                    android:textSize="15sp" />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/fn_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="155dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:clickable="true"
+            android:focusable="true">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fn_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/fn_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hapticFeedbackEnabled="true"
+                    android:importantForAccessibility="no"
+                    android:tint="@color/colorBlue"
+                    app:srcCompat="@drawable/ic_favorite_24dp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/empty_content"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorBlue" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/fn_llaayoutshowboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:text="选择显示"
+                android:textColor="#515151"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:id="@+id/fn_selectboard1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/fn_btn1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="center"
+                    android:text="关注"
+                    android:textColor="#1296db"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/fn_btn2"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="推荐"
+                    android:textColor="#1296db"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/fn_btn3"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|right"
+                    android:gravity="center"
+                    android:text="我的"
+                    android:textColor="#1296db"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fn_selectboard2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/fn_btn4"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="center"
+                    android:text="同单位"
+                    android:textColor="#1296db"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/fn_btn5"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="全部"
+                    android:textColor="#1296db"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/fn_btn6"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|right"
+                    android:gravity="center"
+                    android:text="分组管理"
+                    android:textColor="#1296db"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fn_fl_closeboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:background="#5777">
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".activity.WelcomeActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="90dp"
+            android:src="@drawable/logo" />
+        <Button
+            android:id="@+id/aw_welcombtn"
+            android:layout_marginTop="20dp"
+            android:layout_width="80dp"
+            android:textColor="#1296db"
+            android:background="#0000"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+           />
+        <TextView
+            android:layout_marginTop="-15dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:textColor="#1296db"
+            android:textSize="30sp"
+            android:layout_height="80dp" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/app_name_english"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:textColor="#1296db"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_height="80dp" />
+        <TextView
+            android:id="@+id/slogan"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:visibility="invisible"
+            android:text="@string/slogan"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:gravity="center"
+            android:textColor="#1296db"
+            android:text="@string/app_version"
+            android:layout_gravity="center|bottom"
+            android:textSize="12sp"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+
+    </FrameLayout>
+</LinearLayout>

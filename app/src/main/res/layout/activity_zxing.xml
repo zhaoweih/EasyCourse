@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.example.ZxingActivity"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:id="@+id/scan_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扫描二维码"
+        />
+
+    <Button
+        android:id="@+id/generate_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="生成二维码"
+        />
+
+    <ImageView
+        android:id="@+id/qrcode_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

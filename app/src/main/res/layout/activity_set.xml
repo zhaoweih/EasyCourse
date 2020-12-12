@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vote.SetActivity">
+    tools:context=".activity.HomeCourseMoreVoteCreateActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -168,11 +168,11 @@
                     android:layout_height="70dp"
                     android:layout_marginRight="16dp"
                     android:layout_weight="1"
-                    android:text="Prev"
+                    android:text="上一题"
                     android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:background="@color/colorPrimary"
-                    android:src="@drawable/prevstep" />
+                    android:textColor="@color/black"
+                    android:background="#0000"
+                    />
 
                 <Button
                     android:id="@+id/btn_next"
@@ -180,11 +180,11 @@
                     android:layout_height="70dp"
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
-                    android:text="Next"
+                    android:text="下一题"
                     android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:background="@color/colorPrimary"
-                    android:src="@drawable/nextstep" />
+                    android:textColor="@color/black"
+                    android:background="#0000"
+            />
             </LinearLayout>
 
         </RelativeLayout>

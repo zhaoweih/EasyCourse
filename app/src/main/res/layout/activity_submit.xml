@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.zhaoweihao.architechturesample.course.SubmitActivity">
+    tools:context="com.zhaoweihao.architechturesample.activity.HomeCourseSubmitCourseActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -34,16 +34,39 @@
             android:layout_width="match_parent"
             android:layout_margin="5dp"
             android:layout_height="match_parent">
-            <ImageView
-                android:background="@drawable/submitcourse"
+
+            <LinearLayout
+                android:id="@+id/as_upload_cover"
+                android:layout_marginBottom="0dp"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="-50dp"
-                android:layout_height="180dp" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="2dp"
+                android:background="#fff"
+                android:layout_height="80dp">
+                <com.zhaoweihao.architechturesample.ui.NetWorkImageView
+                    android:id="@+id/as_iv"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/upload_cover"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp" />
+                <TextView
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#9000"
+                    android:text="@string/upload_cover"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_margin="2dp"
                 android:background="#fff"
+                android:visibility="gone"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -102,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_margin="2dp"
                 android:background="#fff"
+                android:visibility="gone"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -191,5 +215,10 @@
         </LinearLayout>
 
     </FrameLayout>
+    <com.zhaoweihao.architechturesample.ui.MagnifyPhotoLayout
+        android:layout_gravity="center"
+        android:id="@+id/as_magnify_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </android.support.design.widget.CoordinatorLayout>

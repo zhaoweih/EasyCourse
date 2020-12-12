@@ -1,45 +1,32 @@
-**⚠️WARN: All the Icon & Image was downloaded from iconfont.cn/ &dribbble.com.Due to legal issues📖, please don't use any of images or icons in commerical project.thanks...**
-
-**注意：本项目图标和图片均从网络下载，请勿用于商业项目**
-
 # 轻课
 
-## 介绍 Description:
+#### 项目介绍
+毕业设计项目源码
 
-| 听说  | 用表格排版更好看                                             |
-| ----- | ------------------------------------------------------------ |
-| 😊介绍 | 一个教学辅助类Android应用，力图解决大学生课堂跟教师的交流问题，让课堂更加效率。 |
-| ⭕️进度 | 仍在缓慢更新制作维护中。。。                                 |
-| 🚪分工 | 1.Android客户端：我& [@TanXinKui](https://github.com/TanXinKui) 2.后端和服务器提供：我 |
-| ❓问题 | 由于第一次做后端，没有多少经验，比较简单的一个后端           |
+#### 运行
 
-👽后端代码：
+在Android Studio打开，运行即可
 
-- [EasyCourse-Back-End](https://github.com/zhaoweih/4S-T-Back-End)
+#### 说明
+开发请切换到develop分支  
 
-  🌈已删除数据库密码，如要运行请先在LoadConfig.java里填入自己的数据库密码，默认帐户是root
+master分支-一般不用  
+develop分支-开发分支  
 
-- 数据库sql文件:[mydatabase.sql](./sql/mydatabase.sql)
+后端环境 blade + nginx  
+地址：https://test.tanxinkui.cn  
 
-## 预览版本 Preview APK file:
-[Google Drive](https://drive.google.com/file/d/1cObfceAaLpYykKcX1yn5dlhKGv9Hqy87/view?usp=sharing)
+如需直接运行可以下载发行版到手机安装即可  
 
-## 预览图 Preview:
+https://gitee.com/zhaoweihaochina/easy_course/releases
 
-先放几张预览图，非最终成品
+#### 参与开发人员
+[zhaoweihao](https://gitee.com/zhaoweihaochina)  
+[tanxinkui](https://gitee.com/tanxinkui)
 
-| preview.Vote.show         | preview.Vote.result       |
-| ------------------------- | ------------------------- |
-| ![](./preview/vote_1.png) | ![](./preview/vote_2.png) |
-| Preview .my               | Preview .courseManagement |
-| ![](./preview/my.png)     | ![](./preview/mana.png)   |
+#### 联系方式
+zhaoweihao.dev@gmail.com
 
-## 特别感谢:
+Edit by zhaoweihao
 
-特别感谢以下开源项目
-
-- [Blade](https://github.com/lets-blade/blade) -  Lightning fast and elegant mvc framework for Java8 
-
-## 有问题? 
-
-- 发至邮箱：zhaoweihao.dev#gmail.com
+请勿用于商业用途

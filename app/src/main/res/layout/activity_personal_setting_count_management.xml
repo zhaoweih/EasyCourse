@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.PersonalSettingCountManagementActivity">
+<com.zhaoweihao.architechturesample.ui.TitleLayout
+    android:id="@+id/apscm_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <FrameLayout
+        android:id="@+id/apscm_fl_head"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/head"
+            android:textSize="15sp" />
+
+        <com.zhaoweihao.architechturesample.ui.NetWorkImageView
+            app:qmui_is_circle="true"
+            app:qmui_border_color="#0000"
+            android:background="#fff"
+            android:id="@+id/apscm_iv_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="45dp"
+            android:src="@drawable/userprofile" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/apscm_fl_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/name"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/apscm_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/lightBlue"
+            android:text="@string/unknown"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/apscm_fl_sex"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/sex"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/apscm_tv_sex"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/lightBlue"
+            android:text="@string/unknown"
+            android:textSize="15sp" />
+        <ImageView
+            android:visibility="invisible"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/apscm_fl_description"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/description"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/apscm_tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/lightBlue"
+            android:text="@string/unknown"
+            android:textSize="15sp" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/apscm_fl_phone"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/phone"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/apscm_tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/lightBlue"
+            android:text="@string/unknown"
+            android:textSize="15sp" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/apscm_fl_school"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/school"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/apscm_tv_school"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/lightBlue"
+            android:text="@string/unknown"
+            android:textSize="15sp" />
+        <ImageView
+            android:visibility="invisible"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/apscm_fl_id"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/id"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/apscm_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/lightBlue"
+            android:text="@string/unknown"
+            android:textSize="15sp" />
+        <ImageView
+            android:visibility="invisible"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright" />
+        <TextView
+            android:layout_marginTop="59dp"
+            android:layout_width="match_parent"
+            android:background="#2000"
+            android:layout_height="1dp" />
+    </FrameLayout>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#fff"
+        app:qmui_borderWidth="20dp"
+        android:text="@string/exit"
+        android:id="@+id/apscm_qmui_exit"
+        android:background="@color/red"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        />
+    <com.zhaoweihao.architechturesample.ui.MagnifyPhotoLayout
+        android:id="@+id/apscm_mp_magnify_photo"
+        android:layout_marginTop="-560dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HomeCourseDetailChapterListContentDetailActivity">
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/ahcdccd_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/ahcdccd_fl_chapter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/add_video" />
+
+        <TextView
+            android:id="@+id/ahcdccd_tv_video_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/add_video_title"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/ahcdccd_iv_add_title"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/ahcdccd_iv_video"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ahcdcacd_ll_add_video"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="#1000"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/upload_video" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/click_to_upload_video"
+            android:textColor="#5000" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-120dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="visible" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ahcdcacd_ll_show_video"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="#000"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <VideoView
+            android:id="@+id/ahcdccd_vv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+        <ImageView
+            android:id="@+id/fullscreen"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/fullscreen"
+            android:layout_marginTop="-90dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/ahcdccd_fl_chapter_1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/ahcdccd_iv_submit"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="65dp"
+            android:src="@drawable/submit_video"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ahcdccd_iv_delete"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/trashcan"
+            android:visibility="visible" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/ahcdccd_fl_chapter_2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/writenote" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/unit_test"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright"
+            android:visibility="visible" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+
+</LinearLayout>

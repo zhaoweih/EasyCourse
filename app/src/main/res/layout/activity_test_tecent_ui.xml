@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00B4E1"
+    tools:context=".activity.example.TestTecentUIActivity">
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/test1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="10dp"
+        android:text="圆角为高度的一半"
+        app:qmui_isRadiusAdjustBounds="true"/>
+
+    <com.zhaoweihao.architechturesample.view.uiview.NewCustomSeekbar
+        android:id="@+id/customSeekbar"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <com.zhaoweihao.architechturesample.view.uiview.CustomCircleView
+        android:id="@+id/custom_circle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+</LinearLayout>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".course.QuerySelectCourseActivity">
+    android:orientation="vertical"
+    tools:context=".activity.HomeCourseClassmateQueryActivity">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp">
 
@@ -19,11 +21,16 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/aqsc_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/query_select_course_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+       >
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -75,4 +82,4 @@
         </FrameLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

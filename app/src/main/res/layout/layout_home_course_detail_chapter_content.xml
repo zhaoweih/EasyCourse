@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/lhcdcc_fl_chapter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/add_video" />
+
+        <TextView
+            android:id="@+id/lhchcc_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="60dp"
+            android:background="#B3FFFFFF"
+            android:gravity="center"
+            android:text="@string/add_video_title"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/userarrowright"
+            android:visibility="visible" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/new_mesg"
+            android:visibility="invisible" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lcsi_ly_main"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/lcsi_fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/lcsi_fl_close"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#5000"></FrameLayout>
+
+        <FrameLayout
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#fff"
+            android:clickable="true"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lcsi_tv_course_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="大学语文"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="-20dp"
+                    android:background="@drawable/lcsi_teacher" />
+
+                <TextView
+                    android:id="@+id/lcsi_tv_teacher_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="大学语文"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="-20dp"
+                    android:background="@drawable/lcsi_num" />
+
+                <TextView
+                    android:id="@+id/lcsi_tv_mun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="大学语文"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/lcsi_iv_password"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="-20dp"
+                    android:background="@drawable/lcsi_password" />
+
+                <TextView
+                    android:id="@+id/lcsi_tv_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="大学语文"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="-20dp"
+                    android:background="@drawable/lcsi_description" />
+
+                <TextView
+                    android:id="@+id/lcsi_tv_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="大学语文"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <ImageView
+            android:layout_marginTop="150dp"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:background="@drawable/simple_course_delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </FrameLayout>
+</LinearLayout>

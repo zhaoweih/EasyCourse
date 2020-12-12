@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="个人"
+                android:textColor="#515151"
+                android:textSize="20dp" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="#e6e6e6"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fl_ps"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/colorPrimary">
+
+            <com.zhaoweihao.architechturesample.ui.NetWorkImageView
+                app:qmui_border_color="#0000"
+                app:qmui_corner_radius="5dp"
+                android:background="#fff"
+                android:id="@+id/fp_im_head"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/userprofile" />
+
+            <TextView
+                android:id="@+id/fp_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="90dp"
+                android:background="#B3FFFFFF"
+                android:gravity="center"
+                android:text="谭新奎"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/nf_ivqrcode"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/crcode" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/userarrowright" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_course"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/maincourse" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="60dp"
+                android:background="#B3FFFFFF"
+                android:gravity="center"
+                android:text="课程"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/userarrowright" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_resource"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/resource" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="60dp"
+                android:background="#B3FFFFFF"
+                android:gravity="center"
+                android:text="@string/resource_button"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/userarrowright" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_activity"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/mainactivity" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="60dp"
+                android:background="#B3FFFFFF"
+                android:gravity="center"
+                android:text="@string/activity_button"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/userarrowright" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_note"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/notebook" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="60dp"
+                android:background="#B3FFFFFF"
+                android:gravity="center"
+                android:text="笔记"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/userarrowright" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fi_fl_setting"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/usersetting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="60dp"
+                android:background="#B3FFFFFF"
+                android:gravity="center"
+                android:text="设置"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/userarrowright" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nf_llayouthiddenqrcode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:orientation="vertical">
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/nf_llayoutQrcode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+
+        <TextView
+            android:id="@+id/nf_tvqrcodedescription"
+            android:background="#fff"
+            android:textAlignment="center"
+            android:layout_width="250dp"
+            android:layout_height="280dp"
+            android:textSize="18sp"
+            android:padding="17dp"
+            android:textColor="#000"
+            android:layout_marginBottom="5dp"
+            android:text="邀请码:88888888"/>
+
+        <ImageView
+            android:layout_marginTop="-245dp"
+            android:id="@+id/if_qrcode"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:src="@drawable/crcode" />
+        <TextView
+            android:id="@+id/nf_tvqrcodedescription1"
+            android:gravity="center"
+            android:layout_marginTop="-210dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6000"
+            android:text="轻课首页右上角输入"/>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

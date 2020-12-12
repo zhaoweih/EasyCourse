@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HomeResourceDetailActivity">
+
+    <com.zhaoweihao.architechturesample.ui.TitleLayout
+        android:id="@+id/ahrd_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.zhaoweihao.architechturesample.ui.RoundProgressBar
+        android:id="@+id/ahrd_roundProgress"
+        android:visibility="gone"
+        android:layout_marginTop="150dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        app:roundColor="@android:color/holo_orange_light"
+        app:roundProgressColor="@color/colorBlue"
+        app:roundWidth="20dp"
+        app:textColor="@color/colorBlue"
+        app:textIsDisplayable="true"
+        app:textSize="28sp" />
+    <Button
+        android:id="@+id/ahrd_btn_submit"
+        android:layout_width="match_parent"
+        android:background="@drawable/round_border_login_button"
+        android:textColor="#fff"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="45dp" />
+    <LinearLayout
+        android:id="@+id/ahrd_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hapticFeedbackEnabled="true"
+            android:importantForAccessibility="no"
+            android:tint="@color/colorBlue"
+            app:srcCompat="@drawable/ic_favorite_24dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/empty_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorBlue" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+
+</LinearLayout>

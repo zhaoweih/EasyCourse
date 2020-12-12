@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="62dp"
+    android:layout_margin="0dp"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal">
+
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+            android:id="@+id/lm_iv_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            app:qmui_border_color="#0000"
+            app:qmui_corner_radius="10dp" />
+
+        <LinearLayout
+            android:id="@+id/lm_ll_title"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lm_tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/lm_tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:textColor="#8000"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lm_tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#8000"
+            android:textSize="13sp" />
+
+        <ImageButton
+            android:id="@+id/lm_ib_drag"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/userarrowright" />
+
+        <Button
+            android:id="@+id/lm_btn_mesg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="-10dp"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:background="@drawable/round"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="40dp"
+        android:background="#2000" />
+</LinearLayout>
